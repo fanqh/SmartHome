@@ -1,0 +1,1 @@
+-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I.\boot -I.\include -I..\..\lib\CMSIS\Core -I..\..\lib\STM32F10x_StdPeriph_Driver\inc -I..\..\common -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -o ".\output\m3_wifi.o" --omf_browse ".\output\m3_wifi.crf" --depend ".\output\m3_wifi.d" "api\M3_wifi.c"

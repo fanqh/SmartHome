@@ -1,0 +1,1 @@
+-c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I.\boot -I.\include -I..\..\lib\CMSIS\Core -I..\..\lib\STM32F10x_StdPeriph_Driver\inc -I..\..\common -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -o ".\output\infrared.o" --omf_browse ".\output\infrared.crf" --depend ".\output\infrared.d" "api\Infrared.c"

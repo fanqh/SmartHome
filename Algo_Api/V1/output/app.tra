@@ -1,0 +1,35 @@
+*** Creating Trace Output File '.\output\app.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\output\core_cm3.o"'
+### List of Objects: adding '".\boot\AppBoot.lib"'
+### List of Objects: adding '".\output\main.o"'
+### List of Objects: adding '".\output\ds18b20.o"'
+### List of Objects: adding '".\output\system_var.o"'
+### List of Objects: adding '".\output\m3_wifi.o"'
+### List of Objects: adding '".\output\infrared.o"'
+### List of Objects: adding '".\output\m3_315.o"'
+### List of Objects: adding '".\output\debug_led.o"'
+### List of Objects: adding '".\output\timer.o"'
+### List of Objects: adding '".\output\misc.o"'
+### List of Objects: adding '".\output\stm32f10x_exti.o"'
+### List of Objects: adding '".\output\stm32f10x_flash.o"'
+### List of Objects: adding '".\output\stm32f10x_gpio.o"'
+### List of Objects: adding '".\output\stm32f10x_i2c.o"'
+### List of Objects: adding '".\output\stm32f10x_rcc.o"'
+### List of Objects: adding '".\output\stm32f10x_tim.o"'
+### List of Objects: adding '".\output\stm32f10x_usart.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\output\core_cm3.o" F:\SmartDog\SmartHome\Algo_Api\V1\boot\AppBoot.lib ".\output\main.o" ".\output\ds18b20.o" ".\output\system_var.o" ".\output\m3_wifi.o" ".\output\infrared.o" ".\output\m3_315.o" ".\output\debug_led.o" ".\output\timer.o" ".\output\misc.o" ".\output\stm32f10x_exti.o" ".\output\stm32f10x_flash.o" ".\output\stm32f10x_gpio.o" ".\output\stm32f10x_i2c.o" ".\output\stm32f10x_rcc.o" ".\output\stm32f10x_tim.o" ".\output\stm32f10x_usart.o" --ro-base 0x08008000 --entry 0x08008000 --rw-base 0x20003000 --entry Reset_Handler --first __Vectors --strict --first inituser.o(Start) --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\List\app.map" -o ".\output\app.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\output\app.axf'
+### ADS-LD Command File: '.\output\app.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\output\app.lnp', Handle=0x00000358
+### Writing '.lnp' file
+### ADS-LD Command file '.\output\app.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
