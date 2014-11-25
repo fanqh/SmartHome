@@ -441,6 +441,16 @@
               <FileType>1</FileType>
               <FilePath>.\api\Timer.c</FilePath>
             </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\api\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>DK_RFM69H.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\api\DK_RFM69H.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -485,6 +495,11 @@
               <FileName>stm32f10x_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\lib\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c</FilePath>
             </File>
           </Files>
         </Group>
