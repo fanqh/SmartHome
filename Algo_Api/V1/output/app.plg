@@ -4,575 +4,63 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 F:\SmartDog\SmartHome\Algo_Api\V1\app.uvproj
-Project File Date:  11/16/2014
+Project File Date:  11/24/2014
 
 <h2>Output:</h2>
 Build target 'M3_app'
-compiling stm32f10x_spi.c...
-linking...
-Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Build target 'M3_app'
-linking...
-Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Build target 'M3_app'
-linking...
-Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Build target 'M3_app'
-compiling spi.c...
-api\spi.c(2): error:  #5: cannot open source input file "stm32f10x.spi.h": No such file or directory
-Target not created
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(5): error:  #20: identifier "word" is undefined
-.\include\spi.h(14): warning:  #1-D: last line of file ends without a newline
-api\spi.c(39): error:  #20: identifier "uiint16_t" is undefined
-api\spi.c(174): error:  #118: a void function may not return a value
-api\spi.c(162): warning:  #177-D: variable "bitcnt" was declared but never referenced
-api\spi.c(203): error:  #118: a void function may not return a value
-api\spi.c(210): error:  #65: expected a ";"
-api\spi.c(236): error:  #118: a void function may not return a value
-Target not created
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(14): warning:  #1-D: last line of file ends without a newline
-api\spi.c(39): error:  #20: identifier "uiint16_t" is undefined
-api\spi.c(174): error:  #118: a void function may not return a value
-api\spi.c(162): warning:  #177-D: variable "bitcnt" was declared but never referenced
-api\spi.c(203): error:  #118: a void function may not return a value
-api\spi.c(210): error:  #65: expected a ";"
-api\spi.c(236): error:  #118: a void function may not return a value
-Target not created
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(14): warning:  #1-D: last line of file ends without a newline
-api\spi.c(202): error:  #118: a void function may not return a value
-Target not created
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(16): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 1 Warning(s).
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(12): warning:  #1-D: last line of file ends without a newline
-linking...
-Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 1 Warning(s).
-Build target 'M3_app'
-linking...
-Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Build target 'M3_app'
-linking...
-Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(4): error:  #20: identifier "uint8_t" is undefined
-.\include\spi.h(4): error:  #20: identifier "uint8_t" is undefined
-.\include\spi.h(5): error:  #20: identifier "uint16_t" is undefined
-.\include\spi.h(6): error:  #20: identifier "uint8_t" is undefined
-.\include\spi.h(6): error:  #20: identifier "uint8_t" is undefined
-.\include\spi.h(6): error:  #20: identifier "uint8_t" is undefined
-.\include\spi.h(7): error:  #20: identifier "uint8_t" is undefined
-.\include\spi.h(7): error:  #20: identifier "uint8_t" is undefined
-.\include\spi.h(7): error:  #20: identifier "uint8_t" is undefined
-.\include\spi.h(12): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(49): error:  #20: identifier "u16" is undefined
-api\DK_RFM69H.c(57): error:  #20: identifier "u16" is undefined
-api\DK_RFM69H.c(65): error:  #20: identifier "u16" is undefined
-api\DK_RFM69H.c(73): error:  #20: identifier "u16" is undefined
-api\DK_RFM69H.c(98): error:  #20: identifier "u16" is undefined
-api\DK_RFM69H.c(108): error:  #20: identifier "u16" is undefined
-api\DK_RFM69H.c(117): error:  #20: identifier "u8" is undefined
-api\DK_RFM69H.c(122): error:  #20: identifier "u8" is undefined
-api\DK_RFM69H.c(134): error:  #20: identifier "u8" is undefined
-api\DK_RFM69H.c(137): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(139): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(152): error:  #20: identifier "u8" is undefined
-api\DK_RFM69H.c(158): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(159): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(171): error:  #20: identifier "u8" is undefined
-api\DK_RFM69H.c(173): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(177): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(178): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(190): error:  #20: identifier "u8" is undefined
-api\DK_RFM69H.c(193): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(203): error:  #20: identifier "gb_ErrorFlag" is undefined
-Target not created
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(137): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(139): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(158): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(159): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(173): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(177): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(178): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(193): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(203): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(220): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(230): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(304): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(307): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(307): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(310): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(341): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(344): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(344): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(350): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(352): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(357): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(359): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(360): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(403): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(405): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(419): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(424): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(425): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(439): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(440): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(442): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(446): error:  #20: identifier "gb_SysTimer_1S" is undefined
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(137): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(139): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(158): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(159): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(173): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(177): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(178): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(193): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(203): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(220): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(230): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(304): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(307): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(307): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(310): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(341): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(344): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(344): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(350): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(352): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(357): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(359): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(360): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(403): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(405): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(419): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(424): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(425): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(439): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(440): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(442): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(446): error:  #20: identifier "gb_SysTimer_1S" is undefined
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(137): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(139): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(158): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(159): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(173): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(177): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(178): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(193): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(203): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(220): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(230): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(304): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(307): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(307): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(310): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(341): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(344): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(344): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(350): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(352): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(357): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(359): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(360): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(403): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(405): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(419): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(424): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(425): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(439): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(440): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(442): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(446): error:  #20: identifier "gb_SysTimer_1S" is undefined
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(160): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(161): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(175): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(179): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(180): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(195): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(205): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(222): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(232): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(306): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(309): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(309): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(312): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(343): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(346): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(346): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(352): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(354): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(359): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(361): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(362): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(405): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(407): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(421): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(426): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(427): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(441): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(442): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(444): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(448): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(449): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(562): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\spi.c(31): error:  #29: expected an expression
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(161): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(181): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(197): error:  #29: expected an expression
-api\DK_RFM69H.c(209): warning:  #12-D: parsing restarts here after previous syntax error
-api\DK_RFM69H.c(209): error:  #18: expected a ")"
-api\DK_RFM69H.c(209): error:  #127: expected a statement
-api\DK_RFM69H.c(193): warning:  #177-D: variable "temp" was declared but never referenced
-api\DK_RFM69H.c(224): error:  #29: expected an expression
-api\DK_RFM69H.c(236): warning:  #12-D: parsing restarts here after previous syntax error
-api\DK_RFM69H.c(236): error:  #18: expected a ")"
-api\DK_RFM69H.c(236): error:  #127: expected a statement
-api\DK_RFM69H.c(220): warning:  #177-D: variable "temp" was declared but never referenced
-api\DK_RFM69H.c(307): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(310): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(310): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(313): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(344): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(347): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(347): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(353): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(355): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(360): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(362): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(406): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(408): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(422): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(428): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(442): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(443): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(445): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(450): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(563): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\spi.c(31): error:  #29: expected an expression
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(160): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(161): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(180): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(181): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(196): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(206): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(223): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(233): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(307): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(310): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(310): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(313): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(344): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(347): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(347): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(353): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(355): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(360): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(362): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(363): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(406): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(408): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(422): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(427): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(428): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(442): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(443): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(445): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(449): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(450): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(563): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(161): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(162): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(181): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(182): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(197): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(207): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(224): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(234): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(308): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(311): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(311): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(314): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(345): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(348): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(348): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(354): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(356): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(361): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(363): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(364): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(407): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(409): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(423): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(428): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(429): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(443): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(444): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(446): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(450): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(451): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(564): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(161): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(162): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(181): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(182): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(197): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(207): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(224): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(234): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(308): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(311): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(311): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(314): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(345): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(348): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(348): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(354): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(356): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(361): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(363): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(364): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(407): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(409): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(423): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(428): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(429): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(443): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(444): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(446): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(450): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(451): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(564): warning:  #1-D: last line of file ends without a newline
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(161): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(162): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(181): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(182): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(197): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(207): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(224): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(234): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(308): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(311): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(311): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(314): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(345): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(348): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(348): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(354): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(356): error:  #20: identifier "nIRQ0" is undefined
-api\DK_RFM69H.c(361): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(363): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(364): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(407): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(409): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(423): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(428): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(429): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(443): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(444): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(446): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(450): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(451): error:  #20: identifier "gb_StatusRx" is undefined
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(162): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(163): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(182): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(183): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(198): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(208): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(225): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(235): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(309): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(312): warning:  #223-D: function "PBin" declared implicitly
-api\DK_RFM69H.c(312): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(315): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(346): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(349): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(349): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(355): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(357): warning:  #223-D: function "PBin" declared implicitly
-api\DK_RFM69H.c(362): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(364): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(365): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(408): error:  #20: identifier "gb_FreqBuf_Addr" is undefined
-api\DK_RFM69H.c(410): error:  #20: identifier "gb_RateBuf_Addr" is undefined
-api\DK_RFM69H.c(424): warning:  #223-D: function "Input_RFData" declared implicitly
-api\DK_RFM69H.c(429): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(430): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(444): warning:  #223-D: function "Output_RFData" declared implicitly
-api\DK_RFM69H.c(445): error:  #20: identifier "RFData" is undefined
-api\DK_RFM69H.c(447): error:  #20: identifier "gb_PowerBuf_Addr" is undefined
-api\DK_RFM69H.c(451): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(452): error:  #20: identifier "gb_StatusRx" is undefined
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(162): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(163): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(182): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(183): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(198): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(208): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(225): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(235): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(309): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(312): warning:  #223-D: function "PBin" declared implicitly
-api\DK_RFM69H.c(312): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(315): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(346): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(349): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(349): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(355): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(357): warning:  #223-D: function "PBin" declared implicitly
-api\DK_RFM69H.c(362): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(364): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(365): error:  #20: identifier "gb_SysTimer_1S" is undefined
-Target not created
-Build target 'M3_app'
-compiling spi.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(162): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(163): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(182): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(183): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(198): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(208): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(225): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(235): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(309): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(312): error:  #20: identifier "gb_StatusRx" is undefined
-api\DK_RFM69H.c(315): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(346): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(349): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(349): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(355): error:  #20: identifier "gb_StatusTx" is undefined
-api\DK_RFM69H.c(362): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(364): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(365): error:  #20: identifier "gb_SysTimer_1S" is undefined
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(164): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(184): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(200): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(210): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(227): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(237): error:  #20: identifier "gb_ErrorFlag" is undefined
-api\DK_RFM69H.c(317): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(351): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(351): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(364): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(366): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(367): error:  #20: identifier "gb_SysTimer_1S" is undefined
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-.\include\DK_RFM.h(15): error:  #20: identifier "TxBuf_Len" is undefined
-.\include\DK_RFM.h(16): error:  #20: identifier "RxBuf_Len" is undefined
-api\DK_RFM69H.c(169): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(189): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(205): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(232): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(322): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(356): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(356): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(369): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(371): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(372): error:  #20: identifier "gb_SysTimer_1S" is undefined
-Target not created
-Build target 'M3_app'
 compiling DK_RFM69H.c...
 .\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
 api\DK_RFM69H.c(169): error:  #20: identifier "gb_SysTimer_1S" is undefined
 api\DK_RFM69H.c(189): error:  #20: identifier "gb_SysTimer_1S" is undefined
 api\DK_RFM69H.c(205): error:  #20: identifier "gb_SysTimer_1S" is undefined
 api\DK_RFM69H.c(232): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(322): error:  #20: identifier "RxBuff" is undefined
-api\DK_RFM69H.c(323): error:  #20: identifier "gb_RxData" is undefined
-api\DK_RFM69H.c(356): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(356): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(369): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(371): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(372): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(338): error:  #147-D: declaration is incompatible with "u8 RFM69H_TxPacket(void)" (declared at line 9 of ".\include\DK_RFM.h")
+api\DK_RFM69H.c(349): error:  #20: identifier "gw_TxTimer" is undefined
+api\DK_RFM69H.c(349): error:  #20: identifier "gw_RF_SentInterval" is undefined
+api\DK_RFM69H.c(362): error:  #20: identifier "gw_TxTimer" is undefined
+api\DK_RFM69H.c(364): error:  #20: identifier "gw_RF_SentInterval" is undefined
+api\DK_RFM69H.c(365): error:  #20: identifier "gb_SysTimer_1S" is undefined
+Target not created
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
+api\DK_RFM69H.c(170): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(190): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(206): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(233): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(339): error:  #147-D: declaration is incompatible with "u8 RFM69H_TxPacket(void)" (declared at line 9 of ".\include\DK_RFM.h")
+api\DK_RFM69H.c(350): error:  #20: identifier "gw_TxTimer" is undefined
+api\DK_RFM69H.c(363): error:  #20: identifier "gw_TxTimer" is undefined
+api\DK_RFM69H.c(366): error:  #20: identifier "gb_SysTimer_1S" is undefined
+Target not created
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
+api\DK_RFM69H.c(170): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(190): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(206): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(233): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(350): error:  #20: identifier "gw_TxTimer" is undefined
+api\DK_RFM69H.c(363): error:  #20: identifier "gw_TxTimer" is undefined
+api\DK_RFM69H.c(366): error:  #20: identifier "gb_SysTimer_1S" is undefined
+Target not created
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
+api\DK_RFM69H.c(170): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(190): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(206): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(233): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(363): error:  #20: identifier "gw_TxTimer" is undefined
+api\DK_RFM69H.c(366): error:  #20: identifier "gb_SysTimer_1S" is undefined
+Target not created
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
+api\DK_RFM69H.c(170): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(190): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(206): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(233): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(363): error:  #20: identifier "gw_TxTimer" is undefined
+api\DK_RFM69H.c(366): error:  #20: identifier "gb_SysTimer_1S" is undefined
 Target not created
