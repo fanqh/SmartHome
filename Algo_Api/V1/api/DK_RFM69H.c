@@ -10,6 +10,7 @@
 /// @tel        0755-82973805 Ext:846
 // ========================================================
 #include "stm32f10x.h"
+#include"Include.h"
 #include "spi.h"
 #include "DK_RFM.h"
 
@@ -126,11 +127,11 @@ u8  gb_StatusTx=0;                                         //Tx status flag
 u8  gb_StatusRx=0;                                         //Rx status flag
 u8  gb_ErrorFlag=0;                                        //Error flag
 
-unsigned char TxBuf[TxBuf_Len] = {0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x6d};  
-unsigned char RxBuf[RxBuf_Len];
 
 //Define sent time interval
 #define C_RF_SentInterval   500                            //0.5S
+
+#define nIRQ0   PBin(2)
 
 
 /**********************************************************
@@ -153,6 +154,7 @@ void RFM69H_Config(void)
     SPIWrite(RFM69HConfigTbl[i]);                          //setting base parameter
 }
 
+
 /**********************************************************
 **Name:     RFM69H_EntryRx
 **Function: Set RFM69H entry Rx_mode
@@ -167,9 +169,9 @@ void RFM69H_EntryRx(void)
   for(i=0;i<6;i++)                                         //Define to Rx mode  
     SPIWrite(RFM69HRxTbl[i]);
   
-  gb_SysTimer_1S=3;                                        //System time = 3S
-  gb_StatusTx=0;                                           //Clear Tx status flag 
-  gb_WaitStableFlag=0x0f;                                  //State stable flag initial
+//  gb_SysTimer_1S=3;                                        //System time = 3S
+//  gb_StatusTx=0;                                           //Clear Tx status flag 
+//  gb_WaitStableFlag=0x0f;                                  //State stable flag initial
 }
 
 /**********************************************************
@@ -187,11 +189,11 @@ void RFM69H_EntryTx(void)
   for(i=0;i<5;i++)                                         //Define to Tx mode  
     SPIWrite(RFM69HTxTbl[i]);
 	    
-  gb_SysTimer_1S=3;                                        //System time = 3S
-  gb_StatusRx=0;                                           //Clear Rx status flag 
-  gb_WaitStableFlag=0x0f;                                  //State stable flag initial
+//  gb_SysTimer_1S=3;                                        //System time = 3S
+//  gb_StatusRx=0;                                           //Clear Rx status flag 
+//  gb_WaitStableFlag=0x0f;                                  //State stable flag initial
 }
-
+#if 0
 /**********************************************************
 **Name:     RFM69H_TxWaitStable
 **Function: Determine whether the state of stable Tx
@@ -245,7 +247,50 @@ void RFM69H_RxWaitStable(void)
     }
   }
 }
+#else 
 
+/**********************************************************
+**Name:     RFM69H_TxWaitStable
+**Function: Determine whether the state of stable Tx
+**Input:    none
+**Output:   none
+**********************************************************/
+u8 RFM69H_TxWaitStable(void)
+{ 
+  uint16_t timeout = 0;
+
+  while((SPIRead(0x27)&0xA0)!=0xA0 | (SPIRead(0x27)==0xff))
+  {
+  	timeout ++;
+	if(timeout >= 50)
+		return 0;
+  	delay_ms(10);	
+  }
+  return 1;
+}
+
+/**********************************************************
+**Name:     RFM69H_RxWaitStable
+**Function: Determine whether the state of stable Rx
+**Input:    none
+**Output:   none
+**********************************************************/
+u8 RFM69H_RxWaitStable(void)
+{ 
+  uint16_t timeout = 0;
+
+  while((SPIRead(0x27)&0xA0)!=0xC0 | (SPIRead(0x27)==0xff))
+  {
+  	timeout ++;
+	if(timeout >= 50)
+		return 0;
+  	delay_ms(10);	
+  }
+  return 1;
+}
+
+
+#endif
 /**********************************************************
 **Name:     RFM69H_ClearFIFO
 **Function: Change to RxMode from StandbyMode, can clear FIFO buffer
@@ -298,7 +343,8 @@ u8 RFM69H_ReadRSSI(void)
   }
   return (u8)temp;
 }
-#if 0
+
+
 /**********************************************************
 **Name:     RFM69H_RxPacket
 **Function: Check for receive one packet
@@ -306,28 +352,26 @@ u8 RFM69H_ReadRSSI(void)
 **Output:   "!0"-----Receive one packet
 **          "0"------Nothing for receive
 **********************************************************/
-u8 RFM69H_RxPacket(void)
+u8 RFM69H_RxPacket(uint8 *pbuff)
 {
-  u8 i; 
+  uint16_t timeout =0; 
  
-  RFM69H_RxWaitStable();
-  if(gb_WaitStableFlag==1)
+  if(RFM69H_RxWaitStable())
   {
-    gb_WaitStableFlag=2;
-    gb_StatusRx=1;                                         //Rx state stable
-  }       
- 
-  if((nIRQ0==1) && (gb_StatusRx==1))
-  {
-    for(i=0;i<RxBuf_Len;i++) 
-      RxBuf[i] = 0x00;   
-    SPIBurstRead(0x00, RxBuf, RxBuf_Len);  
+  	while(!nIRQ0)
+	{
+		timeout ++;
+		if(timeout >= 10)
+			return 0;
+		delay_ms(10);
+	}
+
+	SPIBurstRead(0x00, pbuff, RxBuf_Len);  
     RFM69H_ClearFIFO();  
-	  
-    return(1);
+	return 1;
   }
   else
-    return(0);
+  	return 0;
 }
 
 /**********************************************************
@@ -338,124 +382,27 @@ u8 RFM69H_RxPacket(void)
 **********************************************************/
 u8 RFM69H_TxPacket(u8* pSend)
 {
-  u8 TxFlag=0;
-  
-  RFM69H_TxWaitStable();
-  if(gb_WaitStableFlag==1)
+  uint16_t timeout = 0;
+
+  if(RFM69H_TxWaitStable())
   {
-    gb_WaitStableFlag=2;
-    if(gb_StatusTx==0)                                     //First entry Tx mode
-    {
-      gb_StatusTx=1;                                       //Rx state stable                        
-//      gw_TxTimer= C_RF_SentInterval;                       //Send time interval
-      BurstWrite(0x00, (u8 *)pSend, TxBuf_Len);              //Send one packet data
-      TxFlag=1;
-      gb_WaitStableFlag=3;
-    }
-  }
-  if(gb_StatusTx==1)
-  {
-    if(gb_WaitStableFlag==3 && nIRQ0==1)                   //Packet send over
-    {
-      gb_WaitStableFlag=0;
-      RFM69H_Standby();                                    //Entry Standby mode
-    }   
-    if(gw_TxTimer==0)                                      //It's time to Sending
-    {
-//      gw_TxTimer = C_RF_SentInterval;                       //Send time interval
-      gb_SysTimer_1S=3;
-      gb_WaitStableFlag=0x0f;                              //Promised to call mode stable decide
-      SPIWrite(0x010C);                                    //Entry Tx mode
-    }
-    if(gb_WaitStableFlag==2)                               //Mode stable
-    {
-      BurstWrite(0x00, (u8 *)RFM69HData, 21);              //Send data
-      TxFlag=1;
-      gb_WaitStableFlag=3;
-    }
-  }
-  return TxFlag;
-}
-#else
-/**********************************************************
-**Name:     RFM69H_RxPacket
-**Function: Check for receive one packet
-**Input:    none
-**Output:   "!0"-----Receive one packet
-**          "0"------Nothing for receive
-**********************************************************/
-u8 RFM69H_RxPacket(void)
-{
-  u8 i; 
- 
-  RFM69H_RxWaitStable();
-  if(gb_WaitStableFlag==1)
-  {
-    gb_WaitStableFlag=2;
-    gb_StatusRx=1;                                         //Rx state stable
-  }       
- 
-  if((nIRQ0==1) && (gb_StatusRx==1))
-  {
-    for(i=0;i<RxBuf_Len;i++) 
-      RxBuf[i] = 0x00;   
-    SPIBurstRead(0x00, RxBuf, RxBuf_Len);  
-    RFM69H_ClearFIFO();  
-	  
-    return(1);
+  	 BurstWrite(0x00, (u8 *)pSend, TxBuf_Len);              //Send one packet data	
+	 while(!nIRQ0)
+	 {
+	  	timeout ++;
+		if(timeout>=50)
+		{
+			RFM69H_Config();
+			return 0;
+		}
+		delay_ms(10);
+	 }
+	 return 1;
   }
   else
-    return(0);
+  	return 0;
 }
 
-/**********************************************************
-**Name:     RFM69H_TxPacket
-**Function: Check RFM69H send over & send next packet
-**Input:    none
-**Output:   TxFlag=1, Send success
-**********************************************************/
-u8 RFM69H_TxPacket(u8* pSend)
-{
-  u8 TxFlag=0;
-  
-  RFM69H_TxWaitStable();
-  if(gb_WaitStableFlag==1)
-  {
-    gb_WaitStableFlag=2;
-    if(gb_StatusTx==0)                                     //First entry Tx mode
-    {
-      gb_StatusTx=1;                                       //Rx state stable                        
-//      gw_TxTimer= C_RF_SentInterval;                       //Send time interval
-      BurstWrite(0x00, (u8 *)pSend, TxBuf_Len);              //Send one packet data
-      TxFlag=1;
-      gb_WaitStableFlag=3;
-    }
-  }
-  if(gb_StatusTx==1)
-  {
-    if(gb_WaitStableFlag==3 && nIRQ0==1)                   //Packet send over
-    {
-      gb_WaitStableFlag=0;
-      RFM69H_Standby();                                    //Entry Standby mode
-    }   
-    if(gw_TxTimer==0)                                      //It's time to Sending
-    {
-//      gw_TxTimer = C_RF_SentInterval;                       //Send time interval
-      gb_SysTimer_1S=3;
-      gb_WaitStableFlag=0x0f;                              //Promised to call mode stable decide
-      SPIWrite(0x010C);                                    //Entry Tx mode
-    }
-    if(gb_WaitStableFlag==2)                               //Mode stable
-    {
-      BurstWrite(0x00, (u8 *)RFM69HData, 21);              //Send data
-      TxFlag=1;
-      gb_WaitStableFlag=3;
-    }
-  }
-  return TxFlag;
-}
-
-#endif 
 
 
 

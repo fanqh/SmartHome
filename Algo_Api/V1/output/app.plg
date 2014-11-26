@@ -4,63 +4,387 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 F:\SmartDog\SmartHome\Algo_Api\V1\app.uvproj
-Project File Date:  11/24/2014
+Project File Date:  11/26/2014
 
 <h2>Output:</h2>
 Build target 'M3_app'
+compiling core_cm3.c...
+compiling main.c...
+api\main.c(123): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(402): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(404): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(409): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(420): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(422): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(423): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(423): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(429): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(40): warning:  #177-D: variable "reclen" was declared but never referenced
+api\main.c(41): warning:  #177-D: variable "temp" was declared but never referenced
+api\main.c(42): warning:  #177-D: variable "data" was declared but never referenced
+compiling DS18B20.c...
+compiling System_var.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(57): warning:  #223-D: function "delay_us" declared implicitly
+api\M3_wifi.c(75): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(94): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+api\debug_led.c(56): warning:  #177-D: variable "j" was declared but never referenced
+compiling Timer.c...
+compiling spi.c...
+.\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
 compiling DK_RFM69H.c...
 .\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(169): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(189): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(205): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(232): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(338): error:  #147-D: declaration is incompatible with "u8 RFM69H_TxPacket(void)" (declared at line 9 of ".\include\DK_RFM.h")
-api\DK_RFM69H.c(349): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(349): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(362): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(364): error:  #20: identifier "gw_RF_SentInterval" is undefined
-api\DK_RFM69H.c(365): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(172): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(192): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(260): warning:  #177-D: variable "temp" was declared but never referenced
+api\DK_RFM69H.c(281): warning:  #177-D: variable "temp" was declared but never referenced
+api\DK_RFM69H.c(475): error:  #29: expected an expression
+api\DK_RFM69H.c(500): error:  #20: identifier "gw_TxTimer" is undefined
+api\DK_RFM69H.c(503): error:  #20: identifier "gb_SysTimer_1S" is undefined
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_spi.c...
 Target not created
 Build target 'M3_app'
 compiling DK_RFM69H.c...
 .\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(170): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(190): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(206): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(233): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(339): error:  #147-D: declaration is incompatible with "u8 RFM69H_TxPacket(void)" (declared at line 9 of ".\include\DK_RFM.h")
-api\DK_RFM69H.c(350): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(363): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(366): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(166): error:  #147: declaration is incompatible with "u8 RFM69H_EntryRx(void)" (declared at line 11 of ".\include\DK_RFM.h")
+api\DK_RFM69H.c(174): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(185): error:  #147: declaration is incompatible with "u8 RFM69H_EntryTx(void)" (declared at line 10 of ".\include\DK_RFM.h")
+api\DK_RFM69H.c(194): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(262): warning:  #177-D: variable "temp" was declared but never referenced
+api\DK_RFM69H.c(283): warning:  #177-D: variable "temp" was declared but never referenced
+api\DK_RFM69H.c(440): warning:  #177-D: variable "i" was declared but never referenced
+api\DK_RFM69H.c(469): warning:  #177-D: variable "TxFlag" was declared but never referenced
 Target not created
 Build target 'M3_app'
 compiling DK_RFM69H.c...
 .\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(170): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(190): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(206): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(233): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(350): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(363): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(366): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(174): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(194): error:  #20: identifier "gb_SysTimer_1S" is undefined
+api\DK_RFM69H.c(262): warning:  #177-D: variable "temp" was declared but never referenced
+api\DK_RFM69H.c(283): warning:  #177-D: variable "temp" was declared but never referenced
+api\DK_RFM69H.c(440): warning:  #177-D: variable "i" was declared but never referenced
+api\DK_RFM69H.c(469): warning:  #177-D: variable "TxFlag" was declared but never referenced
 Target not created
 Build target 'M3_app'
 compiling DK_RFM69H.c...
 .\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(170): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(190): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(206): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(233): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(363): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(366): error:  #20: identifier "gb_SysTimer_1S" is undefined
-Target not created
+api\DK_RFM69H.c(262): warning:  #177-D: variable "temp" was declared but never referenced
+linking...
+Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 2 Warning(s).
 Build target 'M3_app'
 compiling DK_RFM69H.c...
 .\include\spi.h(13): warning:  #1-D: last line of file ends without a newline
-api\DK_RFM69H.c(170): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(190): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(206): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(233): error:  #20: identifier "gb_SysTimer_1S" is undefined
-api\DK_RFM69H.c(363): error:  #20: identifier "gw_TxTimer" is undefined
-api\DK_RFM69H.c(366): error:  #20: identifier "gb_SysTimer_1S" is undefined
+linking...
+Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 1 Warning(s).
+Build target 'M3_app'
+compiling spi.c...
+.\include\spi.h(15): warning:  #1-D: last line of file ends without a newline
+compiling DK_RFM69H.c...
+.\include\spi.h(15): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 2 Warning(s).
+Build target 'M3_app'
+compiling spi.c...
+.\include\spi.h(11): warning:  #1-D: last line of file ends without a newline
+compiling DK_RFM69H.c...
+.\include\spi.h(11): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 2 Warning(s).
+Build target 'M3_app'
+compiling spi.c...
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling spi.c...
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=4956 RO-data=0 RW-data=68 ZI-data=816  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+api\main.c(28): error:  #20: identifier "TxBuf_Len" is undefined
+api\main.c(29): error:  #20: identifier "RxBuf_Len" is undefined
+api\main.c(132): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(372): warning:  #223-D: function "RFM69H_Config" declared implicitly
+api\main.c(373): warning:  #223-D: function "RFM69H_EntryTx" declared implicitly
+api\main.c(374): warning:  #223-D: function "RFM69H_TxPacket" declared implicitly
+api\main.c(376): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\main.c(433): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(435): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(440): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(451): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(453): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(454): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(454): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(460): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(49): warning:  #177-D: variable "reclen" was declared but never referenced
+api\main.c(50): warning:  #177-D: variable "temp" was declared but never referenced
+api\main.c(51): warning:  #177-D: variable "data" was declared but never referenced
+compiling Timer.c...
+api\Timer.c(44): warning:  #223-D: function "RF4432_RxPacket" declared implicitly
+api\Timer.c(44): error:  #20: identifier "RxBuf" is undefined
+api\Timer.c(53): error:  #20: identifier "i" is undefined
+api\Timer.c(53): error:  #20: identifier "RxBuf_Len" is undefined
+api\Timer.c(58): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\Timer.c(63): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
 Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(133): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(373): warning:  #223-D: function "RFM69H_Config" declared implicitly
+api\main.c(374): warning:  #223-D: function "RFM69H_EntryTx" declared implicitly
+api\main.c(375): warning:  #223-D: function "RFM69H_TxPacket" declared implicitly
+api\main.c(377): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\main.c(434): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(436): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(441): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(452): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(454): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(455): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(455): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(461): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(50): warning:  #177-D: variable "reclen" was declared but never referenced
+api\main.c(51): warning:  #177-D: variable "temp" was declared but never referenced
+api\main.c(52): warning:  #177-D: variable "data" was declared but never referenced
+compiling Timer.c...
+api\Timer.c(44): warning:  #223-D: function "RF4432_RxPacket" declared implicitly
+api\Timer.c(44): error:  #20: identifier "RxBuf" is undefined
+api\Timer.c(53): error:  #20: identifier "i" is undefined
+api\Timer.c(53): error:  #20: identifier "RxBuf_Len" is undefined
+api\Timer.c(58): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\Timer.c(63): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(2): error:  #11-D: unrecognized preprocessing directive
+api\main.c(134): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(374): warning:  #223-D: function "RFM69H_Config" declared implicitly
+api\main.c(375): warning:  #223-D: function "RFM69H_EntryTx" declared implicitly
+api\main.c(376): warning:  #223-D: function "RFM69H_TxPacket" declared implicitly
+api\main.c(378): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\main.c(435): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(437): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(442): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(453): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(455): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(456): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(456): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(462): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(51): warning:  #177-D: variable "reclen" was declared but never referenced
+api\main.c(52): warning:  #177-D: variable "temp" was declared but never referenced
+api\main.c(53): warning:  #177-D: variable "data" was declared but never referenced
+compiling Timer.c...
+api\Timer.c(44): warning:  #223-D: function "RF4432_RxPacket" declared implicitly
+api\Timer.c(44): error:  #20: identifier "RxBuf" is undefined
+api\Timer.c(53): error:  #20: identifier "i" is undefined
+api\Timer.c(53): error:  #20: identifier "RxBuf_Len" is undefined
+api\Timer.c(58): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\Timer.c(63): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(2): error:  #11-D: unrecognized preprocessing directive
+api\main.c(134): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(374): warning:  #223-D: function "RFM69H_Config" declared implicitly
+api\main.c(375): warning:  #223-D: function "RFM69H_EntryTx" declared implicitly
+api\main.c(376): warning:  #223-D: function "RFM69H_TxPacket" declared implicitly
+api\main.c(378): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\main.c(435): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(437): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(442): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(453): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(455): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(456): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(456): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(462): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(51): warning:  #177-D: variable "reclen" was declared but never referenced
+api\main.c(52): warning:  #177-D: variable "temp" was declared but never referenced
+api\main.c(53): warning:  #177-D: variable "data" was declared but never referenced
+compiling Timer.c...
+api\Timer.c(44): warning:  #223-D: function "RF4432_RxPacket" declared implicitly
+api\Timer.c(44): error:  #20: identifier "RxBuf" is undefined
+api\Timer.c(53): error:  #20: identifier "i" is undefined
+api\Timer.c(53): error:  #20: identifier "RxBuf_Len" is undefined
+api\Timer.c(58): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\Timer.c(63): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(2): error:  #11-D: unrecognized preprocessing directive
+api\main.c(134): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(374): warning:  #223-D: function "RFM69H_Config" declared implicitly
+api\main.c(375): warning:  #223-D: function "RFM69H_EntryTx" declared implicitly
+api\main.c(376): warning:  #223-D: function "RFM69H_TxPacket" declared implicitly
+api\main.c(378): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\main.c(435): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(437): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(442): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(453): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(455): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(456): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(456): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(462): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(51): warning:  #177-D: variable "reclen" was declared but never referenced
+api\main.c(52): warning:  #177-D: variable "temp" was declared but never referenced
+api\main.c(53): warning:  #177-D: variable "data" was declared but never referenced
+compiling Timer.c...
+api\Timer.c(45): warning:  #223-D: function "RF4432_RxPacket" declared implicitly
+api\Timer.c(54): error:  #20: identifier "i" is undefined
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(2): error:  #11-D: unrecognized preprocessing directive
+api\main.c(134): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(374): warning:  #223-D: function "RFM69H_Config" declared implicitly
+api\main.c(375): warning:  #223-D: function "RFM69H_EntryTx" declared implicitly
+api\main.c(376): warning:  #223-D: function "RFM69H_TxPacket" declared implicitly
+api\main.c(378): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\main.c(435): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(437): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(442): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(453): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(455): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(456): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(456): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(462): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(51): warning:  #177-D: variable "reclen" was declared but never referenced
+api\main.c(52): warning:  #177-D: variable "temp" was declared but never referenced
+api\main.c(53): warning:  #177-D: variable "data" was declared but never referenced
+compiling Timer.c...
+api\Timer.c(47): warning:  #223-D: function "RF4432_RxPacket" declared implicitly
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(2): error:  #11-D: unrecognized preprocessing directive
+api\main.c(134): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(374): warning:  #223-D: function "RFM69H_Config" declared implicitly
+api\main.c(375): warning:  #223-D: function "RFM69H_EntryTx" declared implicitly
+api\main.c(376): warning:  #223-D: function "RFM69H_TxPacket" declared implicitly
+api\main.c(378): warning:  #223-D: function "RFM69H_EntryRx" declared implicitly
+api\main.c(435): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(437): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(442): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(453): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(455): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(456): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(456): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(462): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(51): warning:  #177-D: variable "reclen" was declared but never referenced
+api\main.c(52): warning:  #177-D: variable "temp" was declared but never referenced
+api\main.c(53): warning:  #177-D: variable "data" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(134): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(435): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(437): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(442): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(453): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(455): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(456): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(456): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(462): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(51): warning:  #177-D: variable "reclen" was declared but never referenced
+api\main.c(52): warning:  #177-D: variable "temp" was declared but never referenced
+api\main.c(53): warning:  #177-D: variable "data" was declared but never referenced
+linking...
+.\output\app.axf: Error: L6200E: Symbol RxBuf multiply defined (by dk_rfm69h.o and main.o).
+.\output\app.axf: Error: L6200E: Symbol TxBuf multiply defined (by dk_rfm69h.o and main.o).
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(134): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(435): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(437): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(442): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(453): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(455): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(456): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(456): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(462): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+compiling DK_RFM69H.c...
+linking...
+.\output\app.axf: Error: L6218E: Undefined symbol RF4432_RxPacket (referred from timer.o).
+Target not created
+Build target 'M3_app'
+compiling Timer.c...
+linking...
+Program Size: Code=6028 RO-data=96 RW-data=80 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Rebuild target 'M3_app'
+compiling core_cm3.c...
+compiling main.c...
+api\main.c(134): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(435): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(437): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(442): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(453): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(455): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(456): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(456): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(462): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+compiling DS18B20.c...
+compiling System_var.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(57): warning:  #223-D: function "delay_us" declared implicitly
+api\M3_wifi.c(75): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(94): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+api\debug_led.c(56): warning:  #177-D: variable "j" was declared but never referenced
+compiling Timer.c...
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_spi.c...
+linking...
+Program Size: Code=6028 RO-data=96 RW-data=80 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 13 Warning(s).
+Build target 'M3_app'
+compiling Timer.c...
+linking...
+Program Size: Code=6028 RO-data=96 RW-data=80 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).

@@ -7,7 +7,6 @@ void SPIWrite(uint16_t WrPara);
 void SPIBurstRead(uint8_t adr, uint8_t *ptr, uint8_t length);
 void BurstWrite(uint8_t adr, uint8_t *ptr, uint8_t length);
 
-#endif
- 
 
-  
+#endif
+
