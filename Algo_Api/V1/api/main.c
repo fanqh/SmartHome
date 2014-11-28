@@ -1,5 +1,6 @@
 #include"Include.h"
 #include "DK_RFM.h"
+#include "spi.h"
 
 uint32  F = 0;	  //是否打开38KH方波调制
 uint32  Wifi_Command_Mode = 0; //=1 wifi工作在命令模式 =0 工作在数据传输模式
@@ -70,6 +71,23 @@ int tamain(void)
     
     app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
     Disable_SysTick();
+
+
+
+
+		SpiMsterGpioInit();
+		SpiInit(SPI_DataSize_8b);
+
+	 	RFM69H_Config();
+		RFM69H_EntryRx();
+    while(1)
+	{
+		 if(RFM69H_RxPacket(RxBuf))	
+		 	U1_sendS("rece 1\r\n",10);
+	}
+
+
+
 
 #if 0
     while(1)

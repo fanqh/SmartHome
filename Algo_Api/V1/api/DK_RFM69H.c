@@ -146,7 +146,7 @@ void RFM69H_Config(void)
   
   for(i=0;i<3;i++)                      
     //SPIWrite(RFM69HFreqTbl[gb_FreqBuf_Addr][i]);           //setting frequency parameter
-	SPIWrite(RFM69HFreqTbl[0][i]);           //setting frequency parameter
+	SPIWrite(RFM69HFreqTbl[1][i]);           //setting frequency parameter
   for(i=0;i<2;i++)
     //SPIWrite(RFM69HRateTbl[gb_RateBuf_Addr][i]);           //setting rf rate parameter
 	SPIWrite(RFM69HRateTbl[1][i]);           //setting rf rate parameter
