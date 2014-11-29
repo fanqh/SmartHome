@@ -6,10 +6,12 @@
 #define  SPI2_PIN_SCK      GPIO_Pin_13
 #define  SPI2_PIN_MOSI     GPIO_Pin_15
 #define  SPI2_PIN_MISO     GPIO_Pin_14
-#define  SPI2_PIN_NSS      GPIO_Pin_1
-#define  PIN_nIRQ0           GPIO_Pin_2
+#define  SPI2_PIN_NSS      GPIO_Pin_12
+#define  PIN_nIRQ0         GPIO_Pin_2
 
 #define  SPI2_GPIO		   GPIOB
+
+#define CSN    PBout(1)
 
 //#define  IRQ			   PBin(2)
 
@@ -34,7 +36,7 @@ void SpiMsterGpioInit(void)
    GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
    //nss
    GPIO_InitStructure.GPIO_Pin = SPI2_PIN_NSS;
-   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
    GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
 
 }
@@ -52,7 +54,7 @@ void SpiInit(uint16_t SPI_DataSize)
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_2Edge;
   SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
   SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
-  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_LSB;
+  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;	   //高位在前
   SPI_InitStructure.SPI_CRCPolynomial = 7;
   SPI_Init(SPI2, &SPI_InitStructure);
 
@@ -135,7 +137,7 @@ uint8_t SPIRead(uint8_t adr)
   uint8_t retry = 0;
    
 //  SpiInit(SPI_DataSize_8b);
-
+  
   while(SPI_I2S_GetFlagStatus( SPI2, SPI_I2S_FLAG_TXE ) == RESET)
   {
   	retry ++;
