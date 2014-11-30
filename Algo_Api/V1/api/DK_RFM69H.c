@@ -74,6 +74,33 @@ const u16 RFM69HPowerTbl[4] =
   0x1176,                   //11dbm 
 };
 
+#if 0
+const u16 RFM69HConfigTbl[17] = 
+{ 
+  0x0200,                   //RegDataModul, FSK Packet  
+  0x0502,                   //RegFdevMsb, 241*61Hz = 35KHz  
+  0x0641,                   //RegFdevLsb
+  0x1952,                   //RegRxBw , RxBW, 83KHz
+  
+  0x2C00,                   //RegPreambleMsb  
+  0x2D05,                   //RegPreambleLsb, 5Byte Preamble
+  0x2E98,              //2e09     //enable Sync.Word, 2+1=3bytes
+  0x2FAA,           //同步字节不知道是否影响        //0xAA, SyncWord = aa2dd4 
+  0x302D,                  //0x2D
+  0x31D4,                   //0xD4  
+  0x3710,            //ox3710       //RegPacketConfig1, Disable CRC，NRZ encode
+  0x3815,                   //RegPayloadLength, 21bytes for length & Fixed length
+  0x3C95,                   //RegFiFoThresh   
+  
+  0x1888,                   //RegLNA, 200R  
+  0x581B,                   //RegTestLna, Normal sensitivity
+  //0x582D,                   //RegTestLna, increase sensitivity with LNA (Note: consumption also increase!)
+  0x6F30,                   //RegTestDAGC, Improved DAGC
+  //0x6F00,                   //RegTestDAGC, Normal DAGC
+  0x0104,                   //Enter standby mode    
+};
+
+#else
 const u16 RFM69HConfigTbl[17] = 
 { 
   0x0200,                   //RegDataModul, FSK Packet  
@@ -98,6 +125,8 @@ const u16 RFM69HConfigTbl[17] =
   //0x6F00,                   //RegTestDAGC, Normal DAGC
   0x0104,                   //Enter standby mode    
 };
+
+#endif
 
 const u16 RFM69HRxTbl[6] = 
 {   

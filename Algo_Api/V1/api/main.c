@@ -73,13 +73,12 @@ int tamain(void)
     Disable_SysTick();
 
 
+	SpiMsterGpioInit();
+
+ 	RFM69H_Config();
+	RFM69H_EntryRx();
 
 
-		SpiMsterGpioInit();
-//		SpiInit(SPI_DataSize_8b);
-
-	 	RFM69H_Config();
-		RFM69H_EntryRx();
     while(1)
 	{
 //	uint8 status;
@@ -87,7 +86,7 @@ int tamain(void)
 //    SPIWrite(0x0423);
 //   status = SPIRead(0x04);
 //    Boot_UsartSend(&status,1);
-		 if(RFM69H_RxPacket(RxBuf))			 //
+		 if(RFM69H_RxPacket(RxBuf))		
 		 	U1_sendS(RxBuf,1);
 	}
 
