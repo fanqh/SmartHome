@@ -52,7 +52,8 @@
 const u16 RFM69HFreqTbl[4][3] = 
 { 
   {0x074e, 0x08c0, 0x0900}, //315MHz
-  {0x076c, 0x0880, 0x0900}, //434MHz
+//  {0x076c, 0x0880, 0x0900}, //434MHz
+{0x076c, 0x084f, 0x09f8}, //433MHz
   {0x07d9, 0x0800, 0x0900}, //868MHz
   {0x07e4, 0x08c0, 0x0900}, //915MHz
 };
@@ -116,20 +117,9 @@ const u16 RFM69HTxTbl[5] =
   0x5C7C,                   //High power mode
   0x010C,                   //Enter Tx mode
 };
-
-const u8  RFM69HData[] = {"HopeRF RFM COBRFM69HS"};
-
 /**********************************************************
 **Variable define
 **********************************************************/
-u8  gb_WaitStableFlag=0;                                    //State stable flag
-u8  gb_StatusTx=0;                                         //Tx status flag
-u8  gb_StatusRx=0;                                         //Rx status flag
-u8  gb_ErrorFlag=0;                                        //Error flag
-
-
-//Define sent time interval
-#define C_RF_SentInterval   500                            //0.5S
 
 #define nIRQ0   PBin(2)
 
@@ -149,7 +139,7 @@ void RFM69H_Config(void)
 	SPIWrite(RFM69HFreqTbl[1][i]);           //setting frequency parameter
   for(i=0;i<2;i++)
     //SPIWrite(RFM69HRateTbl[gb_RateBuf_Addr][i]);           //setting rf rate parameter
-	SPIWrite(RFM69HRateTbl[1][i]);           //setting rf rate parameter
+	SPIWrite(RFM69HRateTbl[0][i]);           //setting rf rate parameter
   for(i=0;i<17;i++)
     SPIWrite(RFM69HConfigTbl[i]);                          //setting base parameter
 }
@@ -168,10 +158,6 @@ void RFM69H_EntryRx(void)
   RFM69H_Config();                                         //Module parameter setting
   for(i=0;i<6;i++)                                         //Define to Rx mode  
     SPIWrite(RFM69HRxTbl[i]);
-  
-//  gb_SysTimer_1S=3;                                        //System time = 3S
-//  gb_StatusTx=0;                                           //Clear Tx status flag 
-//  gb_WaitStableFlag=0x0f;                                  //State stable flag initial
 }
 
 /**********************************************************
@@ -188,10 +174,6 @@ void RFM69H_EntryTx(void)
   SPIWrite(RFM69HPowerTbl[0]);              //Setting output power parameter
   for(i=0;i<5;i++)                                         //Define to Tx mode  
     SPIWrite(RFM69HTxTbl[i]);
-	    
-//  gb_SysTimer_1S=3;                                        //System time = 3S
-//  gb_StatusRx=0;                                           //Clear Rx status flag 
-//  gb_WaitStableFlag=0x0f;                                  //State stable flag initial
 }
 #if 0
 /**********************************************************
@@ -257,16 +239,26 @@ void RFM69H_RxWaitStable(void)
 **********************************************************/
 u8 RFM69H_TxWaitStable(void)
 { 
-  uint16_t timeout = 0;
-
-  while((SPIRead(0x27)&0xA0)!=0xA0 | (SPIRead(0x27)==0xff))
+  uint16_t timeout = 0;	
+  uint8_t temp;
+  
+  temp = SPIRead(0x27);
+  while(1)
   {
-  	timeout ++;
-	if(timeout >= 50)
-		return 0;
-  	delay_ms(10);	
+  	if((temp&0xA0)==0xA0 && temp!=0xff)
+	{
+		//Boot_UsartSend(&temp,1);
+		return 1;
+	}
+	else
+	{
+	  	timeout ++;
+		if(timeout >= 500)
+			return 0;
+	//  	delay_ms(10);
+		temp = 	SPIRead(0x27);
+	}
   }
-  return 1;
 }
 
 /**********************************************************
@@ -277,16 +269,26 @@ u8 RFM69H_TxWaitStable(void)
 **********************************************************/
 u8 RFM69H_RxWaitStable(void)
 { 
-  uint16_t timeout = 0;
-
-  while((SPIRead(0x27)&0xA0)!=0xC0 | (SPIRead(0x27)==0xff))
+  uint16_t timeout = 0;	
+  uint8_t temp;
+  
+  temp = SPIRead(0x27);
+  while(1)
   {
-  	timeout ++;
-	if(timeout >= 50)
-		return 0;
-  	delay_ms(10);	
+  	if((temp&0xC0)==0xC0 && temp!=0xff)
+	{
+		//Boot_UsartSend(&temp,1);
+		return 1;
+	}
+	else
+	{
+	  	timeout ++;
+		if(timeout >= 500)
+			return 0;
+	//  	delay_ms(10);
+		temp = 	SPIRead(0x27);
+	}
   }
-  return 1;
 }
 
 
@@ -361,16 +363,17 @@ u8 RFM69H_RxPacket(uint8 *pbuff)
   	while(!nIRQ0)
 	{
 		timeout ++;
-		if(timeout >= 10)
+		if(timeout >= 1000)
 			return 0;
-		delay_ms(10);
+//		delay_ms(10);
+	//	Boot_UsartSend("67",2);
 	}
-
+	Boot_UsartSend("12",2);
 	SPIBurstRead(0x00, pbuff, RxBuf_Len);  
     RFM69H_ClearFIFO();  
 	return 1;
   }
-  else
+  else										  
   	return 0;
 }
 
@@ -395,7 +398,7 @@ u8 RFM69H_TxPacket(u8* pSend)
 			RFM69H_Config();
 			return 0;
 		}
-		delay_ms(10);
+//		delay_ms(10);
 	 }
 	 return 1;
   }
