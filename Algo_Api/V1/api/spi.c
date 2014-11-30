@@ -8,19 +8,22 @@
 #define  SPI2_PIN_MOSI     GPIO_Pin_15
 #define  SPI2_PIN_MISO     GPIO_Pin_14
 #define  SPI2_PIN_NSS      GPIO_Pin_12
+#define  PIN_PIN_CSN       GPIO_Pin_1
+
 #define  PIN_nIRQ0         GPIO_Pin_2
 
 #define  SPI2_GPIO		   GPIOB
 
+#define   CSN      PBout(1)
 #define   nCS      PBout(12)
 #define   SCK      PBout(13)   //  X    0     0    RFMxx sck
-#define   MOSI     PBout(15)  //  X    0     1    RFMxx MOSI
-#define   MISO     PBin(14)  //  X    1     0    RFMxx MISO
+#define   MOSI     PBout(15)   //  X    0     1    RFMxx MOSI
+#define   MISO     PBin(14)    //  X    1     0    RFMxx MISO
 
 //#define  IRQ			   PBin(2)
 
 
-void SpiMsterGpioInit(void)
+void SpiMsterGpioInit(uint8_t spi)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 
@@ -41,32 +44,23 @@ void SpiMsterGpioInit(void)
    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
    GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
    //nss
-   GPIO_InitStructure.GPIO_Pin = SPI2_PIN_NSS;
-   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-   GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
+   if(spi==0)
+   {
+	   GPIO_InitStructure.GPIO_Pin = SPI2_PIN_NSS;
+	   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	   GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
+   }
+   else
+   {
+
+	      //ncs
+	   GPIO_InitStructure.GPIO_Pin = PIN_PIN_CSN;
+	   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	   GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
+   }
 
 }
 
-/*
-//para: SPI_DataSize_8b  SPI_DataSize_16b
-void SpiInit(uint16_t SPI_DataSize)
-{
-	SPI_InitTypeDef	  SPI_InitStructure;
-  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-  SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
-  SPI_InitStructure.SPI_DataSize = SPI_DataSize;//²ÎÊý
-  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
-  SPI_InitStructure.SPI_CPHA = SPI_CPHA_2Edge;
-  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
-  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_LSB;
-  SPI_InitStructure.SPI_CRCPolynomial = 7;
-  SPI_Init(SPI2, &SPI_InitStructure);
-
-  SPI_Cmd(SPI2, ENABLE);
-}
-
-*/
 
 static void delay(void)
 {
@@ -101,14 +95,19 @@ static void delay(void)
 /**********************************************************
 **Name:     SPICmd8bit
 **Function: SPI Write one byte
-**Input:    WrPara
+**Input:    WrPara	spi :SPI_1 SPI_2
 **Output:   none
 **note:     use for burst mode
 **********************************************************/
-void SPICmd8bit(uint8_t WrPara)	//SPI_I2S_SendData(SPI2, value);
+void SPICmd8bit(uint8_t spi, uint8_t WrPara)	//SPI_I2S_SendData(SPI2, value);
 {
-  uint8_t bitcnt;  
-  nCS=0;
+  uint8_t bitcnt; 
+
+  if(spi==0) 
+  	nCS = 0;
+  else
+  	CSN = 0 ;
+   	
   SCK=0;
   delay();
   for(bitcnt=8; bitcnt!=0; bitcnt--)
@@ -136,12 +135,15 @@ void SPICmd8bit(uint8_t WrPara)	//SPI_I2S_SendData(SPI2, value);
 **Output:   result byte
 **Note:     use for burst mode
 **********************************************************/
-uint8_t SPIRead8bit(void)	  // status = SPI_I2S_ReceiveData(SPI2);
+uint8_t SPIRead8bit(uint8_t spi)	  // status = SPI_I2S_ReceiveData(SPI2);
 {
  uint8_t RdPara = 0;
  uint8_t bitcnt;
- 
-  nCS=0;
+
+  if(spi==0) 
+  	nCS = 0;
+  else
+  	CSN = 0;
   MOSI=1; 
   delay();                                                //Read one byte data from FIFO, MOSI hold to High
   for(bitcnt=8; bitcnt!=0; bitcnt--)
@@ -170,12 +172,16 @@ uint8_t SPIRead8bit(void)	  // status = SPI_I2S_ReceiveData(SPI2);
 **Input:    adr -> address for read
 **Output:   None
 **********************************************************/
-u8 SPIRead(u8 adr)
+u8 SPIRead(u8 spi, u8 adr)
 {
   u8 tmp; 
-  SPICmd8bit(adr);                                         //Send address first
-  tmp = SPIRead8bit();  
-  nCS=1;
+  SPICmd8bit(spi,adr);                                         //Send address first
+  tmp = SPIRead8bit(spi); 
+  
+  if(spi==0) 
+  	nCS = 1;
+  else
+  	CSN = 1; 
   delay();
   return(tmp);
 }
@@ -187,12 +193,15 @@ u8 SPIRead(u8 adr)
 **Input:    WrPara -> address & data
 **Output:   None
 **********************************************************/
-void SPIWrite(u16 WrPara)                
+void SPIWrite(u8 spi, u16 WrPara)                
 {                                                       
   u8 bitcnt;    
   
   SCK=0;
-  nCS=0;
+  if(spi==0) 
+  	nCS = 0;
+  else
+  	CSN = 0;
   delay();
   WrPara |= 0x8000;                                        //MSB must be "1" for write 
   
@@ -210,7 +219,12 @@ void SPIWrite(u16 WrPara)
   }
   SCK=0;
   MOSI=1;
-  nCS=1;
+	
+  if(spi==0) 
+  	nCS=1;
+  else
+  	CSN =1;
+
   delay();
 }
 
@@ -223,20 +237,27 @@ void SPIWrite(u16 WrPara)
 **          length--how many bytes for read
 **Output:   None
 **********************************************************/
-void SPIBurstRead(u8 adr, u8 *ptr, u8 length)
+void SPIBurstRead(u8 spi, u8 adr, u8 *ptr, u8 length)
 {
   u8 i;
   if(length<=1)                                            //length must more than one
     return;
   else
   {
-    SCK=0; 
-    nCS=0;
+    SCK=0;
+    if(spi==0) 
+  		nCS = 0;
+    else
+  		CSN = 0; 
 	delay();
-    SPICmd8bit(adr); 
+    SPICmd8bit(spi,adr); 
     for(i=0;i<length;i++)
-   		ptr[i] = SPIRead8bit();
-    nCS=1;  
+   		ptr[i] = SPIRead8bit(spi);
+
+	if(spi==0) 
+  		nCS = 1;
+    else
+  		CSN = 1;  
 	delay();
   }
 }
@@ -250,7 +271,7 @@ void SPIBurstRead(u8 adr, u8 *ptr, u8 length)
 **          length--how many bytes for write
 **Output:   none
 **********************************************************/
-void BurstWrite(u8 adr, u8 *ptr, u8 length)
+void BurstWrite(u8 spi, u8 adr, u8 *ptr, u8 length)
 { 
   u8 i;
 
@@ -259,12 +280,20 @@ void BurstWrite(u8 adr, u8 *ptr, u8 length)
   else  
   {   
     SCK=0;
-    nCS=0;   
+
+	if(spi==0) 
+  		nCS = 0;
+    else
+  		CSN = 0;   
 	delay();     
-    SPICmd8bit(adr|0x80);
+    SPICmd8bit(spi, adr|0x80);
     for(i=0;i<length;i++)
-    SPICmd8bit(ptr[i]);
-    nCS=1;  
+   		SPICmd8bit(SPI_2, ptr[i]);
+
+    if(spi==0) 
+  		nCS = 1;
+    else
+  		CSN = 1;  
 	delay();
   }
 }

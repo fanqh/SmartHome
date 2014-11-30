@@ -164,13 +164,13 @@ void RFM69H_Config(void)
   u8 i;
   
   for(i=0;i<3;i++)                      
-    //SPIWrite(RFM69HFreqTbl[gb_FreqBuf_Addr][i]);           //setting frequency parameter
-	SPIWrite(RFM69HFreqTbl[1][i]);           //setting frequency parameter
+    //SPIWrite(SPI_2, RFM69HFreqTbl[gb_FreqBuf_Addr][i]);           //setting frequency parameter
+	SPIWrite(SPI_2, RFM69HFreqTbl[1][i]);           //setting frequency parameter
   for(i=0;i<2;i++)
     //SPIWrite(RFM69HRateTbl[gb_RateBuf_Addr][i]);           //setting rf rate parameter
-	SPIWrite(RFM69HRateTbl[0][i]);           //setting rf rate parameter
+	SPIWrite(SPI_2, (RFM69HRateTbl[0][i]));           //setting rf rate parameter
   for(i=0;i<17;i++)
-    SPIWrite(RFM69HConfigTbl[i]);                          //setting base parameter
+    SPIWrite(SPI_2, RFM69HConfigTbl[i]);                          //setting base parameter
 }
 
 
@@ -186,7 +186,7 @@ void RFM69H_EntryRx(void)
 
   RFM69H_Config();                                         //Module parameter setting
   for(i=0;i<6;i++)                                         //Define to Rx mode  
-    SPIWrite(RFM69HRxTbl[i]);
+    SPIWrite(SPI_2, RFM69HRxTbl[i]);
 }
 
 /**********************************************************
@@ -199,10 +199,10 @@ void RFM69H_EntryTx(void)
 {
   u8 i;
   RFM69H_Config();                                         //Module parameter setting  
-//  SPIWrite(RFM69HPowerTbl[gb_PowerBuf_Addr]);              //Setting output power parameter
-  SPIWrite(RFM69HPowerTbl[0]);              //Setting output power parameter
+//  SPIWrite(SPI_2, RFM69HPowerTbl[gb_PowerBuf_Addr]);              //Setting output power parameter
+  SPIWrite(SPI_2, RFM69HPowerTbl[0]);              //Setting output power parameter
   for(i=0;i<5;i++)                                         //Define to Tx mode  
-    SPIWrite(RFM69HTxTbl[i]);
+    SPIWrite(SPI_2, RFM69HTxTbl[i]);
 }
 #if 0
 /**********************************************************
@@ -218,7 +218,7 @@ void RFM69H_TxWaitStable(void)
   {
     if(gb_SysTimer_1S!=0)
     {
-      temp=SPIRead(0x27);
+      temp=SPIRead(SPI_2, SPI_2, 0x27);
       if((temp&0xA0)==0xA0 && temp!=0xff)
       {
         gb_WaitStableFlag=1; 
@@ -245,7 +245,7 @@ void RFM69H_RxWaitStable(void)
   {
     if(gb_SysTimer_1S!=0)
     {
-      temp=SPIRead(0x27);
+      temp=SPIRead(SPI_2, SPI_2, 0x27);
       if((temp&0xC0)==0xC0 && temp!=0xff)
       {
         gb_WaitStableFlag=1;        
@@ -271,7 +271,7 @@ u8 RFM69H_TxWaitStable(void)
   uint16_t timeout = 0;	
   uint8_t temp;
   
-  temp = SPIRead(0x27);
+  temp = SPIRead(SPI_2, 0x27);
   while(1)
   {
   	if((temp&0xA0)==0xA0 && temp!=0xff)
@@ -285,7 +285,7 @@ u8 RFM69H_TxWaitStable(void)
 		if(timeout >= 500)
 			return 0;
 	//  	delay_ms(10);
-		temp = 	SPIRead(0x27);
+		temp = 	SPIRead( SPI_2, 0x27);
 	}
   }
 }
@@ -301,7 +301,7 @@ u8 RFM69H_RxWaitStable(void)
   uint16_t timeout = 0;	
   uint8_t temp;
   
-  temp = SPIRead(0x27);
+  temp = SPIRead(SPI_2, 0x27);
   while(1)
   {
   	if((temp&0xC0)==0xC0 && temp!=0xff)
@@ -315,7 +315,7 @@ u8 RFM69H_RxWaitStable(void)
 		if(timeout >= 500)
 			return 0;
 	//  	delay_ms(10);
-		temp = 	SPIRead(0x27);
+		temp = 	SPIRead(SPI_2, 0x27);
 	}
   }
 }
@@ -330,8 +330,8 @@ u8 RFM69H_RxWaitStable(void)
 **********************************************************/
 void RFM69H_ClearFIFO(void)
 {
-  SPIWrite(0x0104);                                        //Standby
-  SPIWrite(0x0110);                                        //entry RxMode
+  SPIWrite(SPI_2, 0x0104);                                        //Standby
+  SPIWrite(SPI_2, 0x0110);                                        //entry RxMode
 }
 
 /**********************************************************
@@ -342,7 +342,7 @@ void RFM69H_ClearFIFO(void)
 **********************************************************/
 void RFM69H_Sleep(void)
 {
-  SPIWrite(0x0100);                                        //Sleep
+  SPIWrite(SPI_2, 0x0100);                                        //Sleep
 }
 
 /**********************************************************
@@ -353,7 +353,7 @@ void RFM69H_Sleep(void)
 **********************************************************/
 void RFM69H_Standby(void)
 {
-  SPIWrite(0x0104);                                        //Standby
+  SPIWrite(SPI_2, 0x0104);                                        //Standby
 }
 
 /**********************************************************
@@ -365,9 +365,9 @@ void RFM69H_Standby(void)
 u8 RFM69H_ReadRSSI(void)
 {
   u16 temp=0xff;
-  if((SPIRead(0x24)&0x02)==0x02)
+  if((SPIRead(SPI_2, 0x24)&0x02)==0x02)
   {
-    temp=SPIRead(0x24);
+    temp=SPIRead(SPI_2, 0x24);
     temp=0xff-temp;
     temp>>=1;
     temp&=0xff;
@@ -398,7 +398,7 @@ u8 RFM69H_RxPacket(uint8 *pbuff)
 	//	Boot_UsartSend("67",2);
 	}
 	Boot_UsartSend("12",2);
-	SPIBurstRead(0x00, pbuff, RxBuf_Len);  
+	SPIBurstRead(SPI_2, 0x00, pbuff, RxBuf_Len);  
     RFM69H_ClearFIFO();  
 	return 1;
   }
@@ -418,7 +418,7 @@ u8 RFM69H_TxPacket(u8* pSend)
 
   if(RFM69H_TxWaitStable())
   {
-  	 BurstWrite(0x00, (u8 *)pSend, TxBuf_Len);              //Send one packet data	
+  	 BurstWrite(SPI_2, 0x00, (u8 *)pSend, TxBuf_Len);              //Send one packet data	
 	 while(!nIRQ0)
 	 {
 	  	timeout ++;
@@ -469,11 +469,11 @@ void RFM69H_TestConfig(void)
 {
   u8 i;
   for(i=0;i<3;i++)                      
-    SPIWrite(RFM69HFreqTbl[gb_FreqBuf_Addr][i]);           //setting frequency parameter
+    SPIWrite(SPI_2, RFM69HFreqTbl[gb_FreqBuf_Addr][i]);           //setting frequency parameter
   for(i=0;i<2;i++)
-    SPIWrite(RFM69HRateTbl[gb_RateBuf_Addr][i]);           //setting rf rate parameter
+    SPIWrite(SPI_2, RFM69HRateTbl[gb_RateBuf_Addr][i]);           //setting rf rate parameter
   for(i=0;i<12;i++)
-    SPIWrite(RFM69HTestConfigTbl[i]);                      //setting base parameter
+    SPIWrite(SPI_2, RFM69HTestConfigTbl[i]);                      //setting base parameter
 }
 
 /**********************************************************
@@ -488,7 +488,7 @@ void RFM69H_EntryTestRx(void)
   Input_RFData(); 
   RFM69H_Config();                                         //Module parameter setting
   for(i=0;i<6;i++)                                         //Define to Rx mode  
-    SPIWrite(RFM69HRxTbl[i]);
+    SPIWrite(SPI_2, RFM69HRxTbl[i]);
   
   gb_SysTimer_1S=3;                                        //System time = 3S
   gb_StatusTx=0;                                           //Clear Tx status flag 
@@ -508,9 +508,9 @@ void RFM69H_EntryTestTx(void)
   Output_RFData();                                         //DIO2=0                                 
   RFData=0;
   RFM69H_TestConfig();
-  SPIWrite(RFM69HPowerTbl[gb_PowerBuf_Addr]);              //Setting output power parameter
+  SPIWrite(SPI_2, RFM69HPowerTbl[gb_PowerBuf_Addr]);              //Setting output power parameter
   for(i=0;i<5;i++)                                         //Define to Tx mode  
-    SPIWrite(RFM69HTxTbl[i]);
+    SPIWrite(SPI_2, RFM69HTxTbl[i]);
     
   gb_SysTimer_1S=3;                                        //System time = 3S
   gb_StatusRx=0;                                           //Clear Rx status flag 

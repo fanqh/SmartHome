@@ -73,7 +73,7 @@ int tamain(void)
     Disable_SysTick();
 
 
-	SpiMsterGpioInit();
+	SpiMsterGpioInit(SPI_2);
 
  	RFM69H_Config();
 	RFM69H_EntryRx();

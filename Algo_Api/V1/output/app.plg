@@ -927,3 +927,155 @@ Verify OK.
 * JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
 * JLink Info: Found Cortex-M3 r1p1, Little endian.
 Application running ...
+Build target 'M3_app'
+compiling spi.c...
+api\spi.c(137): error:  #20: identifier "spi" is undefined
+api\spi.c(172): error:  #165: too few arguments in function call
+api\spi.c(175): error:  #20: identifier "spi" is undefined
+api\spi.c(195): error:  #20: identifier "spi" is undefined
+api\spi.c(242): error:  #20: identifier "spi" is undefined
+api\spi.c(247): error:  #165: too few arguments in function call
+api\spi.c(278): error:  #20: identifier "spi" is undefined
+api\spi.c(283): error:  #165: too few arguments in function call
+api\spi.c(285): error:  #165: too few arguments in function call
+Target not created
+Build target 'M3_app'
+compiling spi.c...
+api\spi.c(169): error:  #147-D: declaration is incompatible with "uint8_t SPIRead(uint8_t)" (declared at line 8 of ".\include\spi.h")
+api\spi.c(190): error:  #147-D: declaration is incompatible with "void SPIWrite(uint16_t)" (declared at line 9 of ".\include\spi.h")
+api\spi.c(234): error:  #147-D: declaration is incompatible with "void SPIBurstRead(uint8_t, uint8_t *, uint8_t)" (declared at line 10 of ".\include\spi.h")
+api\spi.c(268): error:  #147-D: declaration is incompatible with "void BurstWrite(uint8_t, uint8_t *, uint8_t)" (declared at line 11 of ".\include\spi.h")
+api\spi.c(285): error:  #165: too few arguments in function call
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\spi.h(6): warning:  #47-D: incompatible redefinition of macro "SPI1" (declared at line 1194 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+.\include\spi.h(7): warning:  #47-D: incompatible redefinition of macro "SPI2" (declared at line 1169 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+.\include\spi.h(13): error:  #20: identifier "uint_8" is undefined
+.\include\spi.h(14): error:  #20: identifier "uint_8" is undefined
+api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(457): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(459): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(464): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(478): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(478): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
+compiling spi.c...
+.\include\spi.h(6): warning:  #47-D: incompatible redefinition of macro "SPI1" (declared at line 1194 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+.\include\spi.h(7): warning:  #47-D: incompatible redefinition of macro "SPI2" (declared at line 1169 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+.\include\spi.h(13): error:  #20: identifier "uint_8" is undefined
+.\include\spi.h(14): error:  #20: identifier "uint_8" is undefined
+api\spi.c(291): error:  #165: too few arguments in function call
+compiling DK_RFM69H.c...
+.\include\spi.h(6): warning:  #47-D: incompatible redefinition of macro "SPI1" (declared at line 1194 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+.\include\spi.h(7): warning:  #47-D: incompatible redefinition of macro "SPI2" (declared at line 1169 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+.\include\spi.h(13): error:  #20: identifier "uint_8" is undefined
+.\include\spi.h(14): error:  #20: identifier "uint_8" is undefined
+api\DK_RFM69H.c(274): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(288): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(304): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(318): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(368): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(370): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(401): error:  #167: argument of type "uint8 *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(401): error:  #167: argument of type "int" is incompatible with parameter of type "uint8_t *"
+api\DK_RFM69H.c(401): error:  #165: too few arguments in function call
+api\DK_RFM69H.c(421): error:  #167: argument of type "u8 *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(421): error:  #167: argument of type "int" is incompatible with parameter of type "uint8_t *"
+api\DK_RFM69H.c(421): error:  #165: too few arguments in function call
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\spi.h(6): warning:  #47-D: incompatible redefinition of macro "SPI1" (declared at line 1194 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+.\include\spi.h(7): warning:  #47-D: incompatible redefinition of macro "SPI2" (declared at line 1169 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(457): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(459): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(464): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(478): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(478): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
+compiling spi.c...
+.\include\spi.h(6): warning:  #47-D: incompatible redefinition of macro "SPI1" (declared at line 1194 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+.\include\spi.h(7): warning:  #47-D: incompatible redefinition of macro "SPI2" (declared at line 1169 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+api\spi.c(291): error:  #165: too few arguments in function call
+compiling DK_RFM69H.c...
+.\include\spi.h(6): warning:  #47-D: incompatible redefinition of macro "SPI1" (declared at line 1194 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+.\include\spi.h(7): warning:  #47-D: incompatible redefinition of macro "SPI2" (declared at line 1169 of "..\..\lib\CMSIS\Core\stm32f10x.h")
+api\DK_RFM69H.c(274): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(288): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(304): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(318): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(368): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(370): error:  #140: too many arguments in function call
+api\DK_RFM69H.c(401): error:  #167: argument of type "uint8 *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(401): error:  #167: argument of type "int" is incompatible with parameter of type "uint8_t *"
+api\DK_RFM69H.c(401): error:  #165: too few arguments in function call
+api\DK_RFM69H.c(421): error:  #167: argument of type "u8 *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(421): error:  #167: argument of type "int" is incompatible with parameter of type "uint8_t *"
+api\DK_RFM69H.c(421): error:  #165: too few arguments in function call
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(76): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(457): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(459): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(464): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(478): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(478): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
+compiling spi.c...
+api\spi.c(291): error:  #165: too few arguments in function call
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(168): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(171): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(173): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(189): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(203): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(205): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(274): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(288): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(304): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(318): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(333): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(334): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(345): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(356): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(368): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+api\DK_RFM69H.c(370): error:  #167: argument of type "SPI_TypeDef *" is incompatible with parameter of type "uint8_t"
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(457): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(459): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(464): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(478): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(478): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
+compiling spi.c...
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2828 RO-data=96 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 10 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2828 RO-data=96 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
