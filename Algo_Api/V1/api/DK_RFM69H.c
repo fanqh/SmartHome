@@ -47,17 +47,16 @@
 **********************************************************/
 
 /**********************************************************
-**Parameter table define
+**Parameter table define	  {0x076c, 0x084f, 0x09f8}, //433MHz
 **********************************************************/
 const u16 RFM69HFreqTbl[4][3] = 
 { 
   {0x074e, 0x08c0, 0x0900}, //315MHz
-//  {0x076c, 0x0880, 0x0900}, //434MHz
-{0x076c, 0x084f, 0x09f8}, //433MHz
+  {0x076c, 0x0880, 0x0900}, //434MHz
   {0x07d9, 0x0800, 0x0900}, //868MHz
   {0x07e4, 0x08c0, 0x0900}, //915MHz
 };
-
+#if 0
 const u16 RFM69HRateTbl[4][2] = 
 {
   {0x0368, 0x042B},         //BR=1.2K BW=83.333K
@@ -66,15 +65,9 @@ const u16 RFM69HRateTbl[4][2] =
   {0x030D, 0x0405},         //BR=9.6K BW=83.333K
 };
 
-const u16 RFM69HPowerTbl[4] = 
-{
-  0x117F,                   //20dbm  
-  0x117C,                   //17dbm
-  0x1179,                   //14dbm
-  0x1176,                   //11dbm 
-};
 
-#if 0
+
+
 const u16 RFM69HConfigTbl[17] = 
 { 
   0x0200,                   //RegDataModul, FSK Packet  
@@ -85,7 +78,7 @@ const u16 RFM69HConfigTbl[17] =
   0x2C00,                   //RegPreambleMsb  
   0x2D05,                   //RegPreambleLsb, 5Byte Preamble
   0x2E98,              //2e09     //enable Sync.Word, 2+1=3bytes
-  0x2FAA,           //同步字节不知道是否影响        //0xAA, SyncWord = aa2dd4 
+  0x2FAA,           //同步字节不知道是否影响接受        //0xAA, SyncWord = aa2dd4 
   0x302D,                  //0x2D
   0x31D4,                   //0xD4  
   0x3710,            //ox3710       //RegPacketConfig1, Disable CRC，NRZ encode
@@ -101,29 +94,34 @@ const u16 RFM69HConfigTbl[17] =
 };
 
 #else
-const u16 RFM69HConfigTbl[17] = 
+
+
+const u16 RFM69HPowerTbl[4] = 
+{
+  0x117F,                   //20dbm  
+  0x117C,                   //17dbm
+  0x1179,                   //14dbm
+  0x1176,                   //11dbm 
+};
+const u16 RFM69HConfigTbl[14] = 
 { 
-  0x0200,                   //RegDataModul, FSK Packet  
-  0x0502,                   //RegFdevMsb, 241*61Hz = 35KHz  
-  0x0641,                   //RegFdevLsb
-  0x1952,                   //RegRxBw , RxBW, 83KHz
+          0x031A	   ,
+          0x040B        ,//BR=4.8K
+          0x117F        ,//20dbm;
+
+          0x0268        ,//RegDataModul, ASK CONTINUOUS  
+          0x0502        ,//RegFdevMsb, 241*61Hz = 35KHz  
+          0x0641        ,//RegFdevLsb
+          0x1942        ,//RegRxBw , RxBW, 125KHz 
+
+          0x2C00        ,//RegPreambleMsb  
+          0x2D00        ,//RegPreambleLsb, 4Byte Preamble
+          0x2E00        ,//enable Sync.Word, 3+1=4bytes 
   
-  0x2C00,                   //RegPreambleMsb  
-  0x2D05,                   //RegPreambleLsb, 5Byte Preamble
-  0x2E90,                   //enable Sync.Word, 2+1=3bytes
-  0x2FAA,                   //0xAA, SyncWord = aa2dd4
-  0x302D,                   //0x2D
-  0x31D4,                   //0xD4  
-  0x3700,                   //RegPacketConfig1, Disable CRC，NRZ encode
-  0x3815,                   //RegPayloadLength, 21bytes for length & Fixed length
-  0x3C95,                   //RegFiFoThresh   
-  
-  0x1888,                   //RegLNA, 200R  
-  0x581B,                   //RegTestLna, Normal sensitivity
-  //0x582D,                   //RegTestLna, increase sensitivity with LNA (Note: consumption also increase!)
-  0x6F30,                   //RegTestDAGC, Improved DAGC
-  //0x6F00,                   //RegTestDAGC, Normal DAGC
-  0x0104,                   //Enter standby mode    
+          0x1888        ,//RegLNA, 200R  
+          0x581B        ,//RegTestLna, Normal sensitivity
+          0x6F30        ,//RegTestDAGC, Improved DAGC
+          0x0104        ,//Enter standb 
 };
 
 #endif
@@ -166,10 +164,10 @@ void RFM69H_Config(void)
   for(i=0;i<3;i++)                      
     //SPIWrite(SPI_2, RFM69HFreqTbl[gb_FreqBuf_Addr][i]);           //setting frequency parameter
 	SPIWrite(SPI_2, RFM69HFreqTbl[1][i]);           //setting frequency parameter
-  for(i=0;i<2;i++)
-    //SPIWrite(RFM69HRateTbl[gb_RateBuf_Addr][i]);           //setting rf rate parameter
-	SPIWrite(SPI_2, (RFM69HRateTbl[0][i]));           //setting rf rate parameter
-  for(i=0;i<17;i++)
+//  for(i=0;i<2;i++)
+//    //SPIWrite(RFM69HRateTbl[gb_RateBuf_Addr][i]);           //setting rf rate parameter
+//	SPIWrite(SPI_2, (RFM69HRateTbl[0][i]));           //setting rf rate parameter
+  for(i=0;i<14;i++)
     SPIWrite(SPI_2, RFM69HConfigTbl[i]);                          //setting base parameter
 }
 
