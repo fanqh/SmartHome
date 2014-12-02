@@ -30,7 +30,13 @@ volatile uint8 RI=0;
 #define RxBuf_Len 10 
 unsigned char TxBuf[TxBuf_Len] = {0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x6d};  
 unsigned char RxBuf[RxBuf_Len];
+
+//315M
 uint8 _315MHz_Flag;
+uint8 _315MHz_TimeCount2;
+unsigned int _315MHz_TimeCount;
+
+static uint16 count = 0;
 
 
 
@@ -81,13 +87,22 @@ int tamain(void)
 
     while(1)
 	{
-//	uint8 status;
-//
-//    SPIWrite(0x0423);
-//   status = SPIRead(0x04);
+	uint8 status;
+
+
+ //   SPIWrite(SPI_2, 0x0412);
+//  status = SPIRead(SPI_2, 0x02);
 //    Boot_UsartSend(&status,1);
-		 if(RFM69H_RxPacket(RxBuf))		
+	   if(RFM69H_RxPacket(RxBuf))		
 		 	U1_sendS(RxBuf,1);
+//	   count ++;
+//	   if(count>=300)
+//	   {
+//	   		count = 0;
+//			delay_ms(10);
+//			RFM69H_EntryRx();
+//	   }										 
+
 	}
 
 
@@ -115,6 +130,33 @@ int tamain(void)
     while(1)
     {
 #if 1
+
+
+
+	if(_315MHz_Flag)
+	{
+		 	timer2_disable(); //关停计时中断功能，wifi，433, 2.4G功能将停用
+			while(_315MHz_Flag)
+			{
+				//SendUart(0x55);
+				RF315_Rec();//315接收代码
+				_315MHz_TimeCount++;
+				if(_315MHz_TimeCount == 500)
+				{
+					_315MHz_TimeCount = 0;
+					_315MHz_TimeCount2++;
+					if(_315MHz_TimeCount2++ >= 5)
+					{
+						_315MHz_TimeCount2 = 1;
+					  _315MHz_Flag = 0;
+					}
+				}
+			}	
+			timer2_enable();
+	}
+
+
+
 		if(Check_wifi)
 		{
 			timer2_disable(); 

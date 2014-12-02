@@ -103,6 +103,8 @@ const u16 RFM69HPowerTbl[4] =
   0x1179,                   //14dbm
   0x1176,                   //11dbm 
 };
+
+// ASK CONTINUOUS 
 const u16 RFM69HConfigTbl[14] = 
 { 
           0x031A	   ,
@@ -302,17 +304,17 @@ u8 RFM69H_RxWaitStable(void)
   temp = SPIRead(SPI_2, 0x27);
   while(1)
   {
-  	if((temp&0xC0)==0xC0 && temp!=0xff)
+  	if((temp&0xC0)==0xC0 && (temp!=0xff) )	 //&& (nIRQ0==1)
 	{
-		//Boot_UsartSend(&temp,1);
+//		Boot_UsartSend(&temp,1);
 		return 1;
 	}
 	else
-	{
+	{								   
 	  	timeout ++;
-		if(timeout >= 500)
+		if(timeout >= 50)
 			return 0;
-	//  	delay_ms(10);
+	  	delay_ms(10);
 		temp = 	SPIRead(SPI_2, 0x27);
 	}
   }
@@ -383,20 +385,22 @@ u8 RFM69H_ReadRSSI(void)
 **********************************************************/
 u8 RFM69H_RxPacket(uint8 *pbuff)
 {
-  uint16_t timeout =0; 
+ static uint16_t timeout =0; 
  
-  if(RFM69H_RxWaitStable())
+  if(RFM69H_RxWaitStable())	  //
   {
-  	while(!nIRQ0)
+
+  timeout = 100;
+  	while(timeout--)
 	{
-		timeout ++;
-		if(timeout >= 1000)
-			return 0;
-//		delay_ms(10);
-	//	Boot_UsartSend("67",2);
+		//timeout ++;
+//		if(timeout >= 10)
+//			return 0;
+		delay_ms(10);
+//		Boot_UsartSend("12",2);
 	}
-	Boot_UsartSend("12",2);
-	SPIBurstRead(SPI_2, 0x00, pbuff, RxBuf_Len);  
+//	Boot_UsartSend("67",2);
+	SPIBurstRead(SPI_2, 0x00, pbuff, 1);  
     RFM69H_ClearFIFO();  
 	return 1;
   }
