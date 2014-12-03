@@ -33,6 +33,7 @@ unsigned char RxBuf[RxBuf_Len];
 
 //315M
 uint8 _315MHz_Flag;
+uint8  _315MHz_TimeCount2;
 
 
 
