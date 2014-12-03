@@ -30,6 +30,8 @@ volatile uint8 RI=0;
 #define RxBuf_Len 10 
 unsigned char TxBuf[TxBuf_Len] = {0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x6d};  
 unsigned char RxBuf[RxBuf_Len];
+
+//315M
 uint8 _315MHz_Flag;
 
 

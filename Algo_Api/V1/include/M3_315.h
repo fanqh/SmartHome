@@ -11,6 +11,8 @@ void    m3_315_set(void);
 
 void    m3_315_clr(void);
 
+void RF315_Rec(void);
+
 #endif
 
 

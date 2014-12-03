@@ -8,6 +8,113 @@ Project File Date:  11/24/2014
 
 <h2>Output:</h2>
 Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2804 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2792 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2792 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.313V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+linking...
+Program Size: Code=2792 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2792 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+api\main.c(86): warning:  #69-D: integer conversion resulted in truncation
+api\main.c(86): error:  #165: too few arguments in function call
+api\main.c(87): error:  #20: identifier "status" is undefined
+api\main.c(87): error:  #165: too few arguments in function call
+api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(457): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(459): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(464): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(478): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(478): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(86): warning:  #69-D: integer conversion resulted in truncation
+api\main.c(86): error:  #165: too few arguments in function call
+api\main.c(87): error:  #165: too few arguments in function call
+api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(457): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(459): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(464): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(478): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(478): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
+Target not created
+Build target 'M3_app'
 compiling main.c...
 api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 api\main.c(457): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
@@ -21,7 +128,6 @@ api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incomp
 api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
 compiling Timer.c...
 linking...
-Program Size: Code=2816 RO-data=76 RW-data=76 ZI-data=12  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
 ".\output\app.axf" - 0 Error(s), 10 Warning(s).
@@ -32,7 +138,6 @@ Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
 JLink info:
 ------------
 DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
 Hardware: V8.00
 S/N : 805306163 
 Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
@@ -50,9 +155,7 @@ ROMTableAddr = 0xE00FF003
 Target info:
 ------------
 Device: STM32F103CB
-VTarget = 3.267V
 State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
 Software-Breakpoints: 8192
 Watchpoints:          4
@@ -66,6 +169,12 @@ Verify OK.
 * JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
 * JLink Info: Found Cortex-M3 r1p1, Little endian.
 Application running ...
+Build target 'M3_app'
+linking...
+Program Size: Code=2824 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
 Build target 'M3_app'
 compiling main.c...
 api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
@@ -78,27 +187,8 @@ api\main.c(478): warning:  #167-D: argument of type "uint8 *" is incompatible wi
 api\main.c(478): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
 api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
-compiling Timer.c...
-compiling DK_RFM69H.c...
 linking...
-Program Size: Code=2816 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 10 Warning(s).
-Build target 'M3_app'
-compiling main.c...
-api\main.c(165): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(466): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(468): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(473): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(484): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(486): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(487): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(493): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(124): warning:  #128-D: loop is not reachable from preceding code
-linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
+Program Size: Code=2824 RO-data=76 RW-data=76 ZI-data=828  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
 ".\output\app.axf" - 0 Error(s), 10 Warning(s).
@@ -109,7 +199,7 @@ Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
 JLink info:
 ------------
 DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
 Hardware: V8.00
 S/N : 805306163 
 Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
@@ -127,9 +217,9 @@ ROMTableAddr = 0xE00FF003
 Target info:
 ------------
 Device: STM32F103CB
-VTarget = 3.274V
+VTarget = 3.313V
 State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
 Software-Breakpoints: 8192
 Watchpoints:          4
@@ -144,270 +234,36 @@ Verify OK.
 * JLink Info: Found Cortex-M3 r1p1, Little endian.
 Application running ...
 Build target 'M3_app'
-compiling main.c...
-api\main.c(1981): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(2282): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2284): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2289): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2300): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2302): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(2303): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2303): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(2309): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(1940): warning:  #128-D: loop is not reachable from preceding code
-compiling DK_RFM69H.c...
-api\DK_RFM69H.c(127): error:  #146: too many initializer values
-Target not created
-Build target 'M3_app'
-compiling DK_RFM69H.c...
+api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(457): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(459): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(464): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(478): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(478): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
 linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
-Build target 'M3_app'
-compiling main.c...
-api\main.c(87): warning:  #69-D: integer conversion resulted in truncation
-api\main.c(87): error:  #165: too few arguments in function call
-api\main.c(88): error:  #20: identifier "status" is undefined
-api\main.c(88): error:  #165: too few arguments in function call
-api\main.c(1981): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(2282): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2284): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2289): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2300): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2302): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(2303): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2303): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(2309): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(1940): warning:  #128-D: loop is not reachable from preceding code
-Target not created
-Build target 'M3_app'
-compiling main.c...
-api\main.c(87): warning:  #69-D: integer conversion resulted in truncation
-api\main.c(87): error:  #165: too few arguments in function call
-api\main.c(88): error:  #165: too few arguments in function call
-api\main.c(1981): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(2282): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2284): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2289): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2300): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2302): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(2303): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2303): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(2309): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(1940): warning:  #128-D: loop is not reachable from preceding code
-Target not created
-Build target 'M3_app'
-compiling main.c...
-api\main.c(1981): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(2282): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2284): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2289): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2300): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2302): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(2303): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2303): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(2309): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(1940): warning:  #128-D: loop is not reachable from preceding code
-linking...
-Program Size: Code=2892 RO-data=76 RW-data=76 ZI-data=12  
+Program Size: Code=2800 RO-data=76 RW-data=76 ZI-data=828  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
 ".\output\app.axf" - 0 Error(s), 10 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
 Build target 'M3_app'
 compiling main.c...
-api\main.c(85): warning:  #177-D: variable "status" was declared but never referenced
-api\main.c(1981): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(2282): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2284): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2289): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2300): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2302): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(2303): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(2303): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(2309): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(1940): warning:  #128-D: loop is not reachable from preceding code
+api\main.c(84): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(156): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(457): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(459): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(464): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(478): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(478): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(484): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(115): warning:  #128-D: loop is not reachable from preceding code
 linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
+Program Size: Code=2792 RO-data=76 RW-data=76 ZI-data=828  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
 ".\output\app.axf" - 0 Error(s), 11 Warning(s).
@@ -418,7 +274,7 @@ Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
 JLink info:
 ------------
 DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
 Hardware: V8.00
 S/N : 805306163 
 Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
@@ -436,134 +292,9 @@ ROMTableAddr = 0xE00FF003
 Target info:
 ------------
 Device: STM32F103CB
-VTarget = 3.274V
+VTarget = 3.313V
 State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
-Build target 'M3_app'
-linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-Build target 'M3_app'
-linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
-Build target 'M3_app'
-linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Build target 'M3_app'
-linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
 Software-Breakpoints: 8192
 Watchpoints:          4
@@ -580,58 +311,15 @@ Application running ...
 Build target 'M3_app'
 compiling DK_RFM69H.c...
 linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
 Build target 'M3_app'
-compiling DK_RFM69H.c...
+api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(493): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(124): warning:  #128-D: loop is not reachable from preceding code
 linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
 Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
 * JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
 Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
@@ -639,7 +327,6 @@ Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
 JLink info:
 ------------
 DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
 Hardware: V8.00
 S/N : 805306163 
 Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
@@ -657,106 +344,7 @@ ROMTableAddr = 0xE00FF003
 Target info:
 ------------
 Device: STM32F103CB
-VTarget = 2.420V
 State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-**JLink Warning: Could not read memory location 0x20000000 when trying to set soft RAM BP
-Cannot setup Breakpoint at Address
-***JLink Error: Could not start CPU core. (ErrorCode: -1)
-Erase Failed!
-***JLink Error: Could not start CPU core. (ErrorCode: -1)
-Build target 'M3_app'
-linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 2.420V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-**JLink Warning: Could not read memory location 0x20000000 when trying to set soft RAM BP
-Cannot setup Breakpoint at Address
-***JLink Error: Could not start CPU core. (ErrorCode: -1)
-***JLink Error: Can not read register 15 (R15) while CPU is running
-**JLink Warning: CPU could not be halted
-***JLink Error: Could not read memory location 0x20000000 when trying to clear soft RAM BP
-Could not start CPU core. (ErrorCode: -1)
-Erase Failed!
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
 Software-Breakpoints: 8192
 Watchpoints:          4
@@ -782,11 +370,555 @@ api\main.c(2303): warning:  #167-D: argument of type "uint8 *" is incompatible w
 api\main.c(2303): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
 api\main.c(2309): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 api\main.c(1940): warning:  #128-D: loop is not reachable from preceding code
+compiling DK_RFM69H.c...
 linking...
-Program Size: Code=2892 RO-data=76 RW-data=76 ZI-data=12  
+Program Size: Code=2788 RO-data=76 RW-data=76 ZI-data=828  
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 1 Warning(s).
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(388): warning:  #177-D: variable "timeout" was declared but never referenced
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(388): warning:  #177-D: variable "timeout" was declared but never referenced
+linking...
+Program Size: Code=2788 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(388): warning:  #177-D: variable "timeout" was declared but never referenced
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(388): warning:  #177-D: variable "timeout" was declared but never referenced
+linking...
+Program Size: Code=2788 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.313V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(388): warning:  #177-D: variable "timeout" was declared but never referenced
+linking...
+Program Size: Code=2816 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 1 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2816 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.313V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2848 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.313V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2836 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.313V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2804 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.313V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling main.c...
+api\main.c(87): warning:  #69-D: integer conversion resulted in truncation
+api\DK_RFM69H.c(106): error:  #20: identifier "BR" is undefined
+api\main.c(94): error:  #79: expected a type specifier
+api\DK_RFM69H.c(106): error:  #57: this operator is not allowed in a constant expression
+api\main.c(35): warning:  #177-D: variable "count" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(87): error:  #165: too few arguments in function call
+api\main.c(88): error:  #165: too few arguments in function call
+api\main.c(35): warning:  #177-D: variable "count" was declared but never referenced
+linking...
+Program Size: Code=2808 RO-data=76 RW-data=76 ZI-data=828  
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 12 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+api\main.c(86): warning:  #177-D: variable "status" was declared but never referenced
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling main.c...
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 11 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2836 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2836 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling main.c...
+api\main.c(166): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(467): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(469): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(474): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(485): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(488): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(488): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(494): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(125): warning:  #128-D: loop is not reachable from preceding code
+linking...
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
 ".\output\app.axf" - 0 Error(s), 10 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2860 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+Build target 'M3_app'
+linking...
+Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
 Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
 * JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
 Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
@@ -795,6 +927,382 @@ JLink info:
 ------------
 DLL: V4.36l, compiled Dec  2 2011 18:52:36
 Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling main.c...
+api\main.c(86): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(166): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(467): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(469): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(474): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(485): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(488): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(488): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(494): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(125): warning:  #128-D: loop is not reachable from preceding code
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 11 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+api\main.c(86): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(166): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(467): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(469): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(474): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(485): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(488): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(488): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(494): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(125): warning:  #128-D: loop is not reachable from preceding code
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2868 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 11 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2868 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(388): warning:  #177-D: variable "timeout" was declared but never referenced
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(388): warning:  #177-D: variable "timeout" was declared but never referenced
+linking...
+Program Size: Code=2840 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 1 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+**JLink Warning: Could not read memory location 0x20000000 when trying to set soft RAM BP
+Cannot setup Breakpoint at Address
+***JLink Error: Could not start CPU core. (ErrorCode: -1)
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling main.c...
+api\main.c(86): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(167): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(468): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(470): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(486): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(488): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(489): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(489): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(495): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(126): warning:  #128-D: loop is not reachable from preceding code
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+* JLink Info: TPIU fitted.
+api\main.c(467): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(469): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(474): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(485): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(488): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(488): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(494): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(125): warning:  #128-D: loop is not reachable from preceding code
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+api\main.c(1981): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(2282): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(2284): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(2289): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(2300): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(2302): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(2303): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(2309): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(1940): warning:  #128-D: loop is not reachable from preceding code
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
 Hardware: V8.00
 S/N : 805306163 
 Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
@@ -827,9 +1335,7 @@ ROMTableAddr = 0xE00FF003
 Target info:
 ------------
 Device: STM32F103CB
-VTarget = 3.267V
 State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
 Software-Breakpoints: 8192
 Watchpoints:          4
@@ -1003,302 +1509,653 @@ Verify OK.
 Application running ...
 Build target 'M3_app'
 compiling DK_RFM69H.c...
+api\DK_RFM69H.c(388): warning:  #177-D: variable "timeout" was declared but never referenced
 linking...
-Program Size: Code=2856 RO-data=76 RW-data=76 ZI-data=12  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
 Build target 'M3_app'
-compiling DK_RFM69H.c...
-api\DK_RFM69H.c(159): error:  #20: identifier "RFM69HRateTbl" is undefined
-api\DK_RFM69H.c(161): error:  #20: identifier "RFM69HConfigTbl" is undefined
+api\M3_315.c(9): warning:  #47-D: incompatible redefinition of macro "uchar" (declared at line 36 of "..\..\common\acpstype.h")
+api\M3_315.c(11): error:  #20: identifier "bit" is undefined
+api\DK_RFM69H.c(107): error:  #67: expected a "}"
+api\M3_315.c(12): error:  #20: identifier "bit" is undefined
+api\M3_315.c(12): error:  #65: expected a ";"
+api\M3_315.c(15): error:  #20: identifier "bit" is undefined
+api\M3_315.c(16): error:  #20: identifier "bit" is undefined
+api\M3_315.c(59): warning:  #223-D: function "_nop_" declared implicitly
+api\M3_315.c(70): error:  #20: identifier "Rx_315" is undefined
+api\M3_315.c(138): error:  #20: identifier "BYTE" is undefined
+api\M3_315.c(139): error:  #20: identifier "BYTE" is undefined
+api\M3_315.c(152): warning:  #223-D: function "SendUart" declared implicitly
 Target not created
 Build target 'M3_app'
-compiling DK_RFM69H.c...
-api\DK_RFM69H.c(167): error:  #20: identifier "RFM69HRateTbl" is undefined
-api\DK_RFM69H.c(169): error:  #20: identifier "RFM69HConfigTbl" is undefined
+compiling M3_315.c...
+api\M3_315.c(53): error:  #20: identifier "uint" is undefined
+api\M3_315.c(59): warning:  #223-D: function "_nop_" declared implicitly
+api\M3_315.c(66): error:  #20: identifier "uint" is undefined
+api\M3_315.c(70): error:  #20: identifier "Rx_315" is undefined
+api\M3_315.c(138): error:  #20: identifier "BYTE" is undefined
+api\M3_315.c(139): error:  #20: identifier "BYTE" is undefined
+api\M3_315.c(152): warning:  #223-D: function "SendUart" declared implicitly
 Target not created
 Build target 'M3_app'
-compiling DK_RFM69H.c...
-api\DK_RFM69H.c(169): error:  #20: identifier "RFM69HConfigTbl" is undefined
+compiling M3_315.c...
+api\M3_315.c(66): error:  #20: identifier "uint" is undefined
+api\M3_315.c(70): error:  #20: identifier "Rx_315" is undefined
+api\M3_315.c(138): error:  #20: identifier "BYTE" is undefined
+api\M3_315.c(139): error:  #20: identifier "BYTE" is undefined
+api\M3_315.c(152): warning:  #223-D: function "SendUart" declared implicitly
 Target not created
 Build target 'M3_app'
-compiling DK_RFM69H.c...
+compiling M3_315.c...
+api\M3_315.c(152): warning:  #223-D: function "SendUart" declared implicitly
 linking...
-Program Size: Code=2880 RO-data=92 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
+.\output\app.axf: Error: L6218E: Undefined symbol SendUart (referred from m3_315.o).
+.\output\app.axf: Error: L6218E: Undefined symbol _315MHz_TimeCount2 (referred from m3_315.o).
+Target not created
 Build target 'M3_app'
-compiling DK_RFM69H.c...
+compiling M3_315.c...
 linking...
-Program Size: Code=2884 RO-data=92 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-linking...
-Program Size: Code=2884 RO-data=92 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
+.\output\app.axf: Error: L6218E: Undefined symbol _315MHz_TimeCount2 (referred from m3_315.o).
+Target not created
 Build target 'M3_app'
 compiling main.c...
-api\main.c(85): warning:  #177-D: variable "status" was declared but never referenced
-api\main.c(165): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(466): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(468): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(473): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(484): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(486): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(487): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(493): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(124): warning:  #128-D: loop is not reachable from preceding code
-compiling DK_RFM69H.c...
-api\DK_RFM69H.c(169): error:  #20: identifier "RFM69ConfigTbl" is undefined
+api\main.c(36): error:  #20: identifier "BYTE" is undefined
+api\main.c(89): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(169): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(470): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(472): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(488): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(490): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(491): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(491): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(497): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\DK_RFM69H.c(122): warning:  #12-D: parsing restarts here after previous syntax error
 Target not created
 Build target 'M3_app'
-compiling DK_RFM69H.c...
-linking...
-Program Size: Code=2884 RO-data=92 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.274V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
-Build target 'M3_app'
-compiling DK_RFM69H.c...
-linking...
-Program Size: Code=2884 RO-data=92 RW-data=76 ZI-data=12  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.267V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 4000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-Application running ...
-Build target 'M3_app'
 compiling main.c...
-api\main.c(85): warning:  #177-D: variable "status" was declared but never referenced
-api\main.c(165): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(466): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(468): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(473): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(484): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(486): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(487): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(493): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(124): warning:  #128-D: loop is not reachable from preceding code
-compiling DK_RFM69H.c...
+api\main.c(89): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(169): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(470): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(472): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(477): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(488): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(490): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(491): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(491): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(497): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(128): warning:  #128-D: loop is not reachable from preceding code
 linking...
-Program Size: Code=2884 RO-data=92 RW-data=76 ZI-data=12  
+Program Size: Code=2864 RO-data=76 RW-data=76 ZI-data=828  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
 ".\output\app.axf" - 0 Error(s), 11 Warning(s).
+Build target 'M3_app'
+api\M3_315.c(84): error:  #140: too many arguments in function call
+api\M3_315.c(90): error:  #140: too many arguments in function call
+api\M3_315.c(105): error:  #140: too many arguments in function call
+api\M3_315.c(115): error:  #140: too many arguments in function call
+api\M3_315.c(118): error:  #140: too many arguments in function call
+api\M3_315.c(119): error:  #140: too many arguments in function call
+Target not created
+Build target 'M3_app'
+compiling M3_315.c...
+linking...
+Program Size: Code=2864 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2864 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=2864 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+api\DK_RFM69H.c(198): error:  #20: identifier "RFM69HPowerTbl" is undefined
+api\main.c(98): warning:  #223-D: function "RF315_Rec" declared implicitly
+api\main.c(89): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(192): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(493): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(495): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(500): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(511): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(513): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(514): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(514): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(520): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(151): warning:  #128-D: loop is not reachable from preceding code
+compiling M3_315.c...
+Target not created
+Build target 'M3_app'
+compiling main.c...
+api\main.c(99): warning:  #223-D: function "RF315_Rec" declared implicitly
+api\main.c(90): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(193): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(494): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(496): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(501): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(512): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(514): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(515): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(515): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(521): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(152): warning:  #128-D: loop is not reachable from preceding code
+linking...
+Program Size: Code=4332 RO-data=76 RW-data=92 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 12 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+api\main.c(90): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(193): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(494): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(496): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(501): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(512): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(514): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(515): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(515): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(521): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(152): warning:  #128-D: loop is not reachable from preceding code
+compiling DS18B20.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(57): warning:  #223-D: function "delay_us" declared implicitly
+api\M3_wifi.c(75): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(94): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+api\debug_led.c(56): warning:  #177-D: variable "j" was declared but never referenced
+compiling Timer.c...
+compiling spi.c...
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(388): warning:  #177-D: variable "timeout" was declared but never referenced
+linking...
+Program Size: Code=4332 RO-data=76 RW-data=92 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 16 Warning(s).
+Build target 'M3_app'
+compiling debug_led.c...
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=4332 RO-data=76 RW-data=92 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Rebuild target 'M3_app'
+compiling core_cm3.c...
+compiling main.c...
+api\main.c(90): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(193): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(494): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(496): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(501): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(512): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(514): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(515): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(515): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(521): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(152): warning:  #128-D: loop is not reachable from preceding code
+compiling DS18B20.c...
+compiling System_var.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(57): warning:  #223-D: function "delay_us" declared implicitly
+api\M3_wifi.c(75): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(94): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+compiling Timer.c...
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_spi.c...
+linking...
+Program Size: Code=4332 RO-data=76 RW-data=92 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 14 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=4332 RO-data=76 RW-data=92 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+api\main.c(90): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(193): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(494): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(496): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(501): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(512): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(514): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(515): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(515): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(521): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(152): warning:  #128-D: loop is not reachable from preceding code
+linking...
+Program Size: Code=4332 RO-data=76 RW-data=92 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 11 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=4332 RO-data=76 RW-data=92 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+api\main.c(90): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(198): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(499): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(501): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(506): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(517): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(519): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(520): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(520): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(526): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(130): warning:  #128-D: loop is not reachable from preceding code
+linking...
+Program Size: Code=2864 RO-data=76 RW-data=84 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 11 Warning(s).
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2864 RO-data=76 RW-data=84 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.319V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(198): error:  #20: identifier "RFM69HPowerTbl" is undefined
+Target not created
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2888 RO-data=76 RW-data=84 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.313V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+linking...
+Program Size: Code=2888 RO-data=76 RW-data=84 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2804 RO-data=76 RW-data=76 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2876 RO-data=76 RW-data=84 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+linking...
+Program Size: Code=2888 RO-data=76 RW-data=84 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling main.c...
+api\main.c(85): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(165): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(466): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(468): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(473): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(484): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(486): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(487): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(493): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(124): warning:  #128-D: loop is not reachable from preceding code
+compiling DK_RFM69H.c...
+Program Size: Code=2912 RO-data=76 RW-data=88 ZI-data=828  
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+State of Pins: 
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling main.c...
+api\main.c(85): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(165): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(466): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(468): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(473): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(484): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(486): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(487): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(493): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(124): warning:  #128-D: loop is not reachable from preceding code
+compiling DK_RFM69H.c...
+linking...
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
 Build target 'M3_app'
 compiling main.c...
 api\main.c(84): warning:  #177-D: variable "tt" was declared but never referenced
@@ -1326,7 +2183,6 @@ Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
 JLink info:
 ------------
 DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
 Hardware: V8.00
 S/N : 805306163 
 Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
@@ -1344,9 +2200,7 @@ ROMTableAddr = 0xE00FF003
 Target info:
 ------------
 Device: STM32F103CB
-VTarget = 3.274V
 State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
 Software-Breakpoints: 8192
 Watchpoints:          4
@@ -1360,6 +2214,13 @@ Verify OK.
 * JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
 * JLink Info: Found Cortex-M3 r1p1, Little endian.
 Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2880 RO-data=76 RW-data=88 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
 Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
 * JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
 Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
@@ -1367,7 +2228,6 @@ Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
 JLink info:
 ------------
 DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
 Hardware: V8.00
 S/N : 805306163 
 Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
@@ -1385,9 +2245,295 @@ ROMTableAddr = 0xE00FF003
 Target info:
 ------------
 Device: STM32F103CB
-VTarget = 3.267V
 State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2896 RO-data=76 RW-data=88 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.319V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2900 RO-data=76 RW-data=88 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.319V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2900 RO-data=76 RW-data=88 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.319V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2884 RO-data=76 RW-data=88 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.319V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2892 RO-data=76 RW-data=88 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.319V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=2884 RO-data=76 RW-data=88 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.319V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
 Software-Breakpoints: 8192
 Watchpoints:          4
@@ -1407,17 +2553,6 @@ compiling main.c...
 .\include\DK_RFM.h(48): warning:  #12-D: parsing restarts here after previous syntax error
 .\include\DK_RFM.h(50): error:  #20: identifier "RFM69H_INFOR" is undefined
 api\main.c(84): warning:  #177-D: variable "tt" was declared but never referenced
-api\main.c(85): warning:  #177-D: variable "status" was declared but never referenced
-api\main.c(165): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(466): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(468): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(473): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(484): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(486): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(487): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(487): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(493): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(124): warning:  #128-D: loop is not reachable from preceding code
 compiling Timer.c...
 .\include\DK_RFM.h(42): error:  #65: expected a ";"
 .\include\DK_RFM.h(48): warning:  #12-D: parsing restarts here after previous syntax error
@@ -1427,8 +2562,51 @@ compiling DK_RFM69H.c...
 .\include\DK_RFM.h(48): warning:  #12-D: parsing restarts here after previous syntax error
 .\include\DK_RFM.h(50): error:  #20: identifier "RFM69H_INFOR" is undefined
 api\DK_RFM69H.c(155): error:  #20: identifier "RFM69H_INFOR" is undefined
-api\DK_RFM69H.c(333): warning:  #177-D: variable "timeout" was declared but never referenced
-Target not created
+linking...
+Program Size: Code=2852 RO-data=76 RW-data=84 ZI-data=828  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 12 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+------------
+Device: STM32F103CB
+VTarget = 3.313V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...
 Build target 'M3_app'
 compiling main.c...
 api\main.c(84): warning:  #177-D: variable "tt" was declared but never referenced
@@ -1447,7 +2625,46 @@ compiling Timer.c...
 compiling DK_RFM69H.c...
 api\DK_RFM69H.c(333): warning:  #177-D: variable "timeout" was declared but never referenced
 linking...
-Program Size: Code=2692 RO-data=92 RW-data=76 ZI-data=1040  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 13 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.319V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+Application running ...

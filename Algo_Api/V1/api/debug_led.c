@@ -53,7 +53,7 @@ void    power_on_tip(void)
 
 void delay_ms(int times)
 {
-    int i,j;
+    int i;
     if(times<0)
         times=1;
     for(i=0;i<times;i++)
