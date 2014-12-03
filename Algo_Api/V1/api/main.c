@@ -81,13 +81,22 @@ int tamain(void)
 
     while(1)
 	{
-//	uint8 status;
-//
-//    SPIWrite(0x0423);
-//   status = SPIRead(0x04);
-//    Boot_UsartSend(&status,1);
-		 if(RFM69H_RxPacket(RxBuf))		
-		 	U1_sendS(RxBuf,1);
+		static uint16 tt;
+		uint8 status;
+
+//	    SPIWrite(SPI_2, 0x0440);
+//	   status = SPIRead(SPI_2, 0x04);
+//	    Boot_UsartSend(&status,1);
+	//		 if(RFM69H_RxPacket(RxBuf))		
+	//		 	U1_sendS(RxBuf,1);
+//		delay_ms(10);
+//		tt++;
+//		if(tt>=200)
+//		{
+//			tt = 0;
+//			if(RFM69H_RxWaitStable()==0)
+//				RFM69H_EntryRx();
+//		}	
 	}
 
 
@@ -266,7 +275,7 @@ int tamain(void)
 								M.u[0] = rec_buf[4];
 								j = M.ue;//主机生成的长度要减1
 								while(T < 808);//(13 * 808 = 10504同步脉宽!
-
+							         
 								while(i < j)
 								{
                                      __disable_irq();

@@ -90,7 +90,7 @@ void TIM2_NVIC_Configuration(void)
     NVIC_Init(&NVIC_InitStructure);
 }
 
-/*中断周期为13us*/
+/*中断周期为5ms*/
 void TIM2_Configuration(void)
 {
     TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
@@ -125,8 +125,8 @@ void timer2_disable(void)
 void isr_13us(void)
 {
     T++;
-    if(F)
-    {
+    if(F)                                                          
+	{
         if (Turn)
         {
             Turn=0;
@@ -138,6 +138,10 @@ void isr_13us(void)
             CLR_INFRARED;
         }
     }
+	if(rfm69h_infor.RFM69H_State!=RFM69H_IDLE)
+	{
+		rfm69h_infor.RF69H_TimeCount ++;
+	}
 
 }
 
