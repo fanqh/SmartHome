@@ -451,6 +451,11 @@
               <FileType>1</FileType>
               <FilePath>.\api\DK_RFM69H.c</FilePath>
             </File>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\api\delay.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

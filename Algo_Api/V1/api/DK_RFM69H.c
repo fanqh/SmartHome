@@ -149,7 +149,7 @@ const u16 RFM69HTxTbl[5] =
 **Variable define
 **********************************************************/
 
-#define nIRQ0   PBin(2)
+#define RFM69H_DATA   PBin(2)
 
 
 RFM69H_INFOR rfm69h_infor;
@@ -384,12 +384,21 @@ u8 RFM69H_TxPacket(u8* pSend)
 
 u8 RFM69H_Analysis(void)
 {
-	uint16 i;
+	static time = 0;
+	uint16 i = 0;
 
+	while(1)
+	{
+		Delay_
+	}
 
 	while(i<RFM69H_DATA_LEN)
 	{
-				
+//		__disable_irq();
+//		rfm69h_infor.RF69H_TimeCount = 1;  
+//        __enable_irq();
+
+					
 	}
 
 }

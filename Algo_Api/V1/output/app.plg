@@ -9,43 +9,28 @@ Project File Date:  11/24/2014
 <h2>Output:</h2>
 Build target 'M3_app'
 compiling main.c...
-api\main.c(86): warning:  #177-D: variable "tt" was declared but never referenced
-api\main.c(87): warning:  #177-D: variable "status" was declared but never referenced
-api\main.c(167): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(468): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(470): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(475): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(486): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(488): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(489): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(489): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(495): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(126): warning:  #128-D: loop is not reachable from preceding code
-compiling DS18B20.c...
-compiling M3_wifi.c...
-api\M3_wifi.c(57): warning:  #223-D: function "delay_us" declared implicitly
-api\M3_wifi.c(75): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\M3_wifi.c(94): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-compiling Infrared.c...
-compiling M3_315.c...
-compiling debug_led.c...
+api\main.c(87): warning:  #177-D: variable "tt" was declared but never referenced
+api\main.c(88): warning:  #177-D: variable "status" was declared but never referenced
+api\main.c(168): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(469): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(471): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(476): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(487): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(489): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(490): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(490): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(496): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(127): warning:  #128-D: loop is not reachable from preceding code
 compiling Timer.c...
-compiling spi.c...
 compiling DK_RFM69H.c...
 api\DK_RFM69H.c(333): warning:  #177-D: variable "timeout" was declared but never referenced
-api\DK_RFM69H.c(395): warning:  #940-D: missing return statement at end of non-void function "RFM69H_Analysis"
+api\DK_RFM69H.c(396): warning:  #940-D: missing return statement at end of non-void function "RFM69H_Analysis"
 api\DK_RFM69H.c(387): warning: C3017W: i may be used before being set
 linking...
-.\output\app.axf: Error: L6218E: Undefined symbol _315MHz_TimeCount2 (referred from m3_315.o).
-Target not created
-Build target 'M3_app'
-linking...
-.\output\app.axf: Error: L6218E: Undefined symbol _315MHz_TimeCount2 (referred from m3_315.o).
-Target not created
-Build target 'M3_app'
-linking...
-.\output\app.axf: Error: L6218E: Undefined symbol _315MHz_TimeCount2 (referred from m3_315.o).
-Target not created
+Program Size: Code=2724 RO-data=92 RW-data=76 ZI-data=1040  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 15 Warning(s).
 Build target 'M3_app'
 compiling main.c...
 api\main.c(87): warning:  #177-D: variable "tt" was declared but never referenced
@@ -60,8 +45,49 @@ api\main.c(490): warning:  #167-D: argument of type "uint8 *" is incompatible wi
 api\main.c(490): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
 api\main.c(496): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 api\main.c(127): warning:  #128-D: loop is not reachable from preceding code
+compiling Timer.c...
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(333): warning:  #177-D: variable "timeout" was declared but never referenced
+api\DK_RFM69H.c(400): warning:  #940-D: missing return statement at end of non-void function "RFM69H_Analysis"
 linking...
-Program Size: Code=2724 RO-data=92 RW-data=76 ZI-data=1040  
+Program Size: Code=2724 RO-data=92 RW-data=76 ZI-data=1044  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 12 Warning(s).
+".\output\app.axf" - 0 Error(s), 14 Warning(s).
+Build target 'M3_app'
+compiling delay.c...
+api\delay.c(7): error:  #20: identifier "SYS_64M" is undefined
+api\delay.c(33): error:  #147-D: declaration is incompatible with "void delay_ms(int)" (declared at line 20 of ".\include\debug_led.h")
+Target not created
+Build target 'M3_app'
+compiling delay.c...
+api\delay.c(7): error:  #20: identifier "SYS_64M" is undefined
+Target not created
+Build target 'M3_app'
+compiling delay.c...
+linking...
+Program Size: Code=2724 RO-data=92 RW-data=76 ZI-data=1044  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling delay.c...
+linking...
+Program Size: Code=2724 RO-data=92 RW-data=76 ZI-data=1044  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling delay.c...
+linking...
+Program Size: Code=2724 RO-data=92 RW-data=76 ZI-data=1044  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling delay.c...
+linking...
+Program Size: Code=2724 RO-data=92 RW-data=76 ZI-data=1044  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).

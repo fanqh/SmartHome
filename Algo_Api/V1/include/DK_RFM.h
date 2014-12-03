@@ -43,7 +43,7 @@ typedef	struct
 {
 	RFM69H_STATE 		RFM69H_State;
 	RFM69H_DATA_Type	RFM69H_Data;
-	uint16	RF69H_TimeCount;
+	volatile uint32	RF69H_TimeCount;
 
 }RFM69H_INFOR;
 
