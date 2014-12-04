@@ -27,23 +27,33 @@ typedef enum
 	RFM69H_SEND
 }RFM69H_STATE;
 
+typedef enum
+{
+	IDLE,
+	ACTIVING,
+	PULSE_HIG,
+	PULSE_LOW
+}DataState_t;
+
 typedef union 
 {
 	uint16 data  : 15;
 	uint16 pulse :	1;
-}Data_t;
+}data_t;
+
 
 typedef struct
 {
 	uint16 len;
-	Data_t  buff[RFM69H_DATA_LEN];
+	data_t  buff[RFM69H_DATA_LEN];
 }RFM69H_DATA_Type;
 
 typedef	struct
 {
-	RFM69H_STATE 		RFM69H_State;
-	RFM69H_DATA_Type	RFM69H_Data;
-	volatile uint32	RF69H_TimeCount;
+	DataState_t         DataState;
+	RFM69H_STATE 		State;	   //收发状态
+	RFM69H_DATA_Type	Data;	   //脉冲数据长度
+	volatile uint32	DataTimeCount;
 
 }RFM69H_INFOR;
 

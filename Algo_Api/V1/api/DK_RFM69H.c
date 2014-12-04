@@ -172,7 +172,7 @@ void RFM69H_Config(void)
   for(i=0;i<14;i++)
     SPIWrite(SPI_2, RFM69ConfigTbl[i]);                          //setting base parameter
 
-  rfm69h_infor.RFM69H_State = RFM69H_IDLE;
+  rfm69h_infor.State = RFM69H_IDLE;
 }
 
 
@@ -223,7 +223,7 @@ u8 RFM69H_TxWaitStable(void)
   {
   	if((temp&0xA0)==0xA0 && temp!=0xff)
 	{
-		rfm69h_infor.RFM69H_State = RFM69H_SEND;
+		rfm69h_infor.State = RFM69H_SEND;
 		return 1;
 	}
 	else
@@ -253,7 +253,7 @@ u8 RFM69H_RxWaitStable(void)
   {
   	if((temp&0xC0)==0xC0 && temp!=0xff)
 	{
-		rfm69h_infor.RFM69H_State = RFM69H_SEND;
+		rfm69h_infor.State = RFM69H_SEND;
 		return 1;
 	}
 	else
@@ -382,25 +382,99 @@ u8 RFM69H_TxPacket(u8* pSend)
   	return 0;
 }
 
-u8 RFM69H_Analysis(void)
+
+
+#define  STUDY_TIMEOUT   500000000/13   //5S
+#define  VALID_TIME      4           //4*13us
+
+
+int RFM69H_Analysis(void)
 {
-	static time = 0;
 	uint16 i = 0;
+	int ret = 0;
 
-	while(1)
-	{
-		Delay_
+   Enable_SysTick();		//启动定时器0
+   while(i < RFM69H_DATA_LEN )
+   {
+   		if(rfm69h_infor.DataState == IDLE )
+		{
+		    __disable_irq();
+			rfm69h_infor.DataTimeCount = 0;
+		    __enable_irq(); 
+			
+			while(RFM69H_DATA)
+			{
+				if(rfm69h_infor.DataTimeCount > STUDY_TIMEOUT)  //如果5S内一直保持高电平，即没有数据接收
+					ret = -1;
+			}
+			__disable_irq();
+			rfm69h_infor.DataTimeCount = 0;
+		    __enable_irq();
+			rfm69h_infor.DataState = ACTIVING;
+
+		}
+		if(rfm69h_infor.DataState == ACTIVING)
+		{
+			 
+			while(RFM69H_DATA==0)
+			{
+				if(rfm69h_infor.DataTimeCount > STUDY_TIMEOUT)  //如果5S一直内低电平跳出
+					ret = -1;	
+			}
+			if(rfm69h_infor.DataTimeCount>400/13)	  //如果低电平保持时间大于400us，说明不是干扰信号
+			{
+				__disable_irq();
+				rfm69h_infor.DataTimeCount = 0;
+			    __enable_irq();	
+				rfm69h_infor.DataState = PULSE_HIG;
+			}	
+		}
+		if(rfm69h_infor.DataState == PULSE_HIG)
+		{
+			while(RFM69H_DATA)
+			{
+				if(rfm69h_infor.DataTimeCount > STUDY_TIMEOUT)  //如果5S内一直保持高电平，即没有数据接收
+					ret = i;   //学习结束，返回数据长度
+			}
+			if(rfm69h_infor.DataTimeCount>4) //如果高电平时间大于4*13视为有效
+			{
+				rfm69h_infor.Data.buff[i++].data = ((uint16)rfm69h_infor.DataTimeCount);
+				rfm69h_infor.Data.buff[i++].pulse = 1;
+				rfm69h_infor.Data.len = i;	
+
+				__disable_irq();
+				rfm69h_infor.DataTimeCount = 0;
+			    __enable_irq();	
+				rfm69h_infor.DataState = PULSE_LOW;
+			}
+
+		}
+		else if(rfm69h_infor.DataState == PULSE_LOW)
+		{
+			while(!RFM69H_DATA)
+			{
+				if(rfm69h_infor.DataTimeCount > STUDY_TIMEOUT)  //如果5S内一直保持高电平，即没有数据接收
+					ret = i; 	   //学习结束，返回数据长度
+			}
+			if(rfm69h_infor.DataTimeCount>4) //如果高电平时间大于4*13视为有效
+			{
+				rfm69h_infor.Data.buff[i++].data =((uint16)rfm69h_infor.DataTimeCount);
+				rfm69h_infor.Data.buff[i++].pulse = 0;
+				rfm69h_infor.Data.len = i;	
+
+				__disable_irq();
+				rfm69h_infor.DataTimeCount = 0;
+			    __enable_irq();	
+				rfm69h_infor.DataState = PULSE_HIG;
+			}		
+		}
+		else
+			ret = -1; 
 	}
 
-	while(i<RFM69H_DATA_LEN)
-	{
-//		__disable_irq();
-//		rfm69h_infor.RF69H_TimeCount = 1;  
-//        __enable_irq();
-
-					
-	}
-
+	Disable_SysTick();
+	return ((ret>0)? ret : -1);
+		
 }
 
 
