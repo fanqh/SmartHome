@@ -1,6 +1,7 @@
 #include"Include.h"
 #include "DK_RFM.h"
 #include "spi.h"
+#include "time.h"
 
 uint32  F = 0;	  //是否打开38KH方波调制
 uint32  Wifi_Command_Mode = 0; //=1 wifi工作在命令模式 =0 工作在数据传输模式
@@ -34,6 +35,7 @@ unsigned char RxBuf[RxBuf_Len];
 //315M
 uint8 _315MHz_Flag;
 uint8  _315MHz_TimeCount2;
+unsigned int _315MHz_TimeCount;
 
 
 
@@ -55,29 +57,28 @@ int tamain(void)
 //    uint32 reclen=0;
 //    uint16 temp=0;
 //    uint8 data;
-    
+    //315M设置
+	_315MHz_Flag = 0;
+	_315MHz_TimeCount = 0;
+	_315MHz_TimeCount2 = 1;
+
 
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4推挽输出
  	GPIOC->CRL|=0X00030000;
     led_init();
     m3_315_io_config();
-    infrared_io_init();
-    
+    infrared_io_init();  
     m3_315_clr();                       //关闭315
     wifi_led(LED_ON);  
     debug_led_off();
-
   //Command_Process();
     Init_DS18B20();
-
     timer2_init();                      //5ms 中断
     
     app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
     Disable_SysTick();
-
-
+#if 0
 	SpiMsterGpioInit(SPI_2);
-
  	RFM69H_Config();
 	RFM69H_EntryRx();
 
@@ -90,18 +91,8 @@ int tamain(void)
 //	    SPIWrite(SPI_2, 0x0440);
 //	   status = SPIRead(SPI_2, 0x04);
 //	    Boot_UsartSend(&status,1);
-	//		 if(RFM69H_RxPacket(RxBuf))		
-	//		 	U1_sendS(RxBuf,1);
-//		delay_ms(10);
-//		tt++;
-//		if(tt>=200)
-//		{
-//			tt = 0;
-//			if(RFM69H_RxWaitStable()==0)
-//				RFM69H_EntryRx();
-//		}	
 	}
-
+#endif
 
 
 
@@ -127,6 +118,30 @@ int tamain(void)
     while(1)
     {
 #if 1
+
+
+	  if(_315MHz_Flag)
+	  {
+			timer2_disable();  //关停计时中断功能，wifi，433, 2.4G功能将停用
+			while(_315MHz_Flag)
+			{
+				//SendUart(0x55);
+				RF315_Rec();//315接收代码
+				_315MHz_TimeCount++;
+				if(_315MHz_TimeCount == 500)
+				{
+					_315MHz_TimeCount = 0;
+					_315MHz_TimeCount2++;
+					if(_315MHz_TimeCount2++ >= 5)
+					{
+						_315MHz_TimeCount2 = 1;
+					  _315MHz_Flag = 0;
+					}
+				}
+			}	
+			timer2_enable();
+		}
+
 		if(Check_wifi)
 		{
 			timer2_disable(); 
@@ -402,7 +417,7 @@ int tamain(void)
 						break;
 					case 'D':
 
-						//	_315MHz_Flag = 1;
+							_315MHz_Flag = 1;
 
 					
 					 		RFM69H_Config();
@@ -462,6 +477,13 @@ int tamain(void)
 							delay_ms(200);
 							U1_sendS("BF<<",4);	
                         break;
+
+					case 'W':	//315M
+						_315MHz_Flag = 1;
+						_315MHz_TimeCount2 = 1;
+						delay_ms(200);
+						U1_sendS("WF<<",4);
+					  break;
 					default:break;	
 				}
 				timer2_enable(); 

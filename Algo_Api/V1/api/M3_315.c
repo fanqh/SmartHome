@@ -6,7 +6,8 @@
 
 #define M3_315_CTRL             GPIO_Pin_3
 #define M3_315_GPIO             GPIOB
-#define Rx_315                  PAin(1)
+
+#define Rx_315                  PAin(8)
 
 uint8 recv_flg  = 0;//bit right or fault
 uint8 lianji_flg = 0; //long or short(1,0)
@@ -106,7 +107,7 @@ void RF_decode()
 						j++;
 					}
 					if(j>(short_k-short_k/2-short_k/3)&&j<(short_k*1.96))
-					{
+					{					
 						da1527[rep][ii]&=~(1<<((7-k)));
 					}	
 					else if(j>(short_k*1.96)&&j<(short_k*5))da1527[rep][ii]|=(1<<(7-k)); 	        			        
