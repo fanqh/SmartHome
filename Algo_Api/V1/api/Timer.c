@@ -138,11 +138,9 @@ void isr_13us(void)
             CLR_INFRARED;
         }
     }
-	if(rfm69h_infor.State!=RFM69H_IDLE)
+	if(Get_RFM69H_Status()!=RFM69H_IDLE)
 	{
-		rfm69h_infor.DataTimeCount ++;
-
-
+		DataTimeCount ++;
 	}
 
 }

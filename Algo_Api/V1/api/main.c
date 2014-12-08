@@ -79,19 +79,33 @@ int tamain(void)
     Disable_SysTick();
 #if 0
 	SpiMsterGpioInit(SPI_2);
+
  	RFM69H_Config();
 	RFM69H_EntryRx();
 
-
-    while(1)
-	{
-		static uint16 tt;
-		uint8 status;
-
-//	    SPIWrite(SPI_2, 0x0440);
-//	   status = SPIRead(SPI_2, 0x04);
-//	    Boot_UsartSend(&status,1);
+	while(1)
+	{	   
+		int len =0;
+		 if(RFM69H_RxPacket(pbuf))
+		 {	
+		 	len = RFM69H_Analysis();
+			Disable_SysTick();
+			if(len > 0)
+			{	
+				RFM69H_EntryTx();
+				if(RFM69H_TxWaitStable())
+				{
+					while(1)
+					{
+						RFM69H_SendData(&rfm69h_data);
+						printf("data len = %d\r\n", len);
+					}
+				}
+			}
+		 }
+		 	
 	}
+
 #endif
 
 
@@ -113,7 +127,6 @@ int tamain(void)
           
 
     }
-    while(1);
 #endif
     while(1)
     {
