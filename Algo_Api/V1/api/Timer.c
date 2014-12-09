@@ -154,3 +154,121 @@ void Enable_SysTick(void)
     SysTick->CTRL |= ((1<<SYSTICK_ENABLE) ); 
 }
 
+
+/***********************************************************
+*added by fan
+*************************************************************/
+
+#define TIM_MSEC_DELAY                     0x01
+#define TIM_USEC_DELAY                     0x02
+
+volatile  uint32 BSP_delay = 0;
+
+
+
+void USB_OTG_BSP_TimerIRQ (void)
+{
+    
+  if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
+  {
+    TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
+    if (BSP_delay > 0x00)
+    { 
+      BSP_delay--;
+    }
+    else
+    {
+      TIM_Cmd(TIM3,DISABLE);
+    }
+  }
+} 
+
+/* TIM3中断优先级配置 M3*/
+void TIM3_NVIC_Configuration(void)
+{
+    NVIC_InitTypeDef NVIC_InitStructure; 
+    
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);  													
+    NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;	  
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 4;	
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+
+	BSP_IntVectSet(BSP_INT_ID_TIM3, USB_OTG_BSP_TimerIRQ);
+}
+
+
+
+/**
+  * @brief  BSP_SetTime
+  *         Configures TIM2 for delay routine based on TIM2
+  * @param  unit : msec /usec
+  * @retval None
+  */
+static void BSP_SetTime(uint8_t unit)
+{
+  TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
+  
+  TIM_Cmd(TIM3,DISABLE);
+  TIM_ITConfig(TIM3, TIM_IT_Update, DISABLE); 
+  
+  
+  if(unit == TIM_USEC_DELAY)
+  {  
+    TIM_TimeBaseStructure.TIM_Period = 1;		 //1us
+  }
+  else if(unit == TIM_MSEC_DELAY)
+  {
+    TIM_TimeBaseStructure.TIM_Period = 1000-1;	  //ms
+  }
+  TIM_TimeBaseStructure.TIM_Prescaler = 64-1;  //1M时钟分频
+  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+  
+  TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
+  TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
+  
+  TIM_ARRPreloadConfig(TIM3, ENABLE);
+  
+  /* TIM IT enable */
+  TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
+  
+  /* TIM2 enable counter */ 
+  TIM_Cmd(TIM3, ENABLE);  
+} 
+
+
+
+
+static void BSP_Delay(uint32_t nTime, uint8_t unit)
+{
+  
+  BSP_delay = nTime;
+  BSP_SetTime(unit);  
+  while(BSP_delay != 0);
+  TIM_Cmd(TIM3,DISABLE);
+}
+
+
+
+void USB_OTG_BSP_uDelay (const uint32_t usec)
+{
+ 
+  BSP_Delay(usec,TIM_USEC_DELAY); 
+ 
+}
+
+
+/**
+  * @brief  USB_OTG_BSP_mDelay
+  *          This function provides delay time in milli sec
+  * @param  msec : Value of delay required in milli sec
+  * @retval None
+  */
+void USB_OTG_BSP_mDelay (const uint32_t msec)
+{  
+    BSP_Delay(msec,TIM_MSEC_DELAY);   
+
+}
+

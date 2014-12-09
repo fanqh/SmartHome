@@ -1,3 +1,13 @@
+#include "include.h"
+#include "spi.h"
+
+void power_off()
+{
+	CE=0;
+		SPI_RW_Reg(WRITE_REG + CONFIG, 0x0D); 
+	CE=1;
+}
+
 				  /**************************************************
 Function: RX_Mode();
 
@@ -8,13 +18,6 @@ Description:
   After init, CE is toggled high, which means that
   this device is now ready to receive a datapacket.
 /**************************************************/
-void power_off()
-{
-  				CE=0;
-				SPI_RW_Reg(WRITE_REG + CONFIG, 0x0D); 
-				CE=1;
-				_delay_us(20);
-}
 void ifnnrf_rx_mode(void)
 {
     power_off();

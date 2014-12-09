@@ -183,7 +183,20 @@ u8 SPIRead(u8 spi, u8 adr)
   else
   	CSN = 1; 
   delay();
+
   return(tmp);
+}
+
+void SPI_RW_Reg(u8 spi, u8 reg, u8 value)
+{
+	SPICmd8bit(spi,reg);
+	SPICmd8bit(spi,value);
+
+	if(spi==0) 
+	  	nCS = 1;
+	else
+	  	CSN = 1; 
+	delay();		
 }
 
 
