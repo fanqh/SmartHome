@@ -1,5 +1,6 @@
 #include"Timer.h"
 #include "DK_RFM.h"
+#include "nrf24l01.h"
 
 extern  volatile unsigned int T ;	//计数
 extern  uint32  F;     //是否打开38KH方波调制
@@ -16,6 +17,7 @@ extern unsigned char RxBuf[RxBuf_Len];
 //5ms
 void TIMER2_Handler(void)
 {
+	unsigned char tedd;
 	unsigned char Rec;
   
     TIM2->SR = ~TIM_FLAG_Update;  //清除标志位
@@ -45,6 +47,25 @@ void TIMER2_Handler(void)
 			uint8 i = 0;
 
 			ted = 0;
+
+			Rec = nRF24L01_RxPacket(rx_buf);
+			if(Rec==1)
+			{
+				Rec = 0;
+				if((rx_buf[0] == 0x7E)&&(rx_buf[1] == 0x7E)&&(rx_buf[2] == 0x34))
+				{
+					U1_send(0x7E);
+					U1_send(0x7E);
+					for(tedd=0;tedd<32;tedd++)
+					{
+						U1_send(rx_buf[tedd]);
+							//UartRecFlag = 0;
+					}
+					U1_sendS("<<",2);
+				}
+				Rec = 0;
+			}
+
 			Rec = RFM69H_RxPacket(RxBuf);
 			if(Rec == 1)  //接收数据
 		  	{
@@ -252,7 +273,7 @@ static void BSP_Delay(uint32_t nTime, uint8_t unit)
 
 
 
-void USB_OTG_BSP_uDelay (const uint32_t usec)
+void BSP_uDelay (const uint32_t usec)
 {
  
   BSP_Delay(usec,TIM_USEC_DELAY); 
@@ -266,7 +287,7 @@ void USB_OTG_BSP_uDelay (const uint32_t usec)
   * @param  msec : Value of delay required in milli sec
   * @retval None
   */
-void USB_OTG_BSP_mDelay (const uint32_t msec)
+void BSP_mDelay (const uint32_t msec)
 {  
     BSP_Delay(msec,TIM_MSEC_DELAY);   
 

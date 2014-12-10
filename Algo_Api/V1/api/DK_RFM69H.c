@@ -148,13 +148,19 @@ const u16 RFM69HTxTbl[5] =
 /**********************************************************
 **Variable define
 **********************************************************/
+
+
+
+/**********************************/
+/********原来调试代码管脚为PB2**************************/
+/**********************************/
 #define  RF69H_DATA_RCC	    RCC_APB2Periph_GPIOB
 #define  RF69H_DATA_PORT	GPIOB
-#define  RF69H_DATA_PIN	    GPIO_Pin_2
+#define  RF69H_DATA_PIN	    GPIO_Pin_11
 
 
-#define  RFM69H_DATA_IN     PBin(2)
-#define  RFM69H_DATA_OUT    PBout(2)
+#define  RFM69H_DATA_IN     PBin(11)
+#define  RFM69H_DATA_OUT    PBout(11)
 
 
 RFM69H_DATA_Type rfm69h_data;

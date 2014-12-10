@@ -7,8 +7,8 @@
 #define TX_ADR_WIDTH    5   // 5  bytes TX(RX) address width
 #define TX_PLOAD_WIDTH  32  // 32 bytes TX payload
 
-#define READ_REG        0x00  // Define read command to register
-#define WRITE_REG       0x20  // Define write command to register
+#define NRF24L01_READ_REG        0x00  // Define read command to register
+#define NRF24L01_WRITE_REG       0x20  // Define write command to register
 #define RD_RX_PLOAD     0x61  // Define RX payload register address
 #define WR_TX_PLOAD     0xA0  // Define TX payload register address
 #define FLUSH_TX        0xE1  // Define flush TX register command
@@ -46,7 +46,8 @@
 #define STA_MARK_TX     0X20
 #define STA_MARK_MX     0X10	    
 
-
+extern uchar tx_buf[TX_PLOAD_WIDTH];
+extern uchar rx_buf[TX_PLOAD_WIDTH];
 
 void Ifnnrf_SendData_Init(void);
 uint8 Ifnnrf_Send(uint8 *txbuf);
@@ -58,6 +59,7 @@ void do_2_4G(void);
 void init_nrf24l01_io(void);
 void ifnnrf_rx_mode(void);
 void ifnnrf_tx_mode(uint8 *txbuf);
-void ifnnrf_CLERN_ALL();
+void ifnnrf_CLERN_ALL(void);
 
 #endif
+

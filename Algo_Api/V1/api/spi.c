@@ -26,21 +26,16 @@
 void SpiMsterGpioInit(uint8_t spi)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
-
-
-	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);						
+						
 	//gpio clck enable
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-	//spi2 enable
-//	RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);
-	
 	  /* Configure SPIy pins: SCK, MOSI ---------------------------------*/
    GPIO_InitStructure.GPIO_Pin = SPI2_PIN_SCK | SPI2_PIN_MOSI;
    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
    GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
-   //MISO	IRQ
-   GPIO_InitStructure.GPIO_Pin = SPI2_PIN_MISO | PIN_nIRQ0;
+   //MISO
+   GPIO_InitStructure.GPIO_Pin = SPI2_PIN_MISO;
    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
    GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
    //nss
@@ -99,7 +94,7 @@ static void delay(void)
 **Output:   none
 **note:     use for burst mode
 **********************************************************/
-void SPICmd8bit(uint8_t spi, uint8_t WrPara)	//SPI_I2S_SendData(SPI2, value);
+void SPICmd8bit(uint8 spi, uint8 WrPara)	//SPI_I2S_SendData(SPI2, value);
 {
   uint8_t bitcnt; 
 
@@ -192,7 +187,7 @@ void SPI_RW_Reg(u8 spi, u8 reg, u8 value)
 	SPICmd8bit(spi,reg);
 	SPICmd8bit(spi,value);
 
-	if(spi==0) 
+	if(spi==SPI_2) 
 	  	nCS = 1;
 	else
 	  	CSN = 1; 
@@ -284,7 +279,7 @@ void SPIBurstRead(u8 spi, u8 adr, u8 *ptr, u8 length)
 **          length--how many bytes for write
 **Output:   none
 **********************************************************/
-void BurstWrite(u8 spi, u8 adr, u8 *ptr, u8 length)
+void BurstWrite(u8 spi, u8 adr, u8 const *ptr, u8 length)
 { 
   u8 i;
 

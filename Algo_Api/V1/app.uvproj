@@ -452,9 +452,9 @@
               <FilePath>.\api\DK_RFM69H.c</FilePath>
             </File>
             <File>
-              <FileName>delay.c</FileName>
+              <FileName>nrf24l01.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\api\delay.c</FilePath>
+              <FilePath>.\api\nrf24l01.c</FilePath>
             </File>
           </Files>
         </Group>

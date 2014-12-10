@@ -19,8 +19,8 @@ void    Disable_SysTick(void);
 
 
 void TIM3_NVIC_Configuration(void);
-void USB_OTG_BSP_uDelay (const uint32_t usec);
-void USB_OTG_BSP_mDelay (const uint32_t msec);
+void BSP_uDelay (const uint32_t usec);
+void BSP_mDelay (const uint32_t msec);
 
 #endif
 

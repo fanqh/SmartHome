@@ -2,6 +2,7 @@
 #include "DK_RFM.h"
 #include "spi.h"
 #include "time.h"
+#include "nrf24l01.h"
 
 uint32  F = 0;	  //是否打开38KH方波调制
 uint32  Wifi_Command_Mode = 0; //=1 wifi工作在命令模式 =0 工作在数据传输模式
@@ -37,6 +38,9 @@ uint8 _315MHz_Flag;
 uint8  _315MHz_TimeCount2;
 unsigned int _315MHz_TimeCount;
 
+//2.4G
+unsigned char tx_test[17] = {0x7E,0x7E,0x34,0x43,0x10,0x10,0x01,0x00,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01};
+
 
 
 typedef union //char型数据转int型数据类 
@@ -65,15 +69,24 @@ int tamain(void)
 
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4推挽输出
  	GPIOC->CRL|=0X00030000;
-    led_init();
+
+
+	led_init();
+    wifi_led(LED_ON);  
+    debug_led_off();
+
     m3_315_io_config();
     infrared_io_init();  
     m3_315_clr();                       //关闭315
-    wifi_led(LED_ON);  
-    debug_led_off();
+
+
   //Command_Process();
     Init_DS18B20();
     timer2_init();                      //5ms 中断
+	TIM3_NVIC_Configuration();  //BSP_Delay 初始化
+	//2.hG
+	init_nrf24l01_io();
+	ifnnrf_rx_mode();
     
     app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
     Disable_SysTick();
@@ -153,7 +166,7 @@ int tamain(void)
 				}
 			}	
 			timer2_enable();
-		}
+	 }
 
 		if(Check_wifi)
 		{
@@ -463,11 +476,32 @@ int tamain(void)
 					case 'L': //唤醒状态指示灯
 							if(rec_buf[1] == 'B')
 							{
+								int i = 0;
+								for(i = 0;i < 17; i++)
+									tx_buf[i] = tx_test[i];
+								tx_buf[17]=0x01;
+								tx_buf[18]=0x01;
+								for(i = 19;i < 32; i++)
+									tx_buf[i] = i;
+								do_2_4G();
+
+								U1_sendS("TF<<",4);
                                 debug_led_on();        //唤醒led点亮
 								U1_sendS("LB<<",4);
 							}	
 							else if(rec_buf[1] == 'D')
 							{
+
+								int i = 0;
+								for(i = 0;i < 17; i++)
+									tx_buf[i] = tx_test[i];
+								tx_buf[17]=0x01;
+								tx_buf[18]=0x00;
+								for(i = 19;i < 32; i++)
+									tx_buf[i] = i;
+								do_2_4G();
+
+								U1_sendS("TF<<",4);	
                                 debug_led_off();        
 								U1_sendS("LD<<",4);
 							}
@@ -480,6 +514,17 @@ int tamain(void)
                             Command_Process();
                         }
 						break;
+
+				   	case 'G': //2.4 GH: 第3,4位是数据长度，从第5位是数据位
+						//int i = 0;
+						for(i=0;i<32;i++)
+						{
+							tx_buf[i] = rec_buf[i+3];
+							//SendUart(tx_buf[i]);
+						}
+ 						do_2_4G();
+					    U1_sendS("TF<<",4);
+					    break;
 
 					case 'B':
 							RFM69H_Config();

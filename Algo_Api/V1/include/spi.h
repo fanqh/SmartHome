@@ -9,11 +9,13 @@
 void SpiMsterGpioInit(uint8_t spi);
 void SpiInit(uint8_t spi, uint16_t SPI_DataSize);
 
+void SPICmd8bit(uint8_t spi, uint8_t WrPara);
+
 uint8_t SPIRead(uint8_t spi, uint8_t adr);
 void SPIWrite(uint8_t spi, uint16_t WrPara);
 void SPI_RW_Reg(u8 spi, u8 reg, u8 value);
 void SPIBurstRead(uint8_t spi, uint8_t adr, uint8_t *ptr, uint8_t length);
-void BurstWrite(uint8_t spi, uint8_t adr, uint8_t *ptr, uint8_t length);
+void BurstWrite(uint8 spi, uint8 adr, uint8 const *ptr, uint8 length);
 
 
 #endif
