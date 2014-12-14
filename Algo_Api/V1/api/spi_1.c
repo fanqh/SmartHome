@@ -10,9 +10,9 @@
 #define  SPI2_PIN_NSS      GPIO_Pin_12
 #define  PIN_PIN_CSN       GPIO_Pin_1
 
-#define  PIN_nIRQ0         GPIO_Pin_2
+#define   PIN_nIRQ0         GPIO_Pin_2
 
-#define  SPI2_GPIO		   GPIOB
+#define   SPI2_GPIO		   GPIOB
 
 #define   CSN      PBout(1)
 #define   nCS      PBout(12)
@@ -26,36 +26,33 @@
 void SpiMsterGpioInit(uint8_t spi)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
-						
+					
 	//gpio clck enable
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	
 	  /* Configure SPIy pins: SCK, MOSI ---------------------------------*/
    GPIO_InitStructure.GPIO_Pin = SPI2_PIN_SCK | SPI2_PIN_MOSI;
    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
    GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
-   //MISO
-   GPIO_InitStructure.GPIO_Pin = SPI2_PIN_MISO;
+   //MISO	IRQ
+   GPIO_InitStructure.GPIO_Pin = SPI2_PIN_MISO | PIN_nIRQ0;
    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
    GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
-   //PB12
+   //nss
    if(spi==0)
    {
 	   GPIO_InitStructure.GPIO_Pin = SPI2_PIN_NSS;
 	   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	   GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
-
-	   nCS = 1;
    }
    else
    {
 
-	      //CSN PB1
+	      //ncs
 	   GPIO_InitStructure.GPIO_Pin = PIN_PIN_CSN;
 	   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	   GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
-
-	   CSN = 1;
    }
 
 }
@@ -93,15 +90,15 @@ static void delay(void)
 
 /**********************************************************
 **Name:     SPICmd8bit
-**Function: SPI Write one byte
+**Function: SPI Write one u8
 **Input:    WrPara	spi :SPI_1 SPI_2
 **Output:   none
 **note:     use for burst mode
 **********************************************************/
-uint8_t SPICmd8bit(uint8 spi, uint8 WrPara)	//SPI_I2S_SendData(SPI2, value);
+uint8_t SPICmd8bit(uint8_t spi, uint8_t WrPara)	//SPI_I2S_SendData(SPI2, value);
 {
-  uint8_t bitcnt;
-  uint8_t temp = 0; 
+  uint8_t bitcnt; 
+  uint8_t temp  = 0;
 
   if(spi==0) 
   	nCS = 0;
@@ -110,7 +107,6 @@ uint8_t SPICmd8bit(uint8 spi, uint8 WrPara)	//SPI_I2S_SendData(SPI2, value);
    	
   SCK=0;
   delay();
-
   for(bitcnt=8; bitcnt!=0; bitcnt--)
   {
     SCK=0;
@@ -118,15 +114,17 @@ uint8_t SPICmd8bit(uint8 spi, uint8 WrPara)	//SPI_I2S_SendData(SPI2, value);
       MOSI=1;
     else
       MOSI=0;
-	delay(); 	
+	delay(); 
+	temp <<= 1;	
     SCK=1;
     WrPara <<= 1;
 	delay();
 
-   	if(MISO)
+	if(MISO)
       temp |= 0x01;
     else
       temp |= 0x00;
+
   }
 
   SCK=0;
@@ -138,9 +136,9 @@ uint8_t SPICmd8bit(uint8 spi, uint8 WrPara)	//SPI_I2S_SendData(SPI2, value);
 
 /**********************************************************
 **Name:     SPIRead8bit
-**Function: SPI Read one byte
+**Function: SPI Read one u8
 **Input:    None
-**Output:   result byte
+**Output:   result u8
 **Note:     use for burst mode
 **********************************************************/
 uint8_t SPIRead8bit(uint8_t spi)	  // status = SPI_I2S_ReceiveData(SPI2);
@@ -153,7 +151,7 @@ uint8_t SPIRead8bit(uint8_t spi)	  // status = SPI_I2S_ReceiveData(SPI2);
   else
   	CSN = 0;
   MOSI=1; 
-  delay();                                                //Read one byte data from FIFO, MOSI hold to High
+  delay();                                                //Read one u8 data from FIFO, MOSI hold to High
   for(bitcnt=8; bitcnt!=0; bitcnt--)
   {
     SCK=0;
@@ -194,18 +192,6 @@ u8 SPIRead(u8 spi, u8 adr)
 
   return(tmp);
 }
-
-//void SPI_RW_Reg(u8 spi, u8 reg, u8 value)
-//{
-//	SPICmd8bit(spi,reg);
-//	SPICmd8bit(spi,value);
-//
-//	if(spi==SPI_2) 
-//	  	nCS = 1;
-//	else
-//	  	CSN = 1; 
-//	delay();		
-//}
 
 
 /**********************************************************
@@ -250,12 +236,14 @@ void SPIWrite(u8 spi, u16 WrPara)
 }
 
 
+
+
 /**********************************************************
 **Name:     SPIBurstRead
 **Function: SPI burst read mode
 **Input:    adr-----address for read
 **          ptr-----data buffer point for read
-**          length--how many bytes for read
+**          length--how many u8s for read
 **Output:   None
 **********************************************************/
 void SPIBurstRead(u8 spi, u8 adr, u8 *ptr, u8 length)
@@ -289,10 +277,10 @@ void SPIBurstRead(u8 spi, u8 adr, u8 *ptr, u8 length)
 **Function: SPI burst write mode
 **Input:    adr-----address for write
 **          ptr-----data buffer point for write
-**          length--how many bytes for write
+**          length--how many u8s for write
 **Output:   none
 **********************************************************/
-void BurstWrite(u8 spi, u8 adr, u8 const *ptr, u8 length)
+void BurstWrite(u8 spi, u8 adr, u8 *ptr, u8 length)
 { 
   u8 i;
 
@@ -338,8 +326,6 @@ u8 SPI_RW_Reg(u8 spi, u8 reg, u8 value)
 	return status;		
 }
 
-//不知道次函数（SPICmd8bit(spi,0);）为什么不行，上面的函数可以
-# if 0
 u8 SPI_Read(u8 spi,u8 reg)
 {
 	u8 reg_val;
@@ -356,15 +342,15 @@ u8 SPI_Read(u8 spi,u8 reg)
   	return(reg_val);        // return register value
 }
 
-uchar SPI_Read_Buf(u8 spi, u8 reg, u8 *pBuf, u8 bytes)
+uchar SPI_Read_Buf(u8 spi, u8 reg, u8 *pBuf, u8 u8s)
 {
-	uchar status,i;
+	uchar status,u8_ctr;
 
  // 	CSN = 0;                    		// Set CSN low, init SPI tranaction
   	status = SPICmd8bit(spi, reg);       		// Select register to write to and read status u8
 
-  	for(i=0; i<bytes; i++)
-    	pBuf[i] = SPICmd8bit(spi, 0);    // Perform SPI_RW to read u8 from nRF24L01
+  	for(u8_ctr=0;u8_ctr<u8s;u8_ctr++)
+    	pBuf[u8_ctr] = SPICmd8bit(spi, 0);    // Perform SPI_RW to read u8 from nRF24L01
 
   	if(spi==0) 
 	  	nCS = 1;
@@ -375,15 +361,13 @@ uchar SPI_Read_Buf(u8 spi, u8 reg, u8 *pBuf, u8 bytes)
   	return(status);                    // return nRF24L01 status u8
 }
 
-#endif
-
-uchar SPI_Write_Buf(u8 spi, u8 reg, u8 const *pBuf, u8 bytes)
+uchar SPI_Write_Buf(u8 spi, u8 reg, u8 *pBuf, u8 u8s)
 {
-	uchar status,i;
+	uchar status,u8_ctr;
 
 //  	CSN = 0;                   // Set CSN low, init SPI tranaction
   	status = SPICmd8bit(spi, reg);    // Select register to write to and read status u8
-  	for(i=0; i<bytes; i++) // then write all u8 in buffer(*pBuf)
+  	for(u8_ctr=0; u8_ctr<u8s; u8_ctr++) // then write all u8 in buffer(*pBuf)
     	SPICmd8bit(spi, *pBuf++);
   	if(spi==0) 
 	  	nCS = 1;
@@ -393,9 +377,6 @@ uchar SPI_Write_Buf(u8 spi, u8 reg, u8 const *pBuf, u8 bytes)
 	                 // Set CSN high again
   	return(status);          // return nRF24L01 status u8
 }
-
-
-
 
 
 

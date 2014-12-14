@@ -84,12 +84,21 @@ int tamain(void)
     Init_DS18B20();
     timer2_init();                      //5ms 中断
 	TIM3_NVIC_Configuration();  //BSP_Delay 初始化
-	//2.hG
-	init_nrf24l01_io();
-	ifnnrf_rx_mode();
     
     app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
     Disable_SysTick();
+
+		//2.hG
+	SpiMsterGpioInit(SPI_1);
+	init_nrf24l01_io();
+	ifnnrf_rx_mode();
+
+//	while(1)
+//	{
+//			if(NRF24L01_Check()==0)
+//				printf("nrf24l01 is ok\r\n");	
+//	}
+
 #if 0
 	SpiMsterGpioInit(SPI_2);
 
@@ -97,21 +106,27 @@ int tamain(void)
 	RFM69H_EntryRx();
 
 	while(1)
-	{	   
+	{	  
+//	   uint8_t uu;
+//
+//		SPIWrite(SPI_2, 0x0678);
+//		uu = SPIRead(SPI_2, 0x06);
+//		printf("%X\r\n", uu);
 		int len =0;
-		 if(RFM69H_RxPacket(pbuf))
+		 if(RFM69H_RxPacket(RxBuf))
 		 {	
 		 	len = RFM69H_Analysis();
 			Disable_SysTick();
 			if(len > 0)
 			{	
+				printf("receive data len = %d\r\n", len);
 				RFM69H_EntryTx();
 				if(RFM69H_TxWaitStable())
 				{
 					while(1)
 					{
 						RFM69H_SendData(&rfm69h_data);
-						printf("data len = %d\r\n", len);
+						printf("send data len = %d\r\n", len);
 					}
 				}
 			}
@@ -595,5 +610,27 @@ int tamain(void)
 	}
 
 
+}
+
+
+#ifdef __GNUC__
+  /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
+     set to 'Yes') calls __io_putchar() */
+  #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+  #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__ */
+
+PUTCHAR_PROTOTYPE
+{
+  /* Place your implementation of fputc here */
+  /* e.g. write a character to the USART */
+  USART_SendData(USART2, (uint8_t) ch);
+
+  /* Loop until the end of transmission */
+  while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET)
+  {}
+
+  return ch;
 }
 

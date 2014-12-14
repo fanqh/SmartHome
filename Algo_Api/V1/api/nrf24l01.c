@@ -19,6 +19,7 @@
 #define  IRQ_IN	    		PBin(2)
 
 #define  CSN      			PBout(1)
+#define   SCK      PBout(13)   //  X    0     0    RFMxx sck
 
 
 
@@ -44,8 +45,8 @@ void init_nrf24l01_io(void)
     GPIO_Init(CE_PORT, &GPIO_InitStructure);
 
 	CE=0;			// chip enable
-//	CSN=1;			// Spi disable	
-//	SCK=0;			// Spi clock line init high
+	CSN=1;			// Spi disable	
+	SCK=0;			// Spi clock line init high
 }
 
 
@@ -93,7 +94,7 @@ void ifnnrf_rx_mode(void)
 {
     power_off();
 	CE=0;
-  	BurstWrite(SPI_1, NRF24L01_WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH); // Use the same address on the RX device as the TX device
+  	SPI_Write_Buf(SPI_1, NRF24L01_WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH); // Use the same address on the RX device as the TX device
 
   	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG + EN_AA, 0x01);      // Enable Auto.Ack:Pipe0
   	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG + EN_RXADDR, 0x01);  // Enable Pipe0
@@ -127,9 +128,9 @@ void ifnnrf_tx_mode(uint8 *txbuf)
     power_off();
 	CE=0;
 	
-  	BurstWrite(SPI_1, NRF24L01_WRITE_REG + TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH);    // Writes TX_Address to nRF24L01
-  	BurstWrite(SPI_1, NRF24L01_WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH); // RX_Addr0 same as TX_Adr for Auto.Ack
-  	BurstWrite(SPI_1, WR_TX_PLOAD, txbuf, TX_PLOAD_WIDTH); // Writes data to TX payload
+  	SPI_Write_Buf(SPI_1, NRF24L01_WRITE_REG + TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH);    // Writes TX_Address to nRF24L01
+  	SPI_Write_Buf(SPI_1, NRF24L01_WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH); // RX_Addr0 same as TX_Adr for Auto.Ack
+  	SPI_Write_Buf(SPI_1, WR_TX_PLOAD, txbuf, TX_PLOAD_WIDTH); // Writes data to TX payload
 
   	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG + EN_AA, 0x01);      // Enable Auto.Ack:Pipe0
   	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG + EN_RXADDR, 0x01);  // Enable Pipe0
@@ -163,7 +164,7 @@ void ifnnrf_CLERN_ALL(void)
 
 
 
-extern unsigned char US[800];
+//extern unsigned char US[800];
 /*****************************************************
 					2.4G-功能
 * 文       件: 24G_FUN.c
@@ -261,13 +262,15 @@ uint8 NRF24L01_Check(void)
 	uint8 buf[5]={0xa5,0xa5,0xa5,0xa5,0xa5};
 	uint8 buf1[5]={0xff,0xff,0xff,0xff,0xff};
 	uint8 i;  	 
-	BurstWrite(SPI_1, NRF24L01_WRITE_REG+TX_ADDR,buf,5);//??5??????.	
-	SPIBurstRead(SPI_1, TX_ADDR,buf1,5);              //???????  	
+	SPI_Write_Buf(SPI_1, NRF24L01_WRITE_REG+TX_ADDR,buf,5);	//??5??????.	
+	SPIBurstRead(SPI_1, TX_ADDR,buf1,5);              		//???????  	
 	for(i=0;i<5;i++)
 		if(buf1[i]!=0xa5)
-			break;					   
+			break;	
+			
+//	printf("%X,%X,%X,%X,%X\r\n",buf1[0],buf1[1],buf1[2],buf1[3],buf1[4]);				   
 	if(i!=5)
-		return 1;                               //NRF24L01???	
+		return 1;                               	//NRF24L01???	
 	return 0;		                                //NRF24L01??
 }
 
