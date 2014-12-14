@@ -110,15 +110,32 @@ void RF_decode()
 					{					
 						da1527[rep][ii]&=~(1<<((7-k)));
 					}	
-					else if(j>(short_k*1.96)&&j<(short_k*5))da1527[rep][ii]|=(1<<(7-k)); 	        			        
-	             else {return;}          //乱码退出	
-					j=0;
-					while(!Rx_315 && j<150){BSP_uDelay(8);j++;}      //跳过低电平 
+					else if(j>(short_k*1.96)&&j<(short_k*5))
+						da1527[rep][ii]|=(1<<(7-k)); 	        			        
+	               else 
+				 	 {return;}          //乱码退出	
+					 j=0;
+					while(!Rx_315 && j<150)
+					{
+						BSP_uDelay(8);
+						j++;
+					}      //跳过低电平 
 				}
-			}
-			j=0;while(Rx_315 && (j<200)){BSP_uDelay(8);j++;}            //跳个最后一个高脉冲
-			head_k=0;while(!Rx_315) {BSP_uDelay(8);head_k++;} //检测下一个前导信号的寬度  
-			if((head_k<(short_k*26)) || (head_k>(short_k*38)))  {return;}
+		     }
+			j=0;
+			while(Rx_315 && (j<200))
+			{
+				BSP_uDelay(8);
+				j++;
+			}            //跳个最后一个高脉冲
+			head_k=0;
+			while(!Rx_315) 
+			{
+				BSP_uDelay(8);
+				head_k++;
+			} //检测下一个前导信号的寬度  
+			if((head_k<(short_k*26)) || (head_k>(short_k*38)))  
+				{return;}
 		}
 		if((da1527[0][0]==da1527[1][0]) && (da1527[0][1]==da1527[1][1]) && (da1527[0][2]==da1527[1][2]))	//两次接收到的数据相同
 		{
