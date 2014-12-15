@@ -2,7 +2,8 @@
 #include "DK_RFM.h"
 #include "spi.h"
 #include "time.h"
-#include "nrf24l01.h"
+#include "nrf24l01.h"		  
+#include "string.h"
 
 uint32  F = 0;	  //是否打开38KH方波调制
 uint32  Wifi_Command_Mode = 0; //=1 wifi工作在命令模式 =0 工作在数据传输模式
@@ -93,11 +94,22 @@ int tamain(void)
 	init_nrf24l01_io();
 	ifnnrf_rx_mode();
 
-//	while(1)
-//	{
+	while(1)
+	{
 //			if(NRF24L01_Check()==0)
 //				printf("nrf24l01 is ok\r\n");	
-//	}
+#if 1
+	if(nRF24L01_RxPacket(rx_buf))
+	{	
+		if(rx_buf[3]=='m')
+			debug_led_on();
+	//	U1_sendS(rx_buf,32);
+	}
+#else
+	Ifnnrf_Send("i am sorry");
+	 BSP_mDelay(500);   
+#endif
+	}
 
 #if 0
 	SpiMsterGpioInit(SPI_2);
