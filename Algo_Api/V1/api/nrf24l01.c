@@ -252,7 +252,6 @@ uint8 nRF24L01_RxPacket(uint8 *rx_buf)
 			stata |= 0x40;
 			revale =1;//we have receive data    
 	}
-
 	return revale;
 	
 }
@@ -268,7 +267,7 @@ uint8 NRF24L01_Check(void)
 		if(buf1[i]!=0xa5)
 			break;	
 			
-//	printf("%X,%X,%X,%X,%X\r\n",buf1[0],buf1[1],buf1[2],buf1[3],buf1[4]);				   
+	//printf("%X,%X,%X,%X,%X\r\n",buf1[0],buf1[1],buf1[2],buf1[3],buf1[4]);				   
 	if(i!=5)
 		return 1;                               	//NRF24L01???	
 	return 0;		                                //NRF24L01??

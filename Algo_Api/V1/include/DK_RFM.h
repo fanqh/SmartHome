@@ -36,7 +36,11 @@ typedef struct
 typedef struct
 {
 	uint16 len;
-	data_t  buff[RFM69H_DATA_LEN];
+	struct 
+	{
+		uint32 HoldTime  : 15;
+		uint32 pulse     : 1;
+	}  buff[RFM69H_DATA_LEN];
 }RFM69H_DATA_Type;
 
 //typedef	struct

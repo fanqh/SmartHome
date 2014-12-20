@@ -94,24 +94,29 @@ int tamain(void)
 	init_nrf24l01_io();
 	ifnnrf_rx_mode();
 
-	while(1)
-	{
-//			if(NRF24L01_Check()==0)
-//				printf("nrf24l01 is ok\r\n");	
-#if 1
-	if(nRF24L01_RxPacket(rx_buf))
-	{	
-		if(rx_buf[3]=='m')
-			debug_led_on();
-	//	U1_sendS(rx_buf,32);
-	}
-#else
-	Ifnnrf_Send("i am sorry");
-	 BSP_mDelay(500);   
-#endif
-	}
+	while(NRF24L01_Check());
+	printf("nrf24l01 is ok\r\n");
 
-#if 0
+//	while(1)
+//	{
+////			if(NRF24L01_Check()==0)
+////				printf("nrf24l01 is ok\r\n");	
+//#if 1
+//	if(nRF24L01_RxPacket(rx_buf))
+//	{	
+//		if(rx_buf[3]=='m')
+//		{
+//			debug_led_on();
+//		U1_sendS(rx_buf,32);
+//		}
+//	}
+//#else
+//	Ifnnrf_Send("i am sorry");
+//	 BSP_mDelay(500);   
+//#endif
+//	}
+
+#if 1
 	SpiMsterGpioInit(SPI_2);
 
  	RFM69H_Config();
@@ -121,29 +126,31 @@ int tamain(void)
 	{	  
 //	   uint8_t uu;
 //
-//		SPIWrite(SPI_2, 0x0678);
+//		SPIWrite(SPI_2, 0x0632);
 //		uu = SPIRead(SPI_2, 0x06);
 //		printf("%X\r\n", uu);
 		int len =0;
 		 if(RFM69H_RxPacket(RxBuf))
 		 {	
+
+		 	//printf("enter rx\r\n");
 		 	len = RFM69H_Analysis();
 			Disable_SysTick();
 			if(len > 0)
 			{	
 				printf("receive data len = %d\r\n", len);
-				RFM69H_EntryTx();
-				if(RFM69H_TxWaitStable())
-				{
-					while(1)
-					{
-						RFM69H_SendData(&rfm69h_data);
-						printf("send data len = %d\r\n", len);
-					}
-				}
+//				RFM69H_EntryTx();
+//				if(RFM69H_TxWaitStable())
+//				{
+//					while(1)
+//					{
+//						RFM69H_SendData(&rfm69h_data);
+//						printf("send data len = %d\r\n", len);
+//					}
+//				}
 			}
 		 }
-		 	
+//		 	
 	}
 
 #endif

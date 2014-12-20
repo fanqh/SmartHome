@@ -425,8 +425,8 @@ u8 RFM69H_TxPacket(u8* pSend)
 
 
 
-#define  STUDY_TIMEOUT   500000      //500ms
-#define  DATA_TIMEOUT    5000        //5ms
+#define  STUDY_TIMEOUT   5000      //5ms
+#define  DATA_TIMEOUT    2000        //5ms
 #define  VALID_TIME      200           //200us
 
 
@@ -449,7 +449,7 @@ int RFM69H_Analysis(void)
 			
 			while(RFM69H_DATA_IN)
 			{
-				if(DataTimeCount * 13 > STUDY_TIMEOUT)  //如果5S内一直保持高电平，即没有数据接收
+				if(DataTimeCount * 13 > STUDY_TIMEOUT)  //如果5mS内一直保持高电平，即没有数据接收
 				{
 //					printf("IDLE: timeout\r\n");
 					return  -1;
