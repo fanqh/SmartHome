@@ -46,6 +46,14 @@
 //  Rx Current:          about 16mA  (typ.)                 
 **********************************************************/
 
+#define  STUDY_TIMEOUT   5000      //500ms
+#define  DATA_TIMEOUT    5000        //5ms
+#define  VALID_TIME      200           //200us
+
+#define TIME_UNIT		10
+
+
+int RFM69H_Analysis(RFM69H_DATA_Type* pReceive);
 /**********************************************************
 **Parameter table define	  {0x076c, 0x084f, 0x09f8}, //433MHz
 **********************************************************/
@@ -163,7 +171,7 @@ const u16 RFM69HTxTbl[5] =
 #define  RFM69H_DATA_OUT    PBout(11)
 
 
-RFM69H_DATA_Type rfm69h_data;
+//RFM69H_DATA_Type rfm69h_data;
 RFM69H_STATE rfm69h_status = RFM69H_IDLE;
 volatile uint32	DataTimeCount = 0;
 
@@ -294,7 +302,7 @@ u8 RFM69H_RxWaitStable(void)
   {
   	if((temp&0xC0)==0xC0 && temp!=0xff)
 	{
-		rfm69h_status = RFM69H_RECEIVE;
+		
 		return 1;
 	}
 	else
@@ -369,26 +377,16 @@ u8 RFM69H_ReadRSSI(void)
 **Output:   "!0"-----Receive one packet
 **          "0"------Nothing for receive
 **********************************************************/
-u8 RFM69H_RxPacket(uint8 *pbuff)
+int RFM69H_RxPacket(RFM69H_DATA_Type *p)
 {
-  uint16_t timeout =0; 
+  int len =0; 
  
   if(RFM69H_RxWaitStable())
   {
 
-//  	delay_ms(100);
-//  	while(!nIRQ0)
-//	{
-//		timeout ++;
-//		if(timeout >= 1000)
-//			return 0;
-//		delay_ms(10);
-//	//	Boot_UsartSend("67",2);
-//	}
-////	Boot_UsartSend("12",2);
-//	SPIBurstRead(SPI_2, 0x00, pbuff, RxBuf_Len);  
-//    RFM69H_ClearFIFO();  
-	return 1;
+  	len = RFM69H_Analysis(p);
+	rfm69h_status = RFM69H_IDLE;
+	return len;
   }
   else										  
   	return 0;
@@ -400,7 +398,7 @@ u8 RFM69H_RxPacket(uint8 *pbuff)
 **Input:    none
 **Output:   TxFlag=1, Send success
 **********************************************************/
-u8 RFM69H_TxPacket(u8* pSend)
+u8 RFM69H_TxPacket(RFM69H_DATA_Type* pSend)
 {
   uint16_t timeout = 0;
 
@@ -415,28 +413,22 @@ u8 RFM69H_TxPacket(u8* pSend)
 			RFM69H_Config();
 			return 0;
 		}
-//		delay_ms(10);
 	 }
+	 RFM69H_Send(pSend);
 	 return 1;
   }
   else
   	return 0;
 }
 
-
-
-#define  STUDY_TIMEOUT   5000      //5ms
-#define  DATA_TIMEOUT    2000        //5ms
-#define  VALID_TIME      200           //200us
-
-
-int RFM69H_Analysis(void)
+int RFM69H_Analysis(RFM69H_DATA_Type* pReceive)
 {
 	uint16 i = 0;
 	DataState_t  DataState;  
 
+  
    DataState = IDLE;
-
+   rfm69h_status = RFM69H_RECEIVE;
    RF69H_DataCongfigIN();
    Enable_SysTick();		//启动定时器0
    while(i < RFM69H_DATA_LEN )
@@ -448,62 +440,57 @@ int RFM69H_Analysis(void)
 		    __enable_irq(); 
 			
 			while(RFM69H_DATA_IN)
-			{
-				if(DataTimeCount * 13 > STUDY_TIMEOUT)  //如果5mS内一直保持高电平，即没有数据接收
+			{ 
+				if(DataTimeCount * TIME_UNIT > 50000)  //如果5S内一直保持高电平，即没有数据接收
 				{
-//					printf("IDLE: timeout\r\n");
 					return  -1;
 				}
 			}
-
-			DataState = ACTIVING;
-//			printf("enter activing\r\n");
+			if(DataTimeCount * TIME_UNIT > 1500)
+				DataState = ACTIVING;
+			else
+				DataState = IDLE;
 
 		}
-		if(DataState == ACTIVING)
+
+		else if(DataState == ACTIVING)
 		{
 			__disable_irq();
 			DataTimeCount = 0;
 		    __enable_irq(); 
 			while(RFM69H_DATA_IN==0)
 			{
-				if(DataTimeCount *13 > STUDY_TIMEOUT)  //如果100MS一直内低电平跳出
+				if(DataTimeCount *TIME_UNIT > 100000)  //如果100MS一直内低电平跳出
 				{
-//					printf("activing: timeout\r\n");
 					return -1;
 				}	
 			}
-			if(DataTimeCount * 13 > VALID_TIME)	  //如果低电平保持时间大于400us，说明不是干扰信号
+			if(DataTimeCount * TIME_UNIT > STUDY_TIMEOUT)	  //如果低电平保持时间大于400us，说明不是干扰信号
 			{
 				
-				rfm69h_data.buff[i].HoldTime = (DataTimeCount * 13);
-				rfm69h_data.buff[i++].pulse = 0;
-				rfm69h_data.len = i;
-//				printf("activing :enter Pulse_hig time = %d\r\n", DataTimeCount);
-
+//				pReceive->buff[i].HoldTime = (DataTimeCount * TIME_UNIT);
+//				pReceive->buff[i++].pulse = 0;
+//				pReceive->len = i;
 				DataState = PULSE_HIG;
 			}	
 		}
-		if(DataState == PULSE_HIG)
+		else if(DataState == PULSE_HIG)
 		{
 			__disable_irq();
 			DataTimeCount = 0;
 			__enable_irq();	
 			while(RFM69H_DATA_IN)
 			{
-				if(DataTimeCount * 13 > DATA_TIMEOUT)  //如果5S内一直保持高电平，即没有数据接收
+				if(DataTimeCount * TIME_UNIT > DATA_TIMEOUT)  //如果5S内一直保持高电平，即没有数据接收
 				{
-//					printf("pusle_hig: timeout i = %d\r\n", i);
 					return i;   //学习结束，返回数据长度
 				}
 			}
-			if(DataTimeCount *13 > VALID_TIME) //如果高电平时间大于4*13视为有效
+			if(DataTimeCount *TIME_UNIT > VALID_TIME) //如果高电平时间大于4*TIME_UNIT视为有效
 			{
-				rfm69h_data.buff[i].HoldTime = (DataTimeCount * 13);
-				rfm69h_data.buff[i++].pulse = 1;
-				rfm69h_data.len = i;
-				
-//				printf("1: %d\r\n", DataTimeCount);	
+				pReceive->buff[i].HoldTime = (DataTimeCount * TIME_UNIT);
+				pReceive->buff[i++].pulse = 1;
+				pReceive->len = i;
 
 
 				DataState = PULSE_LOW;
@@ -517,24 +504,22 @@ int RFM69H_Analysis(void)
 			__enable_irq();	
 			while(!RFM69H_DATA_IN)
 			{
-				if(DataTimeCount * 13 > DATA_TIMEOUT)  //如果5S内一直保持高电平，即没有数据接收
+				if(DataTimeCount * TIME_UNIT > DATA_TIMEOUT)  //如果5S内一直保持高电平，即没有数据接收
 				{
-//					printf("pusle_low: timeout i = %d\r\n", i);
 					return i; 	   //学习结束，返回数据长度
 				}
 			}
-			if(DataTimeCount *13 > VALID_TIME) //如果高电平时间大于4*13视为有效
+			if(DataTimeCount *TIME_UNIT > VALID_TIME) //如果低电平时间大于4*TIME_UNIT视为有效
 			{
-				rfm69h_data.buff[i].HoldTime =(DataTimeCount * 13);
-				rfm69h_data.buff[i++].pulse = 0;
-				rfm69h_data.len = i;	
+				pReceive->buff[i].HoldTime =(DataTimeCount * TIME_UNIT);
+				pReceive->buff[i++].pulse = 0;
+				pReceive->len = i;	
 
-//				printf("0: %d\r\n", DataTimeCount);
 				__disable_irq();
 				DataTimeCount = 0;
 			    __enable_irq();	
 				DataState = PULSE_HIG;
-			}		
+			}	
 		}						
 		else
 			return -1; 
@@ -544,14 +529,13 @@ int RFM69H_Analysis(void)
 	return i;		
 }
 
-void RFM69H_SendData(RFM69H_DATA_Type *p)
+int RFM69H_SendData(RFM69H_DATA_Type *p)
 {
 	uint16 i = 0;
 
 	Enable_SysTick();		//启动定时器0
 	RF69H_DataCongfigOUT();
 
-	#if 1
 	rfm69h_status = RFM69H_SENDING;
 	while( i < p->len )
 	{
@@ -562,7 +546,7 @@ void RFM69H_SendData(RFM69H_DATA_Type *p)
 			    __enable_irq();	
 				
 				RFM69H_DATA_OUT = 1;
-				while(DataTimeCount * 13 < p->buff[i].HoldTime );
+				while(DataTimeCount * TIME_UNIT < p->buff[i].HoldTime );
 				i++;	
 		}
 		else
@@ -572,13 +556,36 @@ void RFM69H_SendData(RFM69H_DATA_Type *p)
 			    __enable_irq();	
 				
 				RFM69H_DATA_OUT = 0;
-				while(DataTimeCount * 13 < p->buff[i].HoldTime );
+				while(DataTimeCount * TIME_UNIT < p->buff[i].HoldTime );
 				i++;	
 		}			
 	}
 	Disable_SysTick();
+	RFM69H_DATA_OUT = 0;
+	BSP_uDelay (20);
+	rfm69h_status = RFM69H_IDLE;
 
-	#endif
+	return 1;
+}
+
+int RFM69H_Send(RFM69H_DATA_Type *pData)
+{
+		RFM69H_DATA_OUT = 1;
+		BSP_mDelay (10);
+		RFM69H_SendData(pData);
+
+		RFM69H_DATA_OUT = 0;
+		BSP_mDelay (10);
+		RFM69H_SendData(pData);
+
+		RFM69H_DATA_OUT = 0;
+		BSP_mDelay (10);
+		RFM69H_SendData(pData);
+
+		RFM69H_DATA_OUT = 1;
+		BSP_mDelay (50);
+
+		return 1;
 }
 
 

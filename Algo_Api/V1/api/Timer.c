@@ -11,7 +11,7 @@ volatile uint32 Turn=1;             //反转标志
 volatile uint8  read_led_status=0;
 
 uint16_t ted = 0;
-extern unsigned char RxBuf[RxBuf_Len];
+//extern unsigned char RxBuf[RxBuf_Len];
 
 
 //5ms
@@ -21,6 +21,8 @@ void TIMER2_Handler(void)
 	unsigned char Rec;
   
     TIM2->SR = ~TIM_FLAG_Update;  //清除标志位
+
+	printf("1\r\n");
     #if 1
     if(Wifi_AP_OPEN_MODE)
 	{
@@ -66,22 +68,24 @@ void TIMER2_Handler(void)
 				Rec = 0;
 			}
 
-			Rec = RFM69H_RxPacket(RxBuf);
+			Rec = RFM69H_RxPacket(&RxBuf);
 			if(Rec == 1)  //接收数据
 		  	{
 				Rec = 0;
 				//WAKEUP_LED = ~WAKEUP_LED;
-				if(RxBuf[0] != RxBuf[1])
-				{
-					U1_send(0x7E);
-					U1_send(0x7F);
-					for(i=0;i<RxBuf_Len;i++)	
-					{
-						U1_send(RxBuf[i]);//Uart_sendB(RxBuf[i]);
-					}
-					U1_sendS("<<",2);
-		 			RFM69H_EntryRx();
-				}
+
+				/***********************需要修改***********************************************/
+//				if(RxBuf[0] != RxBuf[1])
+//				{
+//					U1_send(0x7E);
+//					U1_send(0x7F);
+//					for(i=0;i<RxBuf_Len;i++)	
+//					{
+//						U1_send(RxBuf[i]);//Uart_sendB(RxBuf[i]);
+//					}
+//					U1_sendS("<<",2);
+//		 			RFM69H_EntryRx();
+//				}
 		  	}
 			else
 			{

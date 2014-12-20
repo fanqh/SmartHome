@@ -1,9 +1,17 @@
 #include"Include.h"
 #include "DK_RFM.h"
 #include "spi.h"
-#include "time.h"
+#include "timer.h"
 #include "nrf24l01.h"		  
 #include "string.h"
+
+/**********************************************************************************/
+/**********************************************************************************/
+/*
+	rfm69h 解析和发送需要一个误差小于10us的定时器，，现在用的和systemtick有冲突，需要修改
+*/
+/**********************************************************************************/
+/**********************************************************************************/
 
 uint32  F = 0;	  //是否打开38KH方波调制
 uint32  Wifi_Command_Mode = 0; //=1 wifi工作在命令模式 =0 工作在数据传输模式
@@ -29,10 +37,8 @@ volatile uint8 RI=0;
 
 
 //RF_RFM69H
-#define TxBuf_Len 10 
-#define RxBuf_Len 10 
-unsigned char TxBuf[TxBuf_Len] = {0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x6d};  
-unsigned char RxBuf[RxBuf_Len];
+RFM69H_DATA_Type TxBuf;// = {0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x6d};  
+RFM69H_DATA_Type RxBuf;
 
 //315M
 uint8 _315MHz_Flag;
@@ -124,33 +130,29 @@ int tamain(void)
 
 	while(1)
 	{	  
-//	   uint8_t uu;
-//
-//		SPIWrite(SPI_2, 0x0632);
-//		uu = SPIRead(SPI_2, 0x06);
-//		printf("%X\r\n", uu);
-		int len =0;
-		 if(RFM69H_RxPacket(RxBuf))
-		 {	
+	   uint8_t uu;
+	   	int len1;
 
-		 	//printf("enter rx\r\n");
-		 	len = RFM69H_Analysis();
-			Disable_SysTick();
-			if(len > 0)
+		SPIWrite(SPI_2, 0x0632);
+		uu = SPIRead(SPI_2, 0x06);
+		printf("%X\r\n", uu);
+		len1 = RFM69H_RxPacket(&RxBuf);  ///需要10us定时器
+		Disable_SysTick();
+			if(len1 > 0)
 			{	
-				printf("receive data len = %d\r\n", len);
-//				RFM69H_EntryTx();
-//				if(RFM69H_TxWaitStable())
-//				{
-//					while(1)
-//					{
-//						RFM69H_SendData(&rfm69h_data);
-//						printf("send data len = %d\r\n", len);
-//					}
-//				}
+				printf("receive data len = %d\r\n", len1);
+#if 1
+				RFM69H_EntryTx();
+				while(1)
+				{
+					RFM69H_TxPacket(&RxBuf);
+					BSP_mDelay (5000);
+
+					printf("send data len = %d\r\n", len1);
+				}
+#endif
 			}
-		 }
-//		 	
+////		 	
 	}
 
 #endif
@@ -482,7 +484,7 @@ int tamain(void)
 					
 					 		RFM69H_Config();
 							RFM69H_EntryTx();		// 每间隔一段时间，发射一包数据，并接收 Acknowledge 信号
-							RFM69H_TxPacket(TxBuf);
+							RFM69H_TxPacket(&TxBuf);
 							//CLOSE_RX_OK;	//熄灭指定的LED
 							RFM69H_EntryRx();
 							delay_ms(200);
@@ -563,7 +565,7 @@ int tamain(void)
 					case 'B':
 							RFM69H_Config();
 							RFM69H_EntryTx();		// 每间隔一段时间，发射一包数据，并接收 Acknowledge 信号
-							RFM69H_TxPacket(TxBuf);
+							RFM69H_TxPacket(&TxBuf);
 							//CLOSE_RX_OK;	//熄灭指定的LED
 							RFM69H_EntryRx();
 							delay_ms(200);
