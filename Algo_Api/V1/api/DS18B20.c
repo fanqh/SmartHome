@@ -70,7 +70,7 @@ void ds18b20_io_input(void)
 }
 
 
-void delay_us(int times)
+void delayus(int times)
 {
     int i;
     while(times--)
@@ -100,7 +100,7 @@ void delay_us(int times)
 void delay_x_10us(int times)		
 {
      while(times--)
-      delay_us(11);  
+      delayus(11);  
 
 }
 #if 0

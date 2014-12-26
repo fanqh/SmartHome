@@ -96,12 +96,12 @@ int tamain(void)
     Disable_SysTick();
 
 		//2.hG
-	SpiMsterGpioInit(SPI_1);
-	init_nrf24l01_io();
-	ifnnrf_rx_mode();
-
-	while(NRF24L01_Check());
-	printf("nrf24l01 is ok\r\n");
+//	SpiMsterGpioInit(SPI_1);
+//	init_nrf24l01_io();
+//	ifnnrf_rx_mode();
+//
+//	while(NRF24L01_Check());
+//	printf("nrf24l01 is ok\r\n");
 
 //	while(1)
 //	{
@@ -124,35 +124,34 @@ int tamain(void)
 
 #if 1
 	SpiMsterGpioInit(SPI_2);
-
  	RFM69H_Config();
 	RFM69H_EntryRx();
-
 	while(1)
 	{	  
 	   uint8_t uu;
 	   	int len1;
 
-		SPIWrite(SPI_2, 0x0632);
-		uu = SPIRead(SPI_2, 0x06);
-		printf("%X\r\n", uu);
-		len1 = RFM69H_RxPacket(&RxBuf);  ///需要10us定时器
-		Disable_SysTick();
-			if(len1 > 0)
-			{	
-				printf("receive data len = %d\r\n", len1);
-#if 1
-				RFM69H_EntryTx();
-				while(1)
-				{
-					RFM69H_TxPacket(&RxBuf);
-					BSP_mDelay (5000);
 
-					printf("send data len = %d\r\n", len1);
-				}
-#endif
-			}
-////		 	
+printf("love\r\n");
+//		SPIWrite(SPI_2, 0x0632);
+//		uu = SPIRead(SPI_2, 0x06);
+//		printf("%X\r\n", uu);
+//		len1 = RFM69H_RxPacket(&RxBuf);  ///需要10us定时器
+//		Disable_SysTick();
+//		if(len1 > 0)
+//		{	
+//			printf("receive data len = %d\r\n", len1);
+//#if 0
+//			RFM69H_EntryTx();
+//			while(1)
+//			{
+//				RFM69H_TxPacket(&RxBuf);
+//				BSP_mDelay (5000);
+//
+//				printf("send data len = %d\r\n", len1);
+//			}
+//#endif
+//		}		 	
 	}
 
 #endif

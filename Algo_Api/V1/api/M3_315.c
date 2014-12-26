@@ -32,7 +32,7 @@ void    m3_315_io_config(void)
     GPIO_Init(M3_315_GPIO, &GPIO_InitStructure);
 
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
     GPIO_Init(M3_315_DATA_PORT, &GPIO_InitStructure);
 
 
@@ -80,7 +80,7 @@ void RF_decode()
 	//uchar s;
 	//数据接收
 	short_k=0;
-	while(Rx_315 && j<250)
+	while(Rx_315 && j<250)	   //检测同步脉冲
 	{
 		BSP_uDelay(8);	
 		short_k++;
@@ -108,10 +108,10 @@ void RF_decode()
 					}
 					if(j>(short_k-short_k/2-short_k/3)&&j<(short_k*1.96))
 					{					
-						da1527[rep][ii]&=~(1<<((7-k)));
+						da1527[rep][ii]&=~(1<<((7-k)));	 //解码0
 					}	
 					else if(j>(short_k*1.96)&&j<(short_k*5))
-						da1527[rep][ii]|=(1<<(7-k)); 	        			        
+						da1527[rep][ii]|=(1<<(7-k)); 	 //解码1       			        
 	               else 
 				 	 {return;}          //乱码退出	
 					 j=0;
