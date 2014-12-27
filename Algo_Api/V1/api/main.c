@@ -13,7 +13,7 @@
 /**********************************************************************************/
 /**********************************************************************************/
 
-uint32  F = 0;	  //是否打开38KH方波调制
+uint32  Flag = 0;	  //是否打开38KH方波调制
 uint32  Wifi_Command_Mode = 0; //=1 wifi工作在命令模式 =0 工作在数据传输模式
 uint32  Check_wifi = 1;		//检测wifi工作模式
 uint32  Get_Wifi_MAC = 0; //检测wifi模块MAC地址标志，只在STA模式下检测
@@ -84,7 +84,7 @@ int tamain(void)
 
     m3_315_io_config();
     infrared_io_init();  
-    m3_315_clr();                       //关闭315
+ //   m3_315_clr();                       //关闭315
 
 
   //Command_Process();
@@ -95,34 +95,47 @@ int tamain(void)
     app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
     Disable_SysTick();
 
+	printf("uart is working\r\n"); 
+
+#if 0
+	while(1)
+	{  
+//		BSP_mDelay(1000);
+//		printf("systme is work\r\n");		
+		RF_decode();
+	}
+#endif
+
+#if 0
 		//2.hG
-//	SpiMsterGpioInit(SPI_1);
-//	init_nrf24l01_io();
-//	ifnnrf_rx_mode();
-//
-//	while(NRF24L01_Check());
-//	printf("nrf24l01 is ok\r\n");
+	SpiMsterGpioInit(SPI_1);
+	init_nrf24l01_io();
+	ifnnrf_rx_mode();
 
-//	while(1)
-//	{
-////			if(NRF24L01_Check()==0)
-////				printf("nrf24l01 is ok\r\n");	
-//#if 1
-//	if(nRF24L01_RxPacket(rx_buf))
-//	{	
-//		if(rx_buf[3]=='m')
-//		{
-//			debug_led_on();
-//		U1_sendS(rx_buf,32);
-//		}
-//	}
-//#else
-//	Ifnnrf_Send("i am sorry");
-//	 BSP_mDelay(500);   
-//#endif
-//	}
+	while(NRF24L01_Check());
+	printf("nrf24l01 is ok\r\n");
 
-#if 1
+	while(1)
+	{
+
+	#if 1
+		if(nRF24L01_RxPacket(rx_buf))
+		{	
+				
+				debug_led_on();
+				U1_sendS(rx_buf,10);
+				memset(rx_buf, 0xff, 32);
+	
+		}
+		BSP_mDelay(100);
+	#else
+		Ifnnrf_Send("i am sorry");
+		BSP_mDelay(500);   
+	#endif
+	}
+#endif
+
+#if 0
 	SpiMsterGpioInit(SPI_2);
  	RFM69H_Config();
 	RFM69H_EntryRx();
@@ -131,27 +144,25 @@ int tamain(void)
 	   uint8_t uu;
 	   	int len1;
 
-
-printf("love\r\n");
 //		SPIWrite(SPI_2, 0x0632);
 //		uu = SPIRead(SPI_2, 0x06);
 //		printf("%X\r\n", uu);
-//		len1 = RFM69H_RxPacket(&RxBuf);  ///需要10us定时器
-//		Disable_SysTick();
-//		if(len1 > 0)
-//		{	
-//			printf("receive data len = %d\r\n", len1);
-//#if 0
-//			RFM69H_EntryTx();
-//			while(1)
-//			{
-//				RFM69H_TxPacket(&RxBuf);
-//				BSP_mDelay (5000);
-//
-//				printf("send data len = %d\r\n", len1);
-//			}
-//#endif
-//		}		 	
+		len1 = RFM69H_RxPacket(&RxBuf);  ///需要10us定时器
+		Disable_SysTick();
+		if(len1 > 0)
+		{	
+			printf("receive data len = %d\r\n", len1);
+#if 0
+			RFM69H_EntryTx();
+			while(1)
+			{
+				RFM69H_TxPacket(&RxBuf);
+				BSP_mDelay (5000);
+
+				printf("send data len = %d\r\n", len1);
+			}
+#endif
+		}		 	
 	}
 
 #endif
@@ -294,7 +305,7 @@ printf("love\r\n");
 							{
                                 __disable_irq();
 								T = 0;
-								F=1;
+								Flag = 1;
                                 __enable_irq(); 
 								i++;
 								if(rec_buf[i] == 0)//&&rec_buf[i+1]==0)
@@ -312,7 +323,7 @@ printf("love\r\n");
 								while(T < M.ue);
                                  __disable_irq();
 								T = 0;
-								F=0;
+								Flag =0;
                                  __enable_irq();
             					SET_INFRARED;
 								i++;

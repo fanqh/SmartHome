@@ -14,6 +14,7 @@
 #include    "debug_led.h"
 #include    "Timer.h"
 
+ #define TIME_UNIT		10
 
 #endif
 

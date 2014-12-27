@@ -1,9 +1,10 @@
 #include"Timer.h"
 #include "DK_RFM.h"
 #include "nrf24l01.h"
+#include "M3_315.h"
 
 extern  volatile unsigned int T ;	//计数
-extern  uint32  F;     //是否打开38KH方波调制
+extern  uint32  Flag;     //是否打开38KH方波调制
 extern  uint32  Wifi_AP_OPEN_MODE;     //是否打开38KH方波调制
 extern  uint32  Wifi_MAC_Count;
 extern  uint32  Get_Wifi_MAC;
@@ -22,7 +23,6 @@ void TIMER2_Handler(void)
   
     TIM2->SR = ~TIM_FLAG_Update;  //清除标志位
 
-	printf("1\r\n");
     #if 1
     if(Wifi_AP_OPEN_MODE)
 	{
@@ -149,8 +149,9 @@ void timer2_disable(void)
 }
 void isr_13us(void)
 {
+
     T++;
-    if(F)                                                          
+    if(Flag)                                                          
 	{
         if (Turn)
         {
@@ -166,6 +167,11 @@ void isr_13us(void)
 	if(Get_RFM69H_Status()!=RFM69H_IDLE)
 	{
 		DataTimeCount ++;
+	}
+
+    if(Get_rf315_flag())
+	{
+		RF315_TimeCount++;
 	}
 
 }

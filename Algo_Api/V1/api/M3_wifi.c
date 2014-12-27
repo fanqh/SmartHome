@@ -54,7 +54,8 @@ void U1_in(void)//串口1接收数据
 		}
 		else
 			j++;
-        delayus(1000);
+//        delayus(1000);
+		BSP_mDelay (1);
 	
 	}	
 

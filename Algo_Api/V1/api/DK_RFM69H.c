@@ -50,9 +50,6 @@
 #define  DATA_TIMEOUT    5000        //5ms
 #define  VALID_TIME      200           //200us
 
-#define TIME_UNIT		10
-
-
 int RFM69H_Analysis(RFM69H_DATA_Type* pReceive);
 /**********************************************************
 **Parameter table define	  {0x076c, 0x084f, 0x09f8}, //433MHz
@@ -421,6 +418,7 @@ u8 RFM69H_TxPacket(RFM69H_DATA_Type* pSend)
   	return 0;
 }
 
+///rfm69h_status = RFM69H_IDLE;  接受完成后需要加上这个状态反转
 int RFM69H_Analysis(RFM69H_DATA_Type* pReceive)
 {
 	uint16 i = 0;

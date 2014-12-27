@@ -9,14 +9,20 @@
 
 #define Rx_315                  PAin(8)
 
+
+
+extern uint8 _315MHz_Flag;
+extern uint8  _315MHz_TimeCount2; 
+
 uint8 recv_flg  = 0;//bit right or fault
 uint8 lianji_flg = 0; //long or short(1,0)
-uchar short_k;     //窄脉冲宽度
 uchar da1527[2][3];  //解码过程中临时数组 
-uint8 rf_ok;
 uint8  decode_ok;
 
+#define  NARROW_TIMEOUT   1000    //UNIT : us
 
+uint8 rf315_receive_flag = 0;
+volatile uint16	RF315_TimeCount = 0;
 
 
 void    m3_315_io_config(void)
@@ -32,7 +38,7 @@ void    m3_315_io_config(void)
     GPIO_Init(M3_315_GPIO, &GPIO_InitStructure);
 
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
     GPIO_Init(M3_315_DATA_PORT, &GPIO_InitStructure);
 
 
@@ -50,96 +56,103 @@ void    m3_315_clr(void)
     GPIO_ResetBits(M3_315_GPIO, M3_315_CTRL);
 }
 
+uint8 Get_rf315_flag(void)
+{
+	return 	 rf315_receive_flag;
+}
 
-void delay(void)//10US  //原来注释8.5us 
-{ 	
-        uint8 i=3;
-        __NOP();
-        __NOP();
-        __NOP();
-        __NOP();
-        __NOP();
-        
-        __NOP();
-        __NOP();
-        while(i--)
-        {
-           __NOP();
-           __NOP();
-           __NOP();
-           __NOP();
-           __NOP();
-           
-        }
+uint16 Get_TimeCount_CleanAndStart(void)
+{
+	uint16 temp = 0;
+
+	__disable_irq();
+	temp = RF315_TimeCount;
+	RF315_TimeCount = 0;
+    __enable_irq(); 
+	
+	return 	temp;
 }
 
 void RF_decode() 
 {
-	uchar ii=0,j=0,k=0,rep=0;
-	uint8 head_k=0;           //短脉冲宽度
-	//uchar s;
-	//数据接收
-	short_k=0;
-	while(Rx_315 && j<250)	   //检测同步脉冲
-	{
-		BSP_uDelay(8);	
-		short_k++;
+	uint8 ii=0,k=0,rep=0;
 
+    uint16 timecount = 0;
+	uint16 narrow = 0;
+	uint16 wide = 0;
+	rf315_receive_flag = 1;
+
+   Enable_SysTick();		//启动定时器0
+	__disable_irq();
+	RF315_TimeCount = 0;
+    __enable_irq(); 
+	while(Rx_315)	   //检测同步脉冲
+	{
+		if(RF315_TimeCount > (100))
+			return ;
 	}
+	narrow = Get_TimeCount_CleanAndStart();
 	while(!Rx_315) 
 	{
-		BSP_uDelay(8);
-		head_k++;
+		if(RF315_TimeCount > (1500))
+			return ;
 		
 	}
-	if(((short_k*24)<head_k) && (head_k<(short_k*38)))
+	wide = Get_TimeCount_CleanAndStart();
+
+	if(((narrow>20)&&(narrow*24)<wide) && (wide<(narrow*38)))  //narrow >20 为过流
 	{
+
+//	   printf("narrow = %d， wide = %d\r\n", narrow, wide);
+#if 1
 		for(rep=0;rep<2;rep++)
 		{
 			for(ii=0;ii<3;ii++)//3字节
 			{
 				for(k=0;k<8;k++)
 				{
-					j=0;
-					while(Rx_315 && j<245) 
+					Get_TimeCount_CleanAndStart();
+					while(Rx_315) 
 					{
-						BSP_uDelay(8);
-						j++;
+						if(RF315_TimeCount > (1500))
+						return ;
 					}
-					if(j>(short_k-short_k/2-short_k/3)&&j<(short_k*1.96))
+
+					timecount = Get_TimeCount_CleanAndStart();
+					if(timecount>(narrow-narrow/2-narrow/3)&&timecount<(narrow*1.96))
 					{					
 						da1527[rep][ii]&=~(1<<((7-k)));	 //解码0
 					}	
-					else if(j>(short_k*1.96)&&j<(short_k*5))
+					else if((timecount>(narrow*1.96))&&(timecount<(narrow*5)))
 						da1527[rep][ii]|=(1<<(7-k)); 	 //解码1       			        
 	               else 
 				 	 {return;}          //乱码退出	
-					 j=0;
-					while(!Rx_315 && j<150)
+					while(!Rx_315 )
 					{
-						BSP_uDelay(8);
-						j++;
+						if(RF315_TimeCount > (1500))
+							return ;
 					}      //跳过低电平 
 				}
 		     }
-			j=0;
-			while(Rx_315 && (j<200))
+			Get_TimeCount_CleanAndStart();
+			while(Rx_315 )
 			{
-				BSP_uDelay(8);
-				j++;
+				if(RF315_TimeCount > (100))
+				return ;
 			}            //跳个最后一个高脉冲
-			head_k=0;
+			narrow = Get_TimeCount_CleanAndStart();
 			while(!Rx_315) 
 			{
-				BSP_uDelay(8);
-				head_k++;
+				if(RF315_TimeCount > (1500))
+				return ;
 			} //检测下一个前导信号的寬度  
-			if((head_k<(short_k*26)) || (head_k>(short_k*38)))  
+			wide = Get_TimeCount_CleanAndStart();
+			if((wide<(narrow*26)) || (wide > (narrow*38)))  
 				{return;}
 		}
 		if((da1527[0][0]==da1527[1][0]) && (da1527[0][1]==da1527[1][1]) && (da1527[0][2]==da1527[1][2]))	//两次接收到的数据相同
 		{
-			/*uchar u,i,x;
+			/*uint8 u,i,x;
 			rf_ok=1;
 			for(i=0;i<3;i++)  //判定2262与1527
 			{
@@ -159,14 +172,15 @@ void RF_decode()
 				da1527[0][2]=00; //2262无后4位地址,全为0
 				jmnx=0;         //为0是2262，1是1527
 			}*/
+
+			printf("received is ok\r\n");
 			decode_ok=1;
 		}
+	#endif
 	}
 
 }
 
-extern uint8 _315MHz_Flag;
-extern uint8  _315MHz_TimeCount2; 
 void RF315_Rec(void)
 {
 
