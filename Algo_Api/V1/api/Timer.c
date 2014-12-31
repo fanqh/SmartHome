@@ -169,7 +169,7 @@ void isr_13us(void)
 		DataTimeCount ++;
 	}
 
-    if(Get_rf315_flag())
+    if(Get_rf315_flag()!= RF315_IDLE)
 	{
 		RF315_TimeCount++;
 	}

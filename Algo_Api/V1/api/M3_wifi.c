@@ -101,17 +101,6 @@ int start_wifi_data()
 	memset(rec_buf,0x00,sizeof(rec_buf));
 	return AT_MODE;	
 
-
-
-
-
-
-
-
-
-
-
-
 }
 
 #endif

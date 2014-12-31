@@ -100,9 +100,16 @@ int tamain(void)
 #if 0
 	while(1)
 	{  
+		RF315_DATA_t  RF315_Receive;
 //		BSP_mDelay(1000);
 //		printf("systme is work\r\n");		
-		RF_decode();
+		if(RF_decode(&RF315_Receive))
+		{
+			RF315_Send(&RF315_Receive);
+			RF315_Send(&RF315_Receive);
+			RF315_Send(&RF315_Receive);	
+			BSP_mDelay(1000);
+		}
 	}
 #endif
 
@@ -198,7 +205,7 @@ int tamain(void)
 			while(_315MHz_Flag)
 			{
 				//SendUart(0x55);
-				RF315_Rec();//315接收代码
+//				RF315_Rec();//315接收代码
 				_315MHz_TimeCount++;
 				if(_315MHz_TimeCount == 500)
 				{
