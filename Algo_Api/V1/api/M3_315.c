@@ -193,25 +193,19 @@ int RF_decode(RF315_DATA_t *pdata)
 
 }
 
-//void RF315_Rec(void)
-//{
-//
-//	unsigned char i,j;
-//	RF_decode();
-//	if(decode_ok) 
-//	{
-//		decode_ok = 0;
-//		U1_sendS("WF<<",4);
-//		for(i=0;i<2;i++)
-//		{
-//			for(j=0;j<3;j++)
-//			U1_send(da1527[i][j]);
-//		}
-//		U1_sendS("<<",2);
-//		_315MHz_Flag = 0;
-//		_315MHz_TimeCount2 = 1;
-//	}
-//}
+void RF315_Rec(void)
+{
+	RF315_DATA_t  RF315_Receive;
+
+	if(RF_decode(&RF315_Receive) == M315_DATA_LEN)  ///可变
+	{
+		U1_sendS("WF<<",4);
+		U1_sendS((uint8*)&RF315_Receive, sizeof(RF315_DATA_t));
+		U1_sendS("<<",2);
+		_315MHz_Flag = 0;
+		_315MHz_TimeCount2 = 1;
+	}
+}
 //315M 字码发送
 void RF315_SendBit1(uint32 TimeBase)
 {
@@ -269,6 +263,7 @@ int RF315_Send(RF315_DATA_t *pdata)
 	uint8 i, j;
 	p = pdata->buff;
 
+	rf315_state = RF315_SENDING;
 	Enable_SysTick();		//启动定时器0
 	RF315_SendSyn(pdata->TimeBase);
 	for(i=0; i<M315_DATA_LEN; i++)
@@ -281,7 +276,8 @@ int RF315_Send(RF315_DATA_t *pdata)
 				RF315_SendBit0(pdata->TimeBase);		
 		}
 		p++;	
-	}	
+	}
+	rf315_state = RF315_IDLE;	
 	Disable_SysTick();		//关闭定时器
 	return 1;
 }

@@ -45,10 +45,10 @@ void U1_in(void)//串口1接收数据
         RI=get_usart_interrupt_flg();
 		if(RI)
 		{
-			Boot_UsartGet(&rec_buf[ui], RI, RI);
+			Boot_UsartGet(&rec_buf[ui], RI, RI);	   //超时参数为什么填了个RI
 			if(rec_buf[ui] == '<' && rec_buf[ui - 1] == '<')
 				break;
-			ui+=RI;
+			ui += RI;
             RI=0;
 			j = 0;			
 		}
