@@ -199,6 +199,7 @@ void RF315_Rec(void)
 
 	if(RF_decode(&RF315_Receive) == M315_DATA_LEN)  ///¿É±ä
 	{
+	
 		U1_sendS("WF<<",4);
 		U1_sendS((uint8*)&RF315_Receive, sizeof(RF315_DATA_t));
 		U1_sendS("<<",2);

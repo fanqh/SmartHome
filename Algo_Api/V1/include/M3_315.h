@@ -12,6 +12,7 @@ typedef struct
 {
 	uint32 TimeBase;
 	uint8  buff[M315_DATA_LEN];	
+	uint8  reserve;
 }RF315_DATA_t;
 
 typedef enum

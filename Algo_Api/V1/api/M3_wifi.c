@@ -38,13 +38,17 @@ void m3_wifi_rst_output(void)
 void U1_in(void)//串口1接收数据
 {
     
+
     uint32 j=0,RI=0;
 	ui = 0;
+
+	
 	while(j < 100)//超时退出 字节间隔超出100ms 退出
 	{
-        RI=get_usart_interrupt_flg();
+        RI=get_usart_interrupt_flg();  //获取buff size
 		if(RI)
 		{
+//			printf("%d", RI);
 			Boot_UsartGet(&rec_buf[ui], RI, RI);	   //超时参数为什么填了个RI
 			if(rec_buf[ui] == '<' && rec_buf[ui - 1] == '<')
 				break;
@@ -57,7 +61,8 @@ void U1_in(void)//串口1接收数据
 //        delayus(1000);
 		BSP_mDelay (1);
 	
-	}	
+	}
+	printf("%c,%c\r\n",rec_buf[0],rec_buf[1]);	
 
 }
 

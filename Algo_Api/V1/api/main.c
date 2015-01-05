@@ -62,6 +62,24 @@ U16U8  M;//两个8位转16位
 
 uint32 wifi_work_mode;
 
+
+
+
+//JTAG模式设置定义
+#define JTAG_SWD_DISABLE   0X02
+#define SWD_ENABLE         0X01
+#define JTAG_SWD_ENABLE    0X00	
+//----------------------------
+void JTAG_Set(u8 mode)
+{
+	u32 temp;
+	temp=mode;
+	temp<<=25;
+	RCC->APB2ENR|=1<<0;     //开启辅助时钟	   
+	AFIO->MAPR&=0XF8FFFFFF; //清除MAPR的[26:24]
+	AFIO->MAPR|=temp;       //设置jtag模式
+} 
+
 int tamain(void)
 //int main(void)
 {
@@ -85,7 +103,7 @@ int tamain(void)
     m3_315_io_config();
     infrared_io_init();  
  //   m3_315_clr();                       //关闭315
-
+	JTAG_Set(SWD_ENABLE);		//加
 
   //Command_Process();
     Init_DS18B20();
@@ -103,25 +121,26 @@ int tamain(void)
 #if 1
 		  if(_315MHz_Flag)	//315M学习
 		  {
-				timer2_disable();  //关停计时中断功能，wifi，433, 2.4G功能将停用
+//				timer2_disable();  //关停计时中断功能，wifi，433, 2.4G功能将停用
 				while(_315MHz_Flag)
 				{
 					//SendUart(0x55);
 					RF315_Rec();//315接收代码
 					_315MHz_TimeCount++;
-					if(_315MHz_TimeCount == 500)
+					if(_315MHz_TimeCount == 500)	 //#######这里的超时机制需要修改
 					{
 						_315MHz_TimeCount = 0;
 						_315MHz_TimeCount2++;
 						if(_315MHz_TimeCount2++ >= 5)
 						{
 							_315MHz_TimeCount2 = 1;
-						  _315MHz_Flag = 0;
+						  	_315MHz_Flag = 0;  
 						}
 					}
 				}	
-			   timer2_enable();
+//			   timer2_enable();
 		 }
+#if 0
 		if(Check_wifi)
 		{
 			timer2_disable(); 
@@ -191,6 +210,7 @@ int tamain(void)
 			}	
 			timer2_enable(); 
 		}	
+#endif 
 #endif
         if(get_usart_interrupt_flg())
 		{

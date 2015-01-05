@@ -15,6 +15,9 @@ uint16_t ted = 0;
 //extern unsigned char RxBuf[RxBuf_Len];
 
 
+static uint16 Tim2Resourse = 0; 
+
+
 //5ms
 void TIMER2_Handler(void)
 {
@@ -23,7 +26,7 @@ void TIMER2_Handler(void)
   
     TIM2->SR = ~TIM_FLAG_Update;  //清除标志位
 
-    #if 1
+#if 1
     if(Wifi_AP_OPEN_MODE)
 	{
 		Wifi_AP_OPEN_MODE++;
@@ -140,7 +143,7 @@ void timer2_init(void)
 
 }
 void timer2_enable(void)
-{
+{  	
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2 , ENABLE);	
 }
 void timer2_disable(void)
