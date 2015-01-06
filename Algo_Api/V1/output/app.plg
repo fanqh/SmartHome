@@ -4,86 +4,13 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 F:\SmartDog\SmartHome\Algo_Api\V1\app.uvproj
-Project File Date:  12/16/2014
+Project File Date:  01/06/2015
 
 <h2>Output:</h2>
 Build target 'M3_app'
 compiling main.c...
-api\main.c(135): error:  #20: identifier "tail" is undefined
-api\main.c(139): error:  #20: identifier "ResFail" is undefined
-api\main.c(237): error:  #53: expected a ":"
-api\main.c(264): error:  #2706: case label value has already appeared in this switch at line 252
-api\main.c(275): warning:  #111-D: statement is unreachable
-api\main.c(283): error:  #2706: case label value has already appeared in this switch at line 259
-api\main.c(287): error:  #2706: case label value has already appeared in this switch at line 252
-api\main.c(291): error:  #2706: case label value has already appeared in this switch at line 268
-api\main.c(298): warning:  #111-D: statement is unreachable
-api\main.c(299): error:  #124: default label has already appeared in this switch
-api\main.c(302): warning:  #111-D: statement is unreachable
-api\main.c(304): error:  #2706: case label value has already appeared in this switch at line 268
-api\main.c(310): error:  #2706: case label value has already appeared in this switch at line 294
-api\main.c(327): error:  #2706: case label value has already appeared in this switch at line 294
-api\main.c(333): error:  #53: expected a ":"
-api\main.c(337): warning:  #12-D: parsing restarts here after previous syntax error
-api\main.c(365): error:  #121: a case label may only be used within a switch
-api\main.c(426): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(435): error:  #121: a case label may only be used within a switch
-api\main.c(528): error:  #121: a case label may only be used within a switch
-api\main.c(560): error:  #121: a case label may only be used within a switch
-api\main.c(593): error:  #121: a case label may only be used within a switch
-api\main.c(602): error:  #121: a case label may only be used within a switch
-api\main.c(613): error:  #121: a case label may only be used within a switch
-api\main.c(623): error:  #121: a case label may only be used within a switch
-api\main.c(630): error:  #121: a case label may only be used within a switch
-api\main.c(632): warning:  #127-D: expected a statement
-api\main.c(648): error:  #122: a default label may only be used within a switch
-api\main.c(652): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(654): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(659): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(670): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(672): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(673): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(673): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(679): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(698): warning:  #940-D: missing return statement at end of non-void function "tamain"
-api\main.c(701): error:  #169: expected a declaration
-api\main.c(724): warning: At end of source:  #12-D: parsing restarts here after previous syntax error
-compiling DS18B20.c...
-api\DS18B20.c(308): error:  #147: declaration is incompatible with "int GetTemperature(void)" (declared at line 13 of ".\include\ds18b20.h")
-compiling M3_wifi.c...
-api\M3_wifi.c(80): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\M3_wifi.c(99): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-compiling Infrared.c...
-compiling M3_315.c...
-compiling debug_led.c...
-compiling Timer.c...
-api\Timer.c(57): warning:  #177-D: variable "i" was declared but never referenced
-compiling spi.c...
-compiling DK_RFM69H.c...
-compiling nrf24l01.c...
-Target not created
-Build target 'M3_app'
-compiling main.c...
-api\main.c(109): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(136): error:  #20: identifier "tail" is undefined
-api\main.c(140): error:  #20: identifier "ResFail" is undefined
-api\main.c(238): error:  #53: expected a ":"
-api\main.c(258): warning:  #12-D: parsing restarts here after previous syntax error
-api\main.c(298): error:  #20: identifier "ResSucess" is undefined
-api\main.c(301): error:  #2706: case label value has already appeared in this switch at line 279
-api\main.c(307): error:  #20: identifier "ResSucess" is undefined
-api\main.c(317): warning:  #111-D: statement is unreachable
-api\main.c(325): error:  #2706: case label value has already appeared in this switch at line 286
-api\main.c(331): error:  #2706: case label value has already appeared in this switch at line 279
-api\main.c(336): error:  #2706: case label value has already appeared in this switch at line 310
-api\main.c(343): warning:  #111-D: statement is unreachable
-api\main.c(344): error:  #124: default label has already appeared in this switch
-api\main.c(347): warning:  #111-D: statement is unreachable
-api\main.c(349): error:  #2706: case label value has already appeared in this switch at line 310
-api\main.c(355): error:  #2706: case label value has already appeared in this switch at line 339
-api\main.c(358): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(377): error:  #2706: case label value has already appeared in this switch at line 339
-api\main.c(400): error:  #124: default label has already appeared in this switch
+.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
+api\main.c(299): warning:  #223-D: function "m3_315_clr" declared implicitly
 api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
 api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
 api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
@@ -104,280 +31,11 @@ api\Timer.c(57): warning:  #177-D: variable "i" was declared but never reference
 compiling spi.c...
 compiling DK_RFM69H.c...
 compiling nrf24l01.c...
-Target not created
-Build target 'M3_app'
-compiling main.c...
-api\main.c(109): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(136): error:  #20: identifier "tail" is undefined
-api\main.c(140): error:  #20: identifier "ResFail" is undefined
-api\main.c(238): error:  #53: expected a ":"
-api\main.c(258): warning:  #12-D: parsing restarts here after previous syntax error
-api\main.c(298): error:  #20: identifier "ResSucess" is undefined
-api\main.c(301): error:  #2706: case label value has already appeared in this switch at line 279
-api\main.c(307): error:  #20: identifier "ResSucess" is undefined
-api\main.c(317): warning:  #111-D: statement is unreachable
-api\main.c(325): error:  #2706: case label value has already appeared in this switch at line 286
-api\main.c(331): error:  #2706: case label value has already appeared in this switch at line 279
-api\main.c(336): error:  #2706: case label value has already appeared in this switch at line 310
-api\main.c(343): error:  #124: default label has already appeared in this switch
-api\main.c(346): warning:  #111-D: statement is unreachable
-api\main.c(348): error:  #2706: case label value has already appeared in this switch at line 310
-api\main.c(354): error:  #2706: case label value has already appeared in this switch at line 339
-api\main.c(357): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(376): error:  #2706: case label value has already appeared in this switch at line 339
-api\main.c(399): error:  #124: default label has already appeared in this switch
-api\main.c(714): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(716): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(721): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(732): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(734): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(735): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(741): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-api\main.c(7): error:  #5: cannot open source input file "command.h": No such file or directory
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(14): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(239): error:  #53: expected a ":"
-api\main.c(259): warning:  #12-D: parsing restarts here after previous syntax error
-api\main.c(299): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(302): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(308): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(318): warning:  #111-D: statement is unreachable
-api\main.c(326): error:  #2706: case label value has already appeared in this switch at line 287
-api\main.c(332): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(337): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(344): error:  #124: default label has already appeared in this switch
-api\main.c(347): warning:  #111-D: statement is unreachable
-api\main.c(349): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(355): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(358): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(377): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(400): error:  #124: default label has already appeared in this switch
-api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(733): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(14): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(239): error:  #53: expected a ":"
-api\main.c(259): warning:  #12-D: parsing restarts here after previous syntax error
-api\main.c(299): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(302): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(308): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(318): warning:  #111-D: statement is unreachable
-api\main.c(326): error:  #2706: case label value has already appeared in this switch at line 287
-api\main.c(332): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(337): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(344): error:  #124: default label has already appeared in this switch
-api\main.c(347): warning:  #111-D: statement is unreachable
-api\main.c(349): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(355): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(358): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(377): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(400): error:  #124: default label has already appeared in this switch
-api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(733): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(239): error:  #53: expected a ":"
-api\main.c(259): warning:  #12-D: parsing restarts here after previous syntax error
-api\main.c(299): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(302): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(308): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(318): warning:  #111-D: statement is unreachable
-api\main.c(326): error:  #2706: case label value has already appeared in this switch at line 287
-api\main.c(332): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(337): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(344): error:  #124: default label has already appeared in this switch
-api\main.c(347): warning:  #111-D: statement is unreachable
-api\main.c(349): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(355): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(358): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(377): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(400): error:  #124: default label has already appeared in this switch
-api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(733): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(249): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(253): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(299): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(302): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(308): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(318): warning:  #111-D: statement is unreachable
-api\main.c(326): error:  #2706: case label value has already appeared in this switch at line 287
-api\main.c(332): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(337): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(344): error:  #124: default label has already appeared in this switch
-api\main.c(347): warning:  #111-D: statement is unreachable
-api\main.c(349): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(355): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(358): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(377): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(400): error:  #124: default label has already appeared in this switch
-api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(733): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(302): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(308): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(318): warning:  #111-D: statement is unreachable
-api\main.c(326): error:  #2706: case label value has already appeared in this switch at line 287
-api\main.c(332): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(337): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(344): error:  #124: default label has already appeared in this switch
-api\main.c(347): warning:  #111-D: statement is unreachable
-api\main.c(349): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(355): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(358): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(377): error:  #2706: case label value has already appeared in this switch at line 340
-api\main.c(400): error:  #124: default label has already appeared in this switch
-api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(733): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(302): error:  #2706: case label value has already appeared in this switch at line 280
-api\main.c(308): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(318): warning:  #111-D: statement is unreachable
-api\main.c(351): error:  #2706: case label value has already appeared in this switch at line 311
-api\main.c(360): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(379): error:  #2706: case label value has already appeared in this switch at line 357
-api\main.c(402): error:  #124: default label has already appeared in this switch
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(719): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(724): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(737): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(738): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(738): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(744): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(309): error:  #167: argument of type "const uint8 *" is incompatible with parameter of type "uint8 *"
-api\main.c(362): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(381): error:  #2706: case label value has already appeared in this switch at line 359
-api\main.c(719): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(721): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(726): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(737): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(739): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(740): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(740): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(746): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(362): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(381): error:  #2706: case label value has already appeared in this switch at line 359
-api\main.c(719): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(721): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(726): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(737): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(739): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(740): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(740): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(746): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(362): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(379): error:  #127: expected a statement
-api\main.c(716): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(718): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(723): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(734): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(737): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(737): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(743): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(362): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(378): error:  #127: expected a statement
-api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(733): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(362): warning:  #177-D: variable "temp" was declared but never referenced
-api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(733): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 linking...
-.\output\app.axf: Error: L6218E: Undefined symbol RxBuf (referred from main.o).
-Target not created
+Program Size: Code=7344 RO-data=108 RW-data=108 ZI-data=816  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 13 Warning(s).
 Build target 'M3_app'
 compiling main.c...
 .\include\command.h(17): warning:  #1-D: last line of file ends without a newline
@@ -391,17 +49,19 @@ api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible wi
 api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
 api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 linking...
-.\output\app.axf: Error: L6218E: Undefined symbol RxBuf (referred from timer.o).
-Target not created
+Program Size: Code=7344 RO-data=108 RW-data=108 ZI-data=816  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 10 Warning(s).
 Build target 'M3_app'
-linking...
-.\output\app.axf: Error: L6218E: Undefined symbol RxBuf (referred from timer.o).
-Target not created
-Build target 'M3_app'
-compiling Timer.c...
-api\Timer.c(57): warning:  #177-D: variable "i" was declared but never referenced
 linking...
 Program Size: Code=7344 RO-data=108 RW-data=108 ZI-data=816  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 1 Warning(s).
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=7344 RO-data=108 RW-data=108 ZI-data=816  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
