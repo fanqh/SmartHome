@@ -5,6 +5,14 @@
 #include"Include.h"
 
 
+typedef struct
+{
+	uint8 FlagStart;
+	volatile uint16 TimeCount;
+}LearnTimeCountTypeDef;
+
+extern LearnTimeCountTypeDef LearnTimeCount;
+
 void    isr_13us(void);
 
 void    timer2_init(void);

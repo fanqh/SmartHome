@@ -16,10 +16,13 @@ extern uint8  _315MHz_TimeCount2;
 
 
 
+
+
 #define  NARROW_TIMEOUT   1000    //UNIT : us
 
 RF315_STATA  rf315_state = RF315_IDLE;
 volatile uint16	RF315_TimeCount = 0;
+
 
 
 void m3_315_set(void)
@@ -192,20 +195,25 @@ int RF_decode(RF315_DATA_t *pdata)
 	return -1;
 
 }
+#define LEARNTIMECOUNT   1000	   //单位 5ms  5s
 
-void RF315_Rec(void)
+uint8 RF315_Rec(RF315_DATA_t *pdata) // 改为，解析成功，超时，
 {
-	RF315_DATA_t  RF315_Receive;
-
-	if(RF_decode(&RF315_Receive) == M315_DATA_LEN)  ///可变
-	{
 	
-		U1_sendS("WF<<",4);
-		U1_sendS((uint8*)&RF315_Receive, sizeof(RF315_DATA_t));
-		U1_sendS("<<",2);
-		_315MHz_Flag = 0;
-		_315MHz_TimeCount2 = 1;
+	LearnTimeCount.TimeCount = 0;
+	LearnTimeCount.FlagStart = 1;
+	timer2_enable();
+	while(LearnTimeCount.TimeCount <= 1000)
+	{
+		if(RF_decode(pdata) == M315_DATA_LEN)  ///可变
+		{
+			timer2_disable();
+			return 1;
+		}		
 	}
+	timer2_disable();
+    return 0;  //TimeOUT
+
 }
 //315M 字码发送
 void RF315_SendBit1(uint32 TimeBase)

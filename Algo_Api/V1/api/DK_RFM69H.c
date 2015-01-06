@@ -380,8 +380,9 @@ int RFM69H_RxPacket(RFM69H_DATA_Type *p)
  
   if(RFM69H_RxWaitStable())
   {
-
+	Enable_SysTick();		//启动定时器0
   	len = RFM69H_Analysis(p);
+	Disable_SysTick();
 	rfm69h_status = RFM69H_IDLE;
 	return len;
   }
@@ -428,7 +429,7 @@ int RFM69H_Analysis(RFM69H_DATA_Type* pReceive)
    DataState = IDLE;
    rfm69h_status = RFM69H_RECEIVE;
    RF69H_DataCongfigIN();
-   Enable_SysTick();		//启动定时器0
+//   Enable_SysTick();		//启动定时器0
    while(i < RFM69H_DATA_LEN )
    {
    		if(DataState == IDLE )

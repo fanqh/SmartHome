@@ -14,9 +14,7 @@ volatile uint8  read_led_status=0;
 uint16_t ted = 0;
 //extern unsigned char RxBuf[RxBuf_Len];
 
-
-static uint16 Tim2Resourse = 0; 
-
+LearnTimeCountTypeDef LearnTimeCount;
 
 //5ms
 void TIMER2_Handler(void)
@@ -26,6 +24,13 @@ void TIMER2_Handler(void)
   
     TIM2->SR = ~TIM_FLAG_Update;  //清除标志位
 
+	if(LearnTimeCount.FlagStart)
+	{
+		LearnTimeCount.TimeCount ++;
+	}
+
+
+#if 1
 #if 1
     if(Wifi_AP_OPEN_MODE)
 	{
@@ -71,7 +76,7 @@ void TIMER2_Handler(void)
 				Rec = 0;
 			}
 
-			Rec = RFM69H_RxPacket(&RxBuf);
+//			Rec = RFM69H_RxPacket(&RxBuf);
 			if(Rec == 1)  //接收数据
 		  	{
 				Rec = 0;
@@ -100,6 +105,7 @@ void TIMER2_Handler(void)
     read_led_status =~read_led_status;    
     wifi_led(read_led_status);
     #endif
+#endif 
 }
 
 
@@ -170,11 +176,12 @@ void isr_13us(void)
 	if(Get_RFM69H_Status()!=RFM69H_IDLE)
 	{
 		DataTimeCount ++;
+
 	}
 
     if(Get_rf315_flag()!= RF315_IDLE)
 	{
-		RF315_TimeCount++;
+		RF315_TimeCount++;			
 	}
 
 }

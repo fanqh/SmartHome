@@ -7,6 +7,7 @@
 #define M315_DATA_LEN  3
 
 extern volatile uint16	RF315_TimeCount;
+extern volatile uint32 RF315_LearnTimeCount;
 
 typedef struct
 {
@@ -29,7 +30,7 @@ uint8 Get_rf315_flag(void);
 
 int RF_decode(RF315_DATA_t *pdata);
 
-void RF315_Rec(void);
+uint8 RF315_Rec(RF315_DATA_t *pdata);
 int RF315_Send(RF315_DATA_t *pdata);
 
 #endif

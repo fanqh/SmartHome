@@ -39,7 +39,7 @@ void SpiMsterGpioInit(uint8_t spi)
    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
    GPIO_Init(SPI2_GPIO, &GPIO_InitStructure);
    //PB12
-   if(spi==0)
+//   if(spi==0)
    {
 	   GPIO_InitStructure.GPIO_Pin = SPI2_PIN_NSS;
 	   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
@@ -47,7 +47,7 @@ void SpiMsterGpioInit(uint8_t spi)
 
 	   nCS = 1;
    }
-   else
+  // else
    {
 
 	      //CSN PB1

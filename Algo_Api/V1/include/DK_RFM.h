@@ -9,7 +9,7 @@
 #define  RxBuf_Len 		   10
 
 
-#define RFM69H_DATA_LEN	 512
+#define RFM69H_DATA_LEN	 64
 
 #define  RFM69H_DATA_IN     PBin(11)
 #define  RFM69H_DATA_OUT    PBout(11)

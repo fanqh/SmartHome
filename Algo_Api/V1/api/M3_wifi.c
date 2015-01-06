@@ -45,7 +45,7 @@ void U1_in(void)//串口1接收数据
 	
 	while(j < 100)//超时退出 字节间隔超出100ms 退出
 	{
-        RI=get_usart_interrupt_flg();  //获取buff size
+        RI = get_usart_interrupt_flg();  //获取buff size
 		if(RI)
 		{
 //			printf("%d", RI);
@@ -61,8 +61,7 @@ void U1_in(void)//串口1接收数据
 //        delayus(1000);
 		BSP_mDelay (1);
 	
-	}
-	printf("%c,%c\r\n",rec_buf[0],rec_buf[1]);	
+	}	
 
 }
 
