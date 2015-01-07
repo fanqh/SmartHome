@@ -25,13 +25,13 @@ const uint8 RF24GStudyCMD[] = "LT";
 const uint8 RF24GRecCMD[] = "BT";
 
 const uint8 HeartCMD[] = "FT";
-const uint8 SampleTemCMD = "DT";
+const uint8 SampleTemCMD[] = "DT";
 const uint8 CheckWifiCMD[] = "DS";
 const uint8 LEDONCMD[] = "LB";
 const uint8 LEDOFFCMD[] = "LD";
 const uint8 MACSendCMD[] = "DM";
-const uint8 BondCMD = "BD";
-const uint8 Upgrade = "SX";
+const uint8 BondCMD[] = "BD";
+const uint8 Upgrade[] = "SX";
 
 
 

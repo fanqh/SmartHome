@@ -158,8 +158,8 @@ void ifnnrf_CLERN_ALL(void)
   SPI_CLR_Reg(1);
   SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS, 0xff);
 
-  IRQ_CongfigOUT();
-  IRQ_OUT = 1;
+//  IRQ_CongfigOUT();
+//  IRQ_OUT = 1;
 }
 
 
@@ -195,45 +195,50 @@ void Ifnnrf_SendData_Init(void)
 uint8 Ifnnrf_Send(uint8 *txbuf)
 {		
 	uint8 sta;
+	uint8 ret = 0;
 
-	IRQ_CongfigOUT();
-	IRQ_OUT = 1 ;
-	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS,0xff);
+//	IRQ_CongfigOUT();
+//	IRQ_OUT = 1 ;
+	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS,0xff);		 //Çå³ý¼Ä´æÆ÷
 	ifnnrf_tx_mode(txbuf);
 
 	IRQ_CongfigIN();
 	while(IRQ_IN);
 	sta = SPIRead(SPI_1, STATUS);
-	
-	Boot_UsartSend(&sta, 1);
-
+	if(sta & TX_OK)
+	{
+		ret = 1;
+	}	
+//	Boot_UsartSend(&sta, 1);
 	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS, 0xff);
-	return sta;
+	return ret;
 }
 
-uint8 Ifnnrf_Receive()
+uint8 Ifnnrf_Receive(uint8* rxbuf)
 {
 	uint8 sta;
-	ifnnrf_rx_mode();
+	uint8 ret = 0;
+//	ifnnrf_rx_mode();
 
-	IRQ_CongfigOUT();
-	IRQ_OUT = 1;
+//	IRQ_CongfigOUT();
+//	IRQ_OUT = 1;
 
-	IRQ_CongfigIN();
-	while(IRQ_IN==0);
+//	IRQ_CongfigIN();
+//	while(IRQ_IN==0);
 	sta = SPIRead(SPI_1, STATUS);
-	Boot_UsartSend(&sta, 1);
-	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS,0xff);
+//	Boot_UsartSend(&sta, 1);
+	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS,sta);
  	if(sta&STA_MARK_RX)
 	{
 		SPIBurstRead(SPI_1, RD_RX_PLOAD,rx_buf,TX_PLOAD_WIDTH);// read receive payload from RX_FIFO buffer;
+		SPI_RW_Reg(SPI_1,FLUSH_RX,oxff);
 //		for(i=0;i<TX_PLOAD_WIDTH;i++)
 //			SendUart(rx_buf[i]);
-		Boot_UsartSend(rx_buf, TX_PLOAD_WIDTH);
-
+//		Boot_UsartSend(rx_buf, TX_PLOAD_WIDTH);
+		ret = 1;
 	}
 	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS,0xff);
-	return sta;
+	return ret;
 }
 
 uint8 nRF24L01_RxPacket(uint8 *rx_buf)
