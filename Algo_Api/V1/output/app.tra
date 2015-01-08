@@ -24,13 +24,13 @@
 ### List of Objects: adding '".\output\stm32f10x_usart.o"'
 ### List of Objects: adding '".\output\stm32f10x_spi.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M3 ".\output\core_cm3.o" F:\SmartDog\SmartHome\Algo_Api\V1\boot\AppBoot.lib ".\output\main.o" ".\output\ds18b20.o" ".\output\system_var.o" ".\output\m3_wifi.o" ".\output\infrared.o" ".\output\m3_315.o" ".\output\debug_led.o" ".\output\timer.o" ".\output\spi.o" ".\output\dk_rfm69h.o" ".\output\nrf24l01.o" ".\output\misc.o" ".\output\stm32f10x_exti.o" ".\output\stm32f10x_flash.o" ".\output\stm32f10x_gpio.o" ".\output\stm32f10x_i2c.o" ".\output\stm32f10x_rcc.o" ".\output\stm32f10x_tim.o" ".\output\stm32f10x_usart.o" ".\output\stm32f10x_spi.o" --library_type=microlib --ro-base 0x08008000 --entry 0x08008000 --rw-base 0x20003000 --entry Reset_Handler --first __Vectors --strict --first inituser.o(Start) --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
---info sizes --info totals --info unused --info veneers 
+--cpu Cortex-M3 ".\output\core_cm3.o" F:\SmartDog\SmartHome\Algo_Api\V1\boot\AppBoot.lib ".\output\main.o" ".\output\ds18b20.o" ".\output\system_var.o" ".\output\m3_wifi.o" ".\output\infrared.o" ".\output\m3_315.o" ".\output\debug_led.o" ".\output\timer.o" ".\output\spi.o" ".\output\dk_rfm69h.o" ".\output\nrf24l01.o" ".\output\misc.o" ".\output\stm32f10x_exti.o" ".\output\stm32f10x_flash.o" ".\output\stm32f10x_gpio.o" ".\output\stm32f10x_i2c.o" ".\output\stm32f10x_rcc.o" ".\output\stm32f10x_tim.o" ".\output\stm32f10x_usart.o" ".\output\stm32f10x_spi.o" --library_type=microlib --ro-base 0x08008000 --entry 0x08008000 --rw-base 0x20003000 --entry Reset_Handler --first __Vectors --strict --first inituser.o(Start) --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
  --list ".\List\app.map" -o ".\output\app.axf"### Preparing Environment (PrepEnvAds)
 ### ADS-LD Output File: '.\output\app.axf'
 ### ADS-LD Command File: '.\output\app.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '.\output\app.lnp', Handle=0x00000164
+### Creating CmdFile '.\output\app.lnp', Handle=0x000001D8
 ### Writing '.lnp' file
 ### ADS-LD Command file '.\output\app.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

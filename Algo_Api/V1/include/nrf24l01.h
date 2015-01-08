@@ -16,6 +16,11 @@
 #define REUSE_TX_PL     0xE3  // Define reuse TX payload register command
 #define NOP             0xFF  // Define No Operation, might be used to read status register
 
+
+#define MAX_TX  	0x10  //达到最大发送次数中断
+#define TX_OK   	0x20  //TX发送完成中断
+#define RX_OK   	0x40  //接收到数据中断
+
 //***************************************************//
 // SPI(nRF24L01) registers(addresses)
 #define CONFIG          0x00  // 'Config' register address

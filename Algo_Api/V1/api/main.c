@@ -9,7 +9,8 @@
 /**********************************************************************************/
 /**********************************************************************************/
 /*
-	rfm69h 解析和发送需要一个误差小于10us的定时器，，现在用的和systemtick有冲突，需要修改
+1.	rfm69h 解析和发送需要一个误差小于10us的定时器，，现在用的和systemtick有冲突，需要修改
+2. TIm2 定时器在315M 和24G中有开启和关闭，注意其他函数调用
 */
 /**********************************************************************************/
 /**********************************************************************************/
@@ -42,7 +43,8 @@ volatile uint8 RI=0;
 
 
 //RF_RFM69H
-RFM69H_DATA_Type TxBuf;// = {0x41,0x42,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x6d};  
+RFM69H_DATA_Type TxBuf; 
+uint8 FlagRF24GLearn = 0; 
 
 
 //315M
@@ -93,8 +95,7 @@ int tamain(void)
 //    uint8 data;
     //315M设置
 	_315MHz_Flag = 0;
-	_315MHz_TimeCount = 0;
-	_315MHz_TimeCount2 = 1;
+
 
 	JTAG_Set(SWD_ENABLE);		//加
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4推挽输出
@@ -140,6 +141,22 @@ int tamain(void)
 				{
 					U1_sendS((uint8*)ResFail, sizeof(ResFail));
 				}
+		 }
+		 if(FlagRF24GLearn == 1)
+		 {
+		 	if(RF24GLearnTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
+			{
+				FlagRF24GLearn = 0;	
+				timer2_disable();
+				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
+			}
+			if(Ifnnrf_Receive(rxbuf)==1)
+			{
+				FlagRF24GLearn = 0;	
+				timer2_disable();
+				U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
+			}
+
 		 }	
 #if 0
 		if(Check_wifi)
@@ -255,9 +272,18 @@ int tamain(void)
 
 
 						}
-							break;
+						break;
+
 						case 'T':  //2.4G学习
-							break;
+						{
+							U1_sendS(RF433StudyCMD, sizeof(RF433StudyCMD));
+							ifnnrf_rx_mode();
+							RF24GLearnTimeCount.TimeCount = 0;
+							RF24GLearnTimeCount.FlagStart = 1;
+							timer2_enable();	
+							FlagRF24GLearn = 1;
+						}
+						break;
 
 					    case 'B':  //打开唤醒灯
 //							U1_sendS("TF<<",4);
@@ -281,41 +307,45 @@ int tamain(void)
 			   {
 			   		switch (rec_buf[1])
 					{
-			   		case'H' ://红外发射
-					{
-					}
-					break;
-					case  'W'://315M发射
-					{
-						uint8 time = 0;
-						RF315_DATA_t RF315_SendData;
-//						U1_sendS("BW", 2);						
-						memcpy((uint8*)&RF315_SendData, &rec_buf[3], sizeof(RF315_DATA_t));
-						while(time < 6)//重复次数!
+				   		case'H' ://红外发射
 						{
-							RF315_Send((RF315_DATA_t*) (&rec_buf[4]));
-							time ++;
 						}
-//						m3_315_clr();		//关闭定时器0
-						U1_sendS((uint8*)ResSucess, sizeof(ResSucess));		
-					}
-					break;
-					case 'F': //433M发射
-					{
-//						U1_sendS("FF", 2);	
-						RFM69H_Config();
-						RFM69H_EntryTx();
-						RFM69H_TxPacket((RFM69H_DATA_Type*)&rec_buf[4]);
-						U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
-					}
-					break;
-					case'T': //2.4G 发射
-					{
-						Ifnnrf_Send(&rec_buf[4]);
-					}
-					break;
-					default :
-					break;
+						break;
+						case  'W'://315M发射
+						{
+							uint8 time = 0;
+							RF315_DATA_t RF315_SendData;
+	//						U1_sendS("BW", 2);						
+							memcpy((uint8*)&RF315_SendData, &rec_buf[3], sizeof(RF315_DATA_t));
+							while(time < 6)//重复次数!
+							{
+								RF315_Send((RF315_DATA_t*) (&rec_buf[4]));
+								time ++;
+							}
+							m3_315_clr();		//关闭定时器0
+							U1_sendS((uint8*)ResSucess, sizeof(ResSucess));		
+						}
+						break;
+						case 'F': //433M发射
+						{
+	//						U1_sendS("FF", 2);	
+							RFM69H_Config();
+							RFM69H_EntryTx();
+							RFM69H_TxPacket((RFM69H_DATA_Type*)&rec_buf[4]);
+							U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
+						}
+						break;
+						case'T': //2.4G 发射
+						{
+							if(Ifnnrf_Send(&rec_buf[4]))
+								U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
+							else
+								U1_sendS((uint8*)ResFail, sizeof(ResFail));
+							
+						}
+						break;
+						default :
+						break;
 					}
 			   }
 			   break;
@@ -354,6 +384,7 @@ int tamain(void)
 			   case 'T':
 				   if(rec_buf[1]=='K')	 //心跳
 				   {
+				   		U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
 				   }
 			   break;
 

@@ -11,7 +11,8 @@ typedef struct
 	volatile uint16 TimeCount;
 }LearnTimeCountTypeDef;
 
-extern LearnTimeCountTypeDef LearnTimeCount;
+extern LearnTimeCountTypeDef RF315LearnTimeCount;
+extern LearnTimeCountTypeDef RF24GLearnTimeCount;
 
 void    isr_13us(void);
 
