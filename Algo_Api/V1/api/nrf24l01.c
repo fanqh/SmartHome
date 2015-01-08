@@ -198,14 +198,14 @@ uint8 Ifnnrf_Send(uint8 *txbuf)
 
 	IRQ_CongfigOUT();
 	IRQ_OUT = 1 ;
-	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS,0xff);
+	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS,0xff);	 //清除STATUS
 	ifnnrf_tx_mode(txbuf);
 
 	IRQ_CongfigIN();
 	while(IRQ_IN);
 	sta = SPIRead(SPI_1, STATUS);
 	
-	Boot_UsartSend(&sta, 1);
+	Boot_UsartSend(&sta, 1);	  //需要修改
 
 	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS, 0xff);
 	return sta;
@@ -216,11 +216,11 @@ uint8 Ifnnrf_Receive()
 	uint8 sta;
 	ifnnrf_rx_mode();
 
-	IRQ_CongfigOUT();
-	IRQ_OUT = 1;
+//	IRQ_CongfigOUT();
+//	IRQ_OUT = 1;
 
-	IRQ_CongfigIN();
-	while(IRQ_IN==0);
+//	IRQ_CongfigIN();
+//	while(IRQ_IN==0);
 	sta = SPIRead(SPI_1, STATUS);
 	Boot_UsartSend(&sta, 1);
 	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS,0xff);
@@ -229,7 +229,7 @@ uint8 Ifnnrf_Receive()
 		SPIBurstRead(SPI_1, RD_RX_PLOAD,rx_buf,TX_PLOAD_WIDTH);// read receive payload from RX_FIFO buffer;
 //		for(i=0;i<TX_PLOAD_WIDTH;i++)
 //			SendUart(rx_buf[i]);
-		Boot_UsartSend(rx_buf, TX_PLOAD_WIDTH);
+		Boot_UsartSend(rx_buf, TX_PLOAD_WIDTH);				//需要修改
 
 	}
 	SPI_RW_Reg(SPI_1, NRF24L01_WRITE_REG+STATUS,0xff);

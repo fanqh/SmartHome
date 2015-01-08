@@ -34,7 +34,7 @@ uint32  j = 0;//计数用
 uint32  c = 0;//计数用
 
 volatile uint32 ui = 0;//串口接收数据长度!
-uint8   rec_buf[800];
+uint8   rec_buf[256];
 #define wifi_mac_num 16
 volatile uint8 Wifi_MAC[wifi_mac_num] = {0x00};
 
@@ -296,7 +296,7 @@ int tamain(void)
 							RF315_Send((RF315_DATA_t*) (&rec_buf[4]));
 							time ++;
 						}
-						m3_315_clr();		//关闭定时器0
+//						m3_315_clr();		//关闭定时器0
 						U1_sendS((uint8*)ResSucess, sizeof(ResSucess));		
 					}
 					break;
@@ -311,6 +311,7 @@ int tamain(void)
 					break;
 					case'T': //2.4G 发射
 					{
+						Ifnnrf_Send(&rec_buf[4]);
 					}
 					break;
 					default :

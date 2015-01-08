@@ -4,64 +4,107 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 F:\SmartDog\SmartHome\Algo_Api\V1\app.uvproj
-Project File Date:  01/06/2015
+Project File Date:  12/16/2014
 
 <h2>Output:</h2>
 Build target 'M3_app'
 compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
+.\include\command.h(28): error:  #144: a value of type "char *" cannot be used to initialize an entity of type "const uint8"
+.\include\command.h(33): error:  #144: a value of type "char *" cannot be used to initialize an entity of type "const uint8"
+.\include\command.h(34): error:  #144: a value of type "char *" cannot be used to initialize an entity of type "const uint8"
+.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
 api\main.c(299): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(733): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-compiling DS18B20.c...
-compiling M3_wifi.c...
-api\M3_wifi.c(80): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\M3_wifi.c(99): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-compiling Infrared.c...
-compiling M3_315.c...
-compiling debug_led.c...
-compiling Timer.c...
-api\Timer.c(57): warning:  #177-D: variable "i" was declared but never referenced
-compiling spi.c...
-compiling DK_RFM69H.c...
+api\main.c(314): error:  #140: too many arguments in function call
+api\main.c(716): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(718): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(723): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(734): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(737): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(737): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(743): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 compiling nrf24l01.c...
-linking...
-Program Size: Code=7344 RO-data=108 RW-data=108 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 13 Warning(s).
+Target not created
 Build target 'M3_app'
 compiling main.c...
-.\include\command.h(17): warning:  #1-D: last line of file ends without a newline
+.\include\command.h(28): error:  #144: a value of type "char *" cannot be used to initialize an entity of type "const uint8"
+.\include\command.h(33): error:  #144: a value of type "char *" cannot be used to initialize an entity of type "const uint8"
+.\include\command.h(34): error:  #144: a value of type "char *" cannot be used to initialize an entity of type "const uint8"
+.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
 api\main.c(299): warning:  #223-D: function "m3_315_clr" declared implicitly
-api\main.c(715): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(717): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(722): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(733): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(735): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\main.c(736): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
-api\main.c(742): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
-linking...
-Program Size: Code=7344 RO-data=108 RW-data=108 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 10 Warning(s).
+api\main.c(716): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(718): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(723): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(734): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(737): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(737): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(743): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+Target not created
 Build target 'M3_app'
-linking...
-Program Size: Code=7344 RO-data=108 RW-data=108 ZI-data=816  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+.\include\command.h(28): error:  #144: a value of type "char *" cannot be used to initialize an entity of type "const uint8"
+.\include\command.h(33): error:  #144: a value of type "char *" cannot be used to initialize an entity of type "const uint8"
+.\include\command.h(34): error:  #144: a value of type "char *" cannot be used to initialize an entity of type "const uint8"
+.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
+api\main.c(716): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(718): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(723): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(734): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(737): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(737): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(743): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+Target not created
 Build target 'M3_app'
+compiling main.c...
+.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
+api\main.c(716): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(718): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(723): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(734): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(736): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(737): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(737): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(743): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 linking...
-Program Size: Code=7344 RO-data=108 RW-data=108 ZI-data=816  
+Program Size: Code=7744 RO-data=116 RW-data=108 ZI-data=272  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
+".\output\app.axf" - 0 Error(s), 9 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.325V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
