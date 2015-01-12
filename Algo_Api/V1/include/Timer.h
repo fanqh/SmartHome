@@ -9,10 +9,10 @@ typedef struct
 {
 	uint8 FlagStart;
 	volatile uint16 TimeCount;
-}LearnTimeCountTypeDef;
+}TimeCountTypeDef;
 
-extern LearnTimeCountTypeDef RF315LearnTimeCount;
-extern LearnTimeCountTypeDef RF24GLearnTimeCount;
+extern TimeCountTypeDef RF315TimeCount;
+extern TimeCountTypeDef RF24GTimeCount;
 
 void    isr_13us(void);
 

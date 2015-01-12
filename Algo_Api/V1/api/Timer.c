@@ -14,8 +14,11 @@ volatile uint8  read_led_status=0;
 uint16_t ted = 0;
 //extern unsigned char RxBuf[RxBuf_Len];
 
-LearnTimeCountTypeDef RF315LearnTimeCount;
-LearnTimeCountTypeDef RF24GLearnTimeCount;
+TimeCountTypeDef RF315TimeCount;
+TimeCountTypeDef RF24GTimeCount;
+
+
+
 
 //5ms
 void TIMER2_Handler(void)
@@ -25,14 +28,15 @@ void TIMER2_Handler(void)
   
     TIM2->SR = ~TIM_FLAG_Update;  //清除标志位
 
-	if(RF315LearnTimeCount.FlagStart)
+	if(RF315TimeCount.FlagStart)
 	{
-		RF315LearnTimeCount.TimeCount ++;
+		RF315TimeCount.TimeCount ++;
 	}
-	if(RF24GLearnTimeCount.FlagStart)
+	if(RF24GTimeCount.FlagStart)
 	{
-		RF24GLearnTimeCount.TimeCount ++;
+		RF24GTimeCount.TimeCount ++;
 	}
+//	if()
 
 
 #if 1

@@ -200,10 +200,10 @@ int RF_decode(RF315_DATA_t *pdata)
 uint8 RF315_Rec(RF315_DATA_t *pdata) // 改为，解析成功，超时，
 {
 	
-	RF315LearnTimeCount.TimeCount = 0;
-	RF315LearnTimeCount.FlagStart = 1;
+	RF315TimeCount.TimeCount = 0;
+	RF315TimeCount.FlagStart = 1;
 	timer2_enable();
-	while(RF315LearnTimeCount.TimeCount <= 1000)
+	while(RF315TimeCount.TimeCount <= 1000)
 	{
 		if(RF_decode(pdata) == M315_DATA_LEN)  ///可变
 		{

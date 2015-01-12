@@ -144,13 +144,13 @@ int tamain(void)
 		 }
 		 if(FlagRF24GLearn == 1)
 		 {
-		 	if(RF24GLearnTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
+		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
 			{
 				FlagRF24GLearn = 0;	
 				timer2_disable();
 				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
 			}
-			if(Ifnnrf_Receive(rxbuf)==1)
+			if(Ifnnrf_Receive(rx_buf)==1)
 			{
 				FlagRF24GLearn = 0;	
 				timer2_disable();
@@ -274,10 +274,10 @@ int tamain(void)
 	
 							case 'T':  //2.4G学习
 							{
-								U1_sendS(RF433StudyCMD, sizeof(RF433StudyCMD));
+								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
 								ifnnrf_rx_mode();
-								RF24GLearnTimeCount.TimeCount = 0;
-								RF24GLearnTimeCount.FlagStart = 1;
+								RF24GTimeCount.TimeCount = 0;
+								RF24GTimeCount.FlagStart = 1;
 								timer2_enable();	
 								FlagRF24GLearn = 1;
 							}
@@ -320,7 +320,7 @@ int tamain(void)
 									RF315_Send((RF315_DATA_t*) (&rec_buf[4]));
 									time ++;
 								}
-								m3_315_clr();		//关闭定时器0
+//								m3_315_clr();		//关闭定时器0
 								U1_sendS((uint8*)ResSucess, sizeof(ResSucess));		
 							}
 							break;

@@ -231,7 +231,7 @@ uint8 Ifnnrf_Receive(uint8* rxbuf)
  	if(sta&STA_MARK_RX)
 	{
 		SPIBurstRead(SPI_1, RD_RX_PLOAD,rx_buf,TX_PLOAD_WIDTH);// read receive payload from RX_FIFO buffer;
-		SPI_RW_Reg(SPI_1,FLUSH_RX,oxff);
+		SPI_RW_Reg(SPI_1,FLUSH_RX,0xff);
 //		for(i=0;i<TX_PLOAD_WIDTH;i++)
 //			SendUart(rx_buf[i]);
 //		Boot_UsartSend(rx_buf, TX_PLOAD_WIDTH);
