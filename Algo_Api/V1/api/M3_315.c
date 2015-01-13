@@ -12,7 +12,6 @@
 
 
 extern uint8 _315MHz_Flag;
-extern uint8  _315MHz_TimeCount2; 
 
 
 
@@ -200,19 +199,11 @@ int RF_decode(RF315_DATA_t *pdata)
 uint8 RF315_Rec(RF315_DATA_t *pdata) // 改为，解析成功，超时，
 {
 	
-	RF315TimeCount.TimeCount = 0;
-	RF315TimeCount.FlagStart = 1;
-	timer2_enable();
-	while(RF315TimeCount.TimeCount <= 1000)
+	if(RF_decode(pdata) == M315_DATA_LEN)  ///可变
 	{
-		if(RF_decode(pdata) == M315_DATA_LEN)  ///可变
-		{
-			timer2_disable();
-			return 1;
-		}		
-	}
-	timer2_disable();
-    return 0;  //TimeOUT
+		return 1;
+	}		
+    return 0;  
 
 }
 //315M 字码发送

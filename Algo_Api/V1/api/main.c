@@ -44,33 +44,21 @@ volatile uint8 RI=0;
 
 //RF_RFM69H
 RFM69H_DATA_Type TxBuf; 
-uint8 FlagRF24GLearn = 0; 
+uint8 FlagRF24GLearn = 0; // 0: idle 1: 学习 2：接手
 
 
 //315M
 uint8 _315MHz_Flag;
-uint8  _315MHz_TimeCount2;
-unsigned int _315MHz_TimeCount;
 
 //2.4G
-unsigned char tx_test[17] = {0x7E,0x7E,0x34,0x43,0x10,0x10,0x01,0x00,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01};
-
-
-
+uchar rx_buf[TX_PLOAD_WIDTH] = {0x01,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
+                                0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1A,0x1B,0x1C,0x1D,0x1E,0x1F};
 typedef union //char型数据转int型数据类 
 {  
 	unsigned short  ue; 
 	unsigned char 	 u[2]; 
 }U16U8;
 U16U8  M;//两个8位转16位
-
-
-
-
-uint32 wifi_work_mode;
-
-
-
 
 //JTAG模式设置定义
 #define JTAG_SWD_DISABLE   0X02
@@ -88,12 +76,7 @@ void JTAG_Set(u8 mode)
 } 
 
 int tamain(void)
-//int main(void)
 {
-//    uint32 reclen=0;
-//    uint16 temp=0;
-//    uint8 data;
-    //315M设置
 	_315MHz_Flag = 0;
 
 
@@ -126,22 +109,6 @@ int tamain(void)
     while(1)
     {
 #if 1
-		  if(_315MHz_Flag)	//315M学习
-		  {
-		  		RF315_DATA_t  RF315_Receive;
-
-				if(RF315_Rec(&RF315_Receive))
-				{
-					_315MHz_Flag = 0;
-					U1_sendS("LW:",3);
-					U1_sendS((uint8*)&RF315_Receive, sizeof(RF315_DATA_t));
-					U1_sendS((uint8*)tail,sizeof(tail));	
-				}
-				else
-				{
-					U1_sendS((uint8*)ResFail, sizeof(ResFail));
-				}
-		 }
 		 if(FlagRF24GLearn == 1)
 		 {
 		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
@@ -157,8 +124,25 @@ int tamain(void)
 				U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
 			}
 
-		 }	
-#if 0
+		 }
+		 else if(FlagRF24GLearn == 2)	   //接收
+		 {
+		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
+			{
+				FlagRF24GLearn = 0;	
+				timer2_disable();
+				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
+			}
+			if(Ifnnrf_Receive(rx_buf)==1)
+			{
+				FlagRF24GLearn = 0;	
+				timer2_disable();
+				U1_sendS((uint8*)RF24GRecCMD, sizeof(RF24GRecCMD));
+				U1_sendS((uint8*)rx_buf, TX_PLOAD_WIDTH);
+				U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
+			}
+		 }
+#if 1
 		if(Check_wifi)
 		{
 			timer2_disable(); 
@@ -248,7 +232,29 @@ int tamain(void)
 	
 							case 'W':   //315M学习
 							{
+						  		RF315_DATA_t  RF315_Receive;
+				
 								_315MHz_Flag = 1;
+								RF315TimeCount.TimeCount = 0;
+								RF315TimeCount.FlagStart = 1;
+								timer2_enable();
+								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
+								while((RF315TimeCount.TimeCount <= 1000)&&(_315MHz_Flag == 1))
+								{
+									if(RF315_Rec(&RF315_Receive))
+									{
+										_315MHz_Flag = 0;
+										U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
+										U1_sendS((uint8*)&RF315_Receive, sizeof(RF315_DATA_t));
+										U1_sendS((uint8*)tail,sizeof(tail));	
+									}
+								}
+								timer2_disable();
+								if(RF315TimeCount.TimeCount > 1000)
+								{
+									_315MHz_Flag = 0;
+									U1_sendS((uint8*)ResFail, sizeof(ResFail));
+								}
 							}
 							break;
 	
@@ -256,12 +262,12 @@ int tamain(void)
 							{
 								RFM69H_DATA_Type RF433_RxBuf;
 	
-								U1_sendS("LF", 2);
+								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
 							 	RFM69H_Config();
 								RFM69H_EntryRx();
-								if(RFM69H_RxPacket(&RF433_RxBuf)>0)
+								if(RFM69H_RxPacket(&RF433_RxBuf)>8)
 								{
-									U1_sendS("FF:", 3);	
+									U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
 									U1_sendS((uint8*)&RF433_RxBuf, sizeof(RFM69H_DATA_Type));	//可以优化发送的数据
 									U1_sendS((uint8*)tail, sizeof(tail));	
 								}
@@ -313,20 +319,19 @@ int tamain(void)
 							{
 								uint8 time = 0;
 								RF315_DATA_t RF315_SendData;
-		//						U1_sendS("BW", 2);						
+								U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));							
 								memcpy((uint8*)&RF315_SendData, &rec_buf[3], sizeof(RF315_DATA_t));
 								while(time < 6)//重复次数!
 								{
 									RF315_Send((RF315_DATA_t*) (&rec_buf[4]));
 									time ++;
 								}
-//								m3_315_clr();		//关闭定时器0
 								U1_sendS((uint8*)ResSucess, sizeof(ResSucess));		
 							}
 							break;
 							case 'F': //433M发射
 							{
-		//						U1_sendS("FF", 2);	
+							    U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
 								RFM69H_Config();
 								RFM69H_EntryTx();
 								RFM69H_TxPacket((RFM69H_DATA_Type*)&rec_buf[4]);
@@ -357,15 +362,59 @@ int tamain(void)
 							break;
 							case  'W'://315M接收
 							{
+						    	RF315_DATA_t  RF315_Receive;
+				
+								_315MHz_Flag = 1;
+								RF315TimeCount.TimeCount = 0;
+								RF315TimeCount.FlagStart = 1;
+								timer2_enable();
+								U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
+								while((RF315TimeCount.TimeCount <= 1000)&&(_315MHz_Flag == 1))
+								{
+									if(RF315_Rec(&RF315_Receive))
+									{
+										_315MHz_Flag = 0;
+										U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
+										U1_sendS((uint8*)&RF315_Receive, sizeof(RF315_DATA_t));
+										U1_sendS((uint8*)tail,sizeof(tail));	
+									}
+								}
+								timer2_disable();
+								if(RF315TimeCount.TimeCount > 1000)
+								{
+									_315MHz_Flag = 0;
+									U1_sendS((uint8*)ResFail, sizeof(ResFail));
+								}
 							}
 							break;
 							case 'F': //433M接收
 							{
+						    	RFM69H_DATA_Type RF433_RxBuf;
+	
+								U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
+							 	RFM69H_Config();
+								RFM69H_EntryRx();
+								if(RFM69H_RxPacket(&RF433_RxBuf)>0)
+								{
+									U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
+									U1_sendS((uint8*)&RF433_RxBuf, sizeof(RFM69H_DATA_Type));	//可以优化发送的数据
+									U1_sendS((uint8*)tail, sizeof(tail));	
+								}
+								else
+								{
+									U1_sendS((uint8*)ResFail, sizeof(ResFail));
+								}
 		
 							}
 							break;
 							case'T': //2.4G 接收
 							{
+								U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
+								ifnnrf_rx_mode();
+								RF24GTimeCount.TimeCount = 0;
+								RF24GTimeCount.FlagStart = 1;
+								timer2_enable();	
+								FlagRF24GLearn = 2;
 							}
 							case 'D': //绑定
 							{
