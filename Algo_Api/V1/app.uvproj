@@ -456,6 +456,11 @@
               <FileType>1</FileType>
               <FilePath>.\api\nrf24l01.c</FilePath>
             </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\api\uart.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -13,6 +13,7 @@ typedef struct
 
 extern TimeCountTypeDef RF315TimeCount;
 extern TimeCountTypeDef RF24GTimeCount;
+extern TimeCountTypeDef RF433TimeCount;
 
 void    isr_13us(void);
 

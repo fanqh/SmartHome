@@ -31,8 +31,8 @@ typedef enum
 
 typedef struct 
 {
-	uint32 HoldTime  : 15;
-	uint32 pulse     : 1;
+	uint16 HoldTime  : 15;
+	uint16 pulse     : 1;
 }data_t;
 
 
@@ -58,7 +58,8 @@ extern volatile uint32	DataTimeCount;
 
 //void RFM69H_Running(u8 mode,u8 WorkStatus,u8 ParaChangeFlag,u8 *TxFlag,u8 *RxFlag,u8 *RSSI);
 void RFM69H_Config(void);
-int RFM69H_RxPacket(RFM69H_DATA_Type* p);
+//int RFM69H_RxPacket(RFM69H_DATA_Type* p);
+int RFM69H_RxPacket(RFM69H_DATA_Type *p);
 u8 RFM69H_TxPacket(RFM69H_DATA_Type* pSend);
 void RFM69H_EntryTx(void);
 void RFM69H_EntryRx(void);

@@ -159,7 +159,7 @@ int RF_decode(RF315_DATA_t *pdata)
 				{return -1;}
 			temp = (narrow + wide)/32;
 
-			pdata->TimeBase = (pdata->TimeBase + temp) / 2; //计算同步吗1bit的平均值
+			pdata->TimeBase = (pdata->TimeBase + temp) / 2; //计算同步吗1bit的平均值	单位10us
 		}
 		if((data[0][0]==data[1][0]) && (data[0][1] == data[1][1]) && (data[0][2]==data[1][2]))	//两次接收到的数据相同
 		{

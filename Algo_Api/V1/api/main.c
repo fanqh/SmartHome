@@ -108,7 +108,6 @@ int tamain(void)
 
     while(1)
     {
-#if 1
 		 if(FlagRF24GLearn == 1)
 		 {
 		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
@@ -142,7 +141,7 @@ int tamain(void)
 				U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
 			}
 		 }
-#if 1
+#if 0
 		if(Check_wifi)
 		{
 			timer2_disable(); 
@@ -213,7 +212,6 @@ int tamain(void)
 			timer2_enable(); 
 		}	
 #endif 
-#endif
         if(get_usart_interrupt_flg())
 		{
 			U1_in();			//获取串口发送的SJ数据!
@@ -227,7 +225,10 @@ int tamain(void)
 					 	switch(rec_buf[1])
 						{
 							case 'H': //红外学习
-							
+							{
+								
+							}
+
 							break;
 	
 							case 'W':   //315M学习
@@ -238,9 +239,10 @@ int tamain(void)
 								RF315TimeCount.TimeCount = 0;
 								RF315TimeCount.FlagStart = 1;
 								timer2_enable();
-								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
-								while((RF315TimeCount.TimeCount <= 1000)&&(_315MHz_Flag == 1))
+								//U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
+								while((RF315TimeCount.TimeCount <= 100)&&(_315MHz_Flag == 1))
 								{
+								//	printf("lenarn\r\n");
 									if(RF315_Rec(&RF315_Receive))
 									{
 										_315MHz_Flag = 0;
@@ -250,7 +252,7 @@ int tamain(void)
 									}
 								}
 								timer2_disable();
-								if(RF315TimeCount.TimeCount > 1000)
+								if(RF315TimeCount.TimeCount > 100)
 								{
 									_315MHz_Flag = 0;
 									U1_sendS((uint8*)ResFail, sizeof(ResFail));
@@ -261,31 +263,38 @@ int tamain(void)
 							case 'F':	//433M学习
 							{
 								RFM69H_DATA_Type RF433_RxBuf;
-	
-								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
+									
+						    	//U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
+//								RF433TimeCount.TimeCount = 0;
+//								RF433TimeCount.FlagStart = 1;
+//								timer2_enable();
 							 	RFM69H_Config();
 								RFM69H_EntryRx();
-								if(RFM69H_RxPacket(&RF433_RxBuf)>8)
+								if(RFM69H_RxPacket(&RF433_RxBuf)>0)
 								{
-									U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
+								//	U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
 									U1_sendS((uint8*)&RF433_RxBuf, sizeof(RFM69H_DATA_Type));	//可以优化发送的数据
-									U1_sendS((uint8*)tail, sizeof(tail));	
+								//	U1_sendS((uint8*)tail, sizeof(tail));	
 								}
 								else
 								{
 									U1_sendS((uint8*)ResFail, sizeof(ResFail));
 								}
+								timer2_enable();
 							}
 							break;
 	
 							case 'T':  //2.4G学习
 							{
-								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
-								ifnnrf_rx_mode();
-								RF24GTimeCount.TimeCount = 0;
-								RF24GTimeCount.FlagStart = 1;
-								timer2_enable();	
-								FlagRF24GLearn = 1;
+								if(FlagRF24GLearn!=2)
+								{
+									U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
+									ifnnrf_rx_mode();
+									RF24GTimeCount.TimeCount = 0;
+									RF24GTimeCount.FlagStart = 1;
+									timer2_enable();	
+									FlagRF24GLearn = 1;
+								}
 							}
 							break;
 	
@@ -392,29 +401,36 @@ int tamain(void)
 						    	RFM69H_DATA_Type RF433_RxBuf;
 	
 								U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
+								RF315TimeCount.TimeCount = 0;
+								RF315TimeCount.FlagStart = 1;
+								timer2_enable();
 							 	RFM69H_Config();
 								RFM69H_EntryRx();
 								if(RFM69H_RxPacket(&RF433_RxBuf)>0)
 								{
-									U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
+								//	U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
 									U1_sendS((uint8*)&RF433_RxBuf, sizeof(RFM69H_DATA_Type));	//可以优化发送的数据
-									U1_sendS((uint8*)tail, sizeof(tail));	
+								//	U1_sendS((uint8*)tail, sizeof(tail));	
 								}
 								else
 								{
 									U1_sendS((uint8*)ResFail, sizeof(ResFail));
 								}
+								timer2_disable();
 		
 							}
 							break;
 							case'T': //2.4G 接收
 							{
-								U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
-								ifnnrf_rx_mode();
-								RF24GTimeCount.TimeCount = 0;
-								RF24GTimeCount.FlagStart = 1;
-								timer2_enable();	
-								FlagRF24GLearn = 2;
+								if(FlagRF24GLearn!=1)
+								{
+									U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
+									ifnnrf_rx_mode();
+									RF24GTimeCount.TimeCount = 0;
+									RF24GTimeCount.FlagStart = 1;
+									timer2_enable();	
+									FlagRF24GLearn = 2;
+								}
 							}
 							case 'D': //绑定
 							{

@@ -299,14 +299,15 @@ u8 RFM69H_RxWaitStable(void)
   {
   	if((temp&0xC0)==0xC0 && temp!=0xff)
 	{
-		
+//		printf("1\r\n");
 		return 1;
 	}
 	else
 	{
 	  	timeout ++;
-		if(timeout >= 50)
+		if(timeout >= 500)
 			return 0;
+//		printf("0\r\n");
 //	  	delay_ms(10);
 		temp = 	SPIRead(SPI_2, 0x27);
 	}
@@ -377,14 +378,27 @@ u8 RFM69H_ReadRSSI(void)
 int RFM69H_RxPacket(RFM69H_DATA_Type *p)
 {
   int len =0; 
+  uint16 time = 0;
  
   if(RFM69H_RxWaitStable())
   {
+  	printf("ok\r\n");
 	Enable_SysTick();		//启动定时器0
-  	len = RFM69H_Analysis(p);
+	while(time < 10)
+	{
+		time++;
+	//	printf("%d\r\n",time);
+  		len = RFM69H_Analysis(p);		//可能有bug 跳进去出不来
+		if(len>8)
+		{
+			Disable_SysTick();
+			rfm69h_status = RFM69H_IDLE;
+			return len;
+		}
+	}
 	Disable_SysTick();
 	rfm69h_status = RFM69H_IDLE;
-	return len;
+	return 0;
   }
   else										  
   	return 0;
@@ -440,8 +454,9 @@ int RFM69H_Analysis(RFM69H_DATA_Type* pReceive)
 			
 			while(RFM69H_DATA_IN)
 			{ 
-				if(DataTimeCount * TIME_UNIT > 50000)  //如果5S内一直保持高电平，即没有数据接收
+				if(DataTimeCount * TIME_UNIT > 50000)  //如果50mS内一直保持高电平，即没有数据接收
 				{
+//					printf("timeout\r\n");
 					return  -1;
 				}
 			}
