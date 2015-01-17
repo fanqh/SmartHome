@@ -240,19 +240,20 @@ int tamain(void)
 								RF315TimeCount.FlagStart = 1;
 								timer2_enable();
 //								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
-								while((RF315TimeCount.TimeCount <= 100)&&(_315MHz_Flag == 1))
+								while((RF315TimeCount.TimeCount <= 1000)&&(_315MHz_Flag == 1))
 								{
 //									printf("lenarn\r\n");
-									if(RF315_Rec(&RF315_Receive))
+									if(RF_decode(&RF315_Receive))
 									{
+//										printf("len = %d\r\n",RF315_Receive.len);
 										_315MHz_Flag = 0;
 										U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));
-										U1_sendS((uint8*)&RF315_Receive, sizeof(RF315_DATA_t));
+										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len + 8);//	sizeof(RF315_DATA_t)
 										U1_sendS((uint8*)tail,sizeof(tail));	
 									}
 								}
 								timer2_disable();
-								if(RF315TimeCount.TimeCount > 100)
+								if(RF315TimeCount.TimeCount > 1000)
 								{
 									_315MHz_Flag = 0;
 									U1_sendS((uint8*)ResFail, sizeof(ResFail));

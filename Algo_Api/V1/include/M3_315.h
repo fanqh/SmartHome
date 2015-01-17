@@ -5,6 +5,7 @@
 #include"Include.h"
 
 #define M315_DATA_LEN  3
+#define LEN_MAX     256
 
 extern volatile uint16	RF315_TimeCount;
 extern volatile uint32 RF315_LearnTimeCount;
@@ -12,8 +13,9 @@ extern volatile uint32 RF315_LearnTimeCount;
 typedef struct
 {
 	uint32 TimeBase;
-	uint8  buff[M315_DATA_LEN];	
-	uint8  reserve;
+	uint16  len;
+	uint8  buff[LEN_MAX];	
+	uint16  reserve;
 }RF315_DATA_t;
 
 typedef enum
@@ -28,7 +30,7 @@ void    m3_315_io_config(void);
 
 uint8 Get_rf315_flag(void);
 
-int RF_decode(RF315_DATA_t *pdata);
+uint16 RF_decode(RF315_DATA_t *pdata);
 
 uint8 RF315_Rec(RF315_DATA_t *pdata);
 int RF315_Send(RF315_DATA_t *pdata);

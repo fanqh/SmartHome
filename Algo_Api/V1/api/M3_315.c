@@ -10,6 +10,11 @@
 #define Rx_315                  PAin(8)
 
 
+#define  NARROW_MAX    1000/TIME_UNIT		//1MS	 4T	窄脉冲最长
+#define  WIDE_MAX      31*NARROW_MAX	    //32MS	 124T 宽脉冲最长
+#define  NRROW_MIN     100/TIME_UNIT		//窄脉冲最短 100us
+
+
 
 extern uint8 _315MHz_Flag;
 
@@ -74,19 +79,21 @@ uint16 Get_TimeCount_CleanAndStart(void)
 	return 	temp;
 }
 
-#define  NARROW_MAX    1000/TIME_UNIT		//1MS	 4T
-#define  WIDE_MAX      31*NARROW_MAX	    //32MS	 124T
 
 
-int RF_decode(RF315_DATA_t *pdata) 
+
+uint16 RF_decode(RF315_DATA_t *pdata) 
 {
-	uint8 data[2][3];
-	uint8 ii=0,k=0,rep=0;
-	uint32 temp = 0;
-    uint16 timecount = 0;
+	uint8 *p;
+	uint8 ii=0,k=0;
 	uint16 narrow = 0;
 	uint16 wide = 0;
+	uint16 TimeHigh = 0;  //高脉冲长度
+	uint16 TimeLow = 0;	  //低脉冲长度
+	uint16 Timebase = 0;
+
 	rf315_state = RF315_RECEIVING;
+	p = pdata->buff;
 
 
    Enable_SysTick();		//启动定时器0
@@ -96,117 +103,78 @@ int RF_decode(RF315_DATA_t *pdata)
 	while(Rx_315)	   //检测同步脉冲
 	{
 		if(RF315_TimeCount > NARROW_MAX)	  //4T
-			return -1;
+			return 0;
 	}
 	narrow = Get_TimeCount_CleanAndStart();
 	while(!Rx_315) 
 	{
-		if(RF315_TimeCount > (1500*2))  //128T
-			return -1;
+		if(RF315_TimeCount > WIDE_MAX)  //128T
+			return 0;
 		
 	}
 	wide = Get_TimeCount_CleanAndStart();
-	pdata->TimeBase = (wide + narrow)/32;    
-
-	if(((narrow>20)&&(narrow*24)<wide) && (wide<(narrow*38)))  //narrow >20 为过LV
+	if(((narrow>NRROW_MIN )&& (narrow*24)<wide) && (wide<(narrow*38)))  //narrow >20 为过LV
 	{
-
-///		printf("narrow = %d， wide = %d\r\n", narrow, wide);
-#if 1
-		for(rep=0;rep<2;rep++)
+		Timebase = pdata->TimeBase = (wide + narrow)/32;     // T
+//		printf("narrow = %d， wide = %d\r\n", narrow, wide);
+		for(ii=0; ii<LEN_MAX; ii++)//3字节
 		{
-			for(ii=0;ii<3;ii++)//3字节
+			for(k=0;k<8;k++)
 			{
-				for(k=0;k<8;k++)
+				Get_TimeCount_CleanAndStart();
+				while(Rx_315) 
 				{
-					Get_TimeCount_CleanAndStart();
-					while(Rx_315) 
-					{
-						if(RF315_TimeCount > WIDE_MAX)
-						return -1;
-					}
-
-					timecount = Get_TimeCount_CleanAndStart();
-					if(timecount>(narrow-narrow/2-narrow/3)&&timecount<(narrow*1.96))
-					{	
-						data[rep][ii] &= ~ (1<<((7-k)));			
-						//da1527[rep][ii]&=~(1<<((7-k)));	 //解码0
-					}	
-					else if((timecount>(narrow*1.96))&&(timecount<(narrow*5)))
-					{
-						data[rep][ii] |= (1<<(7-k));
-						//da1527[rep][ii]|=(1<<(7-k)); 	 //解码1 
-					}      			        
-	               else 
-				 	 {return -1;}          //乱码退出	
-					while(!Rx_315 )
-					{
-						if(RF315_TimeCount > WIDE_MAX)
-							return -1;
-					}      //跳过低电平 
+					if(RF315_TimeCount > WIDE_MAX)
+					return 0;
 				}
-		     }
-			Get_TimeCount_CleanAndStart();
-			while(Rx_315 )
-			{
-				if(RF315_TimeCount > NARROW_MAX)
-				return -1;
-			}            //跳个最后一个高脉冲
-			narrow = Get_TimeCount_CleanAndStart();
-			while(!Rx_315) 
-			{
-				if(RF315_TimeCount > WIDE_MAX)
-				return -1;
-			} //检测下一个前导信号的寬度  
-			wide = Get_TimeCount_CleanAndStart();
-			if((wide<(narrow*26)) || (wide > (narrow*38)))  
-				{return -1;}
-			temp = (narrow + wide)/32;
+				TimeHigh = Get_TimeCount_CleanAndStart();	 //高脉冲时间
+				while(!Rx_315 )
+				{
+					if(RF315_TimeCount > WIDE_MAX)
+						return 0;
+				}   
+				TimeLow = Get_TimeCount_CleanAndStart();	//低脉冲时间
 
-			pdata->TimeBase = (pdata->TimeBase + temp) / 2; //计算同步吗1bit的平均值	单位TIME_UNIT
-		}
-		if((data[0][0]==data[1][0]) && (data[0][1] == data[1][1]) && (data[0][2]==data[1][2]))	//两次接收到的数据相同
-		{
-
-			memcpy(pdata->buff, data[0], 3);
-			/*uint8 u,i,x;
-			rf_ok=1;
-			for(i=0;i<3;i++)  //判定2262与1527
-			{
-				for(u=0;u<4;u++) {if(((da1527[0][i]>>(u*2)) & 3)==2) {i=80;break;}}  //有10则为1527
-				if(i==80) break;
-			}
-			if(i==80)  //1527
-			{
-				key_d=da1527[1][2] & 0x0f;         //分出1527的按键值
-				da1527[0][2]=da1527[1][2]>>4; //分出1527的后4位地址
-				jmnx=1;         //为0是2262，1是1527
-			}
-			else      //2262
-			{
-				key_d=0;
-				for(i=0;i<4;i++){if(((da1527[0][2]>>(i*2))&3)==3) key_d|=1<<i;}   //计算出2262的按键数据                                  
-				da1527[0][2]=00; //2262无后4位地址,全为0
-				jmnx=0;         //为0是2262，1是1527
-			}
-			decode_ok=1; */
-
-			return 3; //表示3个字节
+				if(TimeHigh>(Timebase-Timebase/2-Timebase/3)&&TimeHigh<(Timebase*1.96))
+				{	
+					if((TimeLow>(Timebase*1.96))&&(TimeLow<(Timebase*5)))
+						*p &= ~ (1<<((7-k)));		//解码0	
+					else if(((Timebase*24)<TimeLow) && (Timebase<(narrow*38)))	  //下一个同步码
+					{
+//						printf("k = %d, ii = %d, rep = %d\r\n",k, ii, rep);
+						pdata->len = ii;								  
+						return ii;
+					}
+					else 
+						return 0;
+				}	
+				else if((TimeHigh>(Timebase*1.96))&&(TimeHigh<(Timebase*5)))
+				{
+					if(TimeLow>(Timebase-Timebase/2-Timebase/3)&&TimeLow<(Timebase*1.96))
+						*p |= (1<<(7-k));		   //解码1
+					else
+						return 0;
+				}      			        
+               else 
+			   {
+			   		return 0;	  //乱码退出
+			   }         	
+	    	}
+			++p;
 		}	
-	#endif
 	}
-	return -1;
-
+	return 0;
 }
 
 
 uint8 RF315_Rec(RF315_DATA_t *pdata) // 改为，解析成功，超时，
 {
 	
-	if(RF_decode(pdata) == M315_DATA_LEN)  ///可变
+	if(RF_decode(pdata)== M315_DATA_LEN)  ///可变
 	{
 		return 1;
-	}		
+	}
+		
     return 0;  
 
 }
@@ -270,7 +238,7 @@ int RF315_Send(RF315_DATA_t *pdata)
 	rf315_state = RF315_SENDING;
 	Enable_SysTick();		//启动定时器0
 	RF315_SendSyn(pdata->TimeBase);
-	for(i=0; i<M315_DATA_LEN; i++)
+	for(i=0; i<pdata->len; i++)
 	{
 		for(j= 0; j<8; j++)
 		{
