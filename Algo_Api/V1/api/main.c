@@ -239,14 +239,14 @@ int tamain(void)
 								RF315TimeCount.TimeCount = 0;
 								RF315TimeCount.FlagStart = 1;
 								timer2_enable();
-								//U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
+//								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
 								while((RF315TimeCount.TimeCount <= 100)&&(_315MHz_Flag == 1))
 								{
-								//	printf("lenarn\r\n");
+//									printf("lenarn\r\n");
 									if(RF315_Rec(&RF315_Receive))
 									{
 										_315MHz_Flag = 0;
-										U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
+										U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));
 										U1_sendS((uint8*)&RF315_Receive, sizeof(RF315_DATA_t));
 										U1_sendS((uint8*)tail,sizeof(tail));	
 									}
@@ -265,14 +265,12 @@ int tamain(void)
 								RFM69H_DATA_Type RF433_RxBuf;
 									
 						    	//U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
-//								RF433TimeCount.TimeCount = 0;
-//								RF433TimeCount.FlagStart = 1;
-//								timer2_enable();
 							 	RFM69H_Config();
 								RFM69H_EntryRx();
 								if(RFM69H_RxPacket(&RF433_RxBuf)>0)
 								{
-								//	U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
+								//	printf("len = %d\r\n", RF433_RxBuf.len);
+									U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
 									U1_sendS((uint8*)&RF433_RxBuf, sizeof(RFM69H_DATA_Type));	//可以优化发送的数据
 								//	U1_sendS((uint8*)tail, sizeof(tail));	
 								}
@@ -328,11 +326,13 @@ int tamain(void)
 							{
 								uint8 time = 0;
 								RF315_DATA_t RF315_SendData;
+
 								U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));							
 								memcpy((uint8*)&RF315_SendData, &rec_buf[3], sizeof(RF315_DATA_t));
+//								printf("TimeBase:%d, data[0]:%d, data[1]:%d, data[2]:%d\r\n", RF315_SendData.TimeBase,RF315_SendData.buff[0],RF315_SendData.buff[1],RF315_SendData.buff[2]);
 								while(time < 6)//重复次数!
 								{
-									RF315_Send((RF315_DATA_t*) (&rec_buf[4]));
+									RF315_Send(&RF315_SendData);		  
 									time ++;
 								}
 								U1_sendS((uint8*)ResSucess, sizeof(ResSucess));		
@@ -340,10 +340,15 @@ int tamain(void)
 							break;
 							case 'F': //433M发射
 							{
+								RFM69H_DATA_Type RF433_SendBuf;
+
 							    U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
 								RFM69H_Config();
 								RFM69H_EntryTx();
-								RFM69H_TxPacket((RFM69H_DATA_Type*)&rec_buf[4]);
+								memcpy((uint8*)&RF433_SendBuf, &rec_buf[3], sizeof(RFM69H_DATA_Type));
+
+								printf("len = %d\r\n", RF433_SendBuf.len);
+								RFM69H_TxPacket(&RF433_SendBuf);
 								U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
 							}
 							break;

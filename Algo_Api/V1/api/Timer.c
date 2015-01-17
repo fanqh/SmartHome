@@ -195,7 +195,7 @@ void isr_13us(void)
 
     if(Get_rf315_flag()!= RF315_IDLE)
 	{
-		RF315_TimeCount++;			
+		++RF315_TimeCount;			
 	}
 
 }

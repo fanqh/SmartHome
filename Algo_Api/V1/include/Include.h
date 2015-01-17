@@ -14,7 +14,7 @@
 #include    "debug_led.h"
 #include    "Timer.h"
 
- #define TIME_UNIT		10
+ #define TIME_UNIT		5
  #define RF315LEARNTIMECOUNT   1000	   //单位 5ms  5s
  #define RF24GLEARNTIMECOUNT   1000	   //单位 5ms  5s
 

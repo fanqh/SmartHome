@@ -382,7 +382,7 @@ int RFM69H_RxPacket(RFM69H_DATA_Type *p)
  
   if(RFM69H_RxWaitStable())
   {
-  	printf("ok\r\n");
+//  	printf("ok\r\n");
 	Enable_SysTick();		//启动定时器0
 	while(time < 10)
 	{
@@ -420,12 +420,13 @@ u8 RFM69H_TxPacket(RFM69H_DATA_Type* pSend)
 	 while(!nIRQ0)
 	 {
 	  	timeout ++;
-		if(timeout>=50)
+		if(timeout>=500)
 		{
 			RFM69H_Config();
 			return 0;
 		}
 	 }
+//	 printf("send\r\n");
 	 RFM69H_Send(pSend);
 	 return 1;
   }
@@ -550,6 +551,7 @@ int RFM69H_SendData(RFM69H_DATA_Type *p)
 	Enable_SysTick();		//启动定时器0
 	RF69H_DataCongfigOUT();
 
+	printf("sending\r\n");
 	rfm69h_status = RFM69H_SENDING;
 	while( i < p->len )
 	{
@@ -569,6 +571,7 @@ int RFM69H_SendData(RFM69H_DATA_Type *p)
 				DataTimeCount = 0;
 			    __enable_irq();	
 				
+//				printf("low\r\n");
 				RFM69H_DATA_OUT = 0;
 				while(DataTimeCount * TIME_UNIT < p->buff[i].HoldTime );
 				i++;	

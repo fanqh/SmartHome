@@ -74,6 +74,10 @@ uint16 Get_TimeCount_CleanAndStart(void)
 	return 	temp;
 }
 
+#define  NARROW_MAX    1000/TIME_UNIT		//1MS	 4T
+#define  WIDE_MAX      31*NARROW_MAX	    //32MS	 124T
+
+
 int RF_decode(RF315_DATA_t *pdata) 
 {
 	uint8 data[2][3];
@@ -91,13 +95,13 @@ int RF_decode(RF315_DATA_t *pdata)
     __enable_irq(); 
 	while(Rx_315)	   //检测同步脉冲
 	{
-		if(RF315_TimeCount > (100))
+		if(RF315_TimeCount > NARROW_MAX)	  //4T
 			return -1;
 	}
 	narrow = Get_TimeCount_CleanAndStart();
 	while(!Rx_315) 
 	{
-		if(RF315_TimeCount > (1500))
+		if(RF315_TimeCount > (1500*2))  //128T
 			return -1;
 		
 	}
@@ -118,7 +122,7 @@ int RF_decode(RF315_DATA_t *pdata)
 					Get_TimeCount_CleanAndStart();
 					while(Rx_315) 
 					{
-						if(RF315_TimeCount > (1500))
+						if(RF315_TimeCount > WIDE_MAX)
 						return -1;
 					}
 
@@ -137,7 +141,7 @@ int RF_decode(RF315_DATA_t *pdata)
 				 	 {return -1;}          //乱码退出	
 					while(!Rx_315 )
 					{
-						if(RF315_TimeCount > (1500))
+						if(RF315_TimeCount > WIDE_MAX)
 							return -1;
 					}      //跳过低电平 
 				}
@@ -145,13 +149,13 @@ int RF_decode(RF315_DATA_t *pdata)
 			Get_TimeCount_CleanAndStart();
 			while(Rx_315 )
 			{
-				if(RF315_TimeCount > (100))
+				if(RF315_TimeCount > NARROW_MAX)
 				return -1;
 			}            //跳个最后一个高脉冲
 			narrow = Get_TimeCount_CleanAndStart();
 			while(!Rx_315) 
 			{
-				if(RF315_TimeCount > (1500))
+				if(RF315_TimeCount > WIDE_MAX)
 				return -1;
 			} //检测下一个前导信号的寬度  
 			wide = Get_TimeCount_CleanAndStart();
@@ -159,7 +163,7 @@ int RF_decode(RF315_DATA_t *pdata)
 				{return -1;}
 			temp = (narrow + wide)/32;
 
-			pdata->TimeBase = (pdata->TimeBase + temp) / 2; //计算同步吗1bit的平均值	单位10us
+			pdata->TimeBase = (pdata->TimeBase + temp) / 2; //计算同步吗1bit的平均值	单位TIME_UNIT
 		}
 		if((data[0][0]==data[1][0]) && (data[0][1] == data[1][1]) && (data[0][2]==data[1][2]))	//两次接收到的数据相同
 		{
