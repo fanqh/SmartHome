@@ -102,6 +102,7 @@ int tamain(void)
     app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
     Disable_SysTick();
 	SpiMsterGpioInit(SPI_2);
+	 RF69H_DataCongfigIN();
 
 	printf("uart is working\r\n"); 
 
@@ -234,22 +235,29 @@ int tamain(void)
 							case 'W':   //315M学习
 							{
 						  		RF315_DATA_t  RF315_Receive;
-				
+								 RFM69H_DATA_Type RF433_RxBuf;
+
 								_315MHz_Flag = 1;
 								RF315TimeCount.TimeCount = 0;
 								RF315TimeCount.FlagStart = 1;
 								timer2_enable();
 //								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
-								while((RF315TimeCount.TimeCount <= 1000)&&(_315MHz_Flag == 1))
+								if(RFM69H_RxPacket(&RF433_RxBuf))
 								{
-//									printf("lenarn\r\n");
-									if(RF_decode(&RF315_Receive))
+									while((RF315TimeCount.TimeCount <= 1000)&&(_315MHz_Flag == 1))
 									{
-//										printf("len = %d\r\n",RF315_Receive.len);
-										_315MHz_Flag = 0;
-										U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));
-										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len + 8);//	sizeof(RF315_DATA_t)
-										U1_sendS((uint8*)tail,sizeof(tail));	
+									//	if(RFM69H_RxPacket(&RF433_RxBuf))
+										{
+										//printf("lenarn\r\n");
+										if(RF_decode(&RF315_Receive, GPIOB, GPIO_Pin_11))
+										{
+											printf("len = %d\r\n",RF315_Receive.len);
+											_315MHz_Flag = 0;
+	//										U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));
+	//										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len + 8);//	sizeof(RF315_DATA_t)
+	//										U1_sendS((uint8*)tail,sizeof(tail));	
+										}
+										}
 									}
 								}
 								timer2_disable();
@@ -386,7 +394,7 @@ int tamain(void)
 								U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
 								while((RF315TimeCount.TimeCount <= 1000)&&(_315MHz_Flag == 1))
 								{
-									if(RF315_Rec(&RF315_Receive))
+								//	if(RF315_Rec(&RF315_Receive))
 									{
 										_315MHz_Flag = 0;
 										U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));

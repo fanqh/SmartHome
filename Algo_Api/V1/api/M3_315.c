@@ -1,5 +1,6 @@
 #include"M3_315.h"
 #include "gpio_config.h"
+#include "stm32f10x_gpio.h"
 
 #define M3_315_DATA_PIN         GPIO_Pin_8
 #define M3_315_DATA_PORT        GPIOA
@@ -82,7 +83,7 @@ uint16 Get_TimeCount_CleanAndStart(void)
 
 
 
-uint16 RF_decode(RF315_DATA_t *pdata) 
+uint16 RF_decode(RF315_DATA_t *pdata, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin) 
 {
 	uint8 *p;
 	uint8 ii=0,k=0;
@@ -100,63 +101,83 @@ uint16 RF_decode(RF315_DATA_t *pdata)
 	__disable_irq();
 	RF315_TimeCount = 0;
     __enable_irq(); 
-	while(Rx_315)	   //检测同步脉冲
+	while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测同步脉冲
 	{
 		if(RF315_TimeCount > NARROW_MAX)	  //4T
 			return 0;
 	}
 	narrow = Get_TimeCount_CleanAndStart();
-	while(!Rx_315) 
+	while(!(GPIO_ReadInputDataBit(GPIOx,  GPIO_Pin))) 
 	{
 		if(RF315_TimeCount > WIDE_MAX)  //128T
 			return 0;
 		
 	}
 	wide = Get_TimeCount_CleanAndStart();
+
+//	printf("narrow = %d， wide = %d\r\n", narrow, wide);
 	if(((narrow>NRROW_MIN )&& (narrow*24)<wide) && (wide<(narrow*38)))  //narrow >20 为过LV
 	{
-		Timebase = pdata->TimeBase = (wide + narrow)/32;     // T
-//		printf("narrow = %d， wide = %d\r\n", narrow, wide);
-		for(ii=0; ii<LEN_MAX; ii++)//3字节
+		Timebase = pdata->TimeBase = (wide + narrow) / 32;     // T
+//		printf("narrow = %d， wide = %d, TimeBase = %d\r\n", narrow, wide, Timebase);
+		for(ii=0; ii<LEN_MAX; ii++)
 		{
-			for(k=0;k<8;k++)
+			for(k=0; k<8; k++)
 			{
 				Get_TimeCount_CleanAndStart();
-				while(Rx_315) 
+				while((GPIO_ReadInputDataBit(GPIOx,  GPIO_Pin))) 
 				{
 					if(RF315_TimeCount > WIDE_MAX)
 					return 0;
 				}
 				TimeHigh = Get_TimeCount_CleanAndStart();	 //高脉冲时间
-				while(!Rx_315 )
+				while(!(GPIO_ReadInputDataBit(GPIOx,  GPIO_Pin)) )
 				{
 					if(RF315_TimeCount > WIDE_MAX)
 						return 0;
 				}   
 				TimeLow = Get_TimeCount_CleanAndStart();	//低脉冲时间
 
+				if(k==2)
+				{
+				printf("TimeLow = %d, TimeHigh = %d\r\n", TimeLow,TimeHigh);
+				return 3;
+				}
 				if(TimeHigh>(Timebase-Timebase/2-Timebase/3)&&TimeHigh<(Timebase*1.96))
 				{	
 					if((TimeLow>(Timebase*1.96))&&(TimeLow<(Timebase*5)))
 						*p &= ~ (1<<((7-k)));		//解码0	
-					else if(((Timebase*24)<TimeLow) && (Timebase<(narrow*38)))	  //下一个同步码
+					else if(((Timebase*24)<TimeLow) && (TimeLow<(Timebase*38)))	  //下一个同步码
 					{
-//						printf("k = %d, ii = %d, rep = %d\r\n",k, ii, rep);
+//						printf("TimeLow = %d, TimeHigh = %d\r\n", TimeLow,TimeHigh);
+						printf("k = %d, ii = %d\r\n",k, ii);
+//						printf("time = %d\r\n", time);
+						for(k= 0; k<ii;k++)
+						{
+							printf("%d\r\n", *p);
+						}
 						pdata->len = ii;								  
 						return ii;
 					}
-					else 
+					else
+					{
+//						printf("1: TimeLow = %d, TimeHigh = %d\r\n", TimeLow,TimeHigh);
 						return 0;
+					}
 				}	
 				else if((TimeHigh>(Timebase*1.96))&&(TimeHigh<(Timebase*5)))
 				{
-					if(TimeLow>(Timebase-Timebase/2-Timebase/3)&&TimeLow<(Timebase*1.96))
+				//	if(TimeLow>(Timebase-Timebase/2-Timebase/3)&&TimeLow<(Timebase*1.96))
 						*p |= (1<<(7-k));		   //解码1
-					else
-						return 0;
+//					else
+//					{
+//						printf("2: TimeLow = %d, TimeHigh = %d\r\n", TimeLow,TimeHigh);
+//						return 0;
+//					}
 				}      			        
                else 
 			   {
+			   		printf("3: TimeLow = %d, TimeHigh = %d\r\n", TimeLow,TimeHigh);
 			   		return 0;	  //乱码退出
 			   }         	
 	    	}
@@ -167,17 +188,17 @@ uint16 RF_decode(RF315_DATA_t *pdata)
 }
 
 
-uint8 RF315_Rec(RF315_DATA_t *pdata) // 改为，解析成功，超时，
-{
-	
-	if(RF_decode(pdata)== M315_DATA_LEN)  ///可变
-	{
-		return 1;
-	}
-		
-    return 0;  
-
-}
+//uint8 RF315_Rec(RF315_DATA_t *pdata) // 改为，解析成功，超时，
+//{
+//	
+//	if(RF_decode(pdata)== M315_DATA_LEN)  ///可变
+//	{
+//		return 1;
+//	}
+//		
+//    return 0;  
+//
+//}
 //315M 字码发送
 void RF315_SendBit1(uint32 TimeBase)
 {

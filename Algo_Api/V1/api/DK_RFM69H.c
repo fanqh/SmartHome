@@ -382,23 +382,25 @@ int RFM69H_RxPacket(RFM69H_DATA_Type *p)
  
   if(RFM69H_RxWaitStable())
   {
-//  	printf("ok\r\n");
-	Enable_SysTick();		//启动定时器0
-	while(time < 10)
-	{
-		time++;
-	//	printf("%d\r\n",time);
-  		len = RFM69H_Analysis(p);		//可能有bug 跳进去出不来
-		if(len>8)
-		{
-			Disable_SysTick();
-			rfm69h_status = RFM69H_IDLE;
-			return len;
-		}
-	}
-	Disable_SysTick();
+
+ // 	RF_decode(RF315_DATA_t *pdata, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+
+//	Enable_SysTick();		//启动定时器0
+//	while(time < 10)
+//	{
+//		time++;
+//	//	printf("%d\r\n",time);
+////  		len = RFM69H_Analysis(p);		//可能有bug 跳进去出不来
+//		if(len>8)
+//		{
+//			Disable_SysTick();
+//			rfm69h_status = RFM69H_IDLE;
+//			return len;
+//		}
+//	}
+//	Disable_SysTick();
 	rfm69h_status = RFM69H_IDLE;
-	return 0;
+	return 1;
   }
   else										  
   	return 0;
