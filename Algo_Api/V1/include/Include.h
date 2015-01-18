@@ -13,6 +13,7 @@
 #include    "M3_315.h"
 #include    "debug_led.h"
 #include    "Timer.h"
+#include    "decode.h"
 
  #define TIME_UNIT		5
  #define RF315LEARNTIMECOUNT   1000	   //µ¥Î» 5ms  5s

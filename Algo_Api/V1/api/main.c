@@ -48,7 +48,9 @@ uint8 FlagRF24GLearn = 0; // 0: idle 1: 学习 2：接手
 
 
 //315M
-uint8 _315MHz_Flag;
+uint8 RF315MHz_Flag = 0;
+
+uint8 RF433MHz_Flag = 0;
 
 //2.4G
 uchar rx_buf[TX_PLOAD_WIDTH] = {0x01,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
@@ -77,8 +79,6 @@ void JTAG_Set(u8 mode)
 
 int tamain(void)
 {
-	_315MHz_Flag = 0;
-
 
 	JTAG_Set(SWD_ENABLE);		//加
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4推挽输出
@@ -234,36 +234,32 @@ int tamain(void)
 	
 							case 'W':   //315M学习
 							{
-						  		RF315_DATA_t  RF315_Receive;
-								 RFM69H_DATA_Type RF433_RxBuf;
+						  		RF_AC_DATA_TYPE  RF315_Receive;
 
-								_315MHz_Flag = 1;
+								RF315MHz_Flag = 1;
 								RF315TimeCount.TimeCount = 0;
 								RF315TimeCount.FlagStart = 1;
 								timer2_enable();
 //								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
-								if(RFM69H_RxPacket(&RF433_RxBuf))
+								while((RF315TimeCount.TimeCount <= 1000)&&(RF315MHz_Flag == 1))
 								{
-									while((RF315TimeCount.TimeCount <= 1000)&&(_315MHz_Flag == 1))
+								//	if(RFM69H_RxPacket(&RF433_RxBuf))
 									{
-									//	if(RFM69H_RxPacket(&RF433_RxBuf))
-										{
-										//printf("lenarn\r\n");
-										if(RF_decode(&RF315_Receive, GPIOB, GPIO_Pin_11))
-										{
-											printf("len = %d\r\n",RF315_Receive.len);
-											_315MHz_Flag = 0;
-	//										U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));
-	//										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len + 8);//	sizeof(RF315_DATA_t)
-	//										U1_sendS((uint8*)tail,sizeof(tail));	
-										}
-										}
+									//printf("lenarn\r\n");
+									if(RFDecodeAC(&RF315_Receive, GPIOA, GPIO_Pin_8))
+									{
+//										printf("len = %d\r\n",RF315_Receive.len);
+										RF315MHz_Flag = 0;
+										U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));
+										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
+//										U1_sendS((uint8*)tail,sizeof(tail));	
 									}
+								}
 								}
 								timer2_disable();
 								if(RF315TimeCount.TimeCount > 1000)
 								{
-									_315MHz_Flag = 0;
+									RF315MHz_Flag = 0;
 									U1_sendS((uint8*)ResFail, sizeof(ResFail));
 								}
 							}
@@ -271,6 +267,41 @@ int tamain(void)
 	
 							case 'F':	//433M学习
 							{
+						  		 RF_AC_DATA_TYPE  RF433_Receive;
+
+								RF433MHz_Flag = 1;
+								RF433TimeCount.TimeCount = 0;
+								RF433TimeCount.FlagStart = 1;
+								timer2_enable();
+//								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
+								if(RFM69H_RxWaitStable())
+								{
+									RF69H_DataCongfigIN();
+//									rfm69h_status = RFM69H_RECEIVE;
+									while((RF433TimeCount.TimeCount <= 1000)&&(RF433MHz_Flag == 1))
+									{
+										if(RFDecodeAC(&RF433_Receive, GPIOB, GPIO_Pin_11))
+										{
+//											printf("len = %d\r\n",RF433_Receive.len);
+											RF433MHz_Flag = 0;
+											U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
+											U1_sendS((uint8*)&RF433_Receive, RF433_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
+	//										U1_sendS((uint8*)tail,sizeof(tail));	
+										}
+									}  
+//									rfm69h_status = RFM69H_IDLE;
+								}
+								timer2_disable();
+								if(RF433TimeCount.TimeCount > 1000)
+								{
+									RF433MHz_Flag = 0;
+									U1_sendS((uint8*)ResFail, sizeof(ResFail));
+								}
+							}
+
+#if 0
+
+
 								RFM69H_DATA_Type RF433_RxBuf;
 									
 						    	//U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
@@ -278,9 +309,9 @@ int tamain(void)
 								RFM69H_EntryRx();
 								if(RFM69H_RxPacket(&RF433_RxBuf)>0)
 								{
-								//	printf("len = %d\r\n", RF433_RxBuf.len);
-									U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
-									U1_sendS((uint8*)&RF433_RxBuf, sizeof(RFM69H_DATA_Type));	//可以优化发送的数据
+									printf("len = %d\r\n", RF433_RxBuf.len);
+//									U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
+//									U1_sendS((uint8*)&RF433_RxBuf, sizeof(RFM69H_DATA_Type));	//可以优化发送的数据
 								//	U1_sendS((uint8*)tail, sizeof(tail));	
 								}
 								else
@@ -289,6 +320,7 @@ int tamain(void)
 								}
 								timer2_enable();
 							}
+#endif
 							break;
 	
 							case 'T':  //2.4G学习
@@ -334,31 +366,48 @@ int tamain(void)
 							case  'W'://315M发射
 							{
 								uint8 time = 0;
-								RF315_DATA_t RF315_SendData;
+								RF_AC_DATA_TYPE RF315_SendData;
 
 								U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));							
-								memcpy((uint8*)&RF315_SendData, &rec_buf[3], sizeof(RF315_DATA_t));
-//								printf("TimeBase:%d, data[0]:%d, data[1]:%d, data[2]:%d\r\n", RF315_SendData.TimeBase,RF315_SendData.buff[0],RF315_SendData.buff[1],RF315_SendData.buff[2]);
+								memcpy((uint8*)&RF315_SendData, &rec_buf[3], sizeof(RF_AC_DATA_TYPE));
+//								printf("TimeBase:%d, data[0]:%X, data[1]:%X, data[2]:%X\r\n", RF315_SendData.TimeBase,RF315_SendData.buff[0],RF315_SendData.buff[1],RF315_SendData.buff[2]);
+								GPIO_WriteBit(GPIOA, GPIO_Pin_8, Bit_RESET);
 								while(time < 6)//重复次数!
 								{
-									RF315_Send(&RF315_SendData);		  
-									time ++;
+									time ++;	
+									RFCodeAC_Send(&RF315_SendData , GPIOB, GPIO_Pin_3);	  
+									
 								}
 								U1_sendS((uint8*)ResSucess, sizeof(ResSucess));		
 							}
 							break;
 							case 'F': //433M发射
-							{
-								RFM69H_DATA_Type RF433_SendBuf;
+							{	
+								uint8 time = 0;
+								RF_AC_DATA_TYPE RF433_SendData;
 
 							    U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
 								RFM69H_Config();
 								RFM69H_EntryTx();
-								memcpy((uint8*)&RF433_SendBuf, &rec_buf[3], sizeof(RFM69H_DATA_Type));
-
-								printf("len = %d\r\n", RF433_SendBuf.len);
-								RFM69H_TxPacket(&RF433_SendBuf);
-								U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
+								if(RFM69H_TxWaitStable())
+								{
+									RF69H_DataCongfigOUT();
+									memcpy((uint8*)&RF433_SendData, &rec_buf[3], sizeof(RFM69H_DATA_Type));
+									printf("TimeBase:%d, data[0]:%X, data[1]:%X, data[2]:%X\r\n", RF433_SendData.TimeBase,RF433_SendData.buff[0],RF433_SendData.buff[1],RF433_SendData.buff[2]);
+									printf("len = %d\r\n", RF433_SendData.len);
+									while(time<6)
+									{	
+										time ++;
+										RFCodeAC_Send(&RF433_SendData , GPIOB, GPIO_Pin_11);	  
+											
+									}
+									//RFM69H_TxPacket(&RF433_SendData);
+									U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
+								}
+								else
+								{
+									//失败
+								}
 							}
 							break;
 							case'T': //2.4G 发射
@@ -385,30 +434,30 @@ int tamain(void)
 							break;
 							case  'W'://315M接收
 							{
-						    	RF315_DATA_t  RF315_Receive;
-				
-								_315MHz_Flag = 1;
-								RF315TimeCount.TimeCount = 0;
-								RF315TimeCount.FlagStart = 1;
-								timer2_enable();
-								U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
-								while((RF315TimeCount.TimeCount <= 1000)&&(_315MHz_Flag == 1))
-								{
-								//	if(RF315_Rec(&RF315_Receive))
-									{
-										_315MHz_Flag = 0;
-										U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
-										U1_sendS((uint8*)&RF315_Receive, sizeof(RF315_DATA_t));
-										U1_sendS((uint8*)tail,sizeof(tail));	
-									}
-								}
-								timer2_disable();
-								if(RF315TimeCount.TimeCount > 1000)
-								{
-									_315MHz_Flag = 0;
-									U1_sendS((uint8*)ResFail, sizeof(ResFail));
-								}
-							}
+//						    	RF_AC_DATA_TYPE  RF315_Receive;
+//				
+//								RF315MHz_Flag = 1;
+//								RF315TimeCount.TimeCount = 0;
+//								RF315TimeCount.FlagStart = 1;  //学习时间计时
+//								timer2_enable();
+//								U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
+//								while((RF315TimeCount.TimeCount <= 1000)&&(RF315MHz_Flag == 1))
+//								{
+//								//	if(RF315_Rec(&RF315_Receive))
+//									{
+//										RF315MHz_Flag = 0;
+//										U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
+//										U1_sendS((uint8*)&RF315_Receive, sizeof(RF_AC_DATA_TYPE));
+//										U1_sendS((uint8*)tail,sizeof(tail));	
+//									}
+//								}
+//								timer2_disable();
+//								if(RF315TimeCount.TimeCount > 1000)
+//								{
+//									RF315MHz_Flag = 0;
+//									U1_sendS((uint8*)ResFail, sizeof(ResFail));
+//								}
+//							}
 							break;
 							case 'F': //433M接收
 							{
@@ -503,10 +552,12 @@ int tamain(void)
 								timer2_enable();
 	                      }
 						}
-				  break;
-				   default :
 				   break;
-		 	}
+				   default :
+				   		break;
+		 		   }
+				}
+
 			timer2_enable(); 
 		    }
 			else if(strstr(rec_buf,"+o") != NULL) //收到wifi模块返回的数据 +ok

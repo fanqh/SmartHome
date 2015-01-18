@@ -187,15 +187,10 @@ void isr_13us(void)
             CLR_INFRARED;
         }
     }
-	if(Get_RFM69H_Status()!=RFM69H_IDLE)
-	{
-		DataTimeCount ++;
 
-	}
-
-    if(Get_rf315_flag()!= RF315_IDLE)
+    if(GetFlagTimeCount())
 	{
-		++RF315_TimeCount;			
+		++ TimeCount;			
 	}
 
 }
