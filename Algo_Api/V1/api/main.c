@@ -102,10 +102,10 @@ int tamain(void)
     app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
     Disable_SysTick();
 	SpiMsterGpioInit(SPI_2);
-	 RF69H_DataCongfigIN();
+	RF69H_DataCongfigIN();
+	Infrared_UsartInit();
 
 	printf("uart is working\r\n"); 
-
 
     while(1)
     {
@@ -556,9 +556,11 @@ int tamain(void)
 				   default :
 				   		break;
 		 		   }
+
+				   timer2_enable(); 
 				}
 
-			timer2_enable(); 
+
 		    }
 			else if(strstr(rec_buf,"+o") != NULL) //收到wifi模块返回的数据 +ok
 			{
@@ -608,8 +610,8 @@ int tamain(void)
 		memset(rec_buf,0x00,sizeof(rec_buf));
 	}
 
-
 }
+
 
 
 #ifdef __GNUC__

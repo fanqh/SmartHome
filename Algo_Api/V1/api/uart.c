@@ -9,15 +9,16 @@
 #define INFRARED_UART_RX		    GPIO_Pin_10
 #define INFRARED_UART_GPIO		    GPIOA
 
-volatile uint8 UartBuff[UART_LEN];
-UART_INIT_STRUCT UartRx;
+
 
 #define UART_RXDATA         (INFRARED_UART->DR)
 #define RX_BUF_START         UartBuff  
 #define RX_BUF_END          (UartBuff + UART_LEN) 
 
 
-
+volatile uint8 UartBuff[UART_LEN];
+UART_INIT_STRUCT UartRx;
+const uint32 BaudRate[6]={0,9600,19200,38400,57600,115200};
 
 void InfraredUsartClrBuf(void)
 {
@@ -43,12 +44,12 @@ void UART1_IRQHandler(void)
 	{	
        if(UartRx.size<UART_LEN) //缓冲区未满 
        {
-            if(UartRx.write>=RX_BUF_END)
+            if(UartRx.write >= RX_BUF_END)
         	{
-        		UartRx.write =RX_BUF_START;
+        		UartRx.write = RX_BUF_START;
         	}
-            *UartRx.write++=UART_RXDATA;
-            UartRx.size+=1;
+            *UartRx.write++ = UART_RXDATA;
+            UartRx.size += 1;
        }
     }
     __enable_irq();
@@ -56,9 +57,9 @@ void UART1_IRQHandler(void)
 }
 
 
-const uint32 BaudRate[6]={0,9600,19200,38400,57600,115200};
 
-void    Infrared_ResetUsart(uint32 newbaud)
+
+static void InfraredUsartConfig(uint32 newbaud)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
 	USART_InitTypeDef USART_InitStructure;
@@ -68,17 +69,17 @@ void    Infrared_ResetUsart(uint32 newbaud)
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;
 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;		  //使能 tx，RX
 
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 	
-	GPIO_InitStructure.GPIO_Pin = INFRARED_UART_TX;		            //设置TX引脚
+	GPIO_InitStructure.GPIO_Pin = INFRARED_UART_TX;		         //设置TX引脚
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;		        //复用推挽输出
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(INFRARED_UART_GPIO, &GPIO_InitStructure);
 	
 	/* Configure USART Rx as input floating */
-	GPIO_InitStructure.GPIO_Pin =INFRARED_UART_RX;		            //设置RX引脚
+	GPIO_InitStructure.GPIO_Pin =INFRARED_UART_RX;		        //设置RX引脚
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;		//浮空输入
 	GPIO_Init(INFRARED_UART_GPIO, &GPIO_InitStructure);
 	
@@ -93,17 +94,18 @@ void    Infrared_ResetUsart(uint32 newbaud)
 	BSP_IntVectSet(BSP_INT_ID_USART1, UART1_IRQHandler);  
 
 }
-void    Infrared_UsartInit(void)
+void Infrared_UsartInit(void)
 {
     InfraredUsartClrBuf();
-    Infrared_ResetUsart(TA_BAUD_9600);
+    InfraredUsartConfig(TA_BAUD_9600);
    // Reset_UsartDMA(cmd_data,0);
 
 }
-void    Infrared_UsartSend(unsigned char *outptr,unsigned int len)
+void Infrared_UsartSend(unsigned char *outptr,unsigned int len)
 {
-    while(len--)
+    while(len)
 	{
+		len--;
 		USART_SendData(INFRARED_UART,(unsigned char)*outptr++);
 		while (USART_GetFlagStatus(INFRARED_UART, USART_FLAG_TC) == RESET);
     }
@@ -113,17 +115,17 @@ void    Infrared_UsartSend(unsigned char *outptr,unsigned int len)
 
 
 
-int16   Infrared_UsartGet(uint8 *buff,uint32 len,uint32 timeout)
+int16 Infrared_UsartGet(uint8 *buff,uint32 len,uint32 timeout)
 {
     uint32 i,tmpLen;    
 
-    if(UartRx.size>=len)		            //数据可用
+    if(UartRx.size >= len)		            //数据可用
 	{
          __disable_irq();
-        if(UartRx.read+len>RX_BUF_END)  //>=
+        if(UartRx.read + len > RX_BUF_END)  //>=
         {
            
-            tmpLen =RX_BUF_END-UartRx.read;
+            tmpLen = RX_BUF_END - UartRx.read;
             memcpy(buff,UartRx.read,tmpLen);
             UartRx.read = RX_BUF_START;
             memcpy(buff+tmpLen,(uint8 *)UartRx.read,len-tmpLen);
@@ -132,9 +134,9 @@ int16   Infrared_UsartGet(uint8 *buff,uint32 len,uint32 timeout)
         }
         else
         {
-            memcpy(buff,UartRx.read,len);
-            UartRx.read+=len;
-            UartRx.size-=len;
+            memcpy(buff, UartRx.read, len);
+            UartRx.read += len;
+            UartRx.size -= len;
         }
         __enable_irq();
         return len;
@@ -144,12 +146,13 @@ int16   Infrared_UsartGet(uint8 *buff,uint32 len,uint32 timeout)
     {
         BSP_mDelay(1);
         i++;
-        if(UartRx.size>=len)		            //数据可用
+
+        if(UartRx.size >= len)		            //数据可用
     	{
-             __disable_irq();
+            __disable_irq();
     		if(UartRx.read+len>RX_BUF_END)   //>==
             {
-                tmpLen =RX_BUF_END-UartRx.read;
+                tmpLen = RX_BUF_END - UartRx.read;
                 memcpy(buff,UartRx.read,tmpLen);
                 UartRx.read=RX_BUF_START;
                 memcpy(buff+tmpLen,(uint8 *)UartRx.read,len-tmpLen);
@@ -167,7 +170,7 @@ int16   Infrared_UsartGet(uint8 *buff,uint32 len,uint32 timeout)
     	}
         else
         {
-            if(i>=timeout && timeout)
+            if(timeout && i >= timeout  )
             {
                 __disable_irq();    
                 if(UartRx.read+UartRx.size>=RX_BUF_END)
@@ -191,20 +194,9 @@ int16   Infrared_UsartGet(uint8 *buff,uint32 len,uint32 timeout)
                 return tmpLen;
             }
         }
-        
 
     }
 
-}
-
-void    Infrared_UsartClrBuf(void)
-{
-    __disable_irq();
-    UartRx.size=0;
-    UartRx.write=RX_BUF_START;
-    UartRx.read=RX_BUF_START;
-    memset(UartBuff,0x00,sizeof(UartBuff));
-    __enable_irq();
 }
 
 

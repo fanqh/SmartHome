@@ -8,48 +8,27 @@ Project File Date:  01/18/2015
 
 <h2>Output:</h2>
 Build target 'M3_app'
-compiling uart.c...
-api\uart.c(26): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(28): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\uart.c(48): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(128): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(154): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(177): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(204): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(205): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(206): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+compiling main.c...
+.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
+api\main.c(105): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(106): warning:  #223-D: function "Infrared_UsartInit" declared implicitly
+api\main.c(128): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(144): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(402): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(571): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(573): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(578): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(589): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(591): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(592): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(592): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(598): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(118): warning:  #128-D: loop is not reachable from preceding code
 linking...
-.\output\app.axf: Error: L6218E: Undefined symbol RFCodeAC_Send (referred from main.o).
-.\output\app.axf: Error: L6218E: Undefined symbol RFDecodeAC (referred from main.o).
-.\output\app.axf: Error: L6218E: Undefined symbol GetFlagTimeCount (referred from timer.o).
-.\output\app.axf: Error: L6218E: Undefined symbol TimeCount (referred from timer.o).
-Target not created
-Build target 'M3_app'
-compiling decode.c...
-linking...
-Program Size: Code=8396 RO-data=120 RW-data=112 ZI-data=272  
+Program Size: Code=4080 RO-data=116 RW-data=128 ZI-data=268  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-Build target 'M3_app'
-compiling uart.c...
-api\uart.c(26): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(28): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\uart.c(48): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(128): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(154): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(177): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(204): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(205): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(206): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-linking...
-Program Size: Code=8396 RO-data=120 RW-data=112 ZI-data=272  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 10 Warning(s).
+".\output\app.axf" - 0 Error(s), 15 Warning(s).
 Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
 * JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
 Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
@@ -75,7 +54,7 @@ ROMTableAddr = 0xE00FF003
 Target info:
 ------------
 Device: STM32F103CB
-VTarget = 3.358V
+VTarget = 3.351V
 State of Pins: 
 TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
 Hardware-Breakpoints: 6
@@ -86,3 +65,178 @@ JTAG speed: 2000 kHz
 Erase Done.
 Programming Done.
 Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=4080 RO-data=116 RW-data=128 ZI-data=268  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.351V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling stm32f10x_usart.c...
+linking...
+Program Size: Code=4080 RO-data=116 RW-data=128 ZI-data=268  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.351V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=4080 RO-data=116 RW-data=128 ZI-data=268  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
+Hardware: V8.00
+S/N : 805306163 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.351V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=4080 RO-data=116 RW-data=128 ZI-data=268  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
+api\main.c(105): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(106): warning:  #223-D: function "Infrared_UsartInit" declared implicitly
+api\main.c(128): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(144): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(402): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(571): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(573): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(578): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(589): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(591): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(592): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(592): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(598): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(118): warning:  #128-D: loop is not reachable from preceding code
+api\main.c(631): error:  #268: declaration may not appear after executable statement in block
+api\main.c(631): error:  #67: expected a "}"
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
+api\main.c(105): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(106): warning:  #223-D: function "Infrared_UsartInit" declared implicitly
+api\main.c(120): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(136): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(394): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(560): warning:  #111-D: statement is unreachable
+api\main.c(565): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(567): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(572): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(583): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(585): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(586): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(586): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(592): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+linking...
+Program Size: Code=9108 RO-data=144 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 15 Warning(s).

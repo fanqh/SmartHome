@@ -461,6 +461,11 @@
               <FileType>1</FileType>
               <FilePath>.\api\uart.c</FilePath>
             </File>
+            <File>
+              <FileName>decode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\api\decode.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

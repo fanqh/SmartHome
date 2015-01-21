@@ -4,7 +4,7 @@
 
 
 
-#define UART_LEN              1024             
+#define UART_LEN   256             
 
 typedef struct
 {
@@ -16,7 +16,7 @@ typedef struct
 void    Infrared_UsartInit(void);
 void    Infrared_UsartSend(unsigned char *outptr,unsigned int len);
 int16   Infrared_UsartGet(uint8 *buff,uint32 len,uint32 timeout);
-uint32   GetUartBuffSize(void);
+uint32  GetUartBuffSize(void);
 
 
 #endif
