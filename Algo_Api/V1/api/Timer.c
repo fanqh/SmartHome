@@ -17,6 +17,7 @@ uint16_t ted = 0;
 TimeCountTypeDef RF315TimeCount;
 TimeCountTypeDef RF24GTimeCount;
 TimeCountTypeDef RF433TimeCount;
+TimeCountTypeDef InfraredTimeCount;
 
 
 
@@ -40,6 +41,10 @@ void TIMER2_Handler(void)
 	if(RF433TimeCount.FlagStart)
 	{
 		RF433TimeCount.TimeCount ++;
+	}
+	if(InfraredTimeCount.FlagStart)
+	{
+		InfraredTimeCount.TimeCount++;	
 	}
 //	if()
 

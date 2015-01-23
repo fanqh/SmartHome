@@ -41,6 +41,8 @@ volatile uint8 Wifi_MAC[wifi_mac_num] = {0x00};
 
 volatile uint8 RI=0;
 
+//红外
+uint8 FlagInfrared = 0;			// 0: idle 1: 学习 2：接手
 
 //RF_RFM69H
 RFM69H_DATA_Type TxBuf; 
@@ -49,7 +51,6 @@ uint8 FlagRF24GLearn = 0; // 0: idle 1: 学习 2：接手
 
 //315M
 uint8 RF315MHz_Flag = 0;
-
 uint8 RF433MHz_Flag = 0;
 
 //2.4G
@@ -79,6 +80,10 @@ void JTAG_Set(u8 mode)
 
 int tamain(void)
 {
+	uint8 GetID[2] = {0xFA,0XF1};
+	uint16 len = 0;
+	uint8 buf[100];
+
 
 	JTAG_Set(SWD_ENABLE);		//加
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4推挽输出
@@ -98,7 +103,7 @@ int tamain(void)
     Init_DS18B20();
     timer2_init();                      //5ms 中断
 	TIM3_NVIC_Configuration(); 		    //BSP_Delay 初始化
-    
+//    
     app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
     Disable_SysTick();
 	SpiMsterGpioInit(SPI_2);
@@ -106,7 +111,23 @@ int tamain(void)
 	Infrared_UsartInit();
 
 	printf("uart is working\r\n"); 
+	
+	while(1)
+	{	
+		BSP_mDelay(1000);
+		Infrared_UsartSend(GetID,2);
+		printf("working\r\n");
+		if(GetUartBuffSize())	
+		{
+			len = Infrared_UsartGet(buf, 100, 30);
+			if(strstr(buf, "YiRTX02"))
+			{
+				printf("hello\r\n");
+			} 
+		}
+	}
 
+#if 0
     while(1)
     {
 		 if(FlagRF24GLearn == 1)
@@ -141,6 +162,13 @@ int tamain(void)
 				U1_sendS((uint8*)rx_buf, TX_PLOAD_WIDTH);
 				U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
 			}
+		 }
+		 if(FlagInfrared ==1)
+		 {
+		 	if(InfraredTimeCount.TimeCount > INFRAREDLEARNTIMECOUNT)
+			{
+				FlagInfrared = 1;	
+			}	
 		 }
 #if 0
 		if(Check_wifi)
@@ -227,7 +255,23 @@ int tamain(void)
 						{
 							case 'H': //红外学习
 							{
-								
+								uint8 ret = 0xff;
+
+
+								Infrared_UsartSend(InfraredStudy,2);
+								Infrared_UsartGet(&ret, 100, 30);
+								if(ret==0)
+								{
+									FlagInfrared = 1;
+									InfraredTimeCount.TimeCount = 0;
+									InfraredTimeCount.FlagStart = 1;
+								}
+								else
+								{
+									///返回失败
+								}
+									
+										
 							}
 
 							break;
@@ -298,29 +342,6 @@ int tamain(void)
 									U1_sendS((uint8*)ResFail, sizeof(ResFail));
 								}
 							}
-
-#if 0
-
-
-								RFM69H_DATA_Type RF433_RxBuf;
-									
-						    	//U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
-							 	RFM69H_Config();
-								RFM69H_EntryRx();
-								if(RFM69H_RxPacket(&RF433_RxBuf)>0)
-								{
-									printf("len = %d\r\n", RF433_RxBuf.len);
-//									U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
-//									U1_sendS((uint8*)&RF433_RxBuf, sizeof(RFM69H_DATA_Type));	//可以优化发送的数据
-								//	U1_sendS((uint8*)tail, sizeof(tail));	
-								}
-								else
-								{
-									U1_sendS((uint8*)ResFail, sizeof(ResFail));
-								}
-								timer2_enable();
-							}
-#endif
 							break;
 	
 							case 'T':  //2.4G学习
@@ -559,9 +580,7 @@ int tamain(void)
 
 				   timer2_enable(); 
 				}
-
-
-		    }
+			}
 			else if(strstr(rec_buf,"+o") != NULL) //收到wifi模块返回的数据 +ok
 			{
 				if(strstr(rec_buf,"AP") != NULL) 	//wifi工作在AP模式
@@ -609,7 +628,7 @@ int tamain(void)
 		rec_buf[2] = 0x00;//一个串口命令执行完毕, 清空
 		memset(rec_buf,0x00,sizeof(rec_buf));
 	}
-
+ #endif
 }
 
 

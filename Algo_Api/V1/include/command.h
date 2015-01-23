@@ -33,6 +33,9 @@ const uint8 MACSendCMD[2] = "DM";
 const uint8 BondCMD[2] = "BD";
 const uint8 Upgrade[2] = "SX";
 
+//ºìÍâÃüÁî
+uint8 InfraredStudy[2] = {0xFA,0XF5}; 
+
 
 
 

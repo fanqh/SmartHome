@@ -97,7 +97,7 @@ void delayus(int times)
     }
 
 }
-void delay_x_10us(int times)		
+void delay_x_10us             (int times)		
 {
      while(times--)
       delayus(11);  

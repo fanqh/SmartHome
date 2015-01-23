@@ -39,6 +39,7 @@ uint32   GetUartBuffSize(void)
 
 void UART1_IRQHandler(void)
 {
+
     __disable_irq();
 	if(USART_GetITStatus(INFRARED_UART, USART_IT_RXNE) != RESET)
 	{	
@@ -56,22 +57,14 @@ void UART1_IRQHandler(void)
    
 }
 
-
-
-
 static void InfraredUsartConfig(uint32 newbaud)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
 	USART_InitTypeDef USART_InitStructure;
-    
-	USART_InitStructure.USART_BaudRate = BaudRate[newbaud];
-	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-	USART_InitStructure.USART_StopBits = USART_StopBits_1;
-	USART_InitStructure.USART_Parity = USART_Parity_No;
-	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;		  //使能 tx，RX
+    NVIC_InitTypeDef NVIC_InitStructure;
 
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 	
 	GPIO_InitStructure.GPIO_Pin = INFRARED_UART_TX;		         //设置TX引脚
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;		        //复用推挽输出
@@ -82,12 +75,23 @@ static void InfraredUsartConfig(uint32 newbaud)
 	GPIO_InitStructure.GPIO_Pin =INFRARED_UART_RX;		        //设置RX引脚
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;		//浮空输入
 	GPIO_Init(INFRARED_UART_GPIO, &GPIO_InitStructure);
-	
+
+	USART_InitStructure.USART_BaudRate = BaudRate[newbaud];
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	USART_InitStructure.USART_Parity = USART_Parity_No;
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;		  //使能 tx，RX
 	/* USART configuration */
 	USART_Init(INFRARED_UART, &USART_InitStructure);		        //初始化USART
 	
 	/* Enable USART */
-	USART_Cmd(INFRARED_UART, ENABLE);		                       
+	USART_Cmd(INFRARED_UART, ENABLE);	
+	
+	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;			    /*USART2中断*/
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;				/*优先级1*/
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;				    /*IRQ通道使能*/
+	NVIC_Init(&NVIC_InitStructure);		                       
 	
 	USART_ITConfig(INFRARED_UART, USART_IT_RXNE, ENABLE);           //接受中断
 	while (USART_GetFlagStatus(INFRARED_UART, USART_FLAG_TC) == RESET);
@@ -101,13 +105,13 @@ void Infrared_UsartInit(void)
    // Reset_UsartDMA(cmd_data,0);
 
 }
-void Infrared_UsartSend(unsigned char *outptr,unsigned int len)
+void Infrared_UsartSend(unsigned char *outptr, unsigned int len)
 {
     while(len)
 	{
 		len--;
-		USART_SendData(INFRARED_UART,(unsigned char)*outptr++);
-		while (USART_GetFlagStatus(INFRARED_UART, USART_FLAG_TC) == RESET);
+		USART_SendData(INFRARED_UART, (unsigned char)*outptr++);
+		while (USART_GetFlagStatus(INFRARED_UART,  USART_FLAG_TC) == RESET);
     }
 	
 
