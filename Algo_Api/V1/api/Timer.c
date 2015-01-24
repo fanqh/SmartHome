@@ -177,27 +177,10 @@ void timer2_disable(void)
 }
 void isr_13us(void)
 {
-
-    T++;
-    if(Flag)                                                          
-	{
-        if (Turn)
-        {
-            Turn=0;
-            SET_INFRARED;
-        }
-        else
-        {
-            Turn=1;
-            CLR_INFRARED;
-        }
-    }
-
     if(GetFlagTimeCount())
 	{
 		++ TimeCount;			
 	}
-
 }
 
 void Disable_SysTick(void)

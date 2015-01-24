@@ -4,244 +4,19 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 F:\SmartDog\SmartHome\Algo_Api\V1\app.uvproj
-Project File Date:  01/18/2015
+Project File Date:  01/24/2015
 
 <h2>Output:</h2>
 Build target 'M3_app'
 compiling main.c...
-.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
-api\main.c(109): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(82): warning:  #177-D: variable "GetID" was declared but never referenced
-api\main.c(83): warning:  #177-D: variable "len" was declared but never referenced
-api\main.c(84): warning:  #177-D: variable "buf" was declared but never referenced
-linking...
-Program Size: Code=4256 RO-data=116 RW-data=116 ZI-data=268  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 5 Warning(s).
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
-api\main.c(109): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-linking...
-Program Size: Code=4740 RO-data=116 RW-data=116 ZI-data=268  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 2 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.313V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 2000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'M3_app'
-linking...
-Program Size: Code=4740 RO-data=116 RW-data=116 ZI-data=268  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.313V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 2000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
-api\main.c(109): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-linking...
-Program Size: Code=4740 RO-data=116 RW-data=116 ZI-data=268  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 2 Warning(s).
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
-api\main.c(109): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-linking...
-Program Size: Code=4740 RO-data=116 RW-data=116 ZI-data=268  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 2 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.313V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 2000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
-api\main.c(109): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(122): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(83): warning:  #550-D: variable "len" was set but never used
-linking...
-Program Size: Code=4796 RO-data=116 RW-data=116 ZI-data=268  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 4 Warning(s).
-Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
-* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
-Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
- 
-JLink info:
-------------
-DLL: V4.36l, compiled Dec  2 2011 18:52:36
-Firmware: J-Link ARM V8 compiled Dec  6 2011 18:57:44
-Hardware: V8.00
-S/N : 805306163 
-Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDBFull 
- 
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
-ROMTableAddr = 0xE00FF003
-* JLink Info: Found SWD-DP with ID 0x1BA01477
-* JLink Info: TPIU fitted.
-* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
-* JLink Info: Found Cortex-M3 r1p1, Little endian.
- 
-Target info:
-------------
-Device: STM32F103CB
-VTarget = 3.313V
-State of Pins: 
-TCK: 0, TDI: 0, TDO: 0, TMS: 0, TRES: 1, TRST: 1
-Hardware-Breakpoints: 6
-Software-Breakpoints: 8192
-Watchpoints:          4
-JTAG speed: 2000 kHz
- 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(42): warning:  #1-D: last line of file ends without a newline
-api\main.c(109): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(122): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(83): warning:  #550-D: variable "len" was set but never used
-linking...
-Program Size: Code=4796 RO-data=116 RW-data=116 ZI-data=268  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 4 Warning(s).
-Build target 'M3_app'
-linking...
-Program Size: Code=4796 RO-data=116 RW-data=116 ZI-data=268  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 0 Warning(s).
-Build target 'M3_app'
-compiling Timer.c...
-api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
-linking...
-Program Size: Code=4808 RO-data=116 RW-data=120 ZI-data=268  
-FromELF: creating hex file...
-User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 1 Warning(s).
-Build target 'M3_app'
-compiling main.c...
 .\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(109): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(122): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(83): warning:  #550-D: variable "len" was set but never used
+api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(84): warning:  #550-D: variable "len" was set but never used
 compiling DS18B20.c...
 compiling M3_wifi.c...
-api\M3_wifi.c(80): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\M3_wifi.c(99): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
 compiling Infrared.c...
 compiling M3_315.c...
 compiling debug_led.c...
@@ -268,12 +43,175 @@ User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
 ".\output\app.axf" - 0 Error(s), 16 Warning(s).
 Build target 'M3_app'
 compiling main.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
 .\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(109): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(122): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(83): warning:  #550-D: variable "len" was set but never used
+api\main.c(98): warning:  #223-D: function "infrared_io_init" declared implicitly
+api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(84): warning:  #550-D: variable "len" was set but never used
+compiling DS18B20.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
+compiling M3_wifi.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
+api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+api\Infrared.c(4): error:  #65: expected a ";"
+api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(55): warning:  #940-D: missing return statement at end of non-void function "ParseInfrared"
+api\Infrared.c(96): error:  #247: function "InfraredEnterStudy" has already been defined
+compiling M3_315.c...
+.\include\debug_led.h(8): error:  #65: expected a ";"
+compiling debug_led.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
+compiling Timer.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+api\Timer.c(187): error:  #20: identifier "SET_INFRARED" is undefined
+api\Timer.c(192): error:  #20: identifier "CLR_INFRARED" is undefined
+compiling spi.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
+compiling DK_RFM69H.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
+api\DK_RFM69H.c(380): warning:  #177-D: variable "len" was declared but never referenced
+api\DK_RFM69H.c(381): warning:  #177-D: variable "time" was declared but never referenced
+compiling nrf24l01.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
+compiling uart.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+.\include\M3_315.h(10): error:  #65: expected a ";"
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(98): warning:  #223-D: function "infrared_io_init" declared implicitly
+api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(84): warning:  #550-D: variable "len" was set but never used
+compiling DS18B20.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(55): warning:  #940-D: missing return statement at end of non-void function "ParseInfrared"
+api\Infrared.c(96): error:  #247: function "InfraredEnterStudy" has already been defined
+compiling M3_315.c...
+compiling debug_led.c...
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+api\Timer.c(187): error:  #20: identifier "SET_INFRARED" is undefined
+api\Timer.c(192): error:  #20: identifier "CLR_INFRARED" is undefined
+compiling spi.c...
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(380): warning:  #177-D: variable "len" was declared but never referenced
+api\DK_RFM69H.c(381): warning:  #177-D: variable "time" was declared but never referenced
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(98): warning:  #223-D: function "infrared_io_init" declared implicitly
+api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(84): warning:  #550-D: variable "len" was set but never used
+compiling Infrared.c...
+api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+api\Timer.c(187): error:  #20: identifier "SET_INFRARED" is undefined
+api\Timer.c(192): error:  #20: identifier "CLR_INFRARED" is undefined
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(98): warning:  #223-D: function "infrared_io_init" declared implicitly
+api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(84): warning:  #550-D: variable "len" was set but never used
+compiling DS18B20.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+compiling M3_315.c...
+compiling debug_led.c...
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+api\Timer.c(187): error:  #20: identifier "SET_INFRARED" is undefined
+api\Timer.c(192): error:  #20: identifier "CLR_INFRARED" is undefined
+compiling spi.c...
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(380): warning:  #177-D: variable "len" was declared but never referenced
+api\DK_RFM69H.c(381): warning:  #177-D: variable "time" was declared but never referenced
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(105): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(113): error:  #20: identifier "GetID" is undefined
+api\main.c(117): error:  #20: identifier "len" is undefined
+api\main.c(117): error:  #20: identifier "buf" is undefined
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(105): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
+api\main.c(631): warning:  #940-D: missing return statement at end of non-void function "tamain"
 linking...
-Program Size: Code=4808 RO-data=116 RW-data=120 ZI-data=268  
+Program Size: Code=3948 RO-data=116 RW-data=108 ZI-data=268  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 4 Warning(s).
+".\output\app.axf" - 0 Error(s), 3 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(631): warning:  #940-D: missing return statement at end of non-void function "tamain"
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(380): warning:  #177-D: variable "len" was declared but never referenced
+api\DK_RFM69H.c(381): warning:  #177-D: variable "time" was declared but never referenced
+linking...
+Program Size: Code=3948 RO-data=116 RW-data=108 ZI-data=268  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).

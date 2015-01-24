@@ -80,11 +80,6 @@ void JTAG_Set(u8 mode)
 
 int tamain(void)
 {
-	uint8 GetID[2] = {0xFA,0XF1};
-	uint16 len = 0;
-	uint8 buf[100];
-
-
 	JTAG_Set(SWD_ENABLE);		//加
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4推挽输出
  	GPIOC->CRL|=0X00030000;
@@ -95,7 +90,7 @@ int tamain(void)
     debug_led_off();
 
     m3_315_io_config();
-    infrared_io_init();  
+//    infrared_io_init();  
 //    m3_315_clr();                       //关闭315
 
 
@@ -103,7 +98,7 @@ int tamain(void)
     Init_DS18B20();
     timer2_init();                      //5ms 中断
 	TIM3_NVIC_Configuration(); 		    //BSP_Delay 初始化
-//    
+   
     app_enroll_tick_hdl(isr_13us, 0);   //13us在底层配置的，配置完成就关闭了
     Disable_SysTick();
 	SpiMsterGpioInit(SPI_2);
@@ -112,20 +107,20 @@ int tamain(void)
 
 	printf("uart is working\r\n"); 
 	
-	while(1)
-	{	
-		BSP_mDelay(1000);
-		Infrared_UsartSend(GetID,2);
-		printf("working\r\n");
-		if(GetUartBuffSize())	
-		{
-			len = Infrared_UsartGet(buf, 100, 30);
-			if(strstr(buf, "YiRTX02"))
-			{
-				printf("hello\r\n");
-			} 
-		}
-	}
+//	while(1)
+//	{	
+//		BSP_mDelay(1000);
+//		Infrared_UsartSend(GetID,2);
+//		printf("working\r\n");
+//		if(GetUartBuffSize())	
+//		{
+//			len = Infrared_UsartGet(buf, 100, 30);
+//			if(strstr(buf, "YiRTX02"))
+//			{
+//				printf("hello\r\n");
+//			} 
+//		}
+//	}
 
 #if 0
     while(1)
@@ -165,9 +160,19 @@ int tamain(void)
 		 }
 		 if(FlagInfrared ==1)
 		 {
+		 	infrared_data_t infrared_receive;
 		 	if(InfraredTimeCount.TimeCount > INFRAREDLEARNTIMECOUNT)
 			{
-				FlagInfrared = 1;	
+				FlagInfrared = 0;
+				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
+			}
+			else if(ParseInfrared(&infrared_receive))
+			{
+				FlagInfrared = 0;	
+				U1_sendS((uint8*)InfraredStudyCMD, sizeof(InfraredStudyCMD));
+				U1_sendS((uint8*)infrared_receive.buff, infrared_receive.len);
+				U1_sendS((uint8*)tail, sizeof(tail));
+											
 			}	
 		 }
 #if 0
@@ -255,23 +260,17 @@ int tamain(void)
 						{
 							case 'H': //红外学习
 							{
-								uint8 ret = 0xff;
-
-
-								Infrared_UsartSend(InfraredStudy,2);
-								Infrared_UsartGet(&ret, 100, 30);
-								if(ret==0)
+								if(InfraredEnterStudy())
 								{
 									FlagInfrared = 1;
 									InfraredTimeCount.TimeCount = 0;
 									InfraredTimeCount.FlagStart = 1;
+									U1_sendS((uint8*)InfraredStudyCMD, sizeof(InfraredStudyCMD));	
 								}
 								else
 								{
-									///返回失败
-								}
-									
-										
+									U1_sendS((uint8*)ResFail, sizeof(ResFail));	
+								}											
 							}
 
 							break;
@@ -625,7 +624,7 @@ int tamain(void)
 				}
 			}
 		}
-		rec_buf[2] = 0x00;//一个串口命令执行完毕, 清空
+//		rec_buf[2] = 0x00;//一个串口命令执行完毕, 清空
 		memset(rec_buf,0x00,sizeof(rec_buf));
 	}
  #endif

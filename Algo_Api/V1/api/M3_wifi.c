@@ -42,8 +42,7 @@ void U1_in(void)//串口1接收数据
     uint32 j=0,RI=0;
 	ui = 0;
 
-	
-	while(j < 100)//超时退出 字节间隔超出100ms 退出
+	while(j < 20)//超时退出 字节间隔超出20ms 退出
 	{
         RI = get_usart_interrupt_flg();  //获取buff size
 		if(RI)
@@ -58,11 +57,8 @@ void U1_in(void)//串口1接收数据
 		}
 		else
 			j++;
-//        delayus(1000);
 		BSP_mDelay (1);
-	
 	}	
-
 }
 
 int start_wifi_command(void)

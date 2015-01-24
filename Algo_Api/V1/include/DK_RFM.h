@@ -58,6 +58,7 @@ extern volatile uint32	DataTimeCount;
 
 //void RFM69H_Running(u8 mode,u8 WorkStatus,u8 ParaChangeFlag,u8 *TxFlag,u8 *RxFlag,u8 *RSSI);
 void RFM69H_Config(void);
+void RF69H_DataCongfigIN(void);
 //int RFM69H_RxPacket(RFM69H_DATA_Type* p);
 int RFM69H_RxPacket(RFM69H_DATA_Type *p);
 u8 RFM69H_TxPacket(RFM69H_DATA_Type* pSend);
