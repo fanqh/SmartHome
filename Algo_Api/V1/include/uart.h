@@ -17,6 +17,7 @@ void    Infrared_UsartInit(void);
 void    Infrared_UsartSend(unsigned char *outptr,unsigned int len);
 int16   Infrared_UsartGet(uint8 *buff,uint32 len,uint32 timeout);
 uint32  GetUartBuffSize(void);
+void InfraredUsartClrBuf(void);
 
 
 #endif

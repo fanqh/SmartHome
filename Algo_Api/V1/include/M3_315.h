@@ -4,7 +4,19 @@
 
 #include"Include.h"
 
-//#define M315_DATA_LEN  3
+
+#define M3_315_DATA_PIN         GPIO_Pin_8
+#define M3_315_DATA_PORT        GPIOA
+
+#define M3_315_CTRL             GPIO_Pin_3
+#define M3_315_GPIO             GPIOB
+
+
+#define RF315_REC_GPIO          GPIO_Pin_8
+#define RF315_REC_PORT          GPIOA
+
+#define RF315_SEND_GPIO             GPIO_Pin_3
+#define RF315_SEND_PORT             GPIOB
 
 
 extern volatile uint16	RF315_TimeCount;

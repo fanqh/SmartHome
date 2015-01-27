@@ -4,6 +4,11 @@
 
 
 
+#define  RF69H_DATA_RCC	    RCC_APB2Periph_GPIOB
+#define  RF69H_DATA_PORT	GPIOB
+#define  RF69H_DATA_PIN	    GPIO_Pin_11
+
+
 #define  nIRQ0			   PBin(2)
 #define  TxBuf_Len 		   10 
 #define  RxBuf_Len 		   10
@@ -13,6 +18,8 @@
 
 #define  RFM69H_DATA_IN     PBin(11)
 #define  RFM69H_DATA_OUT    PBout(11)
+
+
 
 typedef enum
 {
@@ -59,6 +66,7 @@ extern volatile uint32	DataTimeCount;
 //void RFM69H_Running(u8 mode,u8 WorkStatus,u8 ParaChangeFlag,u8 *TxFlag,u8 *RxFlag,u8 *RSSI);
 void RFM69H_Config(void);
 void RF69H_DataCongfigIN(void);
+void RF69H_DataCongfigOUT(void);
 //int RFM69H_RxPacket(RFM69H_DATA_Type* p);
 int RFM69H_RxPacket(RFM69H_DATA_Type *p);
 u8 RFM69H_TxPacket(RFM69H_DATA_Type* pSend);

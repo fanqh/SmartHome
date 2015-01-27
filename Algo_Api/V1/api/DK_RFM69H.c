@@ -159,13 +159,6 @@ const u16 RFM69HTxTbl[5] =
 /**********************************/
 /********原来调试代码管脚为PB2**************************/
 /**********************************/
-#define  RF69H_DATA_RCC	    RCC_APB2Periph_GPIOB
-#define  RF69H_DATA_PORT	GPIOB
-#define  RF69H_DATA_PIN	    GPIO_Pin_11
-
-
-#define  RFM69H_DATA_IN     PBin(11)
-#define  RFM69H_DATA_OUT    PBout(11)
 
 
 //RFM69H_DATA_Type rfm69h_data;
@@ -377,8 +370,6 @@ u8 RFM69H_ReadRSSI(void)
 **********************************************************/
 int RFM69H_RxPacket(RFM69H_DATA_Type *p)
 {
-  int len =0; 
-  uint16 time = 0;
  
   if(RFM69H_RxWaitStable())
   {

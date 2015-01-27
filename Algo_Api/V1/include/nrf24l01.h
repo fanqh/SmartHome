@@ -59,7 +59,7 @@ uint8 Ifnnrf_Send(uint8 *txbuf);
 uint8 nRF24L01_RxPacket(uint8 *rx_buf);
 uint8 NRF24L01_Check(void);
 void do_2_4G(void);
-
+  uint8 Ifnnrf_Receive(uint8* rxbuf);
 
 void init_nrf24l01_io(void);
 void ifnnrf_rx_mode(void);

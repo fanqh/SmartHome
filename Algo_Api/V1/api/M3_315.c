@@ -2,11 +2,8 @@
 #include "gpio_config.h"
 #include "stm32f10x_gpio.h"
 
-#define M3_315_DATA_PIN         GPIO_Pin_8
-#define M3_315_DATA_PORT        GPIOA
 
-#define M3_315_CTRL             GPIO_Pin_3
-#define M3_315_GPIO             GPIOB
+
 
 #define Rx_315                  PAin(8)
 
@@ -16,9 +13,25 @@
 
 RF315_STATA  rf315_state = RF315_IDLE;
 
+void    m3_315_io_config(void)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+    
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    
+    GPIO_InitStructure.GPIO_Pin = RF315_SEND_GPIO;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_Init(RF315_SEND_PORT, &GPIO_InitStructure);
+
+	GPIO_InitStructure.GPIO_Pin = RF315_REC_GPIO;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_Init(RF315_REC_PORT, &GPIO_InitStructure);
 
 
-
+//    m3_315_clr();
+}
 
 void m3_315_set(void)
 {
@@ -28,26 +41,6 @@ void m3_315_set(void)
 void m3_315_clr(void)
 {
     GPIO_ResetBits(M3_315_GPIO, M3_315_CTRL);
-}
-
-void    m3_315_io_config(void)
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-    
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-    
-    GPIO_InitStructure.GPIO_Pin = M3_315_CTRL;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIO_Init(M3_315_GPIO, &GPIO_InitStructure);
-
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-    GPIO_Init(M3_315_DATA_PORT, &GPIO_InitStructure);
-
-
-    m3_315_clr();
 }
 
 

@@ -4,20 +4,32 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 F:\SmartDog\SmartHome\Algo_Api\V1\app.uvproj
-Project File Date:  01/24/2015
+Project File Date:  01/18/2015
 
 <h2>Output:</h2>
 Build target 'M3_app'
 compiling main.c...
 .\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(84): warning:  #550-D: variable "len" was set but never used
+api\main.c(136): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(152): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(414): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(580): warning:  #111-D: statement is unreachable
+api\main.c(583): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(585): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(590): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(601): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(603): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(604): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(604): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(610): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 compiling DS18B20.c...
 compiling M3_wifi.c...
 api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
 api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
 compiling Infrared.c...
+api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
 compiling M3_315.c...
 compiling debug_led.c...
 compiling Timer.c...
@@ -37,181 +49,398 @@ api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be 
 api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
 compiling decode.c...
 linking...
-Program Size: Code=4808 RO-data=116 RW-data=120 ZI-data=268  
+Program Size: Code=9688 RO-data=148 RW-data=132 ZI-data=540  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 16 Warning(s).
+".\output\app.axf" - 0 Error(s), 28 Warning(s).
 Build target 'M3_app'
-compiling main.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
-.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(98): warning:  #223-D: function "infrared_io_init" declared implicitly
-api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(84): warning:  #550-D: variable "len" was set but never used
-compiling DS18B20.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
-compiling M3_wifi.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
-api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-compiling Infrared.c...
-api\Infrared.c(4): error:  #65: expected a ";"
-api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(55): warning:  #940-D: missing return statement at end of non-void function "ParseInfrared"
-api\Infrared.c(96): error:  #247: function "InfraredEnterStudy" has already been defined
-compiling M3_315.c...
-.\include\debug_led.h(8): error:  #65: expected a ";"
-compiling debug_led.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
-compiling Timer.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
-api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
-api\Timer.c(187): error:  #20: identifier "SET_INFRARED" is undefined
-api\Timer.c(192): error:  #20: identifier "CLR_INFRARED" is undefined
-compiling spi.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
 compiling DK_RFM69H.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
-api\DK_RFM69H.c(380): warning:  #177-D: variable "len" was declared but never referenced
-api\DK_RFM69H.c(381): warning:  #177-D: variable "time" was declared but never referenced
-compiling nrf24l01.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
-compiling uart.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
-api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-compiling decode.c...
-.\include\M3_315.h(10): error:  #65: expected a ";"
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(98): warning:  #223-D: function "infrared_io_init" declared implicitly
-api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(84): warning:  #550-D: variable "len" was set but never used
-compiling DS18B20.c...
-compiling M3_wifi.c...
-api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-compiling Infrared.c...
-api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(55): warning:  #940-D: missing return statement at end of non-void function "ParseInfrared"
-api\Infrared.c(96): error:  #247: function "InfraredEnterStudy" has already been defined
-compiling M3_315.c...
-compiling debug_led.c...
-compiling Timer.c...
-api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
-api\Timer.c(187): error:  #20: identifier "SET_INFRARED" is undefined
-api\Timer.c(192): error:  #20: identifier "CLR_INFRARED" is undefined
-compiling spi.c...
-compiling DK_RFM69H.c...
-api\DK_RFM69H.c(380): warning:  #177-D: variable "len" was declared but never referenced
-api\DK_RFM69H.c(381): warning:  #177-D: variable "time" was declared but never referenced
-compiling nrf24l01.c...
-compiling uart.c...
-api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-compiling decode.c...
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(98): warning:  #223-D: function "infrared_io_init" declared implicitly
-api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(84): warning:  #550-D: variable "len" was set but never used
-compiling Infrared.c...
-api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-compiling Timer.c...
-api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
-api\Timer.c(187): error:  #20: identifier "SET_INFRARED" is undefined
-api\Timer.c(192): error:  #20: identifier "CLR_INFRARED" is undefined
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(98): warning:  #223-D: function "infrared_io_init" declared implicitly
-api\main.c(110): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(123): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\main.c(84): warning:  #550-D: variable "len" was set but never used
-compiling DS18B20.c...
-compiling M3_wifi.c...
-api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
-compiling Infrared.c...
-api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
-compiling M3_315.c...
-compiling debug_led.c...
-compiling Timer.c...
-api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
-api\Timer.c(187): error:  #20: identifier "SET_INFRARED" is undefined
-api\Timer.c(192): error:  #20: identifier "CLR_INFRARED" is undefined
-compiling spi.c...
-compiling DK_RFM69H.c...
-api\DK_RFM69H.c(380): warning:  #177-D: variable "len" was declared but never referenced
-api\DK_RFM69H.c(381): warning:  #177-D: variable "time" was declared but never referenced
-compiling nrf24l01.c...
-compiling uart.c...
-api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
-api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
-compiling decode.c...
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(105): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(113): error:  #20: identifier "GetID" is undefined
-api\main.c(117): error:  #20: identifier "len" is undefined
-api\main.c(117): error:  #20: identifier "buf" is undefined
-compiling Timer.c...
-api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
-Target not created
-Build target 'M3_app'
-compiling main.c...
-.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(105): warning:  #223-D: function "RF69H_DataCongfigIN" declared implicitly
-api\main.c(631): warning:  #940-D: missing return statement at end of non-void function "tamain"
 linking...
-Program Size: Code=3948 RO-data=116 RW-data=108 ZI-data=268  
+Program Size: Code=9688 RO-data=148 RW-data=132 ZI-data=540  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 3 Warning(s).
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
 Build target 'M3_app'
 compiling main.c...
 .\include\command.h(45): warning:  #1-D: last line of file ends without a newline
-api\main.c(631): warning:  #940-D: missing return statement at end of non-void function "tamain"
+api\main.c(136): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(152): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(420): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(586): warning:  #111-D: statement is unreachable
+api\main.c(589): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(591): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(596): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(607): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(609): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(610): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(610): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(616): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+linking...
+Program Size: Code=9684 RO-data=152 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 13 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(132): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(148): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(416): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(582): warning:  #111-D: statement is unreachable
+api\main.c(585): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(587): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(592): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(603): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(605): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(606): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(606): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(612): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+linking...
+Program Size: Code=9684 RO-data=152 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 13 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(132): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(148): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(416): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(582): warning:  #111-D: statement is unreachable
+api\main.c(585): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(587): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(592): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(603): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(605): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(606): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(606): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(612): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+linking...
+Program Size: Code=9684 RO-data=152 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 13 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(125): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(141): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(422): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(588): warning:  #111-D: statement is unreachable
+api\main.c(591): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(593): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(598): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(609): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(611): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(612): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(612): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(618): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+compiling DS18B20.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+api\Infrared.c(19): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(34): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+api\Infrared.c(48): warning:  #223-D: function "InfraredUsartClrBuf" declared implicitly
+compiling M3_315.c...
+api\M3_315.c(33): warning:  #223-D: function "m3_315_clr" declared implicitly
+api\M3_315.c(41): error:  #159: declaration is incompatible with previous "m3_315_clr" (declared at line 33)
+compiling debug_led.c...
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(125): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(141): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(422): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(588): warning:  #111-D: statement is unreachable
+api\main.c(591): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(593): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(598): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(609): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(611): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(612): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(612): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(618): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+compiling DS18B20.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+api\M3_315.c(33): warning:  #223-D: function "m3_315_clr" declared implicitly
+api\M3_315.c(41): error:  #159: declaration is incompatible with previous "m3_315_clr" (declared at line 33)
+compiling debug_led.c...
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+Target not created
+Build target 'M3_app'
+compiling M3_315.c...
+api\M3_315.c(33): warning:  #223-D: function "m3_315_clr" declared implicitly
+api\M3_315.c(41): error:  #159: declaration is incompatible with previous "m3_315_clr" (declared at line 33)
+Target not created
+Build target 'M3_app'
+compiling M3_315.c...
+linking...
+Program Size: Code=9708 RO-data=156 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(125): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(141): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(422): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(588): warning:  #111-D: statement is unreachable
+api\main.c(591): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(593): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(598): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(609): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(611): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(612): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(612): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(618): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+compiling DS18B20.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+linking...
+Program Size: Code=9708 RO-data=156 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 23 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(125): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(141): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(422): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(588): warning:  #111-D: statement is unreachable
+api\main.c(591): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(593): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(598): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(609): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(611): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(612): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(612): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(618): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
 compiling Timer.c...
 api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
 compiling DK_RFM69H.c...
-api\DK_RFM69H.c(380): warning:  #177-D: variable "len" was declared but never referenced
-api\DK_RFM69H.c(381): warning:  #177-D: variable "time" was declared but never referenced
 linking...
-Program Size: Code=3948 RO-data=116 RW-data=108 ZI-data=268  
+Program Size: Code=9708 RO-data=156 RW-data=132 ZI-data=540  
 FromELF: creating hex file...
 User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
-".\output\app.axf" - 0 Error(s), 5 Warning(s).
+".\output\app.axf" - 0 Error(s), 14 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(125): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(141): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(422): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(588): warning:  #111-D: statement is unreachable
+api\main.c(591): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(593): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(598): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(609): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(611): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(612): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(612): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(618): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+linking...
+Program Size: Code=9708 RO-data=156 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 13 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(125): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(141): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(400): error:  #167: argument of type "GPIO_TypeDef *" is incompatible with parameter of type "uint16_t"
+api\main.c(404): error:  #167: argument of type "GPIO_TypeDef *" is incompatible with parameter of type "uint16_t"
+api\main.c(420): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(586): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(588): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(593): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(604): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(606): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(607): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(607): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(613): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(125): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(141): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(400): error:  #167: argument of type "GPIO_TypeDef *" is incompatible with parameter of type "uint16_t"
+api\main.c(404): error:  #167: argument of type "GPIO_TypeDef *" is incompatible with parameter of type "uint16_t"
+api\main.c(420): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(587): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(589): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(594): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(605): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(607): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(608): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(608): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(614): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+api\main.c(632): warning:  #111-D: statement is unreachable
+api\main.c(635): error:  #169: expected a declaration
+api\main.c(659): warning: At end of source:  #12-D: parsing restarts here after previous syntax error
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(125): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(141): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(400): error:  #167: argument of type "GPIO_TypeDef *" is incompatible with parameter of type "uint16_t"
+api\main.c(404): error:  #167: argument of type "GPIO_TypeDef *" is incompatible with parameter of type "uint16_t"
+api\main.c(420): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(587): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(589): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(594): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(605): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(607): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(608): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(608): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(614): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(125): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(141): warning:  #223-D: function "Ifnnrf_Receive" declared implicitly
+api\main.c(420): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(587): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(589): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(594): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(605): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(607): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(608): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(608): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(614): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+linking...
+Program Size: Code=8904 RO-data=156 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 12 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(420): warning:  #223-D: function "RF69H_DataCongfigOUT" declared implicitly
+api\main.c(587): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(589): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(594): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(605): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(607): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(608): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(608): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(614): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+compiling nrf24l01.c...
+linking...
+Program Size: Code=8904 RO-data=156 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 11 Warning(s).
+Rebuild target 'M3_app'
+compiling core_cm3.c...
+compiling main.c...
+.\include\command.h(45): warning:  #1-D: last line of file ends without a newline
+api\main.c(587): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(589): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(594): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(605): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(607): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\main.c(608): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\main.c(608): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *restrict"
+api\main.c(614): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "uint8 *"
+compiling DS18B20.c...
+compiling System_var.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(76): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(95): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+compiling Timer.c...
+api\Timer.c(76): warning:  #177-D: variable "i" was declared but never referenced
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_spi.c...
+linking...
+Program Size: Code=8904 RO-data=156 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 19 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=8904 RO-data=156 RW-data=132 ZI-data=540  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
