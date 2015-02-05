@@ -7,7 +7,7 @@ const uint8 ResSucess[6] = "RE:0<<";
 const uint8 ResFail[6]  =  "RE:1<<";
 const uint8 tail[2]  = "<<" ;
 
-const uint8 InfraredSendCMD[2]  = "FH";	//ºìÍâ·¢ÉäÃüÁî
+const uint8 InfraredSendCMD[3]  = "FH:";	//ºìÍâ·¢ÉäÃüÁî
 const uint8 InfraredStudyCMD[2]  = "LH";
 const uint8 InfraredRecCMD[2]  = "BH";
 

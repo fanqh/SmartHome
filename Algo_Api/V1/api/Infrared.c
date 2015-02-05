@@ -18,12 +18,19 @@ uint8 InfraredEnterStudy(void)
 
 	InfraredUsartClrBuf();
 	Infrared_UsartSend(EnterSutdycmd, sizeof(EnterSutdycmd));
+//	Infrared_UsartSend(EnterSutdycmd, sizeof(EnterSutdycmd));
 	Infrared_UsartGet(&temp, 1, 30);
 	if(temp==0)
+	{
 		ret = 1;
+//			printf("0\r\n");
+	}
 	else
+	{
 		ret =0;
-
+//		printf("1\r\n");
+	}
+	InfraredUsartClrBuf();
 	return ret;
 }
 uint8 InfraredExitStudy(void)
@@ -49,29 +56,80 @@ uint8 InfraredReset(void)
 	return 1;	
 }
 
+#if 0
 uint8 ParseInfrared(infrared_data_t*  ptr)
 {
-	uint8 timecount = 0;
+	uint16 i = 0;
 	uint16 count;
+	uint8 timecount = 0;
 	uint8 buff[INFRARED_LEN];
 
+	printf("waiting\r\n");
 	if(GetUartBuffSize())
 	{
-		while(timecount<20)
+//		printf("count > n\r\n");
+		while(timecount<10)
 		{
 			count = GetUartBuffSize();
 			if(count)
 			{
-				Infrared_UsartGet(buff, count, count);
+				timecount = 0;
+				Infrared_UsartGet(buff[i], count, 10);
+//				U1_sendS((uint8*)&buff[buff[1]+1+2], 1);
+//				U1_sendS((uint8*)&buff[0], 1);
+
+//				U1_sendS((uint8*)buff, count);
 				if((buff[0]==0xFA)&&(buff[buff[1]+1+2]==0xED))
 				{
-					ptr->len = buff[1] + 3;
+					//U1_sendS((uint8*)buff, count);
+					ptr->len = buff[1] + 4;
 					memcpy(ptr->buff, buff, ptr->len);
+				//	U1_sendS((uint8*)ptr->buff, ptr->len);
 					return 1;
 				}
 			}
 			else
-				count++;
+				timecount++;
+			BSP_mDelay(1);		
+		}
+	}
+	return 0;		
+}
+#endif
+
+
+uint8 ParseInfrared(infrared_data_t*  ptr)
+{
+	uint16 i = 0;
+	uint16 count;
+	uint8 timecount = 0;
+	uint8 buff[INFRARED_LEN];
+
+	if(GetUartBuffSize())
+	{
+		while(timecount<10)
+		{
+			count = GetUartBuffSize();
+			if(count)
+			{
+				timecount = 0;
+				Infrared_UsartGet(&buff[i], count, 5);
+				i += count; 
+//				U1_sendS((uint8*)&buff[buff[1]+1+2], 1);
+//				U1_sendS((uint8*)&buff[0], 1);
+//				U1_sendS((uint8*)buff, count);
+				if((i>=6)&&(buff[0]==0xFA)&&(buff[buff[1]+1+2]==0xED))
+				{
+					//U1_sendS((uint8*)buff, count);
+					ptr->len = buff[1] + 4;
+					memcpy(ptr->buff, buff, ptr->len);
+					memset(buff, 0, i);
+//					U1_sendS((uint8*)ptr->buff, ptr->len);
+					return 1;
+				}
+			}
+			else
+				timecount++;
 			BSP_mDelay(1);		
 		}
 	}

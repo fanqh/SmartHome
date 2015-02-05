@@ -95,21 +95,26 @@ int tamain(void)
 	Infrared_UsartInit();
 
 	printf("uart is working\r\n"); 
-	
-//	while(1)
-//	{	
+
+#if 0	
+	while(1)
+	{	
+//		uint16 count;
+//		uint8 buf[128];
+//
+//		InfraredEnterStudy();
 //		BSP_mDelay(1000);
-//		Infrared_UsartSend(GetID,2);
-//		printf("working\r\n");
-//		if(GetUartBuffSize())	
+//		if(GetUartBuffSize())
 //		{
-//			len = Infrared_UsartGet(buf, 100, 30);
-//			if(strstr(buf, "YiRTX02"))
-//			{
-//				printf("hello\r\n");
-//			} 
-//		}
-//	}
+////			printf("count > n\r\n");
+//			count = GetUartBuffSize();
+//			Infrared_UsartGet(buf, count, 10);
+//			U1_sendS((uint8*)buf, count);
+//			memset(buf, 0, count);	
+//			InfraredReset();
+//		}	
+	}
+#endif
 
 #if 1
     while(1)
@@ -152,14 +157,18 @@ int tamain(void)
 		 	infrared_data_t infrared_receive;
 		 	if(InfraredTimeCount.TimeCount > INFRAREDLEARNTIMECOUNT)
 			{
+//				printf("timeout\r\n");
 				FlagInfrared = 0;
-				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
+				InfraredReset();
+				//U1_sendS((uint8*)ResFail, sizeof(ResFail));	
 			}
 			else if(ParseInfrared(&infrared_receive))
 			{
 				FlagInfrared = 0;	
-				U1_sendS((uint8*)InfraredStudyCMD, sizeof(InfraredStudyCMD));
+//				printf("rec is ok\r\n");
+				U1_sendS((uint8*)InfraredSendCMD, sizeof(InfraredSendCMD));
 				U1_sendS((uint8*)infrared_receive.buff, infrared_receive.len);
+				InfraredReset();
 				U1_sendS((uint8*)tail, sizeof(tail));
 											
 			}	
@@ -170,6 +179,7 @@ int tamain(void)
 		 	if(InfraredTimeCount.TimeCount > INFRAREDLEARNTIMECOUNT)
 			{
 				FlagInfrared = 0;
+				InfraredReset();
 				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
 			}
 			else if(ParseInfrared(&infrared_receive))
@@ -177,6 +187,7 @@ int tamain(void)
 				FlagInfrared = 0;	
 				U1_sendS((uint8*)InfraredRecCMD, sizeof(InfraredRecCMD));
 				U1_sendS((uint8*)infrared_receive.buff, infrared_receive.len);
+				InfraredReset();
 				U1_sendS((uint8*)tail, sizeof(tail));
 											
 			}	
@@ -266,14 +277,14 @@ int tamain(void)
 						{
 							case 'H': //红外学习
 							{
-								if(InfraredEnterStudy())
+								if((FlagInfrared==0) && InfraredEnterStudy())		 //需要解析，如果已经在学习模式
 								{
 									FlagInfrared = 1;
 									InfraredTimeCount.TimeCount = 0;
 									InfraredTimeCount.FlagStart = 1;
 									U1_sendS((uint8*)InfraredStudyCMD, sizeof(InfraredStudyCMD));	
 								}
-								else
+								else 
 								{
 									U1_sendS((uint8*)ResFail, sizeof(ResFail));	
 								}											
@@ -288,7 +299,7 @@ int tamain(void)
 								RF315MHz_Flag = 1;
 								RF315TimeCount.TimeCount = 0;
 								RF315TimeCount.FlagStart = 1;
-								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
+//								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
 								while((RF315TimeCount.TimeCount <= 1000)&&(RF315MHz_Flag == 1))
 								{
 									//printf("lenarn\r\n");
@@ -296,7 +307,7 @@ int tamain(void)
 									{
 //										printf("len = %d\r\n",RF315_Receive.len);
 										RF315MHz_Flag = 0;
-										U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
+										U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));
 										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
 										U1_sendS((uint8*)tail,sizeof(tail));	
 									}
@@ -318,7 +329,7 @@ int tamain(void)
 								RF433TimeCount.TimeCount = 0;
 								RF433TimeCount.FlagStart = 1;
 								timer2_enable();
-								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
+//								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
 								if(RFM69H_RxWaitStable())
 								{
 									RF69H_DataCongfigIN();
@@ -329,15 +340,21 @@ int tamain(void)
 										{
 //											printf("len = %d\r\n",RF433_Receive.len);
 											RF433MHz_Flag = 0;
-											U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
+											U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
 											U1_sendS((uint8*)&RF433_Receive, RF433_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
- 										    U1_sendS((uint8*)tail,sizeof(tail));	
+ 										    U1_sendS((uint8*)tail,sizeof(tail));
+											break;	
 										}
 									}  
 //									rfm69h_status = RFM69H_IDLE;
 								}
-								//timer2_disable();
-								if(RF433TimeCount.TimeCount > 1000)
+//								else
+//								{
+//									RF433MHz_Flag = 0;
+//									U1_sendS((uint8*)ResFail, sizeof(ResFail));	
+//								}
+//								//timer2_disable();
+//								if(RF433TimeCount.TimeCount > 1000)
 								{
 									RF433MHz_Flag = 0;
 									U1_sendS((uint8*)ResFail, sizeof(ResFail));
@@ -382,10 +399,17 @@ int tamain(void)
 					   		case'H' ://红外发射
 							{
 									
-								InfraredReset();
+//								InfraredReset();
 								U1_sendS((uint8*)InfraredSendCMD, sizeof(InfraredSendCMD));
-								Infrared_UsartSend((uint8*)&rec_buf[3], rec_buf[4]+4);
-								U1_sendS((uint8*)ResSucess, sizeof(ResSucess));
+								if(rec_buf[rec_buf[3]==0xfa])
+								{
+									Infrared_UsartSend((uint8*)&rec_buf[3], rec_buf[4]+4);
+									U1_sendS((uint8*)ResSucess, sizeof(ResSucess));
+								}
+								else
+								{
+									U1_sendS((uint8*)ResFail, sizeof(ResFail));	
+								}
 
 							}
 							break;

@@ -12,11 +12,11 @@
 #define M3_315_GPIO             GPIOB
 
 
-#define RF315_REC_GPIO          GPIO_Pin_8
-#define RF315_REC_PORT          GPIOA
+#define RF315_REC_GPIO          GPIO_Pin_3
+#define RF315_REC_PORT          GPIOB
 
-#define RF315_SEND_GPIO             GPIO_Pin_3
-#define RF315_SEND_PORT             GPIOB
+#define RF315_SEND_GPIO             GPIO_Pin_6
+#define RF315_SEND_PORT             GPIOA
 
 
 extern volatile uint16	RF315_TimeCount;
