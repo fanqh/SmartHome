@@ -360,7 +360,7 @@ u8 RFM69H_ReadRSSI(void)
   return (u8)temp;
 }
 
-
+#if 0
 /**********************************************************
 **Name:     RFM69H_RxPacket
 **Function: Check for receive one packet
@@ -426,6 +426,8 @@ u8 RFM69H_TxPacket(RFM69H_DATA_Type* pSend)
   else
   	return 0;
 }
+
+
 
 ///rfm69h_status = RFM69H_IDLE;  接受完成后需要加上这个状态反转
 int RFM69H_Analysis(RFM69H_DATA_Type* pReceive)
@@ -599,4 +601,4 @@ int RFM69H_Send(RFM69H_DATA_Type *pData)
 }
 
 
-
+ #endif

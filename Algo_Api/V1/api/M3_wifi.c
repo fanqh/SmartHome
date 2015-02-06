@@ -1,39 +1,120 @@
 #include"M3_wifi.h"
+#include "gpio_config.h"
+
+//#define   MISO     PAin(15)   ///key
 
 extern uint32 ui;
-extern uint8 rec_buf[800];
+extern uint8 rec_buf[512];
 extern uint32 Wifi_Command_Mode;
+extern wifi_state_t wifi_state;
 
 
-void m3_wifi_config(void)
+void wifiReloadPinConfig(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
 
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
     GPIO_InitStructure.GPIO_Pin = M3_WIFI_NRELOAD;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_OD;
     GPIO_Init(M3_WIFI_GPIO, &GPIO_InitStructure);
-
 }
-void m3_wifi_rst_input(void)
+
+
+void wifi_init(void)
 {
-    GPIO_InitTypeDef GPIO_InitStructure;
-
-    GPIO_InitStructure.GPIO_Pin = M3_WIFI_NRELOAD;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-    GPIO_Init(M3_WIFI_GPIO, &GPIO_InitStructure);
+	wifi_state = WIFI_IDLE;		//WIFI状态初始化
+	wifiReloadPinConfig();	
 }
 
-void m3_wifi_rst_output(void)
+uint8 ScanKey(void)
 {
-    GPIO_InitTypeDef GPIO_InitStructure;
+	uint8  key = 0;
 
-    GPIO_InitStructure.GPIO_Pin = M3_WIFI_NRELOAD;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIO_Init(M3_WIFI_GPIO, &GPIO_InitStructure);
+	if(PAin(15)==0)
+	{
+		delay_ms(10);
+		if(0 == PAin(15))
+			key = 1;		
+	}
+	return key;		
 }
+
+uint8 Wifi_EnterEntmProcess(void)
+{
+	uint8 temp[64];
+	uint16 count;
+	uint8 ret = 0;	
+
+	if(wifi_state==WIFI_IDLE)
+	{
+		if(start_wifi_command()==1)
+			wifi_state = WIFI_COMMAND;	
+	}
+	else if(wifi_state == WIFI_COMMAND)
+	{
+
+		Boot_UsartClrBuf();
+		memset(temp, 0x00, 64);
+		U1_sendS("AT+WMODE\r\n", 10);
+		delay_ms(300);
+
+		if(get_usart_interrupt_flg())
+		{
+			count =  get_usart_interrupt_flg();
+			Boot_UsartGet(temp, count, 10);	
+		}
+		if(strstr(temp, "AP") != NULL)
+		{ 	
+			wifi_state = WIFI_WORKING_AP;
+		}		
+		else
+			wifi_state = WIFI_IDLE;			
+	}
+	else if(wifi_state == WIFI_WORKING_AP)
+	{
+		Boot_UsartClrBuf();
+		U1_sendS("AT+WAKEY\r\n",10);
+		delay_ms(300);
+		if(get_usart_interrupt_flg())
+		{
+			count =  get_usart_interrupt_flg();
+			Boot_UsartGet(temp, count, 10);	
+		}
+		if(strstr(temp, "OPEN") != NULL)
+		{
+			memset(temp, 0x00, 64);
+			wifi_state = WIFI_SET_AUTH_OPEN;		
+		}
+		else
+			wifi_state = WIFI_IDLE;		
+	}
+	else if(wifi_state == WIFI_SET_AUTH_OPEN)
+	{
+		Boot_UsartClrBuf();
+		Boot_UsartSend("AT+ENTM\r\n",9);
+		delay_ms(300);
+		if(get_usart_interrupt_flg())
+		{
+			count =  get_usart_interrupt_flg();
+			Boot_UsartGet(temp, count, 10);	
+		}
+		if(strstr(temp, "+ok") != NULL)
+			wifi_state = WIFI_ENTM;		
+		else
+			wifi_state = WIFI_IDLE;		
+	}
+	else if(wifi_state == WIFI_ENTM)
+	{
+		ret = 1;
+	}
+	memset(temp, 0x00, 64);
+	return ret;
+
+} 
+
+
+
 #if 1
 void U1_in(void)//串口1接收数据
 {
@@ -63,25 +144,25 @@ void U1_in(void)//串口1接收数据
 
 int start_wifi_command(void)
 {
-
+	Boot_UsartClrBuf();
 	Boot_UsartSend("+++",3);
 	memset(rec_buf,0x00,sizeof(rec_buf));	
     Boot_UsartGet(rec_buf,1,1200);
 	if(rec_buf[0] == 'a')
 	{	
 		memset(rec_buf,0x00,sizeof(rec_buf));
-		delay_ms(1000);
+//		delay_ms(1000);
 		U1_sendS("a",1);
         Boot_UsartGet(rec_buf,3,3000);
 		if(strstr(rec_buf,"+ok") != NULL)
 		{
 			Wifi_Command_Mode = 1;
 			memset(rec_buf,0x00,sizeof(rec_buf));
-			return AT_MODE; //切换成功
+			return 1; //切换成功
 		}	
 	}
 	memset(rec_buf,0x00,sizeof(rec_buf));
-	return PIPE_MODE;
+	return 0;
 
 }
 

@@ -11,7 +11,6 @@ extern  uint32  Get_Wifi_MAC;
 volatile uint32 Turn=1;             //反转标志
 volatile uint8  read_led_status=0;
 
-uint16_t ted = 0;
 //extern unsigned char RxBuf[RxBuf_Len];
 
 TimeCountTypeDef RF315TimeCount;
@@ -25,8 +24,6 @@ TimeCountTypeDef InfraredTimeCount;
 //5ms
 void TIMER2_Handler(void)
 {
-	unsigned char tedd;
-	unsigned char Rec;
   
     TIM2->SR = ~TIM_FLAG_Update;  //清除标志位
 
@@ -50,7 +47,6 @@ void TIMER2_Handler(void)
 
 
 #if 1
-#if 1
     if(Wifi_AP_OPEN_MODE)
 	{
 		Wifi_AP_OPEN_MODE++;
@@ -64,67 +60,18 @@ void TIMER2_Handler(void)
 	else
 	{
 		Wifi_MAC_Count++;
-		ted ++;
      
 		if(Wifi_MAC_Count == 2*200) //3秒定时
 		{
 			Get_Wifi_MAC = 1;
 			Wifi_MAC_Count = 0;
 		}
-		if(ted == 200)	
-		{
-			uint8 i = 0;
 
-			ted = 0;
-
-			Rec = nRF24L01_RxPacket(rx_buf);
-			if(Rec==1)
-			{
-				Rec = 0;
-				if((rx_buf[0] == 0x7E)&&(rx_buf[1] == 0x7E)&&(rx_buf[2] == 0x34))
-				{
-					U1_send(0x7E);
-					U1_send(0x7E);
-					for(tedd=0;tedd<32;tedd++)
-					{
-						U1_send(rx_buf[tedd]);
-							//UartRecFlag = 0;
-					}
-					U1_sendS("<<",2);
-				}
-				Rec = 0;
-			}
-
-//			Rec = RFM69H_RxPacket(&RxBuf);
-			if(Rec == 1)  //接收数据
-		  	{
-				Rec = 0;
-				//WAKEUP_LED = ~WAKEUP_LED;
-
-				/***********************需要修改***********************************************/
-//				if(RxBuf[0] != RxBuf[1])
-//				{
-//					U1_send(0x7E);
-//					U1_send(0x7F);
-//					for(i=0;i<RxBuf_Len;i++)	
-//					{
-//						U1_send(RxBuf[i]);//Uart_sendB(RxBuf[i]);
-//					}
-//					U1_sendS("<<",2);
-//		 			RFM69H_EntryRx();
-//				}
-		  	}
-			else
-			{
-				RFM69H_EntryRx();
-			}
-		}
 	}
     #else
     read_led_status =~read_led_status;    
     wifi_led(read_led_status);
     #endif
-#endif 
 }
 
 

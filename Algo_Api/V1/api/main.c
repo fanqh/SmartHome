@@ -22,6 +22,7 @@ uint32  Wifi_AP_OPEN_MODE = 0; //wifi工作在AP的OPEN模式下，灯闪烁
 uint32  RST_count1 = 0; //计数
 uint32  RST_count2 = 0;
 
+wifi_state_t wifi_state;
 
 volatile uint32 ui = 0;//串口接收数据长度!
 uint8   rec_buf[256];
@@ -36,7 +37,6 @@ uint8 FlagInfrared = 0;			// 0: idle 1: 学习 2：接手
 //RF_RFM69H
 RFM69H_DATA_Type TxBuf; 
 uint8 FlagRF24GLearn = 0; // 0: idle 1: 学习 2：接手
-
 
 //315M
 uint8 RF315MHz_Flag = 0;
@@ -65,23 +65,23 @@ void JTAG_Set(u8 mode)
 	RCC->APB2ENR|=1<<0;     //开启辅助时钟	   
 	AFIO->MAPR&=0XF8FFFFFF; //清除MAPR的[26:24]
 	AFIO->MAPR|=temp;       //设置jtag模式
-} 
+}
+
 
 int tamain(void)
 {
+
+	uint8 temp[64];
+	uint16 count;
+
+
 	JTAG_Set(SWD_ENABLE);		//加
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4推挽输出
  	GPIOC->CRL|=0X00030000;
-
-
 	led_init();
     wifi_led(LED_ON);  
     debug_led_off();
-
     m3_315_io_config();
-//    infrared_io_init();  
-//    m3_315_clr();                       //关闭315
-
 
   //Command_Process();
     Init_DS18B20();
@@ -93,32 +93,33 @@ int tamain(void)
 	SpiMsterGpioInit(SPI_2);
 	RF69H_DataCongfigIN();
 	Infrared_UsartInit();
-
 	printf("uart is working\r\n"); 
 
-#if 0	
-	while(1)
-	{	
-//		uint16 count;
-//		uint8 buf[128];
-//
-//		InfraredEnterStudy();
-//		BSP_mDelay(1000);
-//		if(GetUartBuffSize())
-//		{
-////			printf("count > n\r\n");
-//			count = GetUartBuffSize();
-//			Infrared_UsartGet(buf, count, 10);
-//			U1_sendS((uint8*)buf, count);
-//			memset(buf, 0, count);	
-//			InfraredReset();
-//		}	
-	}
-#endif
 
-#if 1
     while(1)
     {
+	   static uint8 t = 0;
+		for(;;)
+		{
+			if(ScanKey())
+				wifi_state = WIFI_IDLE;		//WIFI状态初始化
+			if(Wifi_EnterEntmProcess())	
+				break;	
+		}
+		
+
+//		t++;
+//		if(t>10 && t<20)
+//		{
+//			debug_led_on();
+//		}
+//		else if(t>=20)
+//		{
+//			t = 0;
+//			debug_led_off();
+//		}
+//		delay_ms(300);
+#if 0
 		 if(FlagRF24GLearn == 1)
 		 {
 		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
@@ -134,23 +135,6 @@ int tamain(void)
 				U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
 			}
 
-		 }
-		 else if(FlagRF24GLearn == 2)	   //接收
-		 {
-		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
-			{
-				FlagRF24GLearn = 0;	
-				//timer2_disable();
-				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
-			}
-			if(Ifnnrf_Receive(rx_buf)==1)
-			{
-				FlagRF24GLearn = 0;	
-				//timer2_disable();
-				U1_sendS((uint8*)RF24GRecCMD, sizeof(RF24GRecCMD));
-				U1_sendS((uint8*)rx_buf, TX_PLOAD_WIDTH);
-				U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
-			}
 		 }
 		 if(FlagInfrared ==1)
 		 {
@@ -172,97 +156,7 @@ int tamain(void)
 				U1_sendS((uint8*)tail, sizeof(tail));
 											
 			}	
-		}
-		else if(FlagInfrared == 2)	//红外接收
-		{
-		 	infrared_data_t infrared_receive;
-		 	if(InfraredTimeCount.TimeCount > INFRAREDLEARNTIMECOUNT)
-			{
-				FlagInfrared = 0;
-				InfraredReset();
-				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
-			}
-			else if(ParseInfrared(&infrared_receive))
-			{
-				FlagInfrared = 0;	
-				U1_sendS((uint8*)InfraredRecCMD, sizeof(InfraredRecCMD));
-				U1_sendS((uint8*)infrared_receive.buff, infrared_receive.len);
-				InfraredReset();
-				U1_sendS((uint8*)tail, sizeof(tail));
-											
-			}	
-		}
-#if 0
-		if(Check_wifi)
-		{
-			//timer2_disable(); 
-			if(!Wifi_Command_Mode)
-			{
-				start_wifi_command();
-			}
-			if(Wifi_Command_Mode)
-			{
-				delay_ms(10);
-				U1_sendS("AT+WMODE\r\n",10);	
-				Check_wifi = 0;	
-			}
-			timer2_enable(); 
-		}	
-		if(!Wifi_AP_OPEN_MODE)
-		{
-            wifi_led(READ_WIFI_RST);
-			if(Get_Wifi_MAC)
-			{
-				//timer2_disable(); 	   //这里定时器和打开函数没有成对出现
-				if(Wifi_MAC[0]==0x00)
-				{
-					if(!Wifi_Command_Mode)
-					{
-						start_wifi_command();
-					}
-					if(Wifi_Command_Mode)
-					{
-						delay_ms(10);
-						U1_sendS("AT+NMAC\r\n",9);	
-					}
-				}
-				else
-				{
-					Get_Wifi_MAC = 0;
-					Wifi_Command_Mode = 0;
-					U1_sendS("DM:",3);
-					U1_sendS(Wifi_MAC,sizeof(Wifi_MAC));
-					U1_sendS("<<",2);
-					Wifi_MAC_Count = 0;
-					timer2_enable(); 
-				}
-			}
-		}
-        m3_wifi_rst_input();
-		if(READ_WIFI_RST==0)
-		{
-			//timer2_disable(); 
-			//debug_led_off();   
-			while(READ_WIFI_RST==0)
-			{
-				RST_count1++;
-				if(RST_count1 == 65535)
-				{
-					RST_count1 = 0;
-					RST_count2++;
-				}
-			}
-			if(RST_count2 >= 5)
-			{
-				Wifi_Command_Mode = 0;
-				Get_Wifi_MAC = 0;
-				Check_wifi = 1;
-				RST_count1 = 0;
-				RST_count2 = 0;
-			}	
-			timer2_enable(); 
-		}	
-#endif 
+		 }
         if(get_usart_interrupt_flg())
 		{
 			U1_in();			//获取串口发送的SJ数据!
@@ -473,89 +367,6 @@ int tamain(void)
 						}
 				   }
 				   break;
-				   case 'B':
-				   {
-				   		switch (rec_buf[1])
-						{
-							case'H' ://红外接受
-							{
-							}
-							break;
-							case  'W'://315M接收
-							{
-						  		RF_AC_DATA_TYPE  RF315_Receive;
-
-								RF315MHz_Flag = 1;
-								RF315TimeCount.TimeCount = 0;
-								RF315TimeCount.FlagStart = 1;
-								U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
-								while((RF315TimeCount.TimeCount <= 1000)&&(RF315MHz_Flag == 1))
-								{
-									//printf("lenarn\r\n");
-									if(RFDecodeAC(&RF315_Receive, RF315_REC_PORT, RF315_REC_GPIO))
-									{
-//										printf("len = %d\r\n",RF315_Receive.len);
-										RF315MHz_Flag = 0;
-										U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
-										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
-										U1_sendS((uint8*)tail,sizeof(tail));	
-									}
-								}
-								//timer2_disable();
-								if(RF315TimeCount.TimeCount > 1000)
-								{
-									RF315MHz_Flag = 0;
-									U1_sendS((uint8*)ResFail, sizeof(ResFail));
-								}
-							}
-							break;
-							case 'F': //433M接收
-							{
-						    	RFM69H_DATA_Type RF433_RxBuf;
-	
-								U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
-								RF315TimeCount.TimeCount = 0;
-								RF315TimeCount.FlagStart = 1;
-								timer2_enable();
-							 	RFM69H_Config();
-								RFM69H_EntryRx();
-								if(RFM69H_RxPacket(&RF433_RxBuf)>0)
-								{
-								//	U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
-									U1_sendS((uint8*)&RF433_RxBuf, sizeof(RFM69H_DATA_Type));	//可以优化发送的数据
-								//	U1_sendS((uint8*)tail, sizeof(tail));	
-								}
-								else
-								{
-									U1_sendS((uint8*)ResFail, sizeof(ResFail));
-								}
-								//timer2_disable();
-		
-							}
-							break;
-							case'T': //2.4G 接收
-							{
-								if(FlagRF24GLearn!=1)
-								{
-									U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
-									ifnnrf_rx_mode();
-									RF24GTimeCount.TimeCount = 0;
-									RF24GTimeCount.FlagStart = 1;
-									timer2_enable();	
-									FlagRF24GLearn = 2;
-								}
-							}
-							case 'D': //绑定
-							{
-							}
-							break;
-		
-							default :
-							break;
-						}
-				   }
-				   break;
-	
 				   case 'T':
 					   if(rec_buf[1]=='K')	 //心跳
 					   {
@@ -608,52 +419,13 @@ int tamain(void)
 		 		   }
 				}
 			}
-			else if(strstr(rec_buf,"+o") != NULL) //收到wifi模块返回的数据 +ok
+			else 
 			{
-				if(strstr(rec_buf,"AP") != NULL) 	//wifi工作在AP模式
-				{
-					delay_ms(10);
-					U1_sendS("AT+WAKEY\r\n",10);
-				}
-				else if(strstr(rec_buf,"OPEN") != NULL) //AP模式下的open加密  
-				{
-					Check_wifi = 0;
-					Wifi_AP_OPEN_MODE = 1;
-					timer2_enable(); 
-					if(!start_wifi_data())
-					{
-						Check_wifi = 0;
-						Wifi_Command_Mode = 0;
-					}
-				}
-				else if(strstr(rec_buf,"MAC") != NULL)
-				{
-					memset(Wifi_MAC,0x00,sizeof(Wifi_MAC));
-					memcpy(Wifi_MAC,strstr(rec_buf,"+ok="),sizeof(Wifi_MAC));
-					if(!start_wifi_data())
-					{
-						Get_Wifi_MAC = 0;
-						Wifi_Command_Mode = 0;
-						U1_sendS("DM:",3);
-						U1_sendS(Wifi_MAC,sizeof(Wifi_MAC));
-						U1_sendS("<<",2);
-					}
-					Wifi_MAC_Count = 0;
-					timer2_enable(); 
-				}
-				else
-				{
-					if(!start_wifi_data())
-					{
-						Check_wifi = 0;
-						Wifi_Command_Mode = 0;
-						Wifi_AP_OPEN_MODE = 0;
-					}
-				}
 			}
-		memset(rec_buf,0x00,sizeof(rec_buf));
-	}
- #endif
+		memset(rec_buf,0x00,sizeof(rec_buf));	 
+#endif
+	}										   
+
 }
 
 

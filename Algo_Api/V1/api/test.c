@@ -14,6 +14,28 @@
 	}
 #endif
 
+//ºìÍâ²âÊÔ
+
+#if 0	
+	while(1)
+	{	
+//		uint16 count;
+//		uint8 buf[128];
+//
+//		InfraredEnterStudy();
+//		BSP_mDelay(1000);
+//		if(GetUartBuffSize())
+//		{
+////			printf("count > n\r\n");
+//			count = GetUartBuffSize();
+//			Infrared_UsartGet(buf, count, 10);
+//			U1_sendS((uint8*)buf, count);
+//			memset(buf, 0, count);	
+//			InfraredReset();
+//		}	
+	}
+#endif
+
 #if 0
 		//2.hG
 	SpiMsterGpioInit(SPI_1);
@@ -139,3 +161,73 @@ backup data:
 								}
 								c++;
 							}
+
+
+
+	if(wifi_state==WIFI_IDLE)
+	{
+		if(start_wifi_command()==1)
+			wifi_state = WIFI_COMMAND;	
+	}
+	else if(wifi_state == WIFI_COMMAND)
+	{
+
+		Boot_UsartClrBuf();
+		memset(temp, 0x00, 64);
+		U1_sendS("AT+WMODE\r\n", 10);
+		delay_ms(300);
+
+		if(get_usart_interrupt_flg())
+			Boot_UsartGet(temp, count, 10);	
+		if(strstr(temp, "AP") != NULL)
+		{ 	
+			wifi_state = WIFI_WORKING_AP;
+		}		
+		else
+			wifi_state = WIFI_IDLE;			
+	}
+	else if(wifi_state == WIFI_WORKING_AP)
+	{
+		Boot_UsartClrBuf();
+		U1_sendS("AT+WAKEY\r\n",10);
+		delay_ms(300);
+		if(get_usart_interrupt_flg())
+			Boot_UsartGet(temp, count, 10);	
+		if(strstr(temp, "OPEN") != NULL)
+		{
+			memset(temp, 0x00, 64);
+			wifi_state = WIFI_SET_AUTH_OPEN;		
+		}
+		else
+			wifi_state = WIFI_IDLE;		
+	}
+	else if(wifi_state == WIFI_SET_AUTH_OPEN)
+	{
+		Boot_UsartClrBuf();
+		Boot_UsartSend("AT+ENTM\r\n",9);
+		delay_ms(300);
+		if(get_usart_interrupt_flg())
+			Boot_UsartGet(temp, count, 10);	
+		if(strstr(temp, "+ok") != NULL)
+			wifi_state = WIFI_ENTM;		
+		else
+			wifi_state = WIFI_IDLE;		
+	}
+	else if(wifi_state == WIFI_ENTM)
+	{
+		static uint8 t = 0;
+
+		t++;
+		if(t>10 && t<20)
+		{
+			debug_led_on();
+		}
+		else if(t>=20)
+		{
+			t = 0;
+			debug_led_off();
+		}
+
+			delay_ms(300);
+	}
+	memset(temp, 0x00, 64);
