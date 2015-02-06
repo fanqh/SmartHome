@@ -22,7 +22,7 @@ uint32  Wifi_AP_OPEN_MODE = 0; //wifi工作在AP的OPEN模式下，灯闪烁
 uint32  RST_count1 = 0; //计数
 uint32  RST_count2 = 0;
 
-wifi_state_t wifi_state;
+
 
 volatile uint32 ui = 0;//串口接收数据长度!
 uint8   rec_buf[256];
@@ -71,9 +71,6 @@ void JTAG_Set(u8 mode)
 int tamain(void)
 {
 
-	uint8 temp[64];
-	uint16 count;
-
 
 	JTAG_Set(SWD_ENABLE);		//加
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4推挽输出
@@ -98,7 +95,7 @@ int tamain(void)
 
     while(1)
     {
-	   static uint8 t = 0;
+//	   static uint8 t = 0;
 		for(;;)
 		{
 			if(ScanKey())

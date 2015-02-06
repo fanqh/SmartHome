@@ -13,8 +13,6 @@
 #define CLR_WIFI_RST        GPIO_ResetBits(M3_WIFI_GPIO,M3_WIFI_NRELOAD)
 #define READ_WIFI_RST       GPIO_ReadInputDataBit(M3_WIFI_GPIO,M3_WIFI_NRELOAD)
 
-
-
 typedef enum
 {
 	WIFI_IDLE,
@@ -48,6 +46,8 @@ void    U1_sendS(uint8 *data,uint32 len);
 void    m3_wifi_rec_data(uint8 *data);
 
 void    m3_wifi_rec_buf(uint8 *data,uint32 len,uint32 timeout);
+
+extern wifi_state_t wifi_state;
 
 #endif
 

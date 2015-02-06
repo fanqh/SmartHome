@@ -24,8 +24,24 @@ TimeCountTypeDef InfraredTimeCount;
 //5ms
 void TIMER2_Handler(void)
 {
-  
+  	uint16 t = 0;
+	uint8 led = 0;
+
     TIM2->SR = ~TIM_FLAG_Update;  //清除标志位
+
+	t ++;
+	if(wifi_state == WIFI_ENTM)
+	{
+		if(t%200==0)
+		{
+			led = ~led;
+			wifi_led(led);
+		}			
+	}
+	else
+	{
+		led_off();
+	}
 
 	if(RF315TimeCount.FlagStart)
 	{
@@ -43,10 +59,10 @@ void TIMER2_Handler(void)
 	{
 		InfraredTimeCount.TimeCount++;	
 	}
-//	if()
 
 
-#if 1
+
+#if 0
     if(Wifi_AP_OPEN_MODE)
 	{
 		Wifi_AP_OPEN_MODE++;

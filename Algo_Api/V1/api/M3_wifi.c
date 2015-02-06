@@ -6,7 +6,7 @@
 extern uint32 ui;
 extern uint8 rec_buf[512];
 extern uint32 Wifi_Command_Mode;
-extern wifi_state_t wifi_state;
+wifi_state_t wifi_state;
 
 
 void wifiReloadPinConfig(void)
@@ -33,7 +33,7 @@ uint8 ScanKey(void)
 
 	if(PAin(15)==0)
 	{
-		delay_ms(10);
+		BSP_mDelay(10);
 		if(0 == PAin(15))
 			key = 1;		
 	}
@@ -57,7 +57,7 @@ uint8 Wifi_EnterEntmProcess(void)
 		Boot_UsartClrBuf();
 		memset(temp, 0x00, 64);
 		U1_sendS("AT+WMODE\r\n", 10);
-		delay_ms(300);
+		BSP_mDelay(300);
 
 		if(get_usart_interrupt_flg())
 		{
@@ -75,7 +75,7 @@ uint8 Wifi_EnterEntmProcess(void)
 	{
 		Boot_UsartClrBuf();
 		U1_sendS("AT+WAKEY\r\n",10);
-		delay_ms(300);
+		BSP_mDelay(300);
 		if(get_usart_interrupt_flg())
 		{
 			count =  get_usart_interrupt_flg();
@@ -93,7 +93,7 @@ uint8 Wifi_EnterEntmProcess(void)
 	{
 		Boot_UsartClrBuf();
 		Boot_UsartSend("AT+ENTM\r\n",9);
-		delay_ms(300);
+		BSP_mDelay(300);
 		if(get_usart_interrupt_flg())
 		{
 			count =  get_usart_interrupt_flg();
@@ -151,7 +151,7 @@ int start_wifi_command(void)
 	if(rec_buf[0] == 'a')
 	{	
 		memset(rec_buf,0x00,sizeof(rec_buf));
-//		delay_ms(1000);
+//		BSP_mDelay(1000);
 		U1_sendS("a",1);
         Boot_UsartGet(rec_buf,3,3000);
 		if(strstr(rec_buf,"+ok") != NULL)

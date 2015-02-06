@@ -1,16 +1,13 @@
 #include"debug_led.h"
 
-
-
-
-#define  LED1_PIN				GPIO_Pin_4		
-#define  DEBUG_LED_PORT			GPIOA
+#define  LED1_PIN				GPIO_Pin_7		
+#define  DEBUG_LED_PORT			GPIOB
 
 
 void led_init()
 {
     GPIO_InitTypeDef GPIO_InitStructure;
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
     
     GPIO_InitStructure.GPIO_Pin = LED1_PIN;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -45,20 +42,3 @@ void    wifi_led(uint8 led_status)
 
 }
 
-void    power_on_tip(void)
-{
-
-
-}
-
-void delay_ms(int times)
-{
-    int i;
-    if(times<0)
-        times=1;
-    for(i=0;i<times;i++)
-    {
-        delay_x_10us(100);
-    }
-
-}
