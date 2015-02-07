@@ -9,8 +9,10 @@
 /**********************************************************************************/
 /**********************************************************************************/
 /*
-1.	rfm69h 解析和发送需要一个误差小于10us的定时器，，现在用的和systemtick有冲突，需要修改
-2. TIm2 定时器在315M 和24G中有开启和关闭，注意其他函数调用
+
+一下两个命令暂时没有去做
+1. 模块链接状态DS:07
+2.BD:phoneMAC<<  
 */
 /**********************************************************************************/
 /**********************************************************************************/
@@ -27,7 +29,7 @@ uint32  RST_count2 = 0;
 volatile uint32 ui = 0;//串口接收数据长度!
 uint8   rec_buf[256];
 #define wifi_mac_num 16
-volatile uint8 Wifi_MAC[wifi_mac_num] = {0x00};
+uint8 Wifi_MAC[wifi_mac_num];
 
 volatile uint8 RI=0;
 
@@ -43,7 +45,7 @@ uint8 RF315MHz_Flag = 0;
 uint8 RF433MHz_Flag = 0;
 
 //2.4G
-uchar rx_buf[TX_PLOAD_WIDTH] = {0x01,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
+uchar RF24Rec_buf[TX_PLOAD_WIDTH] = {0x01,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
                                 0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1A,0x1B,0x1C,0x1D,0x1E,0x1F};
 typedef union //char型数据转int型数据类 
 {  
@@ -122,14 +124,15 @@ int tamain(void)
 		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
 			{
 				FlagRF24GLearn = 0;	
-				//timer2_disable();
 				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
 			}
 			if(Ifnnrf_Receive(rx_buf)==1)
 			{
 				FlagRF24GLearn = 0;	
-				//timer2_disable();
-				U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
+				U1_sendS((uint8*)RF24GRecCMD, sizeof(RF24GRecCMD));
+				U1_sendS((uint8*)RF24Rec_buf, sizeof(TX_PLOAD_WIDTH));
+				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
+					
 			}
 
 		 }
@@ -141,13 +144,14 @@ int tamain(void)
 //				printf("timeout\r\n");
 				FlagInfrared = 0;
 				InfraredReset();
-				//U1_sendS((uint8*)ResFail, sizeof(ResFail));	
+				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
 			}
 			else if(ParseInfrared(&infrared_receive))
 			{
 				FlagInfrared = 0;	
 //				printf("rec is ok\r\n");
-				U1_sendS((uint8*)InfraredSendCMD, sizeof(InfraredSendCMD));
+//				U1_sendS((uint8*)InfraredSendCMD, sizeof(InfraredSendCMD));
+				U1_sendS((uint8*)InfraredRecCMD, sizeof(InfraredRecCMD));
 				U1_sendS((uint8*)infrared_receive.buff, infrared_receive.len);
 				InfraredReset();
 				U1_sendS((uint8*)tail, sizeof(tail));
@@ -214,7 +218,7 @@ int tamain(void)
 	
 							case 'F':	//433M学习
 							{
-						  		 RF_AC_DATA_TYPE  RF433_Receive;
+						  		RF_AC_DATA_TYPE  RF433_Receive;
 
 								RF433MHz_Flag = 1;
 								RF433TimeCount.TimeCount = 0;
@@ -367,20 +371,21 @@ int tamain(void)
 				   case 'T':
 					   if(rec_buf[1]=='K')	 //心跳
 					   {
-					   		U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
+					   		U1_sendS((uint8*)HeadCMD, sizeof(HeadCMD));	
 					   }
 				   break;
 	
 				   case 'D':
 					   if(rec_buf[1]=='T') //温度采集
 					   {
-	//				   		uint16 temp;
+					   		uint16 temp;
 	
 	//					    U1_sendS("回复命令", 5);
-							while((rec_buf[2] = GetTemperature()) == 0x55);	   // 这里？ 如果是负值？  如何判断采集失败
-							rec_buf[3] = '<';
-							rec_buf[4] = '<';
-							U1_sendS(rec_buf, 5);	
+							while((temp = GetTemperature()) == 0x55);	   // 这里？ 如果是负值？  如何判断采集失败
+							U1_sendS("DT:", 3);		///可以优化
+							U1_sendS(&temp, 1);	
+							U1_sendS("<<", 2);	
+
 					   }
 					   else if(rec_buf[1]=='S')	//检测wifi命令
 					   {
@@ -389,26 +394,44 @@ int tamain(void)
 							U1_sendS("DS<<",4);
 					   }
 					   else	if(rec_buf[1]=='M')	 //MAC 地址发送
-					   {};
+					   {
+					   		Boot_UsartClrBuf();
+					   		U1_sendS("AT+WSMAC\r\n",10);	 //需要修改，不用每次都查询
+							BSP_mDelay(50);
+							if((count = get_usart_interrupt_flg())!=0)
+							{
+								count =  get_usart_interrupt_flg();
+								Boot_UsartGet(rec_buf, count, 10);
+								if(strstr(rec_buf,"MAC") != NULL)
+								{
+									memcpy(Wifi_MAC,strstr(rec_buf,"+ok="),sizeof(Wifi_MAC));
+									U1_sendS("DM:",3);
+									U1_sendS(Wifi_MAC,sizeof(Wifi_MAC));
+									U1_sendS("<<",2);
+								}	
+							}
+									
+					   };
 	//				   else
 	//				   {};
 				   break;
 	
 				   case	'V': //固件版本获取
 				   		if(rec_buf[1]=='E')
-						{}
+						{
+							U1_sendS("VER:", 4);
+							U1_sendS((uint8*)SwVesion, sizeof(SwVesion));	
+							U1_sendS("<<", 2);	
+						}
 				   break;
 	
 				   case 'S':
 				   		if(rec_buf[1]=='X')//固件升级
 						{
-						  if(rec_buf[1]=='X')
-	                      {
-	                            Boot_UsartSend("enter_upg_mode",sizeof("enter_upg_mode")-1);
-	                            //timer2_disable();
-	                            Command_Process();
-								timer2_enable();
-	                      }
+                            Boot_UsartSend("enter_upg_mode",sizeof("enter_upg_mode")-1);
+                            timer2_disable();
+                            Command_Process();
+							timer2_enable();
 						}
 				   break;
 				   default :

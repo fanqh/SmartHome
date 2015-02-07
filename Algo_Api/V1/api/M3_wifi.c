@@ -59,7 +59,7 @@ uint8 Wifi_EnterEntmProcess(void)
 		U1_sendS("AT+WMODE\r\n", 10);
 		BSP_mDelay(300);
 
-		if(get_usart_interrupt_flg())
+		if((count=get_usart_interrupt_flg()) != 0)
 		{
 			count =  get_usart_interrupt_flg();
 			Boot_UsartGet(temp, count, 10);	
@@ -76,7 +76,7 @@ uint8 Wifi_EnterEntmProcess(void)
 		Boot_UsartClrBuf();
 		U1_sendS("AT+WAKEY\r\n",10);
 		BSP_mDelay(300);
-		if(get_usart_interrupt_flg())
+		if((count = get_usart_interrupt_flg())!=0)
 		{
 			count =  get_usart_interrupt_flg();
 			Boot_UsartGet(temp, count, 10);	
@@ -94,7 +94,7 @@ uint8 Wifi_EnterEntmProcess(void)
 		Boot_UsartClrBuf();
 		Boot_UsartSend("AT+ENTM\r\n",9);
 		BSP_mDelay(300);
-		if(get_usart_interrupt_flg())
+		if((count = get_usart_interrupt_flg())!=0)
 		{
 			count =  get_usart_interrupt_flg();
 			Boot_UsartGet(temp, count, 10);	
