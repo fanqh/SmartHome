@@ -292,7 +292,7 @@ u8 RFM69H_RxWaitStable(void)
   {
   	if((temp&0xC0)==0xC0 && temp!=0xff)
 	{
-//		printf("1\r\n");
+		printf("1\r\n");
 		return 1;
 	}
 	else
@@ -300,8 +300,8 @@ u8 RFM69H_RxWaitStable(void)
 	  	timeout ++;
 		if(timeout >= 500)
 			return 0;
-//		printf("0\r\n");
-//	  	delay_ms(10);
+		printf("0\r\n");
+		BSP_mDelay (1);
 		temp = 	SPIRead(SPI_2, 0x27);
 	}
   }

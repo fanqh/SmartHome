@@ -45,7 +45,7 @@ uint8 RF315MHz_Flag = 0;
 uint8 RF433MHz_Flag = 0;
 
 //2.4G
-uchar RF24Rec_buf[TX_PLOAD_WIDTH] = {0x01,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
+uchar rx_buf[TX_PLOAD_WIDTH] = {0x01,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
                                 0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1A,0x1B,0x1C,0x1D,0x1E,0x1F};
 typedef union //char型数据转int型数据类 
 {  
@@ -92,11 +92,13 @@ int tamain(void)
 	SpiMsterGpioInit(SPI_2);
 	RF69H_DataCongfigIN();
 	Infrared_UsartInit();
+	timer2_enable();
 	printf("uart is working\r\n"); 
 
 
     while(1)
     {
+#if 0
 //	   static uint8 t = 0;
 		for(;;)
 		{
@@ -117,8 +119,10 @@ int tamain(void)
 //			t = 0;
 //			debug_led_off();
 //		}
-//		delay_ms(300);
-#if 0
+//		BSP_mDelay(300);
+
+#endif
+#if 1
 		 if(FlagRF24GLearn == 1)
 		 {
 		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
@@ -130,7 +134,7 @@ int tamain(void)
 			{
 				FlagRF24GLearn = 0;	
 				U1_sendS((uint8*)RF24GRecCMD, sizeof(RF24GRecCMD));
-				U1_sendS((uint8*)RF24Rec_buf, sizeof(TX_PLOAD_WIDTH));
+				U1_sendS((uint8*)rx_buf, sizeof(TX_PLOAD_WIDTH));
 				U1_sendS((uint8*)ResFail, sizeof(ResFail));	
 					
 			}
@@ -160,6 +164,8 @@ int tamain(void)
 		 }
         if(get_usart_interrupt_flg())
 		{
+
+			
 			U1_in();			//获取串口发送的SJ数据!
 			if(rec_buf[2] == ':')//接收到正确的控制数据!
 			{
@@ -223,10 +229,12 @@ int tamain(void)
 								RF433MHz_Flag = 1;
 								RF433TimeCount.TimeCount = 0;
 								RF433TimeCount.FlagStart = 1;
-								timer2_enable();
+//								timer2_enable();
 //								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
 								if(RFM69H_RxWaitStable())
 								{
+
+									printf("433 is ok\r\n");
 									RF69H_DataCongfigIN();
 //									rfm69h_status = RFM69H_RECEIVE;
 									while((RF433TimeCount.TimeCount <= 1000)&&(RF433MHz_Flag == 1))
@@ -383,7 +391,7 @@ int tamain(void)
 	//					    U1_sendS("回复命令", 5);
 							while((temp = GetTemperature()) == 0x55);	   // 这里？ 如果是负值？  如何判断采集失败
 							U1_sendS("DT:", 3);		///可以优化
-							U1_sendS(&temp, 1);	
+							U1_sendS((uint8*)&temp, 2);	
 							U1_sendS("<<", 2);	
 
 					   }
@@ -395,6 +403,8 @@ int tamain(void)
 					   }
 					   else	if(rec_buf[1]=='M')	 //MAC 地址发送
 					   {
+					   		uint16 count =  0;
+
 					   		Boot_UsartClrBuf();
 					   		U1_sendS("AT+WSMAC\r\n",10);	 //需要修改，不用每次都查询
 							BSP_mDelay(50);
@@ -402,9 +412,9 @@ int tamain(void)
 							{
 								count =  get_usart_interrupt_flg();
 								Boot_UsartGet(rec_buf, count, 10);
-								if(strstr(rec_buf,"MAC") != NULL)
+								if(strstr((uint8*)rec_buf,"MAC") != NULL)
 								{
-									memcpy(Wifi_MAC,strstr(rec_buf,"+ok="),sizeof(Wifi_MAC));
+									memcpy(Wifi_MAC, strstr((uint8*)rec_buf,"+ok="),sizeof(Wifi_MAC));
 									U1_sendS("DM:",3);
 									U1_sendS(Wifi_MAC,sizeof(Wifi_MAC));
 									U1_sendS("<<",2);
