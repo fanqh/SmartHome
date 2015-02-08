@@ -1,6 +1,7 @@
 #include "stm32f10x.h"
 #include "stm32f10x_spi.h"
 #include "gpio_config.h"
+#include "timer.h"
 
 #include "spi.h"
 
@@ -60,7 +61,7 @@ void SpiMsterGpioInit(uint8_t spi)
 
 }
 
-
+ #if 0
 static void delay(void)
 {
     int i =3 ;
@@ -88,6 +89,7 @@ static void delay(void)
     }
 
 }
+#endif
 
 #if 1
 
@@ -109,7 +111,7 @@ uint8_t SPICmd8bit(uint8 spi, uint8 WrPara)	//SPI_I2S_SendData(SPI2, value);
   	CSN = 0 ;
    	
   SCK=0;
-  delay();
+  BSP_uDelay(5);
 
   for(bitcnt=8; bitcnt!=0; bitcnt--)
   {
@@ -118,10 +120,10 @@ uint8_t SPICmd8bit(uint8 spi, uint8 WrPara)	//SPI_I2S_SendData(SPI2, value);
       MOSI=1;
     else
       MOSI=0;
-	delay(); 	
+	BSP_uDelay(5); 	
     SCK=1;
     WrPara <<= 1;
-	delay();
+	BSP_uDelay(5);
 
    	if(MISO)
       temp |= 0x01;
@@ -131,7 +133,7 @@ uint8_t SPICmd8bit(uint8 spi, uint8 WrPara)	//SPI_I2S_SendData(SPI2, value);
 
   SCK=0;
   MOSI=1;
-  delay();
+  BSP_uDelay(5);
 
   return temp;
 }
@@ -153,21 +155,21 @@ uint8_t SPIRead8bit(uint8_t spi)	  // status = SPI_I2S_ReceiveData(SPI2);
   else
   	CSN = 0;
   MOSI=1; 
-  delay();                                                //Read one byte data from FIFO, MOSI hold to High
+  BSP_uDelay(5);                                                //Read one byte data from FIFO, MOSI hold to High
   for(bitcnt=8; bitcnt!=0; bitcnt--)
   {
     SCK=0;
-	delay();
+	BSP_uDelay(5);
     RdPara <<= 1;
     SCK=1;
-	delay();
+	BSP_uDelay(5);
     if(MISO)
       RdPara |= 0x01;
     else
       RdPara |= 0x00;
   }
   SCK=0;
-  delay();
+  BSP_uDelay(5);
   return(RdPara);
 }
 
@@ -190,7 +192,7 @@ u8 SPIRead(u8 spi, u8 adr)
   	nCS = 1;
   else
   	CSN = 1; 
-  delay();
+  BSP_uDelay(5);
 
   return(tmp);
 }
@@ -204,7 +206,7 @@ u8 SPIRead(u8 spi, u8 adr)
 //	  	nCS = 1;
 //	else
 //	  	CSN = 1; 
-//	delay();		
+//	BSP_uDelay(5);		
 //}
 
 
@@ -223,7 +225,7 @@ void SPIWrite(u8 spi, u16 WrPara)
   	nCS = 0;
   else
   	CSN = 0;
-  delay();
+  BSP_uDelay(5);
   WrPara |= 0x8000;                                        //MSB must be "1" for write 
   
   for(bitcnt=16; bitcnt!=0; bitcnt--)
@@ -233,10 +235,10 @@ void SPIWrite(u8 spi, u16 WrPara)
       MOSI=1;
     else
       MOSI=0;
-	delay();
+	BSP_uDelay(5);
     SCK=1;
     WrPara <<= 1;
-	delay();
+	BSP_uDelay(5);
   }
   SCK=0;
   MOSI=1;
@@ -246,7 +248,7 @@ void SPIWrite(u8 spi, u16 WrPara)
   else
   	CSN =1;
 
-  delay();
+  BSP_uDelay(5);
 }
 
 
@@ -270,7 +272,7 @@ void SPIBurstRead(u8 spi, u8 adr, u8 *ptr, u8 length)
   		nCS = 0;
     else
   		CSN = 0; 
-	delay();
+	BSP_uDelay(5);
     SPICmd8bit(spi,adr); 
     for(i=0;i<length;i++)
    		ptr[i] = SPIRead8bit(spi);
@@ -279,7 +281,7 @@ void SPIBurstRead(u8 spi, u8 adr, u8 *ptr, u8 length)
   		nCS = 1;
     else
   		CSN = 1;  
-	delay();
+	BSP_uDelay(5);
   }
 }
 
@@ -306,7 +308,7 @@ void BurstWrite(u8 spi, u8 adr, u8 const *ptr, u8 length)
   		nCS = 0;
     else
   		CSN = 0;   
-	delay();     
+	BSP_uDelay(5);     
     SPICmd8bit(spi, adr|0x80);
     for(i=0;i<length;i++)
    		SPICmd8bit(SPI_2, ptr[i]);
@@ -315,7 +317,7 @@ void BurstWrite(u8 spi, u8 adr, u8 const *ptr, u8 length)
   		nCS = 1;
     else
   		CSN = 1;  
-	delay();
+	BSP_uDelay(5);
   }
 }
 
@@ -334,7 +336,7 @@ u8 SPI_RW_Reg(u8 spi, u8 reg, u8 value)
 	  	nCS = 1;
 	else
 	  	CSN = 1; 
-	delay();
+	BSP_uDelay(5);
 	return status;		
 }
 

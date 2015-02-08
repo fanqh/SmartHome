@@ -14,7 +14,7 @@ const uint8 InfraredRecCMD[3]  = "BH:";
 
 const uint8 RF315SendCMD[3] = "FW:";
 const uint8 RF315StudyCMD[2] = "LW";
-const uint8 RF315RecCMD[2] = "BW";
+const uint8 RF315RecCMD[3] = "BW:";
 
 const uint8 RF433SendCMD[3] = "FF:";
 const uint8 RF433StudyCMD[2] = "LF";

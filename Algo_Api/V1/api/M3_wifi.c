@@ -67,6 +67,10 @@ uint8 Wifi_EnterEntmProcess(void)
 		if(strstr(temp, "AP") != NULL)
 		{ 	
 			wifi_state = WIFI_WORKING_AP;
+		}
+		else if(strstr(temp, "STA") != NULL)
+		{
+			wifi_state = WIFI_WORKING_AP;	   //ÐèÒªÐÞ¸Ä
 		}		
 		else
 			wifi_state = WIFI_IDLE;			
@@ -106,6 +110,9 @@ uint8 Wifi_EnterEntmProcess(void)
 	}
 	else if(wifi_state == WIFI_ENTM)
 	{
+
+
+
 		ret = 1;
 	}
 	memset(temp, 0x00, 64);

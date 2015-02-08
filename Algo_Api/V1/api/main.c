@@ -98,7 +98,7 @@ int tamain(void)
 
     while(1)
     {
-#if 0
+#if 1
 //	   static uint8 t = 0;
 		for(;;)
 		{
@@ -200,7 +200,7 @@ int tamain(void)
 								RF315MHz_Flag = 1;
 								RF315TimeCount.TimeCount = 0;
 								RF315TimeCount.FlagStart = 1;
-//								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
+								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
 								while((RF315TimeCount.TimeCount <= 1000)&&(RF315MHz_Flag == 1))
 								{
 									//printf("lenarn\r\n");
@@ -208,9 +208,10 @@ int tamain(void)
 									{
 //										printf("len = %d\r\n",RF315_Receive.len);
 										RF315MHz_Flag = 0;
-										U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));
+										U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
 										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
-										U1_sendS((uint8*)tail,sizeof(tail));	
+										U1_sendS((uint8*)tail,sizeof(tail));
+										break;	
 									}
 								}
 								//timer2_disable();
@@ -406,7 +407,7 @@ int tamain(void)
 					   		uint16 count =  0;
 
 					   		Boot_UsartClrBuf();
-					   		U1_sendS("AT+WSMAC\r\n",10);	 //需要修改，不用每次都查询
+//					   		U1_sendS("AT+WSMAC\r\n",10);	 //需要修改，不用每次都查询
 							BSP_mDelay(50);
 							if((count = get_usart_interrupt_flg())!=0)
 							{
