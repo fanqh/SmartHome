@@ -6,6 +6,8 @@
 #define     PIPE_MODE               0       //透明传输协议 ,wifi只是作为无线串口使用,默认模式
 #define     AT_MODE                 1       //AT_命令集模式  
 
+#define wifi_mac_num  16
+
 #define M3_WIFI_NRELOAD             GPIO_Pin_15
 #define M3_WIFI_GPIO                GPIOA
 
@@ -20,6 +22,7 @@ typedef enum
 	WIFI_SET_WORKING_MODE,
 	WIFI_WORKING_AP,
 	WIFI_SET_AUTH_OPEN,
+	WIFI_GET_MAC,
 	WIFI_AUTH_OPEN,
 	WIFI_ENTM,
 }wifi_state_t;

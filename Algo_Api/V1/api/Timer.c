@@ -3,13 +3,6 @@
 #include "nrf24l01.h"
 #include "M3_315.h"
 
-extern  volatile unsigned int T ;	//计数
-extern  uint32  Flag;     //是否打开38KH方波调制
-extern  uint32  Wifi_AP_OPEN_MODE;     //是否打开38KH方波调制
-extern  uint32  Wifi_MAC_Count;
-extern  uint32  Get_Wifi_MAC;
-volatile uint32 Turn=1;             //反转标志
-volatile uint8  read_led_status=0;
 
 //extern unsigned char RxBuf[RxBuf_Len];
 
@@ -17,6 +10,7 @@ TimeCountTypeDef RF315TimeCount;
 TimeCountTypeDef RF24GTimeCount;
 TimeCountTypeDef RF433TimeCount;
 TimeCountTypeDef InfraredTimeCount;
+extern uint8 FlagReloadKey;
 
 
 
@@ -24,13 +18,13 @@ TimeCountTypeDef InfraredTimeCount;
 //5ms
 void TIMER2_Handler(void)
 {
-  	uint16 t = 0;
-	uint8 led = 0;
+  	static uint16 t = 0;
+	static uint8 led = 0;
 
     TIM2->SR = ~TIM_FLAG_Update;  //清除标志位
 
 	t ++;
-	if(wifi_state == WIFI_ENTM)
+	if((wifi_state != WIFI_ENTM)&&(FlagReloadKey==0))
 	{
 		if(t%200==0)
 		{
@@ -38,10 +32,10 @@ void TIMER2_Handler(void)
 			wifi_led(led);
 		}			
 	}
-	else
-	{
-		led_off();
-	}
+//	else
+//	{
+//		led_on();
+//	}
 
 	if(RF315TimeCount.FlagStart)
 	{
@@ -60,34 +54,6 @@ void TIMER2_Handler(void)
 		InfraredTimeCount.TimeCount++;	
 	}
 
-
-
-#if 0
-    if(Wifi_AP_OPEN_MODE)
-	{
-		Wifi_AP_OPEN_MODE++;
-		if(Wifi_AP_OPEN_MODE == 50)
-		{
-            read_led_status =~read_led_status;    
-			wifi_led(read_led_status);
-			Wifi_AP_OPEN_MODE = 1;
-		}
-	}
-	else
-	{
-		Wifi_MAC_Count++;
-     
-		if(Wifi_MAC_Count == 2*200) //3秒定时
-		{
-			Get_Wifi_MAC = 1;
-			Wifi_MAC_Count = 0;
-		}
-
-	}
-    #else
-    read_led_status =~read_led_status;    
-    wifi_led(read_led_status);
-    #endif
 }
 
 

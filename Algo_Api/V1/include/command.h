@@ -18,7 +18,7 @@ const uint8 RF315RecCMD[3] = "BW:";
 
 const uint8 RF433SendCMD[3] = "FF:";
 const uint8 RF433StudyCMD[2] = "LF";
-const uint8 RF433RecCMD[2] = "BF";
+const uint8 RF433RecCMD[3] = "BF:";
 
 
 const uint8 RF24GSendCMD[2] = "FT";

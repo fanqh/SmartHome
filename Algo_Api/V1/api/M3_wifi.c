@@ -5,8 +5,9 @@
 
 extern uint32 ui;
 extern uint8 rec_buf[512];
-extern uint32 Wifi_Command_Mode;
+//extern uint32 Wifi_Command_Mode;
 wifi_state_t wifi_state;
+extern uint8 Wifi_MAC[wifi_mac_num];
 
 
 void wifiReloadPinConfig(void)
@@ -33,7 +34,7 @@ uint8 ScanKey(void)
 
 	if(PAin(15)==0)
 	{
-		BSP_mDelay(10);
+		BSP_mDelay(100);
 		if(0 == PAin(15))
 			key = 1;		
 	}
@@ -93,8 +94,39 @@ uint8 Wifi_EnterEntmProcess(void)
 		else
 			wifi_state = WIFI_IDLE;		
 	}
-	else if(wifi_state == WIFI_SET_AUTH_OPEN)
+    else if(wifi_state == WIFI_SET_AUTH_OPEN)
 	{
+		uint16 count =  0;
+
+   		Boot_UsartClrBuf();
+   		U1_sendS("AT+WSMAC\r\n",10);	 //需要修改，不用每次都查询
+		BSP_mDelay(50);
+		if((count = get_usart_interrupt_flg())!=0)
+		{
+			count =  get_usart_interrupt_flg();
+			Boot_UsartGet(temp, count, 10);
+
+//			 U1_sendS(temp,count);
+			if(strstr((uint8*)temp,"MAC") != NULL)
+			{
+
+				
+				memcpy(Wifi_MAC,  strstr((uint8*)temp,"+ok="),sizeof(Wifi_MAC));
+				wifi_state = WIFI_GET_MAC;
+//				printf("mac is ok\r\n");
+//				U1_sendS("DM:",3);
+//				U1_sendS(Wifi_MAC,sizeof(Wifi_MAC));
+//				U1_sendS("<<",2);
+			}
+			else
+			{
+				wifi_state = WIFI_IDLE;		
+			}	
+		}			
+	}
+	else if(wifi_state == WIFI_GET_MAC)
+	{
+//		printf("wfi mac\r\n");
 		Boot_UsartClrBuf();
 		Boot_UsartSend("AT+ENTM\r\n",9);
 		BSP_mDelay(300);
@@ -110,10 +142,8 @@ uint8 Wifi_EnterEntmProcess(void)
 	}
 	else if(wifi_state == WIFI_ENTM)
 	{
-
-
-
 		ret = 1;
+		led_on();
 	}
 	memset(temp, 0x00, 64);
 	return ret;
@@ -163,7 +193,7 @@ int start_wifi_command(void)
         Boot_UsartGet(rec_buf,3,3000);
 		if(strstr(rec_buf,"+ok") != NULL)
 		{
-			Wifi_Command_Mode = 1;
+//			Wifi_Command_Mode = 1;
 			memset(rec_buf,0x00,sizeof(rec_buf));
 			return 1; //切换成功
 		}	
@@ -182,7 +212,7 @@ int start_wifi_data()
     Boot_UsartGet(rec_buf,20,1200);
 	if(strstr(rec_buf,"+ok") != NULL)
 	{		
-		Wifi_Command_Mode = 0;
+//		Wifi_Command_Mode = 0;
 		memset(rec_buf,0x00,sizeof(rec_buf));
 		return PIPE_MODE; //切换成功
 	}

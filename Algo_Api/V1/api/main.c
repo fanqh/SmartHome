@@ -16,19 +16,11 @@
 */
 /**********************************************************************************/
 /**********************************************************************************/
-uint32  Wifi_Command_Mode = 0; //=1 wifi工作在命令模式 =0 工作在数据传输模式
-uint32  Check_wifi = 1;		//检测wifi工作模式
-uint32  Get_Wifi_MAC = 0; //检测wifi模块MAC地址标志，只在STA模式下检测
-uint32  Wifi_MAC_Count = 0;
-uint32  Wifi_AP_OPEN_MODE = 0; //wifi工作在AP的OPEN模式下，灯闪烁
-uint32  RST_count1 = 0; //计数
-uint32  RST_count2 = 0;
-
 
 
 volatile uint32 ui = 0;//串口接收数据长度!
 uint8   rec_buf[256];
-#define wifi_mac_num 16
+
 uint8 Wifi_MAC[wifi_mac_num];
 
 volatile uint8 RI=0;
@@ -43,6 +35,8 @@ uint8 FlagRF24GLearn = 0; // 0: idle 1: 学习 2：接手
 //315M
 uint8 RF315MHz_Flag = 0;
 uint8 RF433MHz_Flag = 0;
+//wifi
+uint8 FlagReloadKey = 0;
 
 //2.4G
 uchar rx_buf[TX_PLOAD_WIDTH] = {0x01,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
@@ -98,12 +92,19 @@ int tamain(void)
 
     while(1)
     {
-#if 1
+#if 0
 //	   static uint8 t = 0;
 		for(;;)
 		{
 			if(ScanKey())
+			{
+				FlagReloadKey = 1;
+				led_off();
 				wifi_state = WIFI_IDLE;		//WIFI状态初始化
+			}
+			while(!ScanKey());
+			FlagReloadKey = 0;
+
 			if(Wifi_EnterEntmProcess())	
 				break;	
 		}
@@ -230,12 +231,13 @@ int tamain(void)
 								RF433MHz_Flag = 1;
 								RF433TimeCount.TimeCount = 0;
 								RF433TimeCount.FlagStart = 1;
+								RFM69H_EntryRx();
 //								timer2_enable();
-//								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
+								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
 								if(RFM69H_RxWaitStable())
 								{
 
-									printf("433 is ok\r\n");
+//									printf("433 is ok\r\n");
 									RF69H_DataCongfigIN();
 //									rfm69h_status = RFM69H_RECEIVE;
 									while((RF433TimeCount.TimeCount <= 1000)&&(RF433MHz_Flag == 1))
@@ -244,7 +246,7 @@ int tamain(void)
 										{
 //											printf("len = %d\r\n",RF433_Receive.len);
 											RF433MHz_Flag = 0;
-											U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
+											U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
 											U1_sendS((uint8*)&RF433_Receive, RF433_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
  										    U1_sendS((uint8*)tail,sizeof(tail));
 											break;	
@@ -398,39 +400,26 @@ int tamain(void)
 					   }
 					   else if(rec_buf[1]=='S')	//检测wifi命令
 					   {
-					   		Check_wifi = 1;
-							Wifi_Command_Mode = 0;
+//					   		Check_wifi = 1;
+//							Wifi_Command_Mode = 0;
 							U1_sendS("DS<<",4);
 					   }
 					   else	if(rec_buf[1]=='M')	 //MAC 地址发送
 					   {
-					   		uint16 count =  0;
-
-					   		Boot_UsartClrBuf();
-//					   		U1_sendS("AT+WSMAC\r\n",10);	 //需要修改，不用每次都查询
-							BSP_mDelay(50);
-							if((count = get_usart_interrupt_flg())!=0)
-							{
-								count =  get_usart_interrupt_flg();
-								Boot_UsartGet(rec_buf, count, 10);
-								if(strstr((uint8*)rec_buf,"MAC") != NULL)
-								{
-									memcpy(Wifi_MAC, strstr((uint8*)rec_buf,"+ok="),sizeof(Wifi_MAC));
-									U1_sendS("DM:",3);
-									U1_sendS(Wifi_MAC,sizeof(Wifi_MAC));
-									U1_sendS("<<",2);
-								}	
-							}
-									
+							U1_sendS("DM:",3);
+							U1_sendS(&Wifi_MAC[4],12);
+							U1_sendS("<<",2);				
+					   }
+					   else
+					   {
+					   	    U1_sendS((uint8*)ResFail, sizeof(ResFail));	//失败
 					   };
-	//				   else
-	//				   {};
 				   break;
 	
 				   case	'V': //固件版本获取
 				   		if(rec_buf[1]=='E')
 						{
-							U1_sendS("VER:", 4);
+							U1_sendS("VE:", 4);
 							U1_sendS((uint8*)SwVesion, sizeof(SwVesion));	
 							U1_sendS("<<", 2);	
 						}
@@ -445,6 +434,21 @@ int tamain(void)
 							timer2_enable();
 						}
 				   break;
+				   
+				   case 'B':
+				   		if(rec_buf[1]=='D')
+						{
+							uint8 phMac[12];
+							
+							memcpy(phMac, &rec_buf[3], 12);
+							U1_sendS("BD:", 3);
+							U1_sendS(&Wifi_MAC[4],12);
+							U1_sendS(",", 1);	
+							U1_sendS(phMac, 12);
+							U1_sendS("<<", 2);
+							 
+							 	
+						}	
 				   default :
 				   		break;
 		 		   }
