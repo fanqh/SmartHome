@@ -7,3 +7,8 @@ F:\xue\SmartDog\SmartHome\Algo_Api\V1\app.uvproj
 Project File Date:  02/03/2015
 
 <h2>Output:</h2>
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(208): error:  #20: identifier "EXIT15_10_ISR" is undefined
+api\DK_RFM69H.c(220): error:  #20: identifier "VIC_InitTypeDef" is undefined
+Target not created

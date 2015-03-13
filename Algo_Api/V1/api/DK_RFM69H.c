@@ -172,14 +172,63 @@ RFM69H_STATE  Get_RFM69H_Status(void)
 }
 
 
+void RF69H_Rec_ISR_config(void)
+{
+
+  EXTI_InitTypeDef   EXTI_InitStructure;
+  GPIO_InitTypeDef   GPIO_InitStructure;
+  NVIC_InitTypeDef   NVIC_InitStructure;
+	  /* Enable GPIOG clock */
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+
+  /* Configure PG.08 pin as input floating */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+  GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+  /* Enable AFIO clock */
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+  /* Connect EXTI11 Line to PB.11 pin */
+  GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource11);
+
+  /* Configure EXTI11 line */
+  EXTI_InitStructure.EXTI_Line = EXTI_Line11;
+  EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+  EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
+  EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+  EXTI_Init(&EXTI_InitStructure);
+
+  /* Enable and set EXTI9_5 Interrupt to the lowest priority */
+  NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x0F;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x0F;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+
+  NVIC_Init(&NVIC_InitStructure);	
+  BSP_IntVectSet(BSP_INT_ID_EXTI15_10, EXIT15_10_ISR);
+}
+
+void  EXIT15_10_ISR(void)
+{
+	
+}
+
+
 void RF69H_DataCongfigIN(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
+	VIC_InitTypeDef   NVIC_InitStructure;
 
 	RCC_APB2PeriphClockCmd(RF69H_DATA_RCC, ENABLE);
 	GPIO_InitStructure.GPIO_Pin = RF69H_DATA_PIN;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
     GPIO_Init(RF69H_DATA_PORT, &GPIO_InitStructure);
+
+	  /* Enable and set EXTI9_5 Interrupt to the lowest priority */
+  NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x0F;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x0F;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = DISABLE;
 }
 
 
@@ -292,7 +341,7 @@ u8 RFM69H_RxWaitStable(void)
   {
   	if((temp&0xC0)==0xC0 && temp!=0xff)
 	{
-		printf("1\r\n");
+//		printf("1\r\n");
 		return 1;
 	}
 	else
@@ -300,7 +349,7 @@ u8 RFM69H_RxWaitStable(void)
 	  	timeout ++;
 		if(timeout >= 500)
 			return 0;
-		printf("0\r\n");
+//		printf("0\r\n");
 		BSP_mDelay (1);
 		temp = 	SPIRead(SPI_2, 0x27);
 	}

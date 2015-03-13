@@ -2,7 +2,7 @@
 
  
 #define  NARROW_MAX    1000/TIME_UNIT		//1MS	 4T	窄脉冲最长
-#define  WIDE_MAX      31*NARROW_MAX	    //32MS	 124T 宽脉冲最长
+#define  WIDE_MAX      31*NARROW_MAX	    //31MS	 124T 宽脉冲最长
 #define  NRROW_MIN     100/TIME_UNIT		//窄脉冲最短 100us
 
 uint8 FlagTimeCount = 0;

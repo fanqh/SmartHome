@@ -66,8 +66,6 @@ void JTAG_Set(u8 mode)
 
 int tamain(void)
 {
-
-
 	JTAG_Set(SWD_ENABLE);		//加
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4推挽输出
  	GPIOC->CRL|=0X00030000;
@@ -88,7 +86,21 @@ int tamain(void)
 	Infrared_UsartInit();
 	timer2_enable();
 	printf("uart is working\r\n"); 
+	RFM69H_EntryRx();
 
+
+	while(1)
+	{
+		if(RFDecodeAC(&RF433_Receive, RF69H_DATA_PORT, RF69H_DATA_PIN))
+		{
+//											printf("len = %d\r\n",RF433_Receive.len);
+			RF433MHz_Flag = 0;
+//			U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
+			U1_sendS((uint8*)&RF433_Receive, RF433_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
+//		    U1_sendS((uint8*)tail,sizeof(tail));
+//			break;	
+		}
+	}
 
     while(1)
     {
@@ -124,6 +136,10 @@ int tamain(void)
 
 #endif
 #if 1
+		 if(RF433MHz_Flag)
+		 {
+		 	
+		 }
 		 if(FlagRF24GLearn == 1)
 		 {
 		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//学习超时
@@ -236,7 +252,6 @@ int tamain(void)
 								U1_sendS((uint8*)RF433StudyCMD, sizeof(RF433StudyCMD));
 								if(RFM69H_RxWaitStable())
 								{
-
 //									printf("433 is ok\r\n");
 									RF69H_DataCongfigIN();
 //									rfm69h_status = RFM69H_RECEIVE;
