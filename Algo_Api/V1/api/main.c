@@ -16,7 +16,7 @@
 */
 /**********************************************************************************/
 /**********************************************************************************/
-
+RF_AC_DATA_TYPE  RF433_Receive1;
 
 volatile uint32 ui = 0;//串口接收数据长度!
 uint8   rec_buf[256];
@@ -86,19 +86,24 @@ int tamain(void)
 	Infrared_UsartInit();
 	timer2_enable();
 	printf("uart is working\r\n"); 
+
+
+	Enable_SysTick();
 	RFM69H_EntryRx();
 
 
 	while(1)
 	{
-		if(RFDecodeAC(&RF433_Receive, RF69H_DATA_PORT, RF69H_DATA_PIN))
+		if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
 		{
 //											printf("len = %d\r\n",RF433_Receive.len);
 			RF433MHz_Flag = 0;
 //			U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
-			U1_sendS((uint8*)&RF433_Receive, RF433_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
+//			U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);//	sizeof(RF_AC_DATA_TYPE)
 //		    U1_sendS((uint8*)tail,sizeof(tail));
 //			break;	
+
+		printf("standard 433 is ok\r\n");
 		}
 	}
 

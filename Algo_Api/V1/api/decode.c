@@ -123,6 +123,12 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 			++p;
 		}	
 	}
+	else if((narrow>600/TIME_UNIT)&&(narrow<800/TIME_UNIT)&&(wide>100/TIME_UNIT)&&(TIME_UNIT<200/TIME_UNIT))
+	{
+		printf("narrow = %d, wide = %d\r\n", narrow*5, wide*5);
+		printf("receive RC800 head\r\n");
+		return 0;	
+	}
 	return 0;
 }
 

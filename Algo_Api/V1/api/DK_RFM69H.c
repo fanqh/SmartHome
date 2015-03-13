@@ -171,7 +171,7 @@ RFM69H_STATE  Get_RFM69H_Status(void)
 	return 	  rfm69h_status;
 }
 
-
+#if 0
 void RF69H_Rec_ISR_config(void)
 {
 
@@ -212,23 +212,23 @@ void  EXIT15_10_ISR(void)
 {
 	
 }
-
+#endif
 
 void RF69H_DataCongfigIN(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
-	VIC_InitTypeDef   NVIC_InitStructure;
+//	VIC_InitTypeDef   NVIC_InitStructure;
 
 	RCC_APB2PeriphClockCmd(RF69H_DATA_RCC, ENABLE);
 	GPIO_InitStructure.GPIO_Pin = RF69H_DATA_PIN;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
     GPIO_Init(RF69H_DATA_PORT, &GPIO_InitStructure);
 
-	  /* Enable and set EXTI9_5 Interrupt to the lowest priority */
-  NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x0F;
-  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x0F;
-  NVIC_InitStructure.NVIC_IRQChannelCmd = DISABLE;
+//	  /* Enable and set EXTI9_5 Interrupt to the lowest priority */
+//  NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;
+//  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x0F;
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x0F;
+//  NVIC_InitStructure.NVIC_IRQChannelCmd = DISABLE;
 }
 
 

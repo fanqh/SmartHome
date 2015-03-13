@@ -12,3 +12,229 @@ compiling DK_RFM69H.c...
 api\DK_RFM69H.c(208): error:  #20: identifier "EXIT15_10_ISR" is undefined
 api\DK_RFM69H.c(220): error:  #20: identifier "VIC_InitTypeDef" is undefined
 Target not created
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(48): warning:  #1-D: last line of file ends without a newline
+api\main.c(105): warning:  #128-D: loop is not reachable from preceding code
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(208): error:  #20: identifier "EXIT15_10_ISR" is undefined
+api\DK_RFM69H.c(220): error:  #20: identifier "VIC_InitTypeDef" is undefined
+Target not created
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+api\DK_RFM69H.c(220): error:  #20: identifier "VIC_InitTypeDef" is undefined
+Target not created
+Build target 'M3_app'
+compiling DK_RFM69H.c...
+linking...
+Program Size: Code=4656 RO-data=116 RW-data=100 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(48): warning:  #1-D: last line of file ends without a newline
+api\main.c(108): warning:  #128-D: loop is not reachable from preceding code
+linking...
+Program Size: Code=4660 RO-data=116 RW-data=100 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 2 Warning(s).
+Load "F:\\xue\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\xue\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.80g, compiled Feb 13 2014 20:50:02
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: TPIU fitted.
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(48): warning:  #1-D: last line of file ends without a newline
+api\main.c(109): warning:  #128-D: loop is not reachable from preceding code
+linking...
+Program Size: Code=4672 RO-data=116 RW-data=100 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 2 Warning(s).
+Load "F:\\xue\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\xue\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.80g, compiled Feb 13 2014 20:50:02
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: TPIU fitted.
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling main.c...
+.\include\command.h(48): warning:  #1-D: last line of file ends without a newline
+api\main.c(110): warning:  #128-D: loop is not reachable from preceding code
+compiling decode.c...
+linking...
+Program Size: Code=4716 RO-data=116 RW-data=100 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 2 Warning(s).
+Load "F:\\xue\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\xue\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.80g, compiled Feb 13 2014 20:50:02
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: TPIU fitted.
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5120 RO-data=116 RW-data=100 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\xue\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\xue\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.80g, compiled Feb 13 2014 20:50:02
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: TPIU fitted.
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5124 RO-data=116 RW-data=100 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\xue\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\xue\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.80g, compiled Feb 13 2014 20:50:02
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: TPIU fitted.
+ROMTableAddr = 0xE00FF003
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
