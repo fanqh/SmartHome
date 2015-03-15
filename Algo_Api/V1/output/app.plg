@@ -133,3 +133,2070 @@ JTAG speed: 2000 kHz
 Erase Done.
 Programming Done.
 Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5920 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=5920 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=5920 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5940 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5944 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5876 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5896 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5928 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Rebuild target 'M3_app'
+compiling core_cm3.c...
+compiling main.c...
+.\include\command.h(48): warning:  #1-D: last line of file ends without a newline
+api\main.c(110): warning:  #128-D: loop is not reachable from preceding code
+compiling DS18B20.c...
+compiling System_var.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(68): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(72): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(89): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(110): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(114): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(138): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(194): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(213): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+compiling Timer.c...
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_spi.c...
+linking...
+Program Size: Code=5928 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 17 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Clean started: Project: 'app'
+   deleting intermediate output files for target 'M3_app'
+Rebuild target 'M3_app'
+compiling core_cm3.c...
+compiling main.c...
+.\include\command.h(48): warning:  #1-D: last line of file ends without a newline
+api\main.c(110): warning:  #128-D: loop is not reachable from preceding code
+compiling DS18B20.c...
+compiling System_var.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(68): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(72): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(89): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(110): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(114): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(138): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(194): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(213): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+compiling Timer.c...
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_spi.c...
+linking...
+Program Size: Code=5928 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 17 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5988 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=6020 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=6068 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=6076 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=6076 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 1, TDO: 1, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=6076 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5724 RO-data=800 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=5724 RO-data=800 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+linking...
+Program Size: Code=5412 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4480 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 4 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+Build target 'M3_app'
+linking...
+Program Size: Code=4480 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+Build target 'M3_app'
+linking...
+Program Size: Code=4480 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(286): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4484 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=4484 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=4484 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(286): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(286): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(286): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4528 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(298): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4564 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(296): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4564 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=4564 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=4564 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(296): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4524 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=4524 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4544 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Rebuild target 'M3_app'
+compiling core_cm3.c...
+compiling main.c...
+.\include\command.h(48): warning:  #1-D: last line of file ends without a newline
+api\main.c(110): warning:  #128-D: loop is not reachable from preceding code
+compiling DS18B20.c...
+compiling System_var.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(68): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(72): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(89): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(110): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(114): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(138): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(194): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(213): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+compiling Timer.c...
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_spi.c...
+linking...
+Program Size: Code=5288 RO-data=124 RW-data=128 ZI-data=936  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 23 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=5288 RO-data=124 RW-data=128 ZI-data=936  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Rebuild target 'M3_app'
+compiling core_cm3.c...
+compiling main.c...
+.\include\command.h(48): warning:  #1-D: last line of file ends without a newline
+api\main.c(110): warning:  #128-D: loop is not reachable from preceding code
+compiling DS18B20.c...
+compiling System_var.c...
+compiling M3_wifi.c...
+api\M3_wifi.c(68): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(72): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(89): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(110): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(114): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(138): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(194): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+api\M3_wifi.c(213): warning:  #167-D: argument of type "uint8 *" is incompatible with parameter of type "const char *"
+compiling Infrared.c...
+compiling M3_315.c...
+compiling debug_led.c...
+compiling Timer.c...
+compiling spi.c...
+compiling DK_RFM69H.c...
+compiling nrf24l01.c...
+compiling uart.c...
+api\uart.c(27): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(28): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(29): warning:  #167-D: argument of type "volatile uint8 *" is incompatible with parameter of type "void *"
+api\uart.c(50): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(134): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(161): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+api\uart.c(184): warning:  #513-D: a value of type "volatile uint8 *" cannot be assigned to an entity of type "uint8 *"
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+compiling misc.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_spi.c...
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 23 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+**JLink Warning: RESET (pin 15) high, but should be low. Please check target hardware.
+***JLink Error: Supply voltage too low (1 Volt is required, Measured: 0.0 Volt).
+Please check target power.
+Build target 'M3_app'
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4488 RO-data=116 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4508 RO-data=200 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4652 RO-data=800 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=4652 RO-data=800 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=4652 RO-data=800 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.254V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4652 RO-data=816 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+linking...
+Program Size: Code=4652 RO-data=816 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(297): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4652 RO-data=820 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Build target 'M3_app'
+linking...
+Program Size: Code=4652 RO-data=820 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 0 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(305): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4672 RO-data=824 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 6 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(74): error:  #29: expected an expression
+api\decode.c(77): warning:  #12-D: parsing restarts here after previous syntax error
+api\decode.c(77): error:  #65: expected a ";"
+api\decode.c(310): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(74): error:  #29: expected an expression
+api\decode.c(78): warning:  #12-D: parsing restarts here after previous syntax error
+api\decode.c(78): error:  #65: expected a ";"
+api\decode.c(311): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(74): error:  #29: expected an expression
+api\decode.c(77): warning:  #12-D: parsing restarts here after previous syntax error
+api\decode.c(77): error:  #65: expected a ";"
+api\decode.c(310): warning:  #940-D: missing return statement at end of non-void function "RF_decode"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(74): error:  #29: expected an expression
+api\decode.c(77): warning:  #12-D: parsing restarts here after previous syntax error
+api\decode.c(77): error:  #65: expected a ";"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(74): error:  #29: expected an expression
+api\decode.c(87): warning:  #12-D: parsing restarts here after previous syntax error
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(74): error:  #29: expected an expression
+api\decode.c(87): warning:  #12-D: parsing restarts here after previous syntax error
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(74): error:  #29: expected an expression
+api\decode.c(160): warning:  #12-D: parsing restarts here after previous syntax error
+api\decode.c(160): error:  #65: expected a ";"
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(74): error:  #29: expected an expression
+api\decode.c(87): warning:  #12-D: parsing restarts here after previous syntax error
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+Target not created
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4668 RO-data=824 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #177-D: variable "Head" was declared but never referenced
+linking...
+Program Size: Code=4688 RO-data=824 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+api\decode.c(54): warning:  #550-D: variable "Head" was set but never used
+linking...
+Program Size: Code=4696 RO-data=824 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 5 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4700 RO-data=824 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 4 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.
