@@ -93,7 +93,7 @@ int tamain(void)
 
 
 	while(1)
-	{
+	{	
 		if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
 		{
 //											printf("len = %d\r\n",RF433_Receive.len);
@@ -103,7 +103,7 @@ int tamain(void)
 //		    U1_sendS((uint8*)tail,sizeof(tail));
 //			break;	
 
-		printf("standard 433 is ok\r\n");
+		//printf("standard 433 is ok\r\n");
 		}
 	}
 

@@ -2,8 +2,7 @@
 #define __DECODE_H_
 
 
-
-
+#include <stdbool.h>
 #define LEN_MAX     256
 typedef struct
 {
@@ -13,6 +12,13 @@ typedef struct
 	uint16  reserve;
 }RF_AC_DATA_TYPE;
 //RF315_DATA_t;
+
+
+//typedef struct
+//{
+//	uint8 id;
+//	bool crc;	
+//}ORVIBO_DATA_TYPE;
 
 
 

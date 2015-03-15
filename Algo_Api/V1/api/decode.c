@@ -5,8 +5,20 @@
 #define  WIDE_MAX      31*NARROW_MAX	    //31MS	 124T ¿íÂö³å×î³¤
 #define  NRROW_MIN     100/TIME_UNIT		//Õ­Âö³å×î¶Ì 100us
 
+//NRVIBO Å·Èð²© ÂüÇÐË¹ÌØÂëÐ­Òé
+#define   SYN_L		(700-100)/TIME_UNIT
+#define   SYN_H		(700+100)/TIME_UNIT
+#define   SINGLE_L  (175-130)/TIME_UNIT
+#define   SINGLE_H  (175+130)/TIME_UNIT
+#define   DOUBLE_L  (350-130)/TIME_UNIT
+#define   DOUBLE_H  (350+230)/TIME_UNIT
+
 uint8 FlagTimeCount = 0;
 volatile uint16	TimeCount = 0;
+
+		bool sucode = 0;
+		uint16 time = 0;
+		uint16  RF_ORVIBO_RECE[4];
 
 //RF315_STATA Get_rf315_flag(void)
 //{
@@ -123,10 +135,109 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 			++p;
 		}	
 	}
-	else if((narrow>600/TIME_UNIT)&&(narrow<800/TIME_UNIT)&&(wide>100/TIME_UNIT)&&(TIME_UNIT<200/TIME_UNIT))
+	else if((narrow>SYN_L)&&(narrow<SYN_H)&&(wide>SINGLE_L)&&(TIME_UNIT<SINGLE_H))
 	{
-		printf("narrow = %d, wide = %d\r\n", narrow*5, wide*5);
-		printf("receive RC800 head\r\n");
+		sucode = 0;
+		time = 0;
+
+
+//		printf("head is ok  %d\r\n", sucode);
+		for(ii=0; ii<4; ii++)
+		{
+			for(k=9; k>0; k--)
+			{
+				if(sucode==0)
+				{
+				    Get_TimeCount_CleanAndStart();
+					if(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))
+					{
+						while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //¼ì²â1 Âö³å³¤¶È
+						{
+							if(TimeCount > DOUBLE_H)	  //4T
+								return 0;
+						}
+						time = Get_TimeCount_CleanAndStart();							
+
+						printf("sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n",sucode,time*5, ii,k);
+					    if((time>SINGLE_L)&&(time<SINGLE_H))
+						{
+							sucode = 1;	
+						}
+						else
+							return 0;
+					}
+				    else
+					{
+						while(!GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //¼ì²â1 Âö³å³¤¶È
+						{
+							if(TimeCount > DOUBLE_H)	  //4T
+								return 0;
+						}
+						time = Get_TimeCount_CleanAndStart();	
+						printf("sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n",sucode,time*5,ii,k);
+					    if((time>SINGLE_L)&&(time<SINGLE_H))
+						{
+							sucode = 1;	
+						}
+						else
+							return 0;	
+					}
+				}
+				else if(sucode==1)
+				{
+					Get_TimeCount_CleanAndStart();
+					if(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))
+					{
+						while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //¼ì²â1 Âö³å³¤¶È
+						{
+							if(TimeCount > DOUBLE_H)	  //4T
+								return 0;
+						}
+						time = Get_TimeCount_CleanAndStart();	
+						printf("sucode= %d,  1. timecount is %d, i= %d, k= %d\r\n",sucode,time*5,ii,k);
+					    if((time>SINGLE_L)&&(time<SINGLE_H))
+						{
+							sucode = 0;	
+							RF_ORVIBO_RECE[ii] &= ~(1UL<<ii);
+
+						}
+						else if((time>DOUBLE_L)&&(time<DOUBLE_H))
+						{
+							sucode = 1;
+							RF_ORVIBO_RECE[ii] &= ((1UL<<ii));
+						}
+						else
+							return 0;
+					}
+				    else
+					{
+						Get_TimeCount_CleanAndStart();
+						while(!GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //¼ì²â1 Âö³å³¤¶È
+						{
+							if(TimeCount > DOUBLE_H)	  //4T
+								return 0;
+						}
+						time = Get_TimeCount_CleanAndStart();	
+						printf("sucode= %d,  1. timecount is %d,i= %d, k= %d\r\n",sucode,time*5,ii,k);
+					    if((time>SINGLE_L)&&(time<SINGLE_H))
+						{
+							sucode = 0;	
+							RF_ORVIBO_RECE[ii] |= (1UL<<ii);
+
+						}
+						else if((time>DOUBLE_L)&&(time<DOUBLE_H))
+						{
+							sucode = 1;
+							RF_ORVIBO_RECE[ii] |= (1UL<<ii);
+						}
+						else
+							return 0;	
+					}		
+				}
+					
+			}
+		}
+		printf("receive RC800 is ok\r\n");
 		return 0;	
 	}
 	return 0;
