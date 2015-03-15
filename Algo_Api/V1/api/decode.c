@@ -8,8 +8,8 @@
 //NRVIBO 欧瑞博 曼切斯特码协议
 #define   SYN_L		(700-100)/TIME_UNIT
 #define   SYN_H		(700+100)/TIME_UNIT
-#define   SINGLE_L  1//(5)/TIME_UNIT
-#define   SINGLE_H  (175+60)/TIME_UNIT
+#define   SINGLE_L  2//(5)/TIME_UNIT
+#define   SINGLE_H  (175+70)/TIME_UNIT
 #define   DOUBLE_L  (250)/TIME_UNIT	    
 #define   DOUBLE_H  (350+230)/TIME_UNIT
 
@@ -159,8 +159,8 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 	}
 	else if((narrow>SYN_L)&&(narrow<SYN_H)&&(wide>150/TIME_UNIT)&&(wide<250/TIME_UNIT)) //(Head>75/TIME_UNIT)&&(Head<250/TIME_UNIT)&&
 	{
-		printf("narrow = %d, wide = %d\r\n", narrow*5, wide*5);
-		printf("**start anylysis orvibo**\r\n\r\n");
+		printf("narrow = %d, wide = %d\r\n\r\n", narrow*5, wide*5);
+//		printf("**start anylysis orvibo**\r\n\r\n");
 		for(ii=0; ii<4; ii++)
 		{
 			for(k=9; k>0; k--)
@@ -176,23 +176,18 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 							{   
 							    printf("erro: sucode: 0, GPIO: 1, >DOUBLE_H, sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n\r\n",sucode,time*5, ii,k);
 								//printf("erro: sucode: 0, GPIO: 1, >DOUBLE_H\r\n\r\n");
-								BSP_mDelay(1000);
+							//	BSP_mDelay(1000);
 								return 0;
-							}
-								
+							}		
 						}
 						time = Get_TimeCount_CleanAndStart();							
 
 						//printf("sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n",sucode,time*5, ii,k);
-					    if((time>SINGLE_L)&&(time<SINGLE_H))
-						{
-							sucode = 1;	
-						}
+						if(time > SINGLE_L)
+							sucode = 1;
 						else
-						{
-							printf("erro: sucode: 0, GPIO: 1, other err, sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n\r\n",sucode,time*5, ii,k);
-						//	printf("erro: sucode: 0, GPIO: 1, other err\r\n\r\n");
-						BSP_mDelay(1000);
+						{									  
+							printf("*****erro time = %d", time);  
 							return 0;
 						}
 					}
@@ -202,25 +197,21 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						{
 							if(TimeCount > DOUBLE_H)	  //4T
 							{
-								printf("erro: sucode: 0, GPIO: 0, >DOUBLE_H, sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n\r\n", sucode,time*5,ii,k);
+								printf("erro: sucode: 0, GPIO: 0, >DOUBLE_H, 0. timecount is %d,i= %d, k= %d\r\n\r\n", time*5,ii,k);
 							//	printf("erro: sucode: 0, GPIO: 0, >DOUBLE_H\r\n\r\n");
-							BSP_mDelay(1000);
+							//BSP_mDelay(1000);
 								return 0;
 							}
 								
 						}
 						time = Get_TimeCount_CleanAndStart();	
 						//printf("sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n",sucode,time*5,ii,k);
-					    if((time>SINGLE_L)&&(time<SINGLE_H))
-						{
-							sucode = 1;	
-						}
+						if(time>SINGLE_L)
+							sucode = 1;
 						else
-						{
-							printf("erro: sucode: 0, GPIO: 0, other err, sucode= %d, 0. timecount is %d, i= %d, k= %d\r\n\r\n",sucode,time*5, ii,k);
-						//	printf("erro: sucode: 0, GPIO: 0, other err\r\n\r\n");
-						BSP_mDelay(1000);
-							return 0;	
+						{									  
+							printf("*****erro time = %d", time);  
+							return 0;
 						}
 					}
 				}
@@ -233,20 +224,20 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						{
 							if(TimeCount > DOUBLE_H)	  //4T
 							{
-								printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H, sucode= %d,  1. timecount is %d, i= %d, k= %d\r\n\r\n",sucode, time*5,ii,k);
+								printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H, timecount is %d, i= %d, k= %d\r\n\r\n", time*5,ii,k);
 							//	printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H\r\n\r\n");
-							BSP_mDelay(1000);
+						//	BSP_mDelay(1000);
 								return 0;
 							}
 						}
 						time = Get_TimeCount_CleanAndStart();	
 						//printf("sucode= %d,  1. timecount is %d, i= %d, k= %d\r\n",sucode, time*5,ii,k);
 
-					    if((time>SINGLE_L)&&(time<SINGLE_H))
+					    if((time>SINGLE_L)&&(time<=SINGLE_H))
 						{
 							sucode = 0;	
 							RF_ORVIBO_RECE[ii] &= ~(1UL<<ii);
-							//printf("bit = 0\r\n");
+						//	printf("bit = 0\r\n");
 
 						}
 						else if((time>DOUBLE_L)&&(time<DOUBLE_H))
@@ -257,9 +248,9 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						}
 						else
 						{
-							printf("erro: sucode: 1, GPIO: 1, other err\r\n\r\n, sucode= %d,  1. timecount is %d, i= %d, k= %d\r\n\r\n",sucode, time*5,ii,k);
+							printf("erro: sucode: 1, GPIO: 1, other err\r\n\r\n,  1. timecount is %d, i= %d, k= %d\r\n\r\n", time*5,ii,k);
 						//	printf("erro: sucode: 1, GPIO: 1, other err\r\n\r\n");
-						BSP_mDelay(1000);
+					//	BSP_mDelay(1000);
 							return 0;
 						}
 					}
@@ -270,15 +261,15 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						{
 							if(TimeCount >= DOUBLE_H)	  //4T
 							{
-								printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H, sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n\r\n",sucode,time*5,ii,k);
+								printf("erro: sucode: 1, GPIO: 0, >DOUBLE_H, timecount is %d,i= %d, k= %d\r\n\r\n",time*5,ii,k);
 							//	printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H\r\n\r\n");
-							BSP_mDelay(1000);
+							//BSP_mDelay(1000);
 								return 0;
 							}
 						}
 						time = Get_TimeCount_CleanAndStart();	
 					//	printf("sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n",sucode,time*5,ii,k);
-					    if((time>SINGLE_L)&&(time<SINGLE_H))
+					    if((time>SINGLE_L)&&(time<=SINGLE_H))
 						{
 							sucode = 0;	
 							RF_ORVIBO_RECE[ii] |= (1UL<<ii);
@@ -292,9 +283,9 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						}
 						else
 						{
-							printf("erro: sucode: 1, GPIO: 0, other err, sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n\r\n",sucode,time*5,ii,k);
+							printf("erro: sucode: 1, GPIO: 0, other err, timecount is %d,i= %d, k= %d\r\n\r\n",time*5,ii,k);
 							//printf("erro: sucode: 1, GPIO: 0, other err\r\n");
-							BSP_mDelay(1000);
+						//	BSP_mDelay(1000);
 							return 0;	
 						}
 					}		
@@ -302,9 +293,14 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 					
 			}
 		}
-	//	printf("receive RC800 is ok\r\n");
+		printf("receive RC800 is ok, i = %d, k = %d,  titme = %d\r\n\r\n", ii, k, time);
+		for(ii=0; ii<4; ii++)
+		{
+			printf("%d  ", RF_ORVIBO_RECE[ii]);
+		}
+		printf("\r\n");
 		return 0;	
-	}
+	}																			   
 		return 0;
 }
 
