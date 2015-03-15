@@ -8,9 +8,9 @@
 //NRVIBO 欧瑞博 曼切斯特码协议
 #define   SYN_L		(700-100)/TIME_UNIT
 #define   SYN_H		(700+100)/TIME_UNIT
-#define   SINGLE_L  (175-130)/TIME_UNIT
-#define   SINGLE_H  (175+130)/TIME_UNIT
-#define   DOUBLE_L  (350-130)/TIME_UNIT
+#define   SINGLE_L  (5)/TIME_UNIT
+#define   SINGLE_H  (175+60)/TIME_UNIT
+#define   DOUBLE_L  (250)/TIME_UNIT	    
 #define   DOUBLE_H  (350+230)/TIME_UNIT
 
 uint8 FlagTimeCount = 0;
