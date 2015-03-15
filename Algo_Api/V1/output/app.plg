@@ -3243,3 +3243,61 @@ JTAG speed: 2000 kHz
 Erase Done.
 Programming Done.
 Verify OK.
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4728 RO-data=576 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 4 Warning(s).
+Build target 'M3_app'
+compiling decode.c...
+api\decode.c(47): warning:  #550-D: variable "p" was set but never used
+api\decode.c(51): warning:  #177-D: variable "TimeHigh" was declared but never referenced
+api\decode.c(52): warning:  #177-D: variable "TimeLow" was declared but never referenced
+api\decode.c(53): warning:  #177-D: variable "Timebase" was declared but never referenced
+linking...
+Program Size: Code=4728 RO-data=576 RW-data=108 ZI-data=804  
+FromELF: creating hex file...
+User command #1: fromelf --bin -o ..\..\bin\M3_app.bin .\output\app.axf
+".\output\app.axf" - 0 Error(s), 4 Warning(s).
+Load "F:\\SmartDog\\SmartHome\\Algo_Api\\V1\\output\\app.AXF" 
+* JLink Info: Device "STM32F103CB" selected (128 KB flash, 20 KB RAM).
+Set JLink Project File to "F:\SmartDog\SmartHome\Algo_Api\V1\JLinkSettings.ini"
+ 
+JLink info:
+------------
+DLL: V4.36l, compiled Dec  2 2011 18:52:36
+Firmware: J-Link ARM V8 compiled Nov 25 2013 19:20:08
+Hardware: V8.00
+S/N : 17935099 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash 
+ 
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ROMTableAddr = 0xE00FF003
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: TPIU fitted.
+* JLink Info:   FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+ 
+Target info:
+------------
+Device: STM32F103CB
+VTarget = 3.261V
+State of Pins: 
+TCK: 0, TDI: 0, TDO: 0, TMS: 1, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 2000 kHz
+ 
+Erase Done.
+Programming Done.
+Verify OK.

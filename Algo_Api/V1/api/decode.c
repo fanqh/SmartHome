@@ -163,7 +163,8 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 //		printf("**start anylysis orvibo**\r\n\r\n");
 		for(ii=0; ii<4; ii++)
 		{
-			for(k=9; k>0; k--)
+			k = 0;
+			while(k < 9)
 			{
 				if(sucode==0)
 				{
@@ -175,13 +176,12 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 							if(TimeCount > DOUBLE_H)	  //4T
 							{   
 							    printf("erro: sucode: 0, GPIO: 1, >DOUBLE_H, sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n\r\n",sucode,time*5, ii,k);
-								//printf("erro: sucode: 0, GPIO: 1, >DOUBLE_H\r\n\r\n");
+							//printf("erro: sucode: 0, GPIO: 1, >DOUBLE_H\r\n\r\n");
 							//	BSP_mDelay(1000);
 								return 0;
 							}		
 						}
 						time = Get_TimeCount_CleanAndStart();							
-
 						//printf("sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n",sucode,time*5, ii,k);
 						if(time > SINGLE_L)
 							sucode = 1;
@@ -235,6 +235,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 
 					    if((time>SINGLE_L)&&(time<=SINGLE_H))
 						{
+							++k;
 							sucode = 0;	
 							RF_ORVIBO_RECE[ii] &= ~(1UL<<ii);
 						//	printf("bit = 0\r\n");
@@ -242,6 +243,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						}
 						else if((time>DOUBLE_L)&&(time<DOUBLE_H))
 						{
+							++k;
 							sucode = 1;
 							RF_ORVIBO_RECE[ii] &= ((1UL<<ii));
 							//printf("sucode =1, bit = 0\r\n");
@@ -271,6 +273,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 					//	printf("sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n",sucode,time*5,ii,k);
 					    if((time>SINGLE_L)&&(time<=SINGLE_H))
 						{
+							++k;
 							sucode = 0;	
 							RF_ORVIBO_RECE[ii] |= (1UL<<ii);
 							//
@@ -278,6 +281,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						}
 						else if((time>DOUBLE_L)&&(time<DOUBLE_H))
 						{
+							++k;
 							sucode = 1;
 							RF_ORVIBO_RECE[ii] |= (1UL<<ii);
 						}
