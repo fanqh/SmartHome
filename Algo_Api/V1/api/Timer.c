@@ -11,6 +11,7 @@ TimeCountTypeDef RF24GTimeCount;
 TimeCountTypeDef RF433TimeCount;
 TimeCountTypeDef InfraredTimeCount;
 extern uint8 FlagReloadKey;
+extern volatile uint16	TimeCount;
 
 
 

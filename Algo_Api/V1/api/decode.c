@@ -11,7 +11,7 @@
 #define   SINGLE_L  2//(5)/TIME_UNIT
 #define   SINGLE_H  (175+70)/TIME_UNIT
 #define   DOUBLE_L  (250)/TIME_UNIT	    
-#define   DOUBLE_H  (350+230)/TIME_UNIT
+#define   DOUBLE_H  100//(350+230)/TIME_UNIT
 
 uint8 FlagTimeCount = 0;
 volatile uint16	TimeCount = 0;
@@ -58,9 +58,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 	p = pdata->buff;
 
     Enable_SysTick();		//启动定时器0
-	__disable_irq();
-	TimeCount = 0;
-    __enable_irq();
+	Get_TimeCount_CleanAndStart();
 
 //	if(!GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))
 //	{
@@ -85,6 +83,8 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 			return 0;
 	}
 	narrow = Get_TimeCount_CleanAndStart();
+	if(narrow<10)
+		return 0;
 	while(!(GPIO_ReadInputDataBit(GPIOx,  GPIO_Pin))) 
 	{
 		if(TimeCount > WIDE_MAX)  //128T
@@ -175,9 +175,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						{
 							if(TimeCount > DOUBLE_H)	  //4T
 							{   
-							    printf("erro: sucode: 0, GPIO: 1, >DOUBLE_H, sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n\r\n",sucode,time*5, ii,k);
-							//printf("erro: sucode: 0, GPIO: 1, >DOUBLE_H\r\n\r\n");
-							//	BSP_mDelay(1000);
+							    printf("erro: sucode: 0, GPIO: 1, >DOUBLE_H, sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n\r\n",sucode,TimeCount*5, ii,k);
 								return 0;
 							}		
 						}
@@ -197,7 +195,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						{
 							if(TimeCount > DOUBLE_H)	  //4T
 							{
-								printf("erro: sucode: 0, GPIO: 0, >DOUBLE_H, 0. timecount is %d,i= %d, k= %d\r\n\r\n", time*5,ii,k);
+								printf("erro: sucode: 0, GPIO: 0, >DOUBLE_H, 0. timecount is %d,i= %d, k= %d\r\n\r\n", TimeCount*5,ii,k);
 							//	printf("erro: sucode: 0, GPIO: 0, >DOUBLE_H\r\n\r\n");
 							//BSP_mDelay(1000);
 								return 0;
@@ -222,11 +220,9 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 					{
 						while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测1 脉冲长度
 						{
-							if(TimeCount > DOUBLE_H)	  //4T
+							if(TimeCount > 200)	  //4T
 							{
-								printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H, timecount is %d, i= %d, k= %d\r\n\r\n", time*5,ii,k);
-							//	printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H\r\n\r\n");
-						//	BSP_mDelay(1000);
+								printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H, timecount is %d, i= %d, k= %d\r\n\r\n", TimeCount*5, ii, k);
 								return 0;
 							}
 						}
@@ -238,21 +234,16 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 							++k;
 							sucode = 0;	
 							RF_ORVIBO_RECE[ii] &= ~(1UL<<ii);
-						//	printf("bit = 0\r\n");
-
 						}
 						else if((time>DOUBLE_L)&&(time<DOUBLE_H))
 						{
 							++k;
 							sucode = 1;
 							RF_ORVIBO_RECE[ii] &= ((1UL<<ii));
-							//printf("sucode =1, bit = 0\r\n");
 						}
 						else
 						{
-							printf("erro: sucode: 1, GPIO: 1, other err\r\n\r\n,  1. timecount is %d, i= %d, k= %d\r\n\r\n", time*5,ii,k);
-						//	printf("erro: sucode: 1, GPIO: 1, other err\r\n\r\n");
-					//	BSP_mDelay(1000);
+							printf("erro: sucode tiem: 1, GPIO: 1, timecount is %d, i= %d, k= %d\r\n\r\n", time*5,ii,k);
 							return 0;
 						}
 					}
@@ -263,9 +254,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						{
 							if(TimeCount >= DOUBLE_H)	  //4T
 							{
-								printf("erro: sucode: 1, GPIO: 0, >DOUBLE_H, timecount is %d,i= %d, k= %d\r\n\r\n",time*5,ii,k);
-							//	printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H\r\n\r\n");
-							//BSP_mDelay(1000);
+								printf("erro: sucode: 1, GPIO: 0, >DOUBLE_H, timecount is %d,i= %d, k= %d\r\n\r\n",TimeCount*5,ii,k);
 								return 0;
 							}
 						}
@@ -287,7 +276,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						}
 						else
 						{
-							printf("erro: sucode: 1, GPIO: 0, other err, timecount is %d,i= %d, k= %d\r\n\r\n",time*5,ii,k);
+							printf("erro time: sucode: 1, GPIO: 0, other err, timecount is %d,i= %d, k= %d\r\n\r\n",time*5,ii,k);
 							//printf("erro: sucode: 1, GPIO: 0, other err\r\n");
 						//	BSP_mDelay(1000);
 							return 0;	
