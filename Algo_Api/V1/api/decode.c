@@ -11,7 +11,7 @@
 #define   SINGLE_L  80/TIME_UNIT
 #define   SINGLE_H  (175+70)/TIME_UNIT
 #define   DOUBLE_L  (250)/TIME_UNIT	    
-#define   DOUBLE_H  100//(350+230)/TIME_UNIT
+#define   DOUBLE_H  500/TIME_UNIT
 
 uint8 FlagTimeCount = 0;
 volatile uint16	TimeCount = 0;
