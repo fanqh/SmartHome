@@ -8,7 +8,7 @@
 //NRVIBO Å·Èð²© ÂüÇÐË¹ÌØÂëÐ­Òé
 #define   SYN_L		(700-100)/TIME_UNIT
 #define   SYN_H		(700+100)/TIME_UNIT
-#define   SINGLE_L  2//(5)/TIME_UNIT
+#define   SINGLE_L  80/TIME_UNIT
 #define   SINGLE_H  (175+70)/TIME_UNIT
 #define   DOUBLE_L  (250)/TIME_UNIT	    
 #define   DOUBLE_H  100//(350+230)/TIME_UNIT
@@ -62,18 +62,18 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 
 //	if(!GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))
 //	{
-		while(!(GPIO_ReadInputDataBit(GPIOx,  GPIO_Pin))) 
-		{
-			if(TimeCount > WIDE_MAX)  //128T
-				return 0;
-			
-		}
-		Head = Get_TimeCount_CleanAndStart(); 
-		if((Head>75/TIME_UNIT)&&(Head<250/TIME_UNIT))
-		{
-		}
-		else
-			return 0;
+//		while(!(GPIO_ReadInputDataBit(GPIOx,  GPIO_Pin))) 
+//		{
+//			if(TimeCount > WIDE_MAX)  //128T
+//				return 0;
+//			
+//		}
+//		Head = Get_TimeCount_CleanAndStart(); 
+//		if((Head>75/TIME_UNIT)&&(Head<250/TIME_UNIT))
+//		{
+//		}
+//		else
+//			return 0;
 //		printf("Head = %d\r\n", Head);
 //	}
 	 
@@ -196,8 +196,6 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 							if(TimeCount > DOUBLE_H)	  //4T
 							{
 								printf("erro: sucode: 0, GPIO: 0, >DOUBLE_H, 0. timecount is %d,i= %d, k= %d\r\n\r\n", TimeCount*5,ii,k);
-							//	printf("erro: sucode: 0, GPIO: 0, >DOUBLE_H\r\n\r\n");
-							//BSP_mDelay(1000);
 								return 0;
 							}
 								
@@ -235,7 +233,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 							sucode = 0;	
 							RF_ORVIBO_RECE[ii] &= ~(1UL<<ii);
 						}
-						else if((time>DOUBLE_L)&&(time<DOUBLE_H))
+						else if((time>DOUBLE_L)&&(time<200))
 						{
 							++k;
 							sucode = 1;
@@ -243,14 +241,14 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						}
 						else
 						{
-							printf("erro: sucode tiem: 1, GPIO: 1, timecount is %d, i= %d, k= %d\r\n\r\n", time*5,ii,k);
+							printf("erro: sucode : 1, GPIO: 1, timecount is %d, i= %d, k= %d\r\n\r\n", time*5,ii,k);
 							return 0;
 						}
 					}
 				    else
 					{
 						Get_TimeCount_CleanAndStart();
-						while(!GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //¼ì²â1 Âö³å³¤¶È
+						while(!GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //¼ì²â0 Âö³å³¤¶È
 						{
 							if(TimeCount >= DOUBLE_H)	  //4T
 							{
@@ -259,7 +257,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 							}
 						}
 						time = Get_TimeCount_CleanAndStart();	
-					//	printf("sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n",sucode,time*5,ii,k);
+						//printf("sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n",sucode,time*5,ii,k);
 					    if((time>SINGLE_L)&&(time<=SINGLE_H))
 						{
 							++k;
@@ -277,8 +275,6 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 						else
 						{
 							printf("erro time: sucode: 1, GPIO: 0, other err, timecount is %d,i= %d, k= %d\r\n\r\n",time*5,ii,k);
-							//printf("erro: sucode: 1, GPIO: 0, other err\r\n");
-						//	BSP_mDelay(1000);
 							return 0;	
 						}
 					}		
