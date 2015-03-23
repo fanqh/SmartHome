@@ -8,8 +8,8 @@ typedef struct
 {
 	uint32 TimeBase;
 	uint16  len;
-	uint8  buff[LEN_MAX];	
-	uint16  reserve;
+	uint16  buff[LEN_MAX];	
+	uint16  type; //0£º pt2262   1£º Å·Èð²© 
 }RF_AC_DATA_TYPE;
 //RF315_DATA_t;
 

@@ -92,20 +92,20 @@ int tamain(void)
 	RFM69H_EntryRx();
 
 
-	while(1)
-	{	
-		if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
-		{
-//											printf("len = %d\r\n",RF433_Receive.len);
-			RF433MHz_Flag = 0;
-//			U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
-//			U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);//	sizeof(RF_AC_DATA_TYPE)
-//		    U1_sendS((uint8*)tail,sizeof(tail));
-//			break;	
-
-		//printf("standard 433 is ok\r\n");
-		}
-	}
+//	while(1)
+//	{	
+//		if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
+//		{
+////											printf("len = %d\r\n",RF433_Receive.len);
+//			RF433MHz_Flag = 0;
+////			U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
+////			U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);//	sizeof(RF_AC_DATA_TYPE)
+////		    U1_sendS((uint8*)tail,sizeof(tail));
+////			break;	
+//
+//		//printf("standard 433 is ok\r\n");
+//		}
+//	}
 
     while(1)
     {
@@ -141,9 +141,9 @@ int tamain(void)
 
 #endif
 #if 1
-		 if(RF433MHz_Flag)
+		 if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
 		 {
-		 	
+		 	U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);	
 		 }
 		 if(FlagRF24GLearn == 1)
 		 {
@@ -185,9 +185,7 @@ int tamain(void)
 			}	
 		 }
         if(get_usart_interrupt_flg())
-		{
-
-			
+		{	
 			U1_in();			//获取串口发送的SJ数据!
 			if(rec_buf[2] == ':')//接收到正确的控制数据!
 			{
@@ -371,9 +369,13 @@ int tamain(void)
 									memcpy((uint8*)&RF433_SendData, &rec_buf[3], sizeof(RFM69H_DATA_Type));
 								//	printf("TimeBase:%d, data[0]:%X, data[1]:%X, data[2]:%X\r\n", RF433_SendData.TimeBase,RF433_SendData.buff[0],RF433_SendData.buff[1],RF433_SendData.buff[2]);
 									//printf("len = %d\r\n", RF433_SendData.len);
-									while(time<6)
+									if(RF433_SendData.type==0)
+										time = 6;
+									else
+										time = 15;
+									while(time)
 									{	
-										time ++;
+										time --;
 										RFCodeAC_Send(&RF433_SendData , RF69H_DATA_PORT, RF69H_DATA_PIN);	  
 											
 									}

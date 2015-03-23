@@ -1,0 +1,35 @@
+---- delay_x_10us Matches (34 in 3 files) ----
+Debug_led.c (api):        delay_x_10us(100);
+DS18B20.c (api):void delay_x_10us(int times)		
+DS18B20.c (api):        delay_x_10us(65);
+DS18B20.c (api):        delay_x_10us(5);
+DS18B20.c (api):        delay_x_10us(45);
+DS18B20.c (api):    delay_x_10us(70);
+DS18B20.c (api):    delay_x_10us(3);
+DS18B20.c (api):    delay_x_10us(10); 
+DS18B20.c (api):    delay_x_10us(3);
+DS18B20.c (api):    delay_x_10us(10);
+DS18B20.c (api):	delay_x_10us(51);
+DS18B20.c (api):    delay_x_10us(2);
+DS18B20.c (api):    delay_x_10us(1);
+DS18B20.c (api):    delay_x_10us(2);
+DS18B20.c (api):    delay_x_10us(2);
+DS18B20.c (api):	delay_x_10us(1);
+DS18B20.c (api):	delay_x_10us(51);
+DS18B20.c (api):	delay_x_10us(3);
+DS18B20.c (api):		delay_x_10us(3);
+DS18B20.c (api):	delay_x_10us(51);
+DS18B20.c (api):		delay_x_10us(4);
+DS18B20.c (api):	delay_x_10us(4);
+DS18B20.c (api):	delay_x_10us(7);
+DS18B20.c (api):	delay_x_10us(51);
+DS18B20.c (api):    delay_x_10us(70);
+DS18B20.c (api):    delay_x_10us(3);
+DS18B20.c (api):    delay_x_10us(10);
+DS18B20.c (api):    delay_x_10us(3);
+DS18B20.c (api):    delay_x_10us(10);
+DS18B20.c (api):    delay_x_10us(50);
+DS18B20.c (api):  delay_x_10us(50);
+DS18B20.c (api):  delay_x_10us(50);
+DS18B20.c (api):      delay_x_10us(100*500);
+Ds18b20.h (include):void    delay_x_10us(int times);

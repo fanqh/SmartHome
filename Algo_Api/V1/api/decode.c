@@ -14,6 +14,8 @@
 #define   DOUBLE_L  (250)/TIME_UNIT	    
 #define   DOUBLE_H  100//(350+230)/TIME_UNIT
 
+//OVRIBO
+#define HALF_CYLE	175
 //1T
 #define  CYLE_1T_L  (350-100)/TIME_UNIT
 #define  CYLE_1T_H  (350+80)/TIME_UNIT
@@ -56,14 +58,13 @@ uint8 GetFlagTimeCount(void)
 
 static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin) 
 {
-	uint8 *p;
+	uint16 *p;
 	uint8 ii=0,k=0;
 	uint16 narrow = 0;
 	uint16 wide = 0;
 	uint16 TimeHigh = 0;  //高脉冲长度
 	uint16 TimeLow = 0;	  //低脉冲长度
 	uint16 Timebase = 0;
-     uint16     Head = 0;
 
 	sucode = 0;
 	time = 0;
@@ -91,7 +92,8 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 	//printf("narrow = %d， wide = %d\r\n", narrow, wide);
 	if(((narrow>NRROW_MIN )&& (narrow*24)<wide) && (wide<(narrow*38)))  //narrow >20 为过LV
 	{  
-#if 0
+	  	pdata->type = 0;
+#if 1
 		Timebase = pdata->TimeBase = (wide + narrow) / 32;     // T
 		for(ii=0; ii<LEN_MAX; ii++)
 		{
@@ -155,6 +157,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 	else if((narrow>SYN_L)&&(narrow<SYN_H)&&(wide>150/TIME_UNIT)&&(wide<250/TIME_UNIT)) //(Head>75/TIME_UNIT)&&(Head<250/TIME_UNIT)&&
 	{
 		k = 0;
+		pdata->type = 1;
 //		printf("narrow = %d, wide = %d\r\n\r\n", narrow*5, wide*5);	 
 		while(k<36)
 		{	
@@ -330,27 +333,102 @@ static void SendSyn(uint32 TimeBase, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)	   
 	GPIO_WriteBit(GPIOx, GPIO_Pin, Bit_RESET);
 	while(TimeCount <= TimeBase*31) ;
 }
+static void OVRIBO_SendSyn( GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+{
+	__disable_irq();
+	TimeCount = 0;
+    __enable_irq();	
+	
+	GPIO_WriteBit(GPIOx, GPIO_Pin, Bit_RESET);
+	while(TimeCount <= HALF_CYLE/TIME_UNIT) ;
+
+	__disable_irq();
+	TimeCount = 0;
+    __enable_irq();	
+
+	GPIO_WriteBit(GPIOx, GPIO_Pin, Bit_SET);
+	while(TimeCount <= 700/TIME_UNIT) ;	
+
+	__disable_irq();
+	TimeCount = 0;
+    __enable_irq();	
+	
+	GPIO_WriteBit(GPIOx, GPIO_Pin, Bit_RESET);
+	while(TimeCount <= HALF_CYLE/TIME_UNIT) ;
+}
+
+static void OVRIBO_SendBit0( GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+{
+		__disable_irq();
+	TimeCount = 0;
+    __enable_irq();	
+	
+	GPIO_WriteBit(GPIOx, GPIO_Pin, Bit_RESET);
+	while(TimeCount <= HALF_CYLE/TIME_UNIT) ;
+
+	__disable_irq();
+	TimeCount = 0;
+    __enable_irq();	
+
+	GPIO_WriteBit(GPIOx, GPIO_Pin, Bit_SET);
+	while(TimeCount <= HALF_CYLE/TIME_UNIT) ;	
+}
+
+static void OVRIBO_SendBit1( GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+{
+		__disable_irq();
+	TimeCount = 0;
+    __enable_irq();	
+	
+	GPIO_WriteBit(GPIOx, GPIO_Pin, Bit_SET);
+	while(TimeCount <= HALF_CYLE/TIME_UNIT) ;
+
+	__disable_irq();
+	TimeCount = 0;
+    __enable_irq();	
+
+	GPIO_WriteBit(GPIOx, GPIO_Pin, Bit_RESET);
+	while(TimeCount <= HALF_CYLE/TIME_UNIT) ;	
+}
 
 int RFCodeAC_Send(RF_AC_DATA_TYPE *pdata , GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 {
-	uint8 *p;
+	uint16 *p;
 	uint8 i, j;
 	p = pdata->buff;
 
 //	rf315_state = RF315_SENDING;
 	FlagTimeCount = 1; //开启记时标记
 	Enable_SysTick();		//启动定时器0
-	SendSyn(pdata->TimeBase, GPIOx, GPIO_Pin);
-	for(i=0; i<pdata->len; i++)
+	if(pdata->type==0)
 	{
-		for(j= 0; j<8; j++)
+		SendSyn(pdata->TimeBase, GPIOx, GPIO_Pin);
+		for(i=0; i<pdata->len; i++)
 		{
-			if(*p & (1<<(7-j)))	 //先发送高位
-				SendBit1(pdata->TimeBase, GPIOx, GPIO_Pin);
-			else
-				SendBit0(pdata->TimeBase, GPIOx, GPIO_Pin);		
+			for(j= 0; j<8; j++)
+			{
+				if(*p & (1<<(7-j)))	 //先发送高位
+					SendBit1(pdata->TimeBase, GPIOx, GPIO_Pin);
+				else
+					SendBit0(pdata->TimeBase, GPIOx, GPIO_Pin);		
+			}
+			p++;	
+		}																			
+	}
+	else																		  
+	{
+		OVRIBO_SendSyn( GPIOx, GPIO_Pin);	
+		for(i=0; i<4; i++)
+		{
+			for(j=0; j<9; j++)
+			{
+				if(*p & (1<<(8-j)))	 //先发送高位
+					OVRIBO_SendBit1(GPIOx, GPIO_Pin);
+				else
+					OVRIBO_SendBit0(GPIOx, GPIO_Pin);		
+			}
+			p++;
 		}
-		p++;	
 	}
 	FlagTimeCount = 0; //开启记时标记
 //	rf315_state = RF315_IDLE;	
