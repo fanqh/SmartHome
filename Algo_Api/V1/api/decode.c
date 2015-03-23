@@ -1,17 +1,28 @@
  #include "include.h"
 
  
+ 
 #define  NARROW_MAX    1000/TIME_UNIT		//1MS	 4T	窄脉冲最长
 #define  WIDE_MAX      31*NARROW_MAX	    //31MS	 124T 宽脉冲最长
 #define  NRROW_MIN     100/TIME_UNIT		//窄脉冲最短 100us
 
 //NRVIBO 欧瑞博 曼切斯特码协议
-#define   SYN_L		(700-100)/TIME_UNIT
+#define   SYN_L		(700-80)/TIME_UNIT
 #define   SYN_H		(700+100)/TIME_UNIT
 #define   SINGLE_L  80/TIME_UNIT
 #define   SINGLE_H  (175+70)/TIME_UNIT
 #define   DOUBLE_L  (250)/TIME_UNIT	    
-#define   DOUBLE_H  500/TIME_UNIT
+#define   DOUBLE_H  100//(350+230)/TIME_UNIT
+
+//1T
+#define  CYLE_1T_L  (350-100)/TIME_UNIT
+#define  CYLE_1T_H  (350+80)/TIME_UNIT
+//1.5T
+#define  CYLE_15T_L  (525-80)/TIME_UNIT
+#define  CYLE_15T_H  (525+80)/TIME_UNIT
+//2T
+#define  CYLE_2T_L  (700-80)/TIME_UNIT
+#define  CYLE_2T_H  (700+100)/TIME_UNIT
 
 uint8 FlagTimeCount = 0;
 volatile uint16	TimeCount = 0;
@@ -19,6 +30,7 @@ volatile uint16	TimeCount = 0;
 		bool sucode = 0;
 		uint16 time = 0;
 		uint16  RF_ORVIBO_RECE[4];
+		uint16 d[36];
 
 //RF315_STATA Get_rf315_flag(void)
 //{
@@ -59,23 +71,6 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 
     Enable_SysTick();		//启动定时器0
 	Get_TimeCount_CleanAndStart();
-
-//	if(!GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))
-//	{
-//		while(!(GPIO_ReadInputDataBit(GPIOx,  GPIO_Pin))) 
-//		{
-//			if(TimeCount > WIDE_MAX)  //128T
-//				return 0;
-//			
-//		}
-//		Head = Get_TimeCount_CleanAndStart(); 
-//		if((Head>75/TIME_UNIT)&&(Head<250/TIME_UNIT))
-//		{
-//		}
-//		else
-//			return 0;
-//		printf("Head = %d\r\n", Head);
-//	}
 	 
 	while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测同步脉冲
 	{
@@ -159,138 +154,109 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 	}
 	else if((narrow>SYN_L)&&(narrow<SYN_H)&&(wide>150/TIME_UNIT)&&(wide<250/TIME_UNIT)) //(Head>75/TIME_UNIT)&&(Head<250/TIME_UNIT)&&
 	{
-		printf("narrow = %d, wide = %d\r\n\r\n", narrow*5, wide*5);
-//		printf("**start anylysis orvibo**\r\n\r\n");
-		for(ii=0; ii<4; ii++)
-		{
-			k = 0;
-			while(k < 9)
+		k = 0;
+//		printf("narrow = %d, wide = %d\r\n\r\n", narrow*5, wide*5);	 
+		while(k<36)
+		{	
+			while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测同步脉冲
+			{
+				if(TimeCount > CYLE_2T_H)	  //2T
+					return 0;
+			}
+			while(!(GPIO_ReadInputDataBit(GPIOx,  GPIO_Pin))) 
+			{ 
+				if(TimeCount > CYLE_2T_H)	  //2T
+					return 0;		
+			}
+			time = d[k] = Get_TimeCount_CleanAndStart();
+#if 1
+			if((time>=CYLE_1T_L)&&(time<=CYLE_1T_H))
+			{
+				if(sucode==0)
+					RF_ORVIBO_RECE[k/9] |= (1UL<<(k%9));	
+				else
+					RF_ORVIBO_RECE[k/9] &= ~(1UL<<(k%9));	
+				++k;
+			}
+			else if((time>=CYLE_15T_L)&&(time<=CYLE_15T_H))
 			{
 				if(sucode==0)
 				{
-				    Get_TimeCount_CleanAndStart();
-					if(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))
-					{
-						while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测1 脉冲长度
-						{
-							if(TimeCount > DOUBLE_H)	  //4T
-							{   
-							    printf("erro: sucode: 0, GPIO: 1, >DOUBLE_H, sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n\r\n",sucode,TimeCount*5, ii,k);
-								return 0;
-							}		
-						}
-						time = Get_TimeCount_CleanAndStart();							
-						//printf("sucode= %d, 1. timecount is %d, i= %d, k= %d\r\n",sucode,time*5, ii,k);
-						if(time > SINGLE_L)
-							sucode = 1;
-						else
-						{									  
-							printf("*****erro time = %d", time);  
-							return 0;
-						}
-					}
-				    else
-					{
-						while(!GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测1 脉冲长度
-						{
-							if(TimeCount > DOUBLE_H)	  //4T
-							{
-								printf("erro: sucode: 0, GPIO: 0, >DOUBLE_H, 0. timecount is %d,i= %d, k= %d\r\n\r\n", TimeCount*5,ii,k);
-								return 0;
-							}
-								
-						}
-						time = Get_TimeCount_CleanAndStart();	
-						//printf("sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n",sucode,time*5,ii,k);
-						if(time>SINGLE_L)
-							sucode = 1;
-						else
-						{									  
-							printf("*****erro time = %d", time);  
-							return 0;
-						}
-					}
+					RF_ORVIBO_RECE[k/9] |= (1UL<<(k%9));	
+					sucode = 1;
+					++k;
 				}
-				else if(sucode==1)
+				else
 				{
-					Get_TimeCount_CleanAndStart();
-					if(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))
-					{
-						while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测1 脉冲长度
-						{
-							if(TimeCount > 200)	  //4T
-							{
-								printf("erro: sucode: 1, GPIO: 1, >DOUBLE_H, timecount is %d, i= %d, k= %d\r\n\r\n", TimeCount*5, ii, k);
-								return 0;
-							}
-						}
-						time = Get_TimeCount_CleanAndStart();	
-						//printf("sucode= %d,  1. timecount is %d, i= %d, k= %d\r\n",sucode, time*5,ii,k);
-
-					    if((time>SINGLE_L)&&(time<=SINGLE_H))
-						{
-							++k;
-							sucode = 0;	
-							RF_ORVIBO_RECE[ii] &= ~(1UL<<ii);
-						}
-						else if((time>DOUBLE_L)&&(time<200))
-						{
-							++k;
-							sucode = 1;
-							RF_ORVIBO_RECE[ii] &= ((1UL<<ii));
-						}
-						else
-						{
-							printf("erro: sucode : 1, GPIO: 1, timecount is %d, i= %d, k= %d\r\n\r\n", time*5,ii,k);
-							return 0;
-						}
-					}
-				    else
-					{
-						Get_TimeCount_CleanAndStart();
-						while(!GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测0 脉冲长度
-						{
-							if(TimeCount >= DOUBLE_H)	  //4T
-							{
-								printf("erro: sucode: 1, GPIO: 0, >DOUBLE_H, timecount is %d,i= %d, k= %d\r\n\r\n",TimeCount*5,ii,k);
-								return 0;
-							}
-						}
-						time = Get_TimeCount_CleanAndStart();	
-						//printf("sucode= %d,  0. timecount is %d,i= %d, k= %d\r\n",sucode,time*5,ii,k);
-					    if((time>SINGLE_L)&&(time<=SINGLE_H))
-						{
-							++k;
-							sucode = 0;	
-							RF_ORVIBO_RECE[ii] |= (1UL<<ii);
-							//
-
-						}
-						else if((time>DOUBLE_L)&&(time<DOUBLE_H))
-						{
-							++k;
-							sucode = 1;
-							RF_ORVIBO_RECE[ii] |= (1UL<<ii);
-						}
-						else
-						{
-							printf("erro time: sucode: 1, GPIO: 0, other err, timecount is %d,i= %d, k= %d\r\n\r\n",time*5,ii,k);
-							return 0;	
-						}
-					}		
+					sucode = 0;
+					RF_ORVIBO_RECE[k/9] &= ~(1UL<<(k%9));  ///     	
+					++k;
+					if(k>=36)
+						return 0;
+					///K是否大于9
+					RF_ORVIBO_RECE[k/9] |= (1UL<<(k%9));
+					++k;			
 				}
-					
 			}
+			else if((time>=CYLE_2T_L)&&(time<=CYLE_2T_H))
+			{
+				if(sucode==1)
+				{
+					sucode = 1;
+					RF_ORVIBO_RECE[k/9] &= ~(1UL<<(k%9));  ///     	
+					++k;
+					if(k>=36)
+						return 0;
+					///K是否大于9
+					RF_ORVIBO_RECE[k/9] |= (1UL<<(k%9));
+					++k;	
+				}
+				else
+				{
+					printf("sucode: 0, time = 2T  High= %d, Low= %d, k= %d\r\n", TimeHigh, TimeLow, k);
+					return 0;	
+				}		
+			}
+			else
+			{
+				printf("TIME_CYLE is overtime High= %d, Low= %d, time= %d, k= %d\r\n",TimeHigh, TimeLow, time, k);	
+				return 0;
+			}
+#endif
+		}	
+		if(k>=36)
+		{  	
+			while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测同步脉冲
+			{	
+				if(TimeCount > CYLE_2T_H)	  //2T
+					return 0;
+			}	
+			if((TimeCount>=CYLE_2T_L)&&(TimeCount<=CYLE_2T_H))
+			{
+				printf("receive RC800 is ok,\r\n\r\n");	
+			}
+			else
+				return 0;
 		}
-		printf("receive RC800 is ok, i = %d, k = %d,  titme = %d\r\n\r\n", ii, k, time);
-		for(ii=0; ii<4; ii++)
+	 	if(k>=36)
 		{
-			printf("%d  ", RF_ORVIBO_RECE[ii]);
+			printf("receive RC800 is ok, i = %d, k = %d,  titme = %d\r\n\r\n", ii, k, time);
+			for(k=0; k<36; k++)
+				printf("k = %d, data = %d\r\n", k, d[k]);
+			for(k=0;k<4;k++)
+				printf("%X\r\n\r\n", RF_ORVIBO_RECE[k]);
 		}
 		printf("\r\n");
-		return 0;	
-	}																			   
-		return 0;
+	}
+	if(k>=36)
+	{
+		printf("receive RC800 is ok, i = %d, k = %d,  titme = %d\r\n\r\n", ii, k, time);
+		for(k=0; k<36; k++)
+			printf("k = %d, data = %d\r\n", k, d[k]);
+		for(k=0;k<4;k++)
+			printf("%X\r\n\r\n", RF_ORVIBO_RECE[k]);
+	}																		   
+	return 0;
 }
 
 
