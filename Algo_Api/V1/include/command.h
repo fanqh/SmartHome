@@ -33,6 +33,7 @@ const uint8 LEDOFFCMD[2] = "LD";
 const uint8 MACSendCMD[2] = "DM";
 const uint8 BondCMD[2] = "BD";
 const uint8 Upgrade[2] = "SX";
+const uint8 RF433_CMD[3] = "BN:";
 
 const uint8 HeadCMD[6] = "TK:0<<";
 

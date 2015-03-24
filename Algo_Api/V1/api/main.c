@@ -31,6 +31,7 @@ uint8 FlagInfrared = 0;			// 0: idle 1: 学习 2：接手
 //RF_RFM69H
 RFM69H_DATA_Type TxBuf; 
 uint8 FlagRF24GLearn = 0; // 0: idle 1: 学习 2：接手
+uint16 RF433_Rec_Timeout = 0;
 
 //315M
 uint8 RF315MHz_Flag = 0;
@@ -109,7 +110,7 @@ int tamain(void)
 
     while(1)
     {
-#if 0
+#if 1
 //	   static uint8 t = 0;
 		for(;;)
 		{
@@ -476,9 +477,16 @@ int tamain(void)
 			else 
 			{
 			}
-		 if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
+		 if(RF433_Rec_Timeout==0)
 		 {
-		 	U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);	
+			 if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
+			 {
+			 	if(RF433_Receive1.type==1)
+			 		RF433_Rec_Timeout = (13650 * 12) / 5;
+			 	U1_sendS("BN:", 3);
+			 	U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);	
+				U1_sendS("<<", 2);
+			 }
 		 }
 		memset(rec_buf,0x00,sizeof(rec_buf));	 
 #endif

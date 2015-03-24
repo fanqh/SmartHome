@@ -12,6 +12,7 @@ TimeCountTypeDef RF433TimeCount;
 TimeCountTypeDef InfraredTimeCount;
 extern uint8 FlagReloadKey;
 extern volatile uint16	TimeCount;
+extern uint16 RF433_Rec_Timeout;
 
 
 
@@ -32,6 +33,10 @@ void TIMER2_Handler(void)
 			led = ~led;
 			wifi_led(led);
 		}			
+	}
+	if(RF433_Rec_Timeout>0)
+	{
+		RF433_Rec_Timeout--;	
 	}
 //	else
 //	{
