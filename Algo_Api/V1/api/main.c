@@ -141,10 +141,7 @@ int tamain(void)
 
 #endif
 #if 1
-		 if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
-		 {
-		 	U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);	
-		 }
+
 		 if(FlagRF24GLearn == 1)
 		 {
 		 	if(RF24GTimeCount.TimeCount > RF24GLEARNTIMECOUNT)	//Ñ§Ï°³¬Ê±
@@ -479,6 +476,10 @@ int tamain(void)
 			else 
 			{
 			}
+		 if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
+		 {
+		 	U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);	
+		 }
 		memset(rec_buf,0x00,sizeof(rec_buf));	 
 #endif
 	}										   

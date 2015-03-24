@@ -176,28 +176,28 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 			if((time>=CYLE_1T_L)&&(time<=CYLE_1T_H))
 			{
 				if(sucode==0)
-					RF_ORVIBO_RECE[k/9] |= (1UL<<(k%9));	
+					*(p+ k/9) |= (1UL<<(k%9));	
 				else
-					RF_ORVIBO_RECE[k/9] &= ~(1UL<<(k%9));	
+					*(p+ k/9) &= ~(1UL<<(k%9));	
 				++k;
 			}
 			else if((time>=CYLE_15T_L)&&(time<=CYLE_15T_H))
 			{
 				if(sucode==0)
 				{
-					RF_ORVIBO_RECE[k/9] |= (1UL<<(k%9));	
+					*(p+ k/9) |= (1UL<<(k%9));	
 					sucode = 1;
 					++k;
 				}
 				else
 				{
 					sucode = 0;
-					RF_ORVIBO_RECE[k/9] &= ~(1UL<<(k%9));  ///     	
+					*(p+ k/9) &= ~(1UL<<(k%9));  ///     	
 					++k;
 					if(k>=36)
 						return 0;
 					///K是否大于9
-					RF_ORVIBO_RECE[k/9] |= (1UL<<(k%9));
+					*(p+ k/9) |= (1UL<<(k%9));
 					++k;			
 				}
 			}
@@ -206,23 +206,23 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 				if(sucode==1)
 				{
 					sucode = 1;
-					RF_ORVIBO_RECE[k/9] &= ~(1UL<<(k%9));  ///     	
+					*(p+ k/9) &= ~(1UL<<(k%9));  ///     	
 					++k;
 					if(k>=36)
 						return 0;
 					///K是否大于9
-					RF_ORVIBO_RECE[k/9] |= (1UL<<(k%9));
+					*(p+ k/9) |= (1UL<<(k%9));
 					++k;	
 				}
 				else
 				{
-					printf("sucode: 0, time = 2T  High= %d, Low= %d, k= %d\r\n", TimeHigh, TimeLow, k);
+//					printf("sucode: 0, time = 2T  High= %d, Low= %d, k= %d\r\n", TimeHigh, TimeLow, k);
 					return 0;	
 				}		
 			}
 			else
 			{
-				printf("TIME_CYLE is overtime High= %d, Low= %d, time= %d, k= %d\r\n",TimeHigh, TimeLow, time, k);	
+//				printf("TIME_CYLE is overtime High= %d, Low= %d, time= %d, k= %d\r\n",TimeHigh, TimeLow, time, k);	
 				return 0;
 			}
 #endif
@@ -236,29 +236,32 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 			}	
 			if((TimeCount>=CYLE_2T_L)&&(TimeCount<=CYLE_2T_H))
 			{
-				printf("receive RC800 is ok,\r\n\r\n");	
+//				printf("receive RC800 is ok,\r\n\r\n");	
+//				for(k=0;k<4;k++)
+//					printf("%X\r\n\r\n", *(pdata->buff+ k));
+				pdata->len = 4;
+				return pdata->len;
 			}
 			else
 				return 0;
 		}
-	 	if(k>=36)
-		{
-			printf("receive RC800 is ok, i = %d, k = %d,  titme = %d\r\n\r\n", ii, k, time);
-			for(k=0; k<36; k++)
-				printf("k = %d, data = %d\r\n", k, d[k]);
-			for(k=0;k<4;k++)
-				printf("%X\r\n\r\n", RF_ORVIBO_RECE[k]);
-		}
-		printf("\r\n");
+//	 	if(k>=36)
+//		{
+//			printf("receive RC800 is ok, i = %d, k = %d,  titme = %d\r\n\r\n", ii, k, time);
+//			for(k=0; k<36; k++)
+//				printf("k = %d, data = %d\r\n", k, d[k]);
+
+//		}
+//		printf("\r\n");
 	}
-	if(k>=36)
-	{
-		printf("receive RC800 is ok, i = %d, k = %d,  titme = %d\r\n\r\n", ii, k, time);
-		for(k=0; k<36; k++)
-			printf("k = %d, data = %d\r\n", k, d[k]);
-		for(k=0;k<4;k++)
-			printf("%X\r\n\r\n", RF_ORVIBO_RECE[k]);
-	}																		   
+//	if(k>=36)
+//	{
+//		printf("receive RC800 is ok, i = %d, k = %d,  titme = %d\r\n\r\n", ii, k, time);
+//		for(k=0; k<36; k++)
+//			printf("k = %d, data = %d\r\n", k, d[k]);
+//		for(k=0;k<4;k++)
+//			printf("%X\r\n\r\n", RF_ORVIBO_RECE[k]);
+//	}																		   
 	return 0;
 }
 
