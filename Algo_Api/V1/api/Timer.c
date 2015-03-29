@@ -36,7 +36,7 @@ void TIMER2_Handler(void)
 	}
 	if(RF433_Rec_Timeout>0)
 	{
-		RF433_Rec_Timeout--;	
+		RF433_Rec_Timeout--;
 	}
 //	else
 //	{

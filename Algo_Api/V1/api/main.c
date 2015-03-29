@@ -67,6 +67,8 @@ void JTAG_Set(u8 mode)
 
 int tamain(void)
 {
+	uint16 i;
+
 	JTAG_Set(SWD_ENABLE);		//¼Ó
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4ÍÆÍìÊä³ö
  	GPIOC->CRL|=0X00030000;
@@ -110,7 +112,7 @@ int tamain(void)
 
     while(1)
     {
-#if 1
+#if 0
 //	   static uint8 t = 0;
 		for(;;)
 		{
@@ -227,7 +229,7 @@ int tamain(void)
 //										printf("len = %d\r\n",RF315_Receive.len);
 										RF315MHz_Flag = 0;
 										U1_sendS((uint8*)RF315RecCMD, sizeof(RF315RecCMD));
-										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
+										U1_sendS((uint8*)&RF315_Receive, RF315_Receive.len*2 + 8);//	sizeof(RF_AC_DATA_TYPE)
 										U1_sendS((uint8*)tail,sizeof(tail));
 										break;	
 									}
@@ -263,7 +265,7 @@ int tamain(void)
 //											printf("len = %d\r\n",RF433_Receive.len);
 											RF433MHz_Flag = 0;
 											U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
-											U1_sendS((uint8*)&RF433_Receive, RF433_Receive.len + 8);//	sizeof(RF_AC_DATA_TYPE)
+											U1_sendS((uint8*)&RF433_Receive, RF433_Receive.len*2 + 8);//	sizeof(RF_AC_DATA_TYPE)
  										    U1_sendS((uint8*)tail,sizeof(tail));
 											break;	
 										}
@@ -478,14 +480,18 @@ int tamain(void)
 			{
 			}
 		 if(RF433_Rec_Timeout==0)
-		 {
+		 {				  
 			 if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
 			 {
 			 	if(RF433_Receive1.type==1)
-			 		RF433_Rec_Timeout = (13650 * 12) / 5;
-			 	U1_sendS("BN:", 3);
-			 	U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);	
-				U1_sendS("<<", 2);
+			 		RF433_Rec_Timeout =(14 * 12) / 5;
+//			 	U1_sendS("BN:", 3);
+				U1_sendS((uint8*)&RF433_Receive1.type, (RF433_Receive1.len*2 + 8));
+			 	U1_sendS((uint8*)&RF433_Receive1, (RF433_Receive1.len*2 + 8));
+//				printf("%X\r\n",RF433_Receive1.type);
+//				for(i = 0; i< 4; i++)
+//				   printf("%X\r\n",RF433_Receive1.buff[i]);
+//				U1_sendS("<<", 2);
 			 }
 		 }
 		memset(rec_buf,0x00,sizeof(rec_buf));	 
