@@ -3,7 +3,7 @@
 #define __COMMAND_
 #include"Include.h"
 
-const uint8 SwVesion[4] = "V1.0";
+const uint8 SwVesion[4] = "V1.1";
 const uint8 ResSucess[6] = "RE:0<<";
 const uint8 ResFail[6]  =  "RE:1<<";
 const uint8 tail[2]  = "<<" ;

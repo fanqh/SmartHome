@@ -159,7 +159,7 @@ static uint16 RF_decode(RF_AC_DATA_TYPE *pdata, GPIO_TypeDef* GPIOx, uint16_t GP
 		k = 0;
 		pdata->type = 1;
 //		printf("narrow = %d, wide = %d\r\n\r\n", narrow*5, wide*5);	 
-		while(k<36)
+		while(k<36)					  //note 按照欧瑞博协议，先收到的应该为高位
 		{	
 			while(GPIO_ReadInputDataBit( GPIOx,  GPIO_Pin))	   //检测同步脉冲
 			{
@@ -362,7 +362,7 @@ static void OVRIBO_SendSyn( GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 
 static void OVRIBO_SendBit0( GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 {
-		__disable_irq();
+	__disable_irq();
 	TimeCount = 0;
     __enable_irq();	
 	
@@ -420,12 +420,13 @@ int RFCodeAC_Send(RF_AC_DATA_TYPE *pdata , GPIO_TypeDef* GPIOx, uint16_t GPIO_Pi
 	}
 	else																		  
 	{
+//		printf("ovribo\r\n");
 		OVRIBO_SendSyn( GPIOx, GPIO_Pin);	
 		for(i=0; i<4; i++)
 		{
 			for(j=0; j<9; j++)
 			{
-				if(*p & (1<<(8-j)))	 //先发送高位
+				if(*p & (1<<j))	 //先发送高位
 					OVRIBO_SendBit1(GPIOx, GPIO_Pin);
 				else
 					OVRIBO_SendBit0(GPIOx, GPIO_Pin);		

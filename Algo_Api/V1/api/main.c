@@ -112,7 +112,7 @@ int tamain(void)
 
     while(1)
     {
-#if 0
+#if 1
 //	   static uint8 t = 0;
 		for(;;)
 		{
@@ -121,8 +121,9 @@ int tamain(void)
 				FlagReloadKey = 1;
 				led_off();
 				wifi_state = WIFI_IDLE;		//WIFI×´Ì¬³õÊ¼»¯
+				//printf("key enter\r\n");
 			}
-			while(!ScanKey());
+			while(ScanKey());
 			FlagReloadKey = 0;
 
 			if(Wifi_EnterEntmProcess())	
@@ -340,9 +341,10 @@ int tamain(void)
 							case  'W'://315M·¢Éä
 							{
 								uint8 time = 0;
+								uint16 len = 0;
 								RF_AC_DATA_TYPE RF315_SendData;
 
-								U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));							
+								U1_sendS((uint8*)RF315SendCMD, sizeof(RF315SendCMD));	//	Êý¾Ý³¤¶Èbug					
 								memcpy((uint8*)&RF315_SendData, &rec_buf[3], sizeof(RF_AC_DATA_TYPE));
 //								printf("TimeBase:%d, data[0]:%X, data[1]:%X, data[2]:%X\r\n", RF315_SendData.TimeBase,RF315_SendData.buff[0],RF315_SendData.buff[1],RF315_SendData.buff[2]);
 								GPIO_WriteBit(RF315_SEND_PORT, RF315_SEND_GPIO, Bit_RESET);
@@ -360,15 +362,16 @@ int tamain(void)
 								uint8 time = 0;
 								RF_AC_DATA_TYPE RF433_SendData;
 
-							    U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
+//							    U1_sendS((uint8*)RF433SendCMD, sizeof(RF433SendCMD));
 								RFM69H_Config();
 								RFM69H_EntryTx();
 								if(RFM69H_TxWaitStable())
 								{
 									RF69H_DataCongfigOUT();
 									memcpy((uint8*)&RF433_SendData, &rec_buf[3], sizeof(RFM69H_DATA_Type));
-								//	printf("TimeBase:%d, data[0]:%X, data[1]:%X, data[2]:%X\r\n", RF433_SendData.TimeBase,RF433_SendData.buff[0],RF433_SendData.buff[1],RF433_SendData.buff[2]);
+								//	printf("TimeBase:%d, data[0]:%X, data[1]:%X, data[2]:%X\r\n", RF433_SendData,RF433_SendData.buff[0],RF433_SendData.buff[1],RF433_SendData.buff[2]);
 									//printf("len = %d\r\n", RF433_SendData.len);
+									printf("len:%d, type: %X, data[0]:%X, data[1]:%X, data[2]:%X, data[3]:%X\r\n", RF433_SendData.len, RF433_SendData.type, RF433_SendData.buff[0],RF433_SendData.buff[1],RF433_SendData.buff[2],RF433_SendData.buff[3]);
 									if(RF433_SendData.type==0)
 										time = 6;
 									else
@@ -379,12 +382,19 @@ int tamain(void)
 										RFCodeAC_Send(&RF433_SendData , RF69H_DATA_PORT, RF69H_DATA_PIN);	  
 											
 									}
-									U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
+//									U1_sendS((uint8*)ResSucess, sizeof(ResSucess));	
 								}
 								else
 								{
-									U1_sendS((uint8*)ResFail, sizeof(ResFail));	//Ê§°Ü
+//									U1_sendS((uint8*)ResFail, sizeof(ResFail));	//Ê§°Ü
 								}
+
+				
+							 RF433TimeCount.TimeCount = 0;
+							 RF433TimeCount.FlagStart = 1;
+							 RFM69H_EntryRx();	
+							 RF69H_DataCongfigIN();	
+							 Enable_SysTick();		//Æô¶¯¶¨Ê±÷0
 							}
 							break;
 							case'T': //2.4G ·¢Éä
@@ -480,18 +490,18 @@ int tamain(void)
 			{
 			}
 		 if(RF433_Rec_Timeout==0)
-		 {				  
+		 {	
+	  
 			 if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
 			 {
 			 	if(RF433_Receive1.type==1)
 			 		RF433_Rec_Timeout =(14 * 12) / 5;
-//			 	U1_sendS("BN:", 3);
-				U1_sendS((uint8*)&RF433_Receive1.type, (RF433_Receive1.len*2 + 8));
+				U1_sendS("BN:", 3);
 			 	U1_sendS((uint8*)&RF433_Receive1, (RF433_Receive1.len*2 + 8));
 //				printf("%X\r\n",RF433_Receive1.type);
 //				for(i = 0; i< 4; i++)
 //				   printf("%X\r\n",RF433_Receive1.buff[i]);
-//				U1_sendS("<<", 2);
+				U1_sendS("<<", 2);
 			 }
 		 }
 		memset(rec_buf,0x00,sizeof(rec_buf));	 
