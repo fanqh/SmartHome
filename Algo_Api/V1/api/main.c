@@ -67,7 +67,6 @@ void JTAG_Set(u8 mode)
 
 int tamain(void)
 {
-	uint16 i;
 
 	JTAG_Set(SWD_ENABLE);		//¼Ó
 	GPIOC->CRL&=0XFFF0FFFF;	//PC4ÍÆÍìÊä³ö
@@ -94,22 +93,6 @@ int tamain(void)
 	Enable_SysTick();
 	RFM69H_EntryRx();
 
-
-//	while(1)
-//	{	
-//		if(RFDecodeAC(&RF433_Receive1, RF69H_DATA_PORT, RF69H_DATA_PIN))
-//		{
-////											printf("len = %d\r\n",RF433_Receive.len);
-//			RF433MHz_Flag = 0;
-////			U1_sendS((uint8*)RF433RecCMD, sizeof(RF433RecCMD));
-////			U1_sendS((uint8*)&RF433_Receive1, RF433_Receive1.len + 8);//	sizeof(RF_AC_DATA_TYPE)
-////		    U1_sendS((uint8*)tail,sizeof(tail));
-////			break;	
-//
-//		//printf("standard 433 is ok\r\n");
-//		}
-//	}
-
     while(1)
     {
 #if 1
@@ -129,19 +112,6 @@ int tamain(void)
 			if(Wifi_EnterEntmProcess())	
 				break;	
 		}
-		
-
-//		t++;
-//		if(t>10 && t<20)
-//		{
-//			debug_led_on();
-//		}
-//		else if(t>=20)
-//		{
-//			t = 0;
-//			debug_led_off();
-//		}
-//		BSP_mDelay(300);
 
 #endif
 #if 1
@@ -222,7 +192,7 @@ int tamain(void)
 								RF315TimeCount.TimeCount = 0;
 								RF315TimeCount.FlagStart = 1;
 								U1_sendS((uint8*)RF315StudyCMD, sizeof(RF315StudyCMD));
-								while((RF315TimeCount.TimeCount <= 1000)&&(RF315MHz_Flag == 1))
+								while((RF315TimeCount.TimeCount <= 6000)&&(RF315MHz_Flag == 1))
 								{
 									//printf("lenarn\r\n");
 									if(RFDecodeAC(&RF315_Receive, RF315_REC_PORT, RF315_REC_GPIO))

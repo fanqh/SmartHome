@@ -17,9 +17,9 @@
 #include    "uart.h"
 
  #define TIME_UNIT		5
- #define RF315LEARNTIMECOUNT   1000	   //单位 5ms  5s
- #define RF24GLEARNTIMECOUNT   1000	   //单位 5ms  5s
- #define INFRAREDLEARNTIMECOUNT   30000	   //单位 5ms  5s
+ #define RF315LEARNTIMECOUNT   6000	   //单位 5ms  30s
+ #define RF24GLEARNTIMECOUNT   6000	   //单位 5ms  30s
+ #define INFRAREDLEARNTIMECOUNT   6000	   //单位 5ms  30s
 
 #endif
 
